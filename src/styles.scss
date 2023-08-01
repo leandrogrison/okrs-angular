@@ -9,16 +9,74 @@ body {
 
 .user-photo {
   border-radius: 100%;
+  background-color: #eee;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   &.user-photo-sm {
     min-width: 32px;
     min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
   }
   &.user-photo-md {
     min-width: 48px;
     min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
   }
   &.user-photo-lg {
     min-width: 64px;
     min-height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+  }
+}
+
+// ANGULAR MATERIAL
+
+.mdc-button__label {
+  text-transform: uppercase;
+}
+
+.mdc-dialog {
+  .mdc-dialog__title {
+    padding: 0 50px 16px 24px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    & + .mdc-dialog__content {
+      padding-top: 20px;
+    }
+    .dialog-close-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+  }
+  .mdc-dialog__actions {
+    padding: 16px;
+    border-top-color: rgba(0,0,0,.12);
+  }
+}
+
+.mat-mdc-form-field {
+  display: flex;
+}
+
+.mat-autocomplete-loading.mdc-circular-progress {
+  position: absolute;
+  top: 16px;
+  right: 0;
+}
+.mat-mdc-autocomplete-panel {
+  .mat-mdc-option {
+    .mdc-list-item__primary-text {
+      display: flex;
+      align-items: center;
+    }
+    .user-photo,
+    .mat-icon {
+      display: inline-flex;
+      margin-right: 16px;
+    }
   }
 }

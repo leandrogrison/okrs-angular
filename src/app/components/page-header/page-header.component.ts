@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -9,8 +9,9 @@ import { Router, NavigationEnd } from '@angular/router';
 export class PageHeaderComponent {
 
   titlePage: string = '';
-  buttonText: string = '';
-  buttonIcon: string = '';
+  @Input() buttonIcon!: string;
+  @Input() buttonText!: string;
+  @Output() buttonAction = new EventEmitter();
 
   constructor(router: Router) {
     router.events.subscribe(event => {

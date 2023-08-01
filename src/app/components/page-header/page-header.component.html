@@ -2,10 +2,11 @@
   <h1>{{ titlePage }}</h1>
   <button
     *ngIf="buttonText"
+    (click)="buttonAction.emit()"
     mat-flat-button
     color="primary"
   >
-    <mat-icon>{{ buttonIcon }}</mat-icon>
+    <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
     {{ buttonText }}
   </button>
 </div>

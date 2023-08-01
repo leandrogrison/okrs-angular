@@ -1,0 +1,166 @@
+<form fxLayout="column wrap" fxLayoutAlign="start start" fxLayoutGap="24px">
+
+  <mat-form-field fxFlexFill>
+    <mat-label>Nome do objetivo</mat-label>
+    <input matInput required cdkFocusInitial>
+  </mat-form-field>
+
+  <mat-form-field fxFlexFill>
+    <mat-label>Descrição do objetivo</mat-label>
+    <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+
+  <div fxLayout fxFlexFill>
+    <mat-form-field fxFlex.gt-sm="50%" fxFlex="100%">
+      <mat-label>Categoria do objetivo</mat-label>
+      <mat-select required>
+        <mat-option *ngFor="let categorie of categories" [value]="categorie.value">
+          {{categorie.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row wrap" fxFlexFill fxLayoutGap.gt-sm="16px">
+    <mat-form-field fxFlex.gt-sm="50%" fxFlex="100%">
+      <mat-label>Responsável pelo objetivo</mat-label>
+      <span *ngIf="objective.owner && ownerAutoComplete" matPrefix>
+        <img
+          *ngIf="objective.owner.photo; else noPhoto"
+          [src]="objective.owner.photo"
+          class="user-photo user-photo-sm"
+          style="margin: 0 10px 0 16px"
+        >
+        <ng-template #noPhoto>
+          <mat-icon class="user-photo user-photo-sm" style="margin: 0 10px 0 16px; display: inline-flex;">person</mat-icon>
+        </ng-template>
+      </span>
+      <input
+        matInput
+        required
+        aria-label="Responsável pelo objetivo"
+        [(ngModel)]="ownerAutoComplete"
+        (ngModelChange)="autoCompleteOwner()"
+        (blur)="verifyOwner()"
+        name="owner"
+        #ownerField="ngModel"
+        [matAutocomplete]="ownerAuto"
+      />
+      <mat-error *ngIf="ownerField.invalid">Campo obrigatório</mat-error>
+      <mat-spinner *ngIf="loadingUsersToOwner" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
+      <mat-autocomplete #ownerAuto="matAutocomplete" [displayWith]="userName">
+        <mat-option *ngIf="usersToOwner.length === 0" disabled>
+          Nenhum colaborador encontrado
+        </mat-option>
+        <mat-option *ngFor="let user of usersToOwner" [value]="user">
+          <img *ngIf="user.photo; else noPhoto" alt="{{user.name}}" [src]="user.photo" class="user-photo user-photo-sm">
+          <ng-template #noPhoto>
+            <mat-icon class="user-photo user-photo-sm">person</mat-icon>
+          </ng-template>
+          <span>{{user.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div>
+      <mat-checkbox
+        [ngStyle.gt-sm]="{'margin-top.px': 8}"
+        [ngStyle]="{'margin-top.px': -8}"
+      >
+        Sou o responsável
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <mat-form-field fxFlexFill>
+    <mat-label>Colaboradores que apoiam o objetivo</mat-label>
+    <mat-chip-grid #supportersGrid aria-label="Selecione colabodores">
+      <mat-chip-row
+        *ngFor="let supporter of objective.supporters"
+        (removed)="removeSupporter(supporter)"
+      >
+        <img *ngIf="supporter.photo; else noPhoto" matChipAvatar [src]="supporter.photo" [alt]="supporter.name" />
+        <ng-template #noPhoto>
+          <mat-icon matChipAvatar>person</mat-icon>
+        </ng-template>
+        {{supporter.name}}
+        <button matChipRemove [attr.aria-label]="'Remover ' + supporter.name">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input
+        [matChipInputFor]="supportersGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodesSupporters"
+        [matAutocomplete]="autoSupporter"
+        [(ngModel)]="supporterAutoComplete"
+        (ngModelChange)="autoCompleteSupporter()"
+        (blur)="clearSupporter()"
+        name="supporter"
+        #supporterField
+      />
+    </mat-chip-grid>
+    <mat-spinner *ngIf="loadingUsersToSupporter" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
+    <mat-autocomplete #autoSupporter="matAutocomplete" (optionSelected)="selectedSupporter($event)">
+      <mat-option *ngIf="usersToSupporter.length === 0" disabled>
+        Nenhum colaborador encontrado
+      </mat-option>
+      <mat-option *ngFor="let user of usersToSupporter" [value]="user">
+        <img *ngIf="user.photo; else noPhoto" [alt]="user.name" [src]="user.photo" class="user-photo user-photo-sm">
+        <ng-template #noPhoto>
+          <mat-icon class="user-photo user-photo-sm">person</mat-icon>
+        </ng-template>
+        <span>{{user.name}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <div fxLayout='column' fxFlexFill>
+    <label id="visibility-label">Visibilidade *</label>
+    <mat-radio-group
+      aria-labelledby="visibility-label"
+      [(ngModel)]="objective.visibility"
+      name="visibility"
+      #visibilityField="ngModel"
+    >
+      <mat-radio-button value="public">
+        Público - visível para toda a empresa
+      </mat-radio-button>
+      <mat-radio-button value="private">
+        Privado - visível apenas para o criador do objetivo, responsável e colaboradores que apoiam o objetivo
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div fxLayout='column' fxFlexFill>
+    <label id="cycle-label">Ciclo *</label>
+  </div>
+
+  <mat-form-field fxFlexFill>
+    <mat-label>Associar a um objetivo</mat-label>
+    <input
+      matInput
+      aria-label="Associar a um objetivo"
+      [(ngModel)]="associateAutoComplete"
+      (ngModelChange)="autoCompleteAssociate()"
+      (blur)="verifyAssociate()"
+      name="associate"
+      #associateField="ngModel"
+      [matAutocomplete]="associateAuto"
+    />
+    <mat-spinner *ngIf="loadingObjectivesToAssociate" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
+    <mat-autocomplete #associateAuto="matAutocomplete" [displayWith]="objectiveName">
+      <mat-option *ngIf="objectivesToAssociate.length === 0" disabled>
+        Nenhum objetivo encontrado
+      </mat-option>
+      <mat-option *ngFor="let objective of objectivesToAssociate" [value]="objective">
+        {{objective.name}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-hint>Você pode escolher um objetivo que será apoiado por este.
+      Os objetivos listados pertencem ao mesmo período selecionado e obedecem a
+      hierarquia de OKRs (Empresa > Grupo > Individual).
+      Por exemplo, não é permitido que um objetivo de empresa dê apoio a um
+      objetivo de grupo.
+    </mat-hint>
+  </mat-form-field>
+
+</form>

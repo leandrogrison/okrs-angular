@@ -1,3 +1,20 @@
 {
-  "objectives": []
+  "objectives": [],
+  "users": [
+    {
+      "id": 0,
+      "name": "Luiz Albuquerque",
+      "photo": null
+    },
+    {
+      "id": 1,
+      "name": "Maurício Ribeiro Andrade",
+      "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Fernanda Mendonça",
+      "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+    }
+  ]
 }

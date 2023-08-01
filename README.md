@@ -1,6 +1,6 @@
 # Projeto para estudos de Angular
 
-Este é um projeto pessoal que tem como finalidade aperfeiçoar meus conhecimentos em Angular (versão 16), também é destinado a ser um portfólio para apresentação de minhas habilitades técnicas, não só com Angular, mas também em HTML, SCSS, Material Design, responsividade, estruturação de aplicações, usabilidade e performance.
+Este é um projeto pessoal que tem como finalidade aperfeiçoar meus conhecimentos em Angular (versão 16), também é destinado a ser um portfólio para apresentação de minhas habilitades técnicas, não só com Angular, mas também em Typescript, HTML, SCSS, Material Design, responsividade, estruturação de aplicações, usabilidade e performance.
 
 O projeto escolhido para estudo foi em criar um aplicativo/sistema web baseado na metologia de OKRs, onde o usuário poderá criar, gerenciar e analisar os objetivos e KRs de sua empresa.
 
