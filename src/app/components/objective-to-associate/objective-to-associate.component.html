@@ -1,0 +1,23 @@
+<mat-form-field fxFlexFill>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [ariaLabel]="label"
+    [(ngModel)]="associateAutoComplete"
+    (ngModelChange)="autoCompleteAssociate()"
+    (blur)="verifyAssociate()"
+    name="associate"
+    #associateField="ngModel"
+    [matAutocomplete]="associateAuto"
+  />
+  <mat-spinner *ngIf="loading" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
+  <mat-autocomplete #associateAuto="matAutocomplete" [displayWith]="objectiveName">
+    <mat-option *ngIf="objectives.length === 0" disabled>
+      Nenhum objetivo encontrado
+    </mat-option>
+    <mat-option *ngFor="let objective of objectives" [value]="objective">
+      {{objective.name}}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-hint>{{ hint }}</mat-hint>
+</mat-form-field>

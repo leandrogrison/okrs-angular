@@ -1,0 +1,41 @@
+<mat-form-field fxFlexFill>
+  <mat-label>{{ label }}</mat-label>
+  <mat-chip-grid #usersGrid aria-label="Selecione colaboradores">
+    <mat-chip-row
+      *ngFor="let user of users"
+      (removed)="removeUser(user)"
+    >
+      <img *ngIf="user.photo; else noPhoto" matChipAvatar [src]="user.photo" [alt]="user.name" />
+      <ng-template #noPhoto>
+        <mat-icon matChipAvatar>person</mat-icon>
+      </ng-template>
+      {{user.name}}
+      <button matChipRemove [attr.aria-label]="'Remover ' + user.name">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+    <input
+      [matChipInputFor]="usersGrid"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matAutocomplete]="autoUser"
+      [(ngModel)]="userAutoComplete"
+      (ngModelChange)="autoCompleteUser()"
+      (blur)="clearUser()"
+      name="user"
+      #usersField
+    />
+  </mat-chip-grid>
+  <mat-spinner *ngIf="loading" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
+  <mat-autocomplete #autoUser="matAutocomplete" (optionSelected)="selectedUser($event)">
+    <mat-option *ngIf="usersToSelect.length === 0" disabled>
+      Nenhum colaborador encontrado
+    </mat-option>
+    <mat-option *ngFor="let user of usersToSelect" [value]="user">
+      <img *ngIf="user.photo; else noPhoto" [alt]="user.name" [src]="user.photo" class="user-photo user-photo-sm">
+      <ng-template #noPhoto>
+        <mat-icon class="user-photo user-photo-sm">person</mat-icon>
+      </ng-template>
+      <span>{{user.name}}</span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

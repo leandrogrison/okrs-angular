@@ -1,0 +1,44 @@
+<mat-form-field fxFlexFill>
+  <mat-label>{{ label }}</mat-label>
+  <span *ngIf="user && userAutoComplete" matPrefix>
+    <img
+      *ngIf="user.photo; else noPhoto"
+      [src]="user.photo"
+      class="user-photo user-photo-sm"
+      style="margin: 0 10px 0 16px"
+    >
+    <ng-template #noPhoto>
+      <mat-icon
+        class="user-photo user-photo-sm"
+        style="margin: 0 10px 0 16px; display: inline-flex;"
+      >
+      person
+    </mat-icon>
+    </ng-template>
+  </span>
+  <input
+    matInput
+    required="required"
+    [ariaLabel]="label"
+    [(ngModel)]="userAutoComplete"
+    (ngModelChange)="autoCompleteUser()"
+    (blur)="verifyUser()"
+    name="user"
+    #userField="ngModel"
+    [matAutocomplete]="userAuto"
+  />
+  <mat-error *ngIf="userField.invalid && formSubmitted">Campo obrigatório</mat-error>
+  <mat-spinner *ngIf="loading" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
+  <mat-autocomplete #userAuto="matAutocomplete" [displayWith]="userName">
+    <mat-option *ngIf="users.length === 0" disabled>
+      Nenhum colaborador encontrado
+    </mat-option>
+    <mat-option *ngFor="let user of users" [value]="user">
+      <img *ngIf="user.photo; else noPhoto" [alt]="user.name" [src]="user.photo" class="user-photo user-photo-sm">
+      <ng-template #noPhoto>
+        <mat-icon class="user-photo user-photo-sm">person</mat-icon>
+      </ng-template>
+      <span>{{user.name}}</span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

@@ -32,6 +32,9 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { CreateObjectiveComponent } from './components/create-objective/create-objective.component';
 import { ObjectiveFormComponent } from './components/objective-form/objective-form.component';
 import { CycleSelectComponent } from './components/cycle-select/cycle-select.component';
+import { UserSingleSelectComponent } from './components/user-single-select/user-single-select.component';
+import { UserMultipleSelectComponent } from './components/user-multiple-select/user-multiple-select.component';
+import { ObjectiveToAssociateComponent } from './components/objective-to-associate/objective-to-associate.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { CycleSelectComponent } from './components/cycle-select/cycle-select.com
     HomeComponent,
     CreateObjectiveComponent,
     ObjectiveFormComponent,
-    CycleSelectComponent
+    CycleSelectComponent,
+    UserSingleSelectComponent,
+    UserMultipleSelectComponent,
+    ObjectiveToAssociateComponent
   ],
   imports: [
     BrowserModule,

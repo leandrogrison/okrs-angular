@@ -1,4 +1,4 @@
-<form fxLayout="column wrap" fxLayoutAlign="start start" fxLayoutGap="24px">
+<form #formObjective="ngForm" fxLayout="column wrap" fxLayoutAlign="start start" fxLayoutGap="24px">
 
   <mat-form-field fxFlexFill>
     <mat-label>Nome do objetivo</mat-label>
@@ -22,45 +22,14 @@
   </div>
 
   <div fxLayout="row wrap" fxFlexFill fxLayoutGap.gt-sm="16px">
-    <mat-form-field fxFlex.gt-sm="50%" fxFlex="100%">
-      <mat-label>Responsável pelo objetivo</mat-label>
-      <span *ngIf="objective.owner && ownerAutoComplete" matPrefix>
-        <img
-          *ngIf="objective.owner.photo; else noPhoto"
-          [src]="objective.owner.photo"
-          class="user-photo user-photo-sm"
-          style="margin: 0 10px 0 16px"
-        >
-        <ng-template #noPhoto>
-          <mat-icon class="user-photo user-photo-sm" style="margin: 0 10px 0 16px; display: inline-flex;">person</mat-icon>
-        </ng-template>
-      </span>
-      <input
-        matInput
-        required
-        aria-label="Responsável pelo objetivo"
-        [(ngModel)]="ownerAutoComplete"
-        (ngModelChange)="autoCompleteOwner()"
-        (blur)="verifyOwner()"
-        name="owner"
-        #ownerField="ngModel"
-        [matAutocomplete]="ownerAuto"
-      />
-      <mat-error *ngIf="ownerField.invalid">Campo obrigatório</mat-error>
-      <mat-spinner *ngIf="loadingUsersToOwner" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
-      <mat-autocomplete #ownerAuto="matAutocomplete" [displayWith]="userName">
-        <mat-option *ngIf="usersToOwner.length === 0" disabled>
-          Nenhum colaborador encontrado
-        </mat-option>
-        <mat-option *ngFor="let user of usersToOwner" [value]="user">
-          <img *ngIf="user.photo; else noPhoto" alt="{{user.name}}" [src]="user.photo" class="user-photo user-photo-sm">
-          <ng-template #noPhoto>
-            <mat-icon class="user-photo user-photo-sm">person</mat-icon>
-          </ng-template>
-          <span>{{user.name}}</span>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+    <app-user-single-select
+      [user]="objective.owner"
+      [required]="true"
+      [formSubmitted]="formObjective.submitted"
+      label="Responsável pelo objetivo"
+      fxFlex.gt-sm="50%"
+      fxFlex="100%"
+    />
     <div>
       <mat-checkbox
         [ngStyle.gt-sm]="{'margin-top.px': 8}"
@@ -71,47 +40,11 @@
     </div>
   </div>
 
-  <mat-form-field fxFlexFill>
-    <mat-label>Colaboradores que apoiam o objetivo</mat-label>
-    <mat-chip-grid #supportersGrid aria-label="Selecione colabodores">
-      <mat-chip-row
-        *ngFor="let supporter of objective.supporters"
-        (removed)="removeSupporter(supporter)"
-      >
-        <img *ngIf="supporter.photo; else noPhoto" matChipAvatar [src]="supporter.photo" [alt]="supporter.name" />
-        <ng-template #noPhoto>
-          <mat-icon matChipAvatar>person</mat-icon>
-        </ng-template>
-        {{supporter.name}}
-        <button matChipRemove [attr.aria-label]="'Remover ' + supporter.name">
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </mat-chip-row>
-      <input
-        [matChipInputFor]="supportersGrid"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodesSupporters"
-        [matAutocomplete]="autoSupporter"
-        [(ngModel)]="supporterAutoComplete"
-        (ngModelChange)="autoCompleteSupporter()"
-        (blur)="clearSupporter()"
-        name="supporter"
-        #supporterField
-      />
-    </mat-chip-grid>
-    <mat-spinner *ngIf="loadingUsersToSupporter" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
-    <mat-autocomplete #autoSupporter="matAutocomplete" (optionSelected)="selectedSupporter($event)">
-      <mat-option *ngIf="usersToSupporter.length === 0" disabled>
-        Nenhum colaborador encontrado
-      </mat-option>
-      <mat-option *ngFor="let user of usersToSupporter" [value]="user">
-        <img *ngIf="user.photo; else noPhoto" [alt]="user.name" [src]="user.photo" class="user-photo user-photo-sm">
-        <ng-template #noPhoto>
-          <mat-icon class="user-photo user-photo-sm">person</mat-icon>
-        </ng-template>
-        <span>{{user.name}}</span>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+  <app-user-multiple-select
+    [users]="objective.supporters!"
+    label="Colaboradores que apoiam o objetivo"
+    fxFlexFill
+  />
 
   <div fxLayout='column' fxFlexFill>
     <label id="visibility-label">Visibilidade *</label>
@@ -135,33 +68,14 @@
     <app-cycle-select [cycleData]="objective.cycle" (updateCycle)="updateCycleHandler($event)" />
   </div>
 
-  <mat-form-field fxFlexFill>
-    <mat-label>Associar a um objetivo</mat-label>
-    <input
-      matInput
-      aria-label="Associar a um objetivo"
-      [(ngModel)]="associateAutoComplete"
-      (ngModelChange)="autoCompleteAssociate()"
-      (blur)="verifyAssociate()"
-      name="associate"
-      #associateField="ngModel"
-      [matAutocomplete]="associateAuto"
-    />
-    <mat-spinner *ngIf="loadingObjectivesToAssociate" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
-    <mat-autocomplete #associateAuto="matAutocomplete" [displayWith]="objectiveName">
-      <mat-option *ngIf="objectivesToAssociate.length === 0" disabled>
-        Nenhum objetivo encontrado
-      </mat-option>
-      <mat-option *ngFor="let objective of objectivesToAssociate" [value]="objective">
-        {{objective.name}}
-      </mat-option>
-    </mat-autocomplete>
-    <mat-hint>Você pode escolher um objetivo que será apoiado por este.
-      Os objetivos listados pertencem ao mesmo período selecionado e obedecem a
-      hierarquia de OKRs (Empresa > Grupo > Individual).
-      Por exemplo, não é permitido que um objetivo de empresa dê apoio a um
-      objetivo de grupo.
-    </mat-hint>
-  </mat-form-field>
+  <app-objective-to-associate
+    [objectiveAssociate]="objective.associate!"
+    label="Associar a um objetivo"
+    hint="Você pode escolher um objetivo que será apoiado por este.
+      Os objetivos listados pertencem ao mesmo período selecionado e obedecem
+      a hierarquia de OKRs (Empresa > Grupo > Individual).
+      Por exemplo, não é permitido que um objetivo de empresa dê apoio a um objetivo de grupo."
+    fxFlexFill
+  />
 
 </form>
