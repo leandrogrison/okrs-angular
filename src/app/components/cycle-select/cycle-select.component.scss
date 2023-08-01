@@ -1,0 +1,16 @@
+.cycles {
+  display: flex;
+  width: 100%;
+  .cycles-container {
+    border-radius: 4px;
+    border-right: 1px solid #e0e0e0;
+    overflow-x: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+      color: #4758B8;
+      background-color: #eaecf7;
+    }
+  }
+}

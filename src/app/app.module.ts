@@ -22,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule, MAT_CHECKBOX_DEFAULT_OPTIONS } from '@angular/material/checkbox';
 import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -30,6 +31,7 @@ import { ManagerComponent } from './components/pages/manager/manager.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { CreateObjectiveComponent } from './components/create-objective/create-objective.component';
 import { ObjectiveFormComponent } from './components/objective-form/objective-form.component';
+import { CycleSelectComponent } from './components/cycle-select/cycle-select.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { ObjectiveFormComponent } from './components/objective-form/objective-fo
     ManagerComponent,
     HomeComponent,
     CreateObjectiveComponent,
-    ObjectiveFormComponent
+    ObjectiveFormComponent,
+    CycleSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { ObjectiveFormComponent } from './components/objective-form/objective-fo
     MatProgressSpinnerModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonToggleModule
   ],
   providers: [
     {

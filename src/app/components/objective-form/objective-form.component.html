@@ -132,6 +132,7 @@
 
   <div fxLayout='column' fxFlexFill>
     <label id="cycle-label">Ciclo *</label>
+    <app-cycle-select [cycleData]="objective.cycle" (updateCycle)="updateCycleHandler($event)" />
   </div>
 
   <mat-form-field fxFlexFill>

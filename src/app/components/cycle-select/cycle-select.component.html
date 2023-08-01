@@ -1,0 +1,35 @@
+
+<div class="cycles">
+  <button
+    (click)="addQuarter('prev')"
+    mat-icon-button
+    aria-label="Ver ciclos anteriores"
+    type="button"
+  >
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <div #cyclesContainer class="cycles-container">
+    <mat-button-toggle-group
+      #cycles
+      name="cycles"
+      [value]="cycleData.id"
+      aria-label="Selecione um ciclo"
+    >
+      <mat-button-toggle
+        *ngFor="let quarter of quarters"
+        [value]="quarter.id"
+        (click)="updateCycle.emit(quarter)"
+      >
+        {{ quarter.name }}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <button
+    (click)="addQuarter('next')"
+    mat-icon-button
+    aria-label="Ver próximos ciclos"
+    type="button"
+  >
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>

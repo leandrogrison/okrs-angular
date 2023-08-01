@@ -184,4 +184,8 @@ export class ObjectiveFormComponent implements OnInit {
   objectiveName (key: any) {
     return key ? key.name : '';
   }
+
+  updateCycleHandler(cycle: any) {
+    this.objective.cycle = cycle;
+  }
 }
