@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/User';
@@ -13,7 +13,7 @@ export class UserSingleSelectComponent implements OnInit {
   @Input() user!: any;
   @Input() label!: string;
   @Input() required!: boolean;
-  @Input() formSubmitted!: any;
+  @Output() updateOwner = new EventEmitter();
 
   users: User[] = []
   loading: Boolean = true
@@ -34,6 +34,7 @@ export class UserSingleSelectComponent implements OnInit {
     clearTimeout(this.delayToSearch);
     if (typeof value === 'object') {
       this.user = value;
+      this.updateOwner.emit(value);
     } else {
       this.delayToSearch = setTimeout(() => {
         this.loading = true;
@@ -43,6 +44,7 @@ export class UserSingleSelectComponent implements OnInit {
           this.loading = false;
         })
         this.user = value;
+        this.updateOwner.emit(value);
       }, 500)
     }
   }

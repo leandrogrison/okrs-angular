@@ -27,7 +27,7 @@
     #userField="ngModel"
     [matAutocomplete]="userAuto"
   />
-  <mat-error *ngIf="userField.invalid && formSubmitted">Campo obrigatório</mat-error>
+  <mat-error *ngIf="userField.invalid">Campo obrigatório</mat-error>
   <mat-spinner *ngIf="loading" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
   <mat-autocomplete #userAuto="matAutocomplete" [displayWith]="userName">
     <mat-option *ngIf="users.length === 0" disabled>

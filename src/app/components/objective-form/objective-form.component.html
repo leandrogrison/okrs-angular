@@ -1,23 +1,55 @@
-<form #formObjective="ngForm" fxLayout="column wrap" fxLayoutAlign="start start" fxLayoutGap="24px">
+<form
+  #formObjective="ngForm"
+  (ngSubmit)="saveObjective()"
+  fxLayout="column wrap"
+  fxLayoutAlign="start start"
+  fxLayoutGap="24px"
+>
 
   <mat-form-field fxFlexFill>
     <mat-label>Nome do objetivo</mat-label>
-    <input matInput required cdkFocusInitial>
+    <input
+      [(ngModel)]="objective.name"
+      name="name"
+      #nameField="ngModel"
+      matInput
+      required
+      cdkFocusInitial
+    >
+    <mat-error *ngIf="nameField.invalid">
+      <span *ngIf="nameField.errors?.['required']">Campo obrigatório</span>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field fxFlexFill>
     <mat-label>Descrição do objetivo</mat-label>
-    <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+    <textarea
+      [(ngModel)]="objective.description"
+      name="description"
+      #descriptionField="ngModel"
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+    ></textarea>
   </mat-form-field>
 
   <div fxLayout fxFlexFill>
     <mat-form-field fxFlex.gt-sm="50%" fxFlex="100%">
       <mat-label>Categoria do objetivo</mat-label>
-      <mat-select required>
-        <mat-option *ngFor="let categorie of categories" [value]="categorie.value">
-          {{categorie.name}}
+      <mat-select
+        [(ngModel)]="objective.category"
+        name="category"
+        #categoryField="ngModel"
+        required
+      >
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{category.name}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="categoryField.invalid">
+        <span *ngIf="categoryField.errors?.['required']">Campo obrigatório</span>
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -25,10 +57,17 @@
     <app-user-single-select
       [user]="objective.owner"
       [required]="true"
-      [formSubmitted]="formObjective.submitted"
+      (updateOwner)="updateOwnerHandler($event)"
       label="Responsável pelo objetivo"
       fxFlex.gt-sm="50%"
       fxFlex="100%"
+    />
+    <input
+      type="hidden"
+      [(ngModel)]="objective.owner"
+      name="ownerForValidation"
+      #ownerField="ngModel"
+      required
     />
     <div>
       <mat-checkbox
@@ -42,6 +81,7 @@
 
   <app-user-multiple-select
     [users]="objective.supporters!"
+    (updateSupporters)="updateSupportersHandler($event)"
     label="Colaboradores que apoiam o objetivo"
     fxFlexFill
   />
@@ -53,6 +93,7 @@
       [(ngModel)]="objective.visibility"
       name="visibility"
       #visibilityField="ngModel"
+      required
     >
       <mat-radio-button value="public">
         Público - visível para toda a empresa
@@ -61,6 +102,9 @@
         Privado - visível apenas para o criador do objetivo, responsável e colaboradores que apoiam o objetivo
       </mat-radio-button>
     </mat-radio-group>
+    <mat-error *ngIf="visibilityField.invalid">
+      <span *ngIf="visibilityField.errors?.['required']">Campo obrigatório</span>
+    </mat-error>
   </div>
 
   <div fxLayout='column' fxFlexFill>
@@ -77,5 +121,7 @@
       Por exemplo, não é permitido que um objetivo de empresa dê apoio a um objetivo de grupo."
     fxFlexFill
   />
+
+  <input #buttonSubmitHidden fxHide type="submit">
 
 </form>

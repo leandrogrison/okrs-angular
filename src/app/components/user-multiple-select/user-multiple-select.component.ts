@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, inject, ViewChild, ElementRef } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
@@ -16,6 +16,7 @@ export class UserMultipleSelectComponent implements OnInit {
 
   @Input() users: User[] = [];
   @Input() label!: string;
+  @Output() updateSupporters = new EventEmitter();
 
   usersToSelect: User[] = []
   loading: Boolean = true
@@ -76,6 +77,7 @@ export class UserMultipleSelectComponent implements OnInit {
 
   selectedUser(event: MatAutocompleteSelectedEvent): void {
     this.users!.push(event.option.value);
+    this.updateSupporters.emit(this.users);
   }
 
 }

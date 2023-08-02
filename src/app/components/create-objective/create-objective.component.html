@@ -3,13 +3,17 @@
     <mat-icon>close</mat-icon>
   </button>
 </h2>
+
 <mat-dialog-content>
-  <app-objective-form />
+  <app-objective-form (onSubmit)="createObjectiveHandler($event)" />
 </mat-dialog-content>
+
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close color="primary">Cancelar</button>
-  <button mat-button mat-flat-button color="primary">
+  <button mat-button mat-dialog-close color="primary">
+    Cancelar
+  </button>
+  <button (click)="createObjective()" mat-button mat-flat-button color="primary">
     <mat-icon>check</mat-icon>
-    <span>Salvar objetivo</span>
+    <span>Criar objetivo</span>
   </button>
 </mat-dialog-actions>

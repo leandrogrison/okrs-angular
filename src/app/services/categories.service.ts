@@ -11,9 +11,9 @@ constructor() { }
 
   setCategories() {
     const categories: Categorie[] = [
-      { value: 0, name: 'Objetivo da empresa' },
-      { value: 1, name: 'Objetivo do grupo' },
-      { value: 2, name: 'Objetivo individual' },
+      { id: 0, name: 'Objetivo da empresa' },
+      { id: 1, name: 'Objetivo do grupo' },
+      { id: 2, name: 'Objetivo individual' },
     ];
 
     return categories;

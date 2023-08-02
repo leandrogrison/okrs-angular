@@ -5,12 +5,12 @@ export interface Objective {
   category: {
     id: number,
     name: string
-  },
+  } | null,
   owner: {
     id: number,
     name: string,
     photo: string
-  },
+  } | null,
   supporters?: Array<{
     id: number;
     name: string;
@@ -24,7 +24,7 @@ export interface Objective {
   associate?: {
     id: string,
     name: string
-  },
+  } | null,
   startDate: string,
   deadline: string,
   endDate?: string,
