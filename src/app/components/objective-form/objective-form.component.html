@@ -71,6 +71,10 @@
     />
     <div>
       <mat-checkbox
+        [checked]="objective.owner && objective.owner.id === ownerMe.id"
+        (change)="setOwnerMe($event)"
+        name="ownerMe"
+        #ownerMeField
         [ngStyle.gt-sm]="{'margin-top.px': 8}"
         [ngStyle]="{'margin-top.px': -8}"
       >

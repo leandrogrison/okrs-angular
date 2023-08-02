@@ -10,14 +10,14 @@ import { User } from 'src/app/User';
 })
 export class UserSingleSelectComponent implements OnInit {
 
-  @Input() user!: any;
+  @Input() user!: User | null;
   @Input() label!: string;
   @Input() required!: boolean;
   @Output() updateOwner = new EventEmitter();
 
   users: User[] = []
   loading: Boolean = true
-  userAutoComplete: string = ''
+  userAutoComplete: any = this.user ? this.user.name : ''
   delayToSearch: any = null
 
   constructor(private usersService: UsersService) {}
@@ -30,10 +30,15 @@ export class UserSingleSelectComponent implements OnInit {
     this.getUsers(this.userAutoComplete);
   }
 
+  autoCompleteUserExternal(value?: any) {
+    this.userAutoComplete = value;
+
+    this.autoCompleteUser();
+  }
+
   getUsers(value?: any) {
     clearTimeout(this.delayToSearch);
     if (typeof value === 'object') {
-      this.user = value;
       this.updateOwner.emit(value);
     } else {
       this.delayToSearch = setTimeout(() => {
@@ -43,7 +48,6 @@ export class UserSingleSelectComponent implements OnInit {
           this.users = data;
           this.loading = false;
         })
-        this.user = value;
         this.updateOwner.emit(value);
       }, 500)
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Categorie } from 'src/app/Categorie';
+import { Category } from 'src/app/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class CategoriesService {
 constructor() { }
 
   setCategories() {
-    const categories: Categorie[] = [
+    const categories: Category[] = [
       { id: 0, name: 'Objetivo da empresa' },
       { id: 1, name: 'Objetivo do grupo' },
       { id: 2, name: 'Objetivo individual' },

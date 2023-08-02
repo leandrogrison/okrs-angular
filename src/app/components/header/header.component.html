@@ -12,7 +12,7 @@
   <span fxFlex></span>
 
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu do usuário" class="menu-user">
-    <img src="https://randomuser.me/api/portraits/men/43.jpg" class="user-photo user-photo-sm">
+    <img [src]="userPhoto" class="user-photo user-photo-sm">
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>

@@ -3,11 +3,14 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef} from '@
 import { v4 as uuidv4 } from 'uuid';
 
 import { CategoriesService } from 'src/app/services/categories.service';
-import { Categorie } from 'src/app/Categorie';
-
+import { Category } from 'src/app/Category';
+import { User } from 'src/app/User';
 import { Objective } from 'src/app/Objective';
 
 import { CycleSelectComponent } from './../cycle-select/cycle-select.component';
+import { UserSingleSelectComponent } from '../user-single-select/user-single-select.component';
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-objective-form',
@@ -21,8 +24,11 @@ export class ObjectiveFormComponent implements OnInit {
   @ViewChild('formObjective') formObjective!: any;
   @ViewChild('buttonSubmitHidden') buttonSubmitHidden!: ElementRef<HTMLElement>;
   @ViewChild(CycleSelectComponent) cycleSelect!: CycleSelectComponent;
+  @ViewChild(UserSingleSelectComponent) userSingleSelect!: UserSingleSelectComponent;
 
-  categories: Categorie[] = []
+
+  categories: Category[] = []
+  ownerMe: User = { id: -1, name: '', photo: '' }
 
   objective: Objective = {
     id: uuidv4(),
@@ -42,7 +48,9 @@ export class ObjectiveFormComponent implements OnInit {
     associate: null
   }
 
-  constructor(private categoriesService: CategoriesService) {}
+  constructor(private categoriesService: CategoriesService, private authService: AuthService) {
+    this.ownerMe = this.authService.getUserInfo();
+  }
 
   ngOnInit(): void {
     this.categories = this.categoriesService.setCategories();
@@ -77,8 +85,18 @@ export class ObjectiveFormComponent implements OnInit {
     this.objective.supporters = supporters;
   }
 
+  setOwnerMe(event: any) {
+    if (event.checked) {
+      this.updateOwnerHandler(this.ownerMe);
+      this.userSingleSelect.autoCompleteUserExternal(this.ownerMe);
+    } else {
+      this.updateOwnerHandler(undefined);
+      this.userSingleSelect.autoCompleteUserExternal(undefined);
+    }
+  }
+
   saveOjectiveButton() {
-    this.buttonSubmitHidden.nativeElement.click()
+    this.buttonSubmitHidden.nativeElement.click();
   }
 
   saveObjective() {
