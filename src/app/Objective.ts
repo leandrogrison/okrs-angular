@@ -27,7 +27,7 @@ export interface Objective {
   } | null,
   startDate: string,
   deadline: string,
-  endDate?: string,
+  endDate?: string | null,
   finished: number,
   conclusionPercent?: number,
   numberOfKRs?: number
