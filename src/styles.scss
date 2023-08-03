@@ -86,3 +86,11 @@ body {
     stroke: rgba(0,0,0,.64) !important;
   }
 }
+
+.mat-success {
+  color: #fff !important;
+  background-color: #2E7D32 !important;
+}
+.mat-success[disabled] {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}

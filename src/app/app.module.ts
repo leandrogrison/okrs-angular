@@ -36,6 +36,7 @@ import { CycleSelectComponent } from './components/cycle-select/cycle-select.com
 import { UserSingleSelectComponent } from './components/user-single-select/user-single-select.component';
 import { UserMultipleSelectComponent } from './components/user-multiple-select/user-multiple-select.component';
 import { ObjectiveToAssociateComponent } from './components/objective-to-associate/objective-to-associate.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ObjectiveToAssociateComponent } from './components/objective-to-associa
     CycleSelectComponent,
     UserSingleSelectComponent,
     UserMultipleSelectComponent,
-    ObjectiveToAssociateComponent
+    ObjectiveToAssociateComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

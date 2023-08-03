@@ -1,0 +1,19 @@
+<div class="snack-container" [ngClass]="'snack-' + type">
+  <mat-icon *ngIf="data.type === 'success'" class="snack-icon">task_alt</mat-icon>
+  <mat-icon *ngIf="data.type === 'warn'" class="snack-icon">error_outline</mat-icon>
+  <mat-icon *ngIf="data.type === 'primary'" class="snack-icon">info_outline</mat-icon>
+  <span matSnackBarLabel>
+    {{ data.message }}
+  </span>
+  <span matSnackBarActions>
+    <button
+      mat-icon-button
+      matSnackBarAction
+      (click)="snackBarRef.dismissWithAction()"
+      class="snack-button-close"
+      aria-label="Fechar mensagem"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </span>
+</div>

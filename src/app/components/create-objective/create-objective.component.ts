@@ -1,8 +1,8 @@
 import { Component, ViewChild, Inject } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ObjectiveFormComponent } from '../objective-form/objective-form.component';
+import { MessagesService } from 'src/app/services/messages.service';
 
 import { Objective } from 'src/app/Objective';
 
@@ -21,14 +21,10 @@ export class CreateObjectiveComponent {
 
   constructor(
     private objectivesService: ObjectivesService,
-    private _snackBar: MatSnackBar,
+    private messagesService: MessagesService,
     private dialogRef: MatDialogRef<CreateObjectiveComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
-
-  showMessage(message: string, action: string) {
-    this._snackBar.open(message, action);
-  }
 
   async createObjectiveHandler(objective: Objective) {
     this.loading = true;
@@ -36,12 +32,12 @@ export class CreateObjectiveComponent {
     await this.objectivesService.createObjective(objective).subscribe({
       next: () => {
         this.loading = false;
-        this.showMessage('Objetivo criado com sucesso!', 'FECHAR');
+        this.messagesService.show('Objetivo criado com sucesso!', 'success');
         this.closeModal();
       },
       error: (error) => {
         this.loading = false;
-        this.showMessage('Erro ao criar objetivo! Tente novamente mais tarde.', 'FECHAR');
+        this.messagesService.show('Erro ao criar objetivo! Tente novamente mais tarde.', 'warn');
         console.log(error);
       }
     })

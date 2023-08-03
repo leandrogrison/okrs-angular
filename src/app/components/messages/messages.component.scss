@@ -1,0 +1,27 @@
+.snack-container {
+  border-radius: 4px;
+  margin-right: -8px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &.snack-success {
+    background: #2e7d32;
+  }
+  &.snack-warn {
+    background: #F44A3E;
+  }
+  &.snack-primary {
+    background: #4758B8;
+  }
+
+  .snack-icon {
+    color: #fff;
+    min-width: 24px;
+    margin-left: 12px;
+  }
+
+  .snack-button-close {
+    color: #fff;
+  }
+}
