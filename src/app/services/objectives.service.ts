@@ -10,13 +10,18 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ObjectivesService {
   private baseApiUrl = environment.baseApiUrl
-  private apiUrl = `${this.baseApiUrl}objectives?_limit=1000`
+  private apiUrl = `${this.baseApiUrl}objectives`
 
   constructor(private http: HttpClient) { }
 
   getObjectives(name?: string): Observable<Objective[]> {
-    const filter = name ? `&name_like=${name}` : ''
-    return this.http.get<Objective[]>(this.apiUrl + filter);
+    const limit = '?_limit=1000';
+    const filter = name ? `&name_like=${name}` : '';
+    return this.http.get<Objective[]>(this.apiUrl + limit + filter);
+  }
+
+  createObjective(objective: Objective): Observable<Objective> {
+    return this.http.post<Objective>(this.apiUrl, objective);
   }
 
 }

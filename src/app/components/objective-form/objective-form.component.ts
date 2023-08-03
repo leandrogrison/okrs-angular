@@ -26,9 +26,9 @@ export class ObjectiveFormComponent implements OnInit {
   @ViewChild(CycleSelectComponent) cycleSelect!: CycleSelectComponent;
   @ViewChild(UserSingleSelectComponent) userSingleSelect!: UserSingleSelectComponent;
 
-
   categories: Category[] = []
   ownerMe: User = { id: -1, name: '', photo: '' }
+  loading: boolean =  false
 
   objective: Objective = {
     id: uuidv4(),
@@ -100,7 +100,6 @@ export class ObjectiveFormComponent implements OnInit {
   }
 
   saveObjective() {
-
     if (this.formObjective.invalid) return;
 
     this.onSubmit.emit(this.objective);

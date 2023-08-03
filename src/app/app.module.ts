@@ -23,6 +23,7 @@ import { MatCheckboxModule, MAT_CHECKBOX_DEFAULT_OPTIONS } from '@angular/materi
 import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -71,7 +72,8 @@ import { ObjectiveToAssociateComponent } from './components/objective-to-associa
     MatCheckboxModule,
     MatRadioModule,
     MatChipsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSnackBarModule
   ],
   providers: [
     {

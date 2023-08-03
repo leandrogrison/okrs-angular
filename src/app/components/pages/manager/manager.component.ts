@@ -15,16 +15,14 @@ export class ManagerComponent implements OnInit {
     this.dialog.open(CreateObjectiveComponent, {
       maxWidth: 900,
       width: 'calc(100% - 32px)',
-      position: { top: '32px' }
+      position: { top: '32px' },
     });
   }
 
-  ngOnInit(): void {
-    this.dialog.open(CreateObjectiveComponent, {
-      maxWidth: 900,
-      width: 'calc(100% - 32px)',
-      position: { top: '32px' }
-    });
+  closeCreateObjective() {
+    this.dialog.closeAll();
   }
+
+  ngOnInit(): void {}
 
 }
