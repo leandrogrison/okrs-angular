@@ -4,4 +4,103 @@
   [buttonIcon]="'add'"
   (buttonAction)="openCreateObjective()"
 />
-<div>manager works!</div>
+
+<div fxLayout.gt-sm fxLayoutGap="16px">
+  <div fxFlex.gt-sm="240px" fxLayout="column" fxLayoutGap="24px">
+
+    <mat-form-field>
+      <mat-label>Objetivos do ciclo:</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let cycle of cycles" [value]="cycle">
+          {{cycle.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div fxLayout="column" fxLayoutGap="8px">
+      <button mat-stroked-button color="primary" fxLayoutAlign="start center">
+        <mat-icon>apartment</mat-icon>
+        Objetivos da empresa
+      </button>
+      <button mat-stroked-button color="primary" fxLayoutAlign="start center">
+        <mat-icon>groups</mat-icon>
+        Objetivos de grupo
+      </button>
+      <button mat-stroked-button color="primary" fxLayoutAlign="start center">
+        <mat-icon>person</mat-icon>
+        Objetivos individuais
+      </button>
+    </div>
+
+    <div fxLayout="column" class="filter-checkbox">
+      <small>Exibir somente objetivos que:</small>
+      <mat-checkbox>Sou responsável</mat-checkbox>
+      <mat-checkbox>Dou apoio</mat-checkbox>
+    </div>
+
+    <div fxLayout="column" class="filter-checkbox">
+      <small>Status:</small>
+      <mat-checkbox>Dentro do prazo</mat-checkbox>
+      <mat-checkbox>Em alerta</mat-checkbox>
+      <mat-checkbox>Fora do prazo</mat-checkbox>
+    </div>
+
+  </div>
+  <mat-divider [vertical]="true" />
+  <div fxFlex>
+
+    <div class="search-field">
+      <mat-form-field class="search-field-container">
+        <mat-label>Buscar objetivo ou responsável</mat-label>
+        <input matInput type="text" [(ngModel)]="search">
+        <button
+          *ngIf="search; else noSearch"
+          matSuffix
+          mat-icon-button
+          aria-label="Limpar busca"
+          (click)="search=''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <ng-template #noSearch>
+          <button matSuffix mat-icon-button color="primary">
+            <mat-icon>search</mat-icon>
+          </button>
+        </ng-template>
+      </mat-form-field>
+    </div>
+
+    <mat-tab-group animationDuration="0ms" mat-stretch-tabs="false">
+
+      <mat-tab label="OBJETIVOS">
+
+        <div
+          *ngIf="loadingObjectives, else noLoading"
+          fxLayout
+          fxLayoutAlign="center center"
+          style="margin: 40px 0;"
+        >
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+        <ng-template #noLoading>
+          <app-objective-list
+            *ngIf="objectives.length > 0, else noObjectives"
+            [objectives]="objectives"
+            (updateObjectives)="getObjectives($event)"
+          />
+          <ng-template #noObjectives>
+            <div class="no-result">
+              <mat-icon>error_outline</mat-icon>
+              Nenhum objetivo cadastrado.
+            </div>
+          </ng-template>
+        </ng-template>
+
+      </mat-tab>
+
+      <!-- <mat-tab label="MAPA ESTRATÉGICO">Mapa estratégico</mat-tab> -->
+
+    </mat-tab-group>
+
+  </div>
+</div>

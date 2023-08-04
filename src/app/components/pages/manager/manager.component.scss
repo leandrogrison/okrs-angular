@@ -1,0 +1,43 @@
+.filter-checkbox {
+  small {
+    margin-bottom: 8px;
+  }
+  .mat-mdc-checkbox {
+    margin-left: -10px;
+  }
+}
+
+.search-field {
+  position: relative;
+  z-index: 2;
+  .search-field-container {
+    width: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    ::ng-deep {
+      label {
+        transition: .2s;
+        &:not(.mdc-floating-label--float-above) {
+          top: 19px;
+        }
+      }
+      .mat-mdc-form-field-infix {
+        min-height: 32px;
+        padding-top: 10px;
+        padding-bottom: 4px;
+      }
+      .mdc-icon-button {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        ::ng-deep {
+          .mat-mdc-button-ripple,
+          .mat-mdc-button-persistent-ripple {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -42,6 +42,7 @@ export class ObjectiveFormComponent implements OnInit {
       id: '',
       name: ''
     },
+    createdAt: new Date(),
     startDate: '',
     deadline: '',
     finished: 0,

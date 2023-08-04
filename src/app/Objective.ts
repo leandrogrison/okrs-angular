@@ -25,6 +25,7 @@ export interface Objective {
     id: string,
     name: string
   } | null,
+  createdAt: Date,
   startDate: string,
   deadline: string,
   endDate?: string | null,

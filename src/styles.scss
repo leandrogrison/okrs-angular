@@ -33,6 +33,16 @@ body {
   }
 }
 
+.no-result {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  gap: 8px;
+  .mat-icon {
+    color: #ed6c02;
+  }
+}
+
 // ANGULAR MATERIAL
 
 .mdc-button__label {
@@ -94,3 +104,11 @@ body {
 .mat-success[disabled] {
   background-color: rgba(0, 0, 0, 0.12) !important;
 }
+
+
+.mdc-button {
+  .mdc-button__label {
+    letter-spacing: 0.64px;
+  }
+}
+

@@ -16,8 +16,9 @@ export class ObjectivesService {
 
   getObjectives(name?: string): Observable<Objective[]> {
     const limit = '?_limit=1000';
+    const order = '&_sort=createdAt&_order=desc';
     const filter = name ? `&name_like=${name}` : '';
-    return this.http.get<Objective[]>(this.apiUrl + limit + filter);
+    return this.http.get<Objective[]>(this.apiUrl + limit + order + filter);
   }
 
   createObjective(objective: Objective): Observable<Objective> {

@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -24,6 +26,11 @@ import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/rad
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -37,6 +44,11 @@ import { UserSingleSelectComponent } from './components/user-single-select/user-
 import { UserMultipleSelectComponent } from './components/user-multiple-select/user-multiple-select.component';
 import { ObjectiveToAssociateComponent } from './components/objective-to-associate/objective-to-associate.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { ObjectiveListComponent } from './components/objective-list/objective-list.component';
+import { IconCategoryPipe } from './pipes/icon-category.pipe';
+import { ColorProgressPipe } from './pipes/color-progress.pipe';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -51,7 +63,10 @@ import { MessagesComponent } from './components/messages/messages.component';
     UserSingleSelectComponent,
     UserMultipleSelectComponent,
     ObjectiveToAssociateComponent,
-    MessagesComponent
+    MessagesComponent,
+    ObjectiveListComponent,
+    IconCategoryPipe,
+    ColorProgressPipe
   ],
   imports: [
     BrowserModule,
@@ -75,7 +90,12 @@ import { MessagesComponent } from './components/messages/messages.component';
     MatRadioModule,
     MatChipsModule,
     MatButtonToggleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDividerModule,
+    MatTabsModule,
+    MatListModule,
+    MatTooltipModule,
+    MatProgressBarModule
   ],
   providers: [
     {
@@ -89,6 +109,10 @@ import { MessagesComponent } from './components/messages/messages.component';
     {
       provide: MAT_RADIO_DEFAULT_OPTIONS,
       useValue: { color: 'primary' }
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR'
     }
   ],
   bootstrap: [AppComponent]

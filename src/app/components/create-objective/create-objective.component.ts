@@ -33,7 +33,7 @@ export class CreateObjectiveComponent {
       next: () => {
         this.loading = false;
         this.messagesService.show('Objetivo criado com sucesso!', 'success');
-        this.closeModal();
+        this.closeModal(objective);
       },
       error: (error) => {
         this.loading = false;
@@ -47,7 +47,7 @@ export class CreateObjectiveComponent {
     this.objectiveForm.saveOjectiveButton();
   }
 
-  closeModal() {
-    this.dialogRef.close();
+  closeModal(objective?: Objective) {
+    this.dialogRef.close(objective);
   }
 }
