@@ -13,7 +13,9 @@
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
-      "supporters": [],
+      "supporters": [
+        1
+      ],
       "visibility": "public",
       "cycle": {
         "id": "3Q2023",
@@ -38,7 +40,9 @@
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
-      "supporters": [],
+      "supporters": [
+        0
+      ],
       "visibility": "public",
       "cycle": {
         "id": "3Q2023",
@@ -63,7 +67,9 @@
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
-      "supporters": [],
+      "supporters": [
+        2
+      ],
       "visibility": "public",
       "cycle": {
         "id": "3Q2023",
@@ -170,6 +176,62 @@
         "name": "3° Trimestre 2023"
       },
       "createdAt": "2023-08-04T19:44:33.165Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": null
+    },
+    {
+      "id": "303450d0-e79e-487c-8375-593485dada34",
+      "name": "Vários que dão apoio",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "supporters": [
+        1,
+        0
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "3Q2023",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-06T15:31:36.734Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": null
+    },
+    {
+      "id": "a3564009-cbbf-4351-9b8b-7ff07c9753fe",
+      "name": "tasfsdfsadfsdfsdf",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [
+        1,
+        2
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "3Q2023",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-06T15:42:25.940Z",
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,

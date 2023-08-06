@@ -14,11 +14,12 @@ import { User } from 'src/app/User';
 })
 export class UserMultipleSelectComponent implements OnInit {
 
-  @Input() users: User[] = [];
+  @Input() users: any[] = [];
   @Input() label!: string;
   @Output() updateSupporters = new EventEmitter();
 
   usersToSelect: User[] = []
+  usersSelected: User[] = []
   loading: Boolean = true
   userAutoComplete: string = ''
   delayToSearch: any = null
@@ -49,11 +50,11 @@ export class UserMultipleSelectComponent implements OnInit {
       this.usersService.getUsers(value).subscribe((data) => {
         data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
         const usersFiltred = data.filter(
-          item => this.users?.every(
+          item => this.usersSelected?.every(
             user => user.id !== item.id
           )
         );
-        this.usersToSelect = (this.users && this.users.length > 0) ? usersFiltred : data;
+        this.usersToSelect = (this.usersSelected && this.usersSelected.length > 0) ? usersFiltred : data;
         this.loading = false;
       })
     }, 500)
@@ -65,10 +66,11 @@ export class UserMultipleSelectComponent implements OnInit {
   }
 
   removeUser(user: User): void {
-    const index = this.users!.indexOf(user);
+    const index = this.usersSelected!.indexOf(user);
 
     if (index >= 0) {
       this.users!.splice(index, 1);
+      this.usersSelected!.splice(index, 1);
       this.usersToSelect.unshift(user);
       this.usersToSelect.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
       this.announcer.announce(`Removido ${user}`);
@@ -76,7 +78,8 @@ export class UserMultipleSelectComponent implements OnInit {
   }
 
   selectedUser(event: MatAutocompleteSelectedEvent): void {
-    this.users!.push(event.option.value);
+    this.users!.push(event.option.value.id);
+    this.usersSelected.push(event.option.value);
     this.updateSupporters.emit(this.users);
   }
 

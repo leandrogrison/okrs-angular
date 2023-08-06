@@ -2,7 +2,7 @@
   <mat-label>{{ label }}</mat-label>
   <mat-chip-grid #usersGrid aria-label="Selecione colaboradores">
     <mat-chip-row
-      *ngFor="let user of users"
+      *ngFor="let user of usersSelected"
       (removed)="removeUser(user)"
     >
       <img *ngIf="user.photo; else noPhoto" matChipAvatar [src]="user.photo" [alt]="user.name" />

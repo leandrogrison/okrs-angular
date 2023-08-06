@@ -11,11 +11,7 @@ export interface Objective {
     name: string,
     photo: string
   } | null,
-  supporters?: Array<{
-    id: number;
-    name: string;
-    photo: string;
-  }>,
+  supporters?: Array<[]>,
   visibility: string,
   cycle: {
     id: string,

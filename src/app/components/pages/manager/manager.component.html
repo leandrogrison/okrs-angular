@@ -18,15 +18,39 @@
     </mat-form-field>
 
     <div fxLayout="column" fxLayoutGap="8px">
-      <button mat-stroked-button color="primary" fxLayoutAlign="start center">
+      <button
+        (click)="filterCategory(0)" mat-button
+        [ngClass]="{
+          'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(0),
+          'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(0)
+        }"
+        color="primary"
+        fxLayoutAlign="start center"
+      >
         <mat-icon>apartment</mat-icon>
         Objetivos da empresa
       </button>
-      <button mat-stroked-button color="primary" fxLayoutAlign="start center">
+      <button mat-button
+        (click)="filterCategory(1)"
+        [ngClass]="{
+          'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(1),
+          'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(1)
+        }"
+        color="primary"
+        fxLayoutAlign="start center"
+      >
         <mat-icon>groups</mat-icon>
         Objetivos de grupo
       </button>
-      <button mat-stroked-button color="primary" fxLayoutAlign="start center">
+      <button mat-button
+        (click)="filterCategory(2)"
+        [ngClass]="{
+          'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(2),
+          'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(2)
+        }"
+        color="primary"
+        fxLayoutAlign="start center"
+      >
         <mat-icon>person</mat-icon>
         Objetivos individuais
       </button>
@@ -34,8 +58,12 @@
 
     <div fxLayout="column" class="filter-checkbox">
       <small>Exibir somente objetivos que:</small>
-      <mat-checkbox>Sou responsável</mat-checkbox>
-      <mat-checkbox>Dou apoio</mat-checkbox>
+      <mat-checkbox (change)="filterOwner($event.checked)">
+        Sou responsável
+      </mat-checkbox>
+      <mat-checkbox (change)="filterSupporter($event.checked)">
+        Dou apoio
+      </mat-checkbox>
     </div>
 
     <div fxLayout="column" class="filter-checkbox">
@@ -52,13 +80,13 @@
     <div class="search-field">
       <mat-form-field class="search-field-container">
         <mat-label>Buscar objetivo ou responsável</mat-label>
-        <input matInput type="text" [(ngModel)]="search">
+        <input matInput type="text" [(ngModel)]="keyword" (ngModelChange)="changeSearchKeyword()">
         <button
-          *ngIf="search; else noSearch"
+          *ngIf="keyword; else noSearch"
           matSuffix
           mat-icon-button
           aria-label="Limpar busca"
-          (click)="search=''"
+          (click)="clearSearchKeyword()"
         >
           <mat-icon>close</mat-icon>
         </button>

@@ -36,7 +36,7 @@ export class ObjectiveToAssociateComponent implements OnInit {
     } else {
       this.delayToSearch = setTimeout(() => {
         this.loading = true;
-        this.objectivesService.getObjectives(value).subscribe((data) => {
+        this.objectivesService.getObjectives({name: value}).subscribe((data) => {
           this.objectives = data;
           this.loading = false;
         })

@@ -14,11 +14,32 @@ export class ObjectivesService {
 
   constructor(private http: HttpClient) { }
 
-  getObjectives(name?: string): Observable<Objective[]> {
+  createStringToFilter(filter: any): string {
+    let result = '';
+
+    result = filter.search ? `&q=${filter.search}` : '';
+
+    if (filter.category && filter.category.length) {
+      filter.category.map((category: any) => {
+        result += `&category.id=${category}`;
+      })
+    }
+
+    result += filter.owner ? `&owner.id=${filter.owner}` : '';
+
+    result += filter.supporter ? `&supporters_like=${filter.supporter}` : '';
+
+    console.log(result)
+
+    return result;
+  }
+
+  getObjectives(filter?: object): Observable<Objective[]> {
     const limit = '?_limit=1000';
     const order = '&_sort=createdAt&_order=desc';
-    const filter = name ? `&name_like=${name}` : '';
-    return this.http.get<Objective[]>(this.apiUrl + limit + order + filter);
+    const stringToFilter = filter ? this.createStringToFilter(filter) : '';
+
+    return this.http.get<Objective[]>(this.apiUrl + limit + order + stringToFilter);
   }
 
   createObjective(objective: Objective): Observable<Objective> {
