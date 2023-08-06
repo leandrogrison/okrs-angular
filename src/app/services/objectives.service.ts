@@ -27,8 +27,6 @@ export class ObjectivesService {
 
     result += filter.owner ? `&owner.id=${filter.owner}` : '';
 
-    result += filter.supporter ? `&supporters_like=${filter.supporter}` : '';
-
     console.log(result)
 
     return result;

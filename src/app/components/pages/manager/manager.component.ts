@@ -64,7 +64,11 @@ export class ManagerComponent implements OnInit {
     this.loadingObjectives = true;
     this.objectivesService.getObjectives(filter).subscribe({
       next: (objectives) => {
-        this.objectives = objectives;
+        if (this.filter.supporter) {
+          this.objectives = this.verifySupporter(objectives);
+        } else {
+          this.objectives = objectives;
+        }
         this.loadingObjectives = false;
       },
       error: (error) => {
@@ -124,5 +128,9 @@ export class ManagerComponent implements OnInit {
     this.getObjectives(this.filter);
   }
 
-
+  verifySupporter(objectives: Objective[]): any {
+    return objectives.filter((obj: Objective) =>
+      obj.supporters!.some(supporter => supporter === this.filter.supporter)
+    )
+  }
 }
