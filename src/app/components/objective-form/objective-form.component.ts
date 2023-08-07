@@ -64,8 +64,8 @@ export class ObjectiveFormComponent implements OnInit {
   setDates() {
     if (!this.cycleSelect) return;
 
-    const quarter = parseFloat(this.objective.cycle.id.substring(0, 1));
-    const year = parseFloat(this.objective.cycle.id.substring(2));
+    const year = parseFloat(this.objective.cycle.id.substring(0, 4));
+    const quarter = parseFloat(this.objective.cycle.id.substring(5));
     const month = this.cycleSelect.getMonthInQuarter(quarter);
     const deadline = new Date(year, month + 2, 0);
 

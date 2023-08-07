@@ -47,6 +47,8 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { ObjectiveListComponent } from './components/objective-list/objective-list.component';
 import { IconCategoryPipe } from './pipes/icon-category.pipe';
 import { ColorProgressPipe } from './pipes/color-progress.pipe';
+import { QuarterPipe } from './pipes/quarter.pipe';
+import { FiltersComponent } from './components/filters/filters.component';
 
 registerLocaleData(localePt);
 
@@ -66,7 +68,9 @@ registerLocaleData(localePt);
     MessagesComponent,
     ObjectiveListComponent,
     IconCategoryPipe,
-    ColorProgressPipe
+    ColorProgressPipe,
+    QuarterPipe,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
@@ -113,7 +117,8 @@ registerLocaleData(localePt);
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
-    }
+    },
+    QuarterPipe
   ],
   bootstrap: [AppComponent]
 })

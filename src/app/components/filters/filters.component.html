@@ -1,0 +1,71 @@
+<mat-form-field>
+  <mat-label>Objetivos do ciclo:</mat-label>
+  <mat-select [(value)]="filter.cycle.id" (valueChange)="filterObjectives()">
+    <mat-option *ngFor="let cycle of cycles" [value]="cycle.id" >
+      {{cycle.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div fxLayout="column" fxLayoutGap="8px">
+  <button
+    (click)="filterCategory(0)" mat-button
+    [ngClass]="{
+      'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(0),
+      'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(0)
+    }"
+    color="primary"
+    fxLayoutAlign="start center"
+  >
+    <mat-icon>apartment</mat-icon>
+    Objetivos da empresa
+  </button>
+  <button mat-button
+    (click)="filterCategory(1)"
+    [ngClass]="{
+      'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(1),
+      'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(1)
+    }"
+    color="primary"
+    fxLayoutAlign="start center"
+  >
+    <mat-icon>groups</mat-icon>
+    Objetivos de grupo
+  </button>
+  <button mat-button
+    (click)="filterCategory(2)"
+    [ngClass]="{
+      'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(2),
+      'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(2)
+    }"
+    color="primary"
+    fxLayoutAlign="start center"
+  >
+    <mat-icon>person_pin_circle</mat-icon>
+    Objetivos individuais
+  </button>
+</div>
+
+<div fxLayout="column" class="filter-checkbox">
+  <small>Exibir somente objetivos que:</small>
+  <mat-checkbox (change)="filterOwner($event.checked)">
+    Sou responsável
+  </mat-checkbox>
+  <mat-checkbox (change)="filterSupporter($event.checked)">
+    Dou apoio
+  </mat-checkbox>
+</div>
+
+
+<div fxLayout="column" class="filter-checkbox">
+  <small>Status:</small>
+  <mat-checkbox [(ngModel)]="filter.status.onTime" (ngModelChange)="filterObjectives()">
+    Dentro do prazo
+  </mat-checkbox>
+  <mat-checkbox [(ngModel)]="filter.status.alert" (ngModelChange)="filterObjectives()">
+    Em alerta
+  </mat-checkbox>
+  <mat-checkbox [(ngModel)]="filter.status.outTime" (ngModelChange)="filterObjectives()">
+    Fora do prazo
+  </mat-checkbox>
+</div>

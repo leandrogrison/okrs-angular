@@ -27,7 +27,7 @@ export class ObjectivesService {
 
     result += filter.owner ? `&owner.id=${filter.owner}` : '';
 
-    console.log(result)
+    result += filter.cycle ? `&cycle.id=${filter.cycle.id}` : '';
 
     return result;
   }

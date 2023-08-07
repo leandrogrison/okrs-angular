@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 
+import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
+
 @Component({
   selector: 'app-cycle-select',
   templateUrl: './cycle-select.component.html',
@@ -15,15 +17,15 @@ export class CycleSelectComponent implements OnInit {
 
   quarters = [
     {
-      id: `${this.getQuarter(this.date)}Q${this.date.getFullYear()}`,
-      name: `${this.getQuarter(this.date)}° Trimestre ${this.date.getFullYear()}`
+      id: `${this.date.getFullYear()}Q${this.quarterPipe.transform(this.date)}`,
+      name: `${this.quarterPipe.transform(this.date)}° Trimestre ${this.date.getFullYear()}`
     }
   ]
 
   @ViewChild('cycles') cycles!: ElementRef;
   @ViewChild('cyclesContainer') cyclesContainer!: ElementRef;
 
-  constructor() { }
+  constructor(private quarterPipe: QuarterPipe) { }
 
   ngOnInit() {
     if (this.cycleData.id === '') {
@@ -37,8 +39,8 @@ export class CycleSelectComponent implements OnInit {
 
   addQuarter(action: string) {
     const position = action === 'next' ? this.quarters.length - 1 : 0;
-    const month = this.getMonthInQuarter(parseFloat(this.quarters[position].id.substring(0, 1)));
-    const year = parseFloat(this.quarters[position].id.substring(2));
+    const year = parseFloat(this.quarters[position].id.substring(0, 4));
+    const month = this.getMonthInQuarter(parseFloat(this.quarters[position].id.substring(5)));
 
     const date = new Date(year, month + (action === 'next' ? 3 : -2), 1);
 
@@ -48,8 +50,8 @@ export class CycleSelectComponent implements OnInit {
 
     this.quarters[action === 'next' ? 'push' : 'unshift'](
       {
-        id: `${this.getQuarter(date)}Q${date.getFullYear()}`,
-        name: `${this.getQuarter(date)}° Trimestre ${date.getFullYear()}`
+        id: `${date.getFullYear()}Q${this.quarterPipe.transform(date)}`,
+        name: `${this.quarterPipe.transform(date)}° Trimestre ${date.getFullYear()}`
       }
     )
 
@@ -72,15 +74,6 @@ export class CycleSelectComponent implements OnInit {
         behavior: 'smooth'
       });
     }, 100);
-  }
-
-  getQuarter(date: Date): number {
-    const month = date.getMonth();
-
-    if (month >= 1 && month <=3) return 1;
-    if (month >= 4 && month <=6) return 2;
-    if (month >= 7 && month <=9) return 3;
-    return 4;
   }
 
   getMonthInQuarter(quarter: number): number {

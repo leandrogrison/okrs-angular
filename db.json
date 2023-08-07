@@ -1,8 +1,8 @@
 {
   "objectives": [
     {
-      "id": "5ef1bd02-786c-48bf-8798-fb390701d958",
-      "name": "primeiro criado",
+      "id": "23106981-86f8-4164-b137-d57f1bf5b8dd",
+      "name": "Ciclo 3",
       "description": "",
       "category": {
         "id": 0,
@@ -13,102 +13,72 @@
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
-      "supporters": [
-        1
-      ],
+      "supporters": [],
       "visibility": "public",
       "cycle": {
-        "id": "3Q2023",
+        "id": "2023Q3",
         "name": "3° Trimestre 2023"
       },
-      "createdAt": "2023-08-04T19:15:58.953Z",
+      "createdAt": "2023-08-07T15:12:32.510Z",
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": null
     },
     {
-      "id": "62293257-e3af-4475-b657-5baa0e617c05",
-      "name": "segundo criado",
+      "id": "95b383f3-aca3-43dd-b8e3-dc305d462abf",
+      "name": "Ciclo 4",
+      "description": "",
+      "category": {
+        "id": 0,
+        "name": "Objetivo da empresa"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q4",
+        "name": "4° Trimestre 2023"
+      },
+      "createdAt": "2023-08-07T15:12:44.810Z",
+      "startDate": "2023-10-01",
+      "deadline": "2023-12-31",
+      "finished": 0,
+      "associate": null
+    },
+    {
+      "id": "41f673ca-2938-4a7e-bdc0-1fc7ada07537",
+      "name": "Outro do ciclo 3",
       "description": "",
       "category": {
         "id": 1,
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 2,
-        "name": "Fernanda Mendonça",
-        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
-      },
-      "supporters": [
-        0
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "3Q2023",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-04T19:16:20.463Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": null
-    },
-    {
-      "id": "6379db49-b2cc-48e2-8249-76301c3312d3",
-      "name": "asdfsdfsf",
-      "description": "",
-      "category": {
-        "id": 0,
-        "name": "Objetivo da empresa"
-      },
-      "owner": {
         "id": 1,
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
-      "supporters": [
-        2
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "3Q2023",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-04T19:25:33.335Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": null
-    },
-    {
-      "id": "87799afb-5fd0-439d-90d6-29a3b660d4d9",
-      "name": "sfsfd",
-      "description": "",
-      "category": {
-        "id": 0,
-        "name": "Objetivo da empresa"
-      },
-      "owner": {
-        "id": 2,
-        "name": "Fernanda Mendonça",
-        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
-      },
       "supporters": [],
       "visibility": "public",
       "cycle": {
-        "id": "3Q2023",
+        "id": "2023Q3",
         "name": "3° Trimestre 2023"
       },
-      "createdAt": "2023-08-04T19:40:51.660Z",
+      "createdAt": "2023-08-07T15:13:06.015Z",
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
+      "conclusionPercent": 50,
       "associate": null
     },
     {
-      "id": "935f07e5-3177-43b3-af66-55f8beeca8b6",
-      "name": "sfsdsf",
+      "id": "52eb4f3a-41da-45e8-a309-c01039b67315",
+      "name": "sdasfasfdsfdf",
       "description": "",
       "category": {
         "id": 2,
@@ -122,120 +92,24 @@
       "supporters": [],
       "visibility": "public",
       "cycle": {
-        "id": "3Q2023",
+        "id": "2023Q3",
         "name": "3° Trimestre 2023"
       },
-      "createdAt": "2023-08-04T19:42:10.031Z",
+      "createdAt": "2023-08-07T20:48:40.371Z",
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": null
+    }
+  ],
+  "cycles": [
+    {
+      "id": "2023Q3",
+      "name": "3° Trimestre 2023"
     },
     {
-      "id": "b8efa91d-b9cf-4caf-b030-2703a0495108",
-      "name": "teste",
-      "description": "",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": {
-        "id": 2,
-        "name": "Fernanda Mendonça",
-        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
-      },
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "3Q2023",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-04T19:43:58.877Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": null
-    },
-    {
-      "id": "f9f5417f-fde4-497b-978c-a66652fbc2a8",
-      "name": "Mais um teste",
-      "description": "",
-      "category": {
-        "id": 0,
-        "name": "Objetivo da empresa"
-      },
-      "owner": {
-        "id": 1,
-        "name": "Maurício Ribeiro Andrade",
-        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
-      },
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "3Q2023",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-04T19:44:33.165Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": null
-    },
-    {
-      "id": "303450d0-e79e-487c-8375-593485dada34",
-      "name": "Vários que dão apoio",
-      "description": "",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": {
-        "id": 2,
-        "name": "Fernanda Mendonça",
-        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
-      },
-      "supporters": [
-        1,
-        0
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "3Q2023",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-06T15:31:36.734Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": null
-    },
-    {
-      "id": "a3564009-cbbf-4351-9b8b-7ff07c9753fe",
-      "name": "tasfsdfsadfsdfsdf",
-      "description": "",
-      "category": {
-        "id": 2,
-        "name": "Objetivo individual"
-      },
-      "owner": {
-        "id": 1,
-        "name": "Maurício Ribeiro Andrade",
-        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
-      },
-      "supporters": [
-        1,
-        2
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "3Q2023",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-06T15:42:25.940Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": null
+      "id": "2023Q4",
+      "name": "4° Trimestre 2023"
     }
   ],
   "users": [

@@ -6,75 +6,19 @@
 />
 
 <div fxLayout.gt-sm fxLayoutGap="16px">
-  <div fxFlex.gt-sm="240px" fxLayout="column" fxLayoutGap="24px">
 
-    <mat-form-field>
-      <mat-label>Objetivos do ciclo:</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let cycle of cycles" [value]="cycle">
-          {{cycle.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <div fxLayout="column" fxLayoutGap="8px">
-      <button
-        (click)="filterCategory(0)" mat-button
-        [ngClass]="{
-          'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(0),
-          'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(0)
-        }"
-        color="primary"
-        fxLayoutAlign="start center"
-      >
-        <mat-icon>apartment</mat-icon>
-        Objetivos da empresa
-      </button>
-      <button mat-button
-        (click)="filterCategory(1)"
-        [ngClass]="{
-          'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(1),
-          'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(1)
-        }"
-        color="primary"
-        fxLayoutAlign="start center"
-      >
-        <mat-icon>groups</mat-icon>
-        Objetivos de grupo
-      </button>
-      <button mat-button
-        (click)="filterCategory(2)"
-        [ngClass]="{
-          'mdc-button--unelevated mat-mdc-unelevated-button': filter.category.includes(2),
-          'mdc-button--outlined mat-mdc-outlined-button': !filter.category.includes(2)
-        }"
-        color="primary"
-        fxLayoutAlign="start center"
-      >
-        <mat-icon>person</mat-icon>
-        Objetivos individuais
-      </button>
-    </div>
-
-    <div fxLayout="column" class="filter-checkbox">
-      <small>Exibir somente objetivos que:</small>
-      <mat-checkbox (change)="filterOwner($event.checked)">
-        Sou responsável
-      </mat-checkbox>
-      <mat-checkbox (change)="filterSupporter($event.checked)">
-        Dou apoio
-      </mat-checkbox>
-    </div>
-
-    <div fxLayout="column" class="filter-checkbox">
-      <small>Status:</small>
-      <mat-checkbox>Dentro do prazo</mat-checkbox>
-      <mat-checkbox>Em alerta</mat-checkbox>
-      <mat-checkbox>Fora do prazo</mat-checkbox>
-    </div>
-
+  <div fxFlex.gt-sm="240px" fxLayout="column">
+    <app-filters
+      fxLayout="column"
+      fxLayoutGap="24px"
+      [(filter)]="filter"
+      [cycles]="cycles"
+      (handleGetObjectives)="getObjectives(this.filter)"
+    />
   </div>
+
   <mat-divider [vertical]="true" />
+
   <div fxFlex>
 
     <div class="search-field">
