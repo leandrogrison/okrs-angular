@@ -39,6 +39,7 @@
       <mat-label>Categoria do objetivo</mat-label>
       <mat-select
         [(ngModel)]="objective.category"
+        (ngModelChange)="objectiveToAssociate.resetComponent()"
         name="category"
         #categoryField="ngModel"
         required
@@ -118,6 +119,9 @@
 
   <app-objective-to-associate
     [objectiveAssociate]="objective.associate!"
+    [cycle]="objective.cycle"
+    [category]="objective.category"
+    (updateAssociate)="updateAssociateHandler($event)"
     label="Associar a um objetivo"
     hint="Você pode escolher um objetivo que será apoiado por este.
       Os objetivos listados pertencem ao mesmo período selecionado e obedecem

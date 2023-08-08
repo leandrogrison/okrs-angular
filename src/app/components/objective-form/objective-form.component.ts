@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -9,6 +9,7 @@ import { Objective } from 'src/app/Objective';
 
 import { CycleSelectComponent } from './../cycle-select/cycle-select.component';
 import { UserSingleSelectComponent } from '../user-single-select/user-single-select.component';
+import { ObjectiveToAssociateComponent } from '../objective-to-associate/objective-to-associate.component';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -24,6 +25,7 @@ export class ObjectiveFormComponent implements OnInit {
   @ViewChild('formObjective') formObjective!: any;
   @ViewChild('buttonSubmitHidden') buttonSubmitHidden!: ElementRef<HTMLElement>;
   @ViewChild(CycleSelectComponent) cycleSelect!: CycleSelectComponent;
+  @ViewChild(ObjectiveToAssociateComponent) objectiveToAssociate!: ObjectiveToAssociateComponent;
   @ViewChild(UserSingleSelectComponent) userSingleSelect!: UserSingleSelectComponent;
 
   categories: Category[] = []
@@ -49,7 +51,10 @@ export class ObjectiveFormComponent implements OnInit {
     associate: null
   }
 
-  constructor(private categoriesService: CategoriesService, private authService: AuthService) {
+  constructor(
+    private categoriesService: CategoriesService,
+    private authService: AuthService
+  ) {
     this.ownerMe = this.authService.getUserInfo();
   }
 
@@ -75,7 +80,15 @@ export class ObjectiveFormComponent implements OnInit {
 
   updateCycleHandler(cycle: any) {
     this.objective.cycle = cycle;
+    this.objective.associate = null;
     this.setDates();
+    setTimeout(() => {
+      this.objectiveToAssociate.resetComponent();
+    }, 100);
+  }
+
+  updateAssociateHandler(objectiveId: string) {
+    this.objective.associate = objectiveId;
   }
 
   updateOwnerHandler(owner: any) {

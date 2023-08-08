@@ -1,8 +1,13 @@
-<mat-form-field fxFlexFill>
+<mat-form-field
+  fxFlexFill
+  [matTooltip]="!category ? 'Selecione a categoria do objetivo.' : ''"
+  matTooltipPosition="above"
+>
   <mat-label>{{ label }}</mat-label>
   <input
     matInput
     [ariaLabel]="label"
+    [disabled]="!category"
     [(ngModel)]="associateAutoComplete"
     (ngModelChange)="autoCompleteAssociate()"
     (blur)="verifyAssociate()"

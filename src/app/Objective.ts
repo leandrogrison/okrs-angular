@@ -17,10 +17,7 @@ export interface Objective {
     id: string,
     name: string
   },
-  associate?: {
-    id: string,
-    name: string
-  } | null,
+  associate?: string | null,
   createdAt: Date,
   startDate: string,
   deadline: string,
