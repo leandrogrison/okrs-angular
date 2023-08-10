@@ -1,0 +1,121 @@
+.associate {
+  .associate-button-hover,
+  .associate-button {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    transition: .2s;
+    border: 2px solid #3f51b5;
+    border-radius: 100%;
+    cursor: pointer;
+    &:hover {
+      background: #3f51b5;
+      color: #fff;
+    }
+  }
+  .associate-connect {
+    position: absolute;
+    top: 44px;
+    left: 13px;
+    bottom: -16px;
+  }
+}
+
+.objectives-children {
+  ::ng-deep  .objective-line {
+    margin-left: -66px;
+  }
+}
+
+.objective {
+  margin: 16px 0;
+  .objective-content {
+    .objective-name {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    .objective-details {
+      margin-bottom: 16px;
+      .objective-status,
+      .objective-category {
+        font-size: 18px;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        color: rgba(0, 0, 0, 0.66);
+        background-color: rgba(0, 0, 0, 0.08);
+      }
+      .objective-status {
+        font-size: 13px;
+        padding: 4px 12px;
+        font-weight: 500;
+      }
+      .objective-owner {
+        font-weight: 500;
+        font-size: 13px;
+        .objective-owner-image {
+          min-width: 28px;
+          min-height: 28px;
+          max-width: 28px;
+          max-height: 28px;
+          border-radius: 100%;
+          &.mat-icon {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, 0.66);
+            background-color: rgba(0, 0, 0, 0.08);
+          }
+        }
+      }
+    }
+  }
+  .objective-graph {
+    .objective-graph-content {
+      min-width: 200px;
+      max-width: 200px;
+      small {
+        text-align: right;
+      }
+    }
+
+    .objective-graph-conclusion-progress {
+      &.warn {
+        ::ng-deep .mdc-linear-progress__bar-inner {
+          border-color: #d32f2f;
+        }
+      }
+      &.accent {
+        ::ng-deep .mdc-linear-progress__bar-inner {
+          border-color: #ed6c02;
+        }
+      }
+      &.success {
+        ::ng-deep .mdc-linear-progress__bar-inner {
+          border-color: #2E7D32;
+        }
+      }
+    }
+
+    .objective-graph-conclusion-percent {
+      min-width: 36px;
+      font-weight: bold;
+      text-align: right;
+      &.warn {
+        color: #d32f2f;
+      }
+      &.accent {
+        color: #ed6c02;
+      }
+      &.success {
+        color: #2E7D32;
+      }
+    }
+  }
+}

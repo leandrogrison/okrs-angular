@@ -46,6 +46,8 @@
 
       <mat-tab label="OBJETIVOS">
 
+        <mat-divider></mat-divider>
+
         <div
           *ngIf="loadingObjectives, else noLoading"
           fxLayout
@@ -59,6 +61,7 @@
             *ngIf="objectives.length > 0, else noObjectives"
             [objectives]="objectives"
             (updateObjectives)="getObjectives($event)"
+            class="objectives-list"
           />
           <ng-template #noObjectives>
             <div class="no-result">

@@ -49,6 +49,7 @@ import { IconCategoryPipe } from './pipes/icon-category.pipe';
 import { ColorProgressPipe } from './pipes/color-progress.pipe';
 import { QuarterPipe } from './pipes/quarter.pipe';
 import { FiltersComponent } from './components/filters/filters.component';
+import { ObjectiveListContentComponent } from './components/objective-list-content/objective-list-content.component';
 
 registerLocaleData(localePt);
 
@@ -70,7 +71,8 @@ registerLocaleData(localePt);
     IconCategoryPipe,
     ColorProgressPipe,
     QuarterPipe,
-    FiltersComponent
+    FiltersComponent,
+    ObjectiveListContentComponent
   ],
   imports: [
     BrowserModule,

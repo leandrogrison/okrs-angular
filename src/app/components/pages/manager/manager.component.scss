@@ -32,3 +32,11 @@
     }
   }
 }
+
+.objectives-list {
+  ::ng-deep & > .objective-container:first-child {
+    & > .objective-line:first-child {
+      display: none;
+    }
+  }
+}

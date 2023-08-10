@@ -101,12 +101,9 @@ export class ManagerComponent implements OnInit {
     this.objectivesService.getObjectives(filter).subscribe({
       next: (objectives) => {
         this.objectives = objectives;
-        if (this.filter.supporter) {
-          this.filterSupporterAfterResponse();
-        }
-        if (this.filter.status.onTime || this.filter.status.alert || this.filter.status.outTime) {
-          this.filterStatusAfterResponse();
-        }
+        this.filterSupporterAfterResponse();
+        this.filterStatusAfterResponse();
+        this.mountAssociates();
         this.loadingObjectives = false;
       },
       error: (error) => {
@@ -135,19 +132,60 @@ export class ManagerComponent implements OnInit {
   }
 
   filterStatusAfterResponse() {
-    this.objectives = this.objectives.filter((objective: Objective) => {
-      const status = this.progressStatusService.getProgressStatus(objective);
-      const isOnTime = status === 'on-time' && this.filter.status.onTime;
-      const isAlert = status === 'alert' && this.filter.status.alert;
-      const isOutTime = status === 'out-time' && this.filter.status.outTime;
+    if (this.filter.status.onTime || this.filter.status.alert || this.filter.status.outTime) {
+      this.objectives = this.objectives.filter((objective: Objective) => {
+        const status = this.progressStatusService.getProgressStatus(objective);
+        const isOnTime = status === 'on-time' && this.filter.status.onTime;
+        const isAlert = status === 'alert' && this.filter.status.alert;
+        const isOutTime = status === 'out-time' && this.filter.status.outTime;
 
-      return isOnTime || isAlert || isOutTime;
-    })
+        return isOnTime || isAlert || isOutTime;
+      })
+    }
   }
 
   filterSupporterAfterResponse() {
+    if (!this.filter.supporter) return;
+
     this.objectives = this.objectives.filter((obj: Objective) =>
       obj.supporters!.some(supporter => supporter === this.filter.supporter)
     )
+  }
+
+  mountAssociates() {
+    if (
+      this.filter.search !== '' ||
+      this.filter.category.length !== 0 ||
+      this.filter.owner ||
+      this.filter.supporter ||
+      this.filter.status.onTime ||
+      this.filter.status.alert ||
+      this.filter.status.outTime
+    ) return;
+
+    const insertObjectiveInPosition = (objs: Objective[], objective: Objective) => {
+      objs.map((obj) => {
+        if (obj.id === (objective.associate)) {
+          if (!obj.children) {
+            obj.children = []
+          }
+          obj.children.push(objective)
+        } else if (obj.children) {
+          insertObjectiveInPosition(obj.children, objective)
+        }
+        return objs
+      })
+      return objs
+    }
+
+    const removeObjectivesChindren= (objs: Objective[]) => {
+      return objs.filter( obj => !(obj.associate))
+    }
+
+    this.objectives.forEach(objective => {
+      this.objectives = insertObjectiveInPosition(this.objectives, objective)
+      this.objectives = removeObjectivesChindren(this.objectives)
+    });
+
   }
 }

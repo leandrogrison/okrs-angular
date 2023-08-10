@@ -24,5 +24,6 @@ export interface Objective {
   endDate?: string | null,
   finished: number,
   conclusionPercent?: number,
-  numberOfKRs?: number
+  numberOfKRs?: number,
+  children?: any
 }

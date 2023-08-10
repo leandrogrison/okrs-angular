@@ -1,0 +1,73 @@
+<div *ngIf="objective.children" class="associate">
+  <mat-icon *ngIf="expandedItem" (click)="expandItem(objective)" color="primary" class="associate-button">
+    remove
+  </mat-icon>
+  <mat-icon *ngIf="!expandedItem" (click)="expandItem(objective)" color="primary" class="associate-button">
+    add
+  </mat-icon>
+  <mat-divider *ngIf="expandedItem" [vertical]="true" class="associate-connect"></mat-divider>
+</div>
+
+<div class="objective" fxLayout.gt-xs fxLayoutGap="16px">
+
+  <div class="objective-content" fxFlex fxLayout="column">
+    <div class="objective-name">{{ objective.name }}</div>
+    <div class="objective-details" fxLayout fxLayoutGap="8px">
+      <mat-icon [matTooltip]="objective.category!.name" matTooltipPosition="above" class="objective-category">
+        {{ objective.category | IconCategory }}
+      </mat-icon>
+      <div class="objective-status">{{objective.finished ? 'Finalizado' : 'Em aberto'}}</div>
+      <div class="objective-owner" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+        <img
+          *ngIf="objective.owner!.photo; else noPhoto"
+          [src]="objective.owner!.photo"
+          [alt]="objective.owner!.name"
+          class="objective-owner-image"
+        />
+        <ng-template #noPhoto>
+          <mat-icon class="objective-owner-image">person</mat-icon>
+        </ng-template>
+        <span>{{ objective.owner!.name }}</span>
+      </div>
+    </div>
+    <div fxLayout fxLayoutAlign="start center" fxLayoutGap="8px">
+      <button mat-stroked-button color="primary">
+        MAIS DETALHES
+      </button>
+      <button mat-icon-button matTooltip="Editar objetivo" matTooltipPosition="above" aria-label="Editar objetivo">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Excluir objetivo" matTooltipPosition="above" aria-label="Excluir objetivo">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="objective-graph" fxFlexAlign="center center" fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+    <div class="objective-graph-content" fxLayout="column" fxLayoutGap="8px">
+      <small [matTooltip]="'Prazo: ' + (objective.deadline | date: 'dd/MM/yyyy')" matTooltipPosition="above">
+        Restam {{ daysToEnd(objective.deadline) }} dias
+      </small>
+      <mat-progress-bar
+        mode="determinate"
+        [value]="objective.conclusionPercent ? objective.conclusionPercent : 0"
+        [ngClass]="getProgressStatus(objective) | ColorProgress"
+        class="objective-graph-conclusion-progress"
+      />
+      <small>
+        Nenhum KR cadastrado
+      </small>
+    </div>
+    <div
+      [ngClass]="getProgressStatus(objective) | ColorProgress"
+      class="objective-graph-conclusion-percent"
+    >
+      {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-2') : '0%' }}
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="objective.children && expandedItem">
+  <app-objective-list [objectives]="objective.children" class="objectives-children" />
+</div>
