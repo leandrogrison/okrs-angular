@@ -60,7 +60,7 @@
           <app-objective-list
             *ngIf="objectives.length > 0, else noObjectives"
             [objectives]="objectives"
-            (updateObjectives)="getObjectives($event)"
+            (updateObjectives)="getObjectives(this.filter)"
             class="objectives-list"
           />
           <ng-template #noObjectives>

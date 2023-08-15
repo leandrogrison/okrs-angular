@@ -40,6 +40,7 @@
       <mat-select
         [(ngModel)]="objective.category"
         (ngModelChange)="objectiveToAssociate.resetComponent()"
+        [compareWith]="compareCategory"
         name="category"
         #categoryField="ngModel"
         required
@@ -121,6 +122,7 @@
     [objectiveAssociate]="objective.associate!"
     [cycle]="objective.cycle"
     [category]="objective.category"
+    [objectiveIdEdit]="objective.id!"
     (updateAssociate)="updateAssociateHandler($event)"
     label="Associar a um objetivo"
     hint="Você pode escolher um objetivo que será apoiado por este.

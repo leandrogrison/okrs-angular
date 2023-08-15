@@ -11,22 +11,29 @@ import { Category } from 'src/app/Category';
 })
 export class ObjectiveToAssociateComponent implements OnInit {
 
-  @Input() objectiveAssociate!: Object;
+  @Input() objectiveAssociate!: any;
   @Input() cycle!: Object;
   @Input() label!: string;
   @Input() hint!: string;
   @Input() category!: Category | null;
+  @Input() objectiveIdEdit!: string;
   @Output() updateAssociate = new EventEmitter();
 
   objectives: Objective[] = []
   loading: Boolean = true
-  associateAutoComplete: string = ''
+  associateAutoComplete: any = ''
   delayToSearch: any = null
   categoriesToAssociate: number[] = []
+  onInit: boolean = true
 
   constructor(private objectivesService: ObjectivesService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (this.objectiveAssociate) {
+      this.objectivesService.getObjectiveById(this.objectiveAssociate).subscribe((data) => {
+        this.associateAutoComplete = data[0];
+      });
+    }
     this.getObjectives();
   }
 
@@ -39,7 +46,6 @@ export class ObjectiveToAssociateComponent implements OnInit {
     clearTimeout(this.delayToSearch);
 
     if (typeof value === 'object') {
-      this.objectiveAssociate = value.id;
       this.updateAssociate.emit(value.id);
     } else {
       this.delayToSearch = setTimeout(() => {
@@ -49,13 +55,16 @@ export class ObjectiveToAssociateComponent implements OnInit {
         this.objectivesService.getObjectives({
           name: value,
           cycle: this.cycle,
-          category: this.categoriesToAssociate
+          category: this.categoriesToAssociate,
+          objectiveIdEdit: this.objectiveIdEdit
         }).subscribe((data: any) => {
           this.objectives = data;
           this.loading = false;
         })
 
-        this.objectiveAssociate = value;
+        if (!this.onInit) this.updateAssociate.emit(value);
+        this.onInit = true;
+
       }, 500)
     }
   }

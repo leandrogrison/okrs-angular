@@ -29,6 +29,8 @@ export class ObjectivesService {
 
     result += filter.cycle ? `&cycle.id=${filter.cycle.id}` : '';
 
+    result += filter.objectiveIdEdit ? `&id_ne=${filter.objectiveIdEdit}` : '';
+
     return result;
   }
 
@@ -36,12 +38,25 @@ export class ObjectivesService {
     const limit = '?_limit=1000';
     const order = '&_sort=createdAt&_order=desc';
     const stringToFilter = filter ? this.createStringToFilter(filter) : '';
+    const url = this.apiUrl + limit + order + stringToFilter;
 
-    return this.http.get<Objective[]>(this.apiUrl + limit + order + stringToFilter);
+    return this.http.get<Objective[]>(url);
+  }
+
+  getObjectiveById(id: string): Observable<Objective[]> {
+    const url = this.apiUrl + '?id=' + id;
+
+    return this.http.get<Objective[]>(url);
   }
 
   createObjective(objective: Objective): Observable<Objective> {
     return this.http.post<Objective>(this.apiUrl, objective);
+  }
+
+  updateObjective(objective: Objective): Observable<Objective> {
+    const url = this.apiUrl + '/' + objective.id;
+
+    return this.http.put<Objective>(url, objective);
   }
 
 }

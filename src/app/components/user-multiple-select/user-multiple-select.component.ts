@@ -31,12 +31,23 @@ export class UserMultipleSelectComponent implements OnInit {
 
   constructor(private usersService: UsersService) {}
 
-  ngOnInit(): void {
-    this.getUsers();
+  ngOnInit() {
+    if (this.users && this.users.length > 0) {
+      this.getUsersOnInit();
+    } else {
+      this.getUsers();
+    }
   }
 
   autoCompleteUser() {
     this.getUsers(this.userAutoComplete);
+  }
+
+  getUsersOnInit() {
+    this.usersService.getUsersById(this.users).subscribe((data) => {
+      this.usersSelected = data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+      this.getUsers();
+    })
   }
 
   getUsers(value?: any) {
@@ -48,16 +59,20 @@ export class UserMultipleSelectComponent implements OnInit {
     this.delayToSearch = setTimeout(() => {
       this.loading = true;
       this.usersService.getUsers(value).subscribe((data) => {
-        data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        const usersFiltred = data.filter(
-          item => this.usersSelected?.every(
-            user => user.id !== item.id
-          )
-        );
+        const usersFiltred = this.sortAndFilterUsers(data);
         this.usersToSelect = (this.usersSelected && this.usersSelected.length > 0) ? usersFiltred : data;
         this.loading = false;
       })
     }, 500)
+  }
+
+  sortAndFilterUsers(users: User[]): User[] {
+    users.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    return users.filter(
+      item => this.usersSelected?.every(
+        user => user.id !== item.id
+      )
+    );
   }
 
   clearUser() {
@@ -69,18 +84,17 @@ export class UserMultipleSelectComponent implements OnInit {
     const index = this.usersSelected!.indexOf(user);
 
     if (index >= 0) {
-      this.users!.splice(index, 1);
       this.usersSelected!.splice(index, 1);
       this.usersToSelect.unshift(user);
       this.usersToSelect.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
       this.announcer.announce(`Removido ${user}`);
+      this.updateSupporters.emit(this.usersSelected);
     }
   }
 
   selectedUser(event: MatAutocompleteSelectedEvent): void {
-    this.users!.push(event.option.value.id);
     this.usersSelected.push(event.option.value);
-    this.updateSupporters.emit(this.users);
+    this.updateSupporters.emit(this.usersSelected);
   }
 
 }

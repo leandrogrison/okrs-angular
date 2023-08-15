@@ -15,15 +15,24 @@ export class UserSingleSelectComponent implements OnInit {
   @Input() required!: boolean;
   @Output() updateOwner = new EventEmitter();
 
-  users: User[] = []
-  loading: Boolean = true
-  userAutoComplete: any = this.user ? this.user.name : ''
-  delayToSearch: any = null
+  users: User[] = [];
+  loading: Boolean = true;
+  userAutoComplete: any = '';
+  delayToSearch: any = null;
 
   constructor(private usersService: UsersService) {}
 
-  ngOnInit(): void {
-    this.getUsers();
+  ngOnInit() {
+    if (this.user) {
+      this.userAutoComplete = this.user;
+      this.usersService.getUsers(this.user.name).subscribe((data) => {
+        data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        this.users = data;
+        this.loading = false;
+      })
+    } else {
+      this.getUsers();
+    }
   }
 
   autoCompleteUser() {

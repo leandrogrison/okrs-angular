@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Objective } from 'src/app/Objective';
 
@@ -10,6 +10,7 @@ import { Objective } from 'src/app/Objective';
 export class ObjectiveListComponent implements OnInit {
 
   @Input() objectives!: Objective[];
+  @Output() updateObjectives = new EventEmitter();
 
   constructor() {}
 
@@ -17,6 +18,10 @@ export class ObjectiveListComponent implements OnInit {
 
   trackByObjective(index: number, item: Objective): any {
     return item.id;
+  }
+
+  handleUpdateObjectives() {
+    this.updateObjectives.emit();
   }
 
 }

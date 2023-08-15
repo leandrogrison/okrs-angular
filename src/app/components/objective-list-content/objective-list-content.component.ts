@@ -1,7 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { DaysToEndService } from 'src/app/services/days-to-end.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
+
+import { EditObjectiveComponent } from '../edit-objective/edit-objective.component';
 
 import { Objective } from 'src/app/Objective';
 
@@ -11,7 +14,9 @@ import { Objective } from 'src/app/Objective';
   styleUrls: ['./objective-list-content.component.scss']
 })
 export class ObjectiveListContentComponent implements OnInit {
+
   @Input() objective!: Objective;
+  @Output() updateObjectives = new EventEmitter();
 
   expandedItem: boolean = false;
 
@@ -24,6 +29,7 @@ export class ObjectiveListContentComponent implements OnInit {
   }
 
   constructor(
+    public dialog: MatDialog,
     private daysToEndService: DaysToEndService,
     private progressStatusService: ProgressStatusService
   ) {}
@@ -41,6 +47,17 @@ export class ObjectiveListContentComponent implements OnInit {
     if (objective.id) {
       localStorage.setItem(objective.id, this.expandedItem.toString());
     }
+  }
+
+  openEditObjective(objective: Objective) {
+    this.dialog.open(EditObjectiveComponent, {
+      data: { objective: objective },
+      maxWidth: 900,
+      width: 'calc(100% - 32px)',
+      position: { top: '32px' },
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+    });
   }
 
 }

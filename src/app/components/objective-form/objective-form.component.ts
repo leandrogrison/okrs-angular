@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,6 +19,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./objective-form.component.css']
 })
 export class ObjectiveFormComponent implements OnInit {
+
+  @Input() objectiveToEdit!:Objective;
 
   @Output() onSubmit = new EventEmitter<Objective>()
 
@@ -60,6 +62,25 @@ export class ObjectiveFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.categories = this.categoriesService.setCategories();
+
+    if (this.objectiveToEdit) {
+      this.objective = {
+        id: this.objectiveToEdit.id,
+        name: this.objectiveToEdit.name,
+        description: this.objectiveToEdit.description,
+        category: this.objectiveToEdit.category,
+        owner: this.objectiveToEdit.owner,
+        supporters: this.objectiveToEdit.supporters,
+        visibility: this.objectiveToEdit.visibility,
+        cycle: this.objectiveToEdit.cycle,
+        createdAt: this.objectiveToEdit.createdAt,
+        startDate: this.objectiveToEdit.startDate,
+        deadline: this.objectiveToEdit.deadline,
+        finished: this.objectiveToEdit.finished,
+        associate: this.objectiveToEdit.associate
+      }
+    }
+
   }
 
   ngAfterViewInit() {
@@ -109,12 +130,27 @@ export class ObjectiveFormComponent implements OnInit {
     }
   }
 
+  compareCategory(category1: any, category2: any) {
+    return category1 && category2 ? category1.id === category2.id : category1 === category2;
+  }
+
+  getIdsSupporters() {
+    const ids = this.objective.supporters?.map((supporter) => {
+      return supporter.id
+    });
+    this.objective.supporters = ids;
+  }
+
   saveOjectiveButton() {
     this.buttonSubmitHidden.nativeElement.click();
   }
 
   saveObjective() {
     if (this.formObjective.invalid) return;
+
+    if (this.objective.supporters && this.objective.supporters.length > 0 && this.objective.supporters[0].hasOwnProperty('id')) {
+      this.getIdsSupporters();
+    }
 
     this.onSubmit.emit(this.objective);
   }

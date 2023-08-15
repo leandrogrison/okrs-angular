@@ -34,10 +34,21 @@
       <button mat-stroked-button color="primary">
         MAIS DETALHES
       </button>
-      <button mat-icon-button matTooltip="Editar objetivo" matTooltipPosition="above" aria-label="Editar objetivo">
+      <button
+        (click)="openEditObjective(objective)"
+        mat-icon-button
+        matTooltip="Editar objetivo"
+        matTooltipPosition="above"
+        aria-label="Editar objetivo"
+      >
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button matTooltip="Excluir objetivo" matTooltipPosition="above" aria-label="Excluir objetivo">
+      <button
+        mat-icon-button
+        matTooltip="Excluir objetivo"
+        matTooltipPosition="above"
+        aria-label="Excluir objetivo"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </div>
@@ -69,5 +80,9 @@
 </div>
 
 <div *ngIf="objective.children && expandedItem">
-  <app-objective-list [objectives]="objective.children" class="objectives-children" />
+  <app-objective-list
+    [objectives]="objective.children"
+    (updateObjectives)="updateObjectives.emit()"
+    class="objectives-children"
+  />
 </div>

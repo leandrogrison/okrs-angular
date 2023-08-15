@@ -50,6 +50,7 @@ import { ColorProgressPipe } from './pipes/color-progress.pipe';
 import { QuarterPipe } from './pipes/quarter.pipe';
 import { FiltersComponent } from './components/filters/filters.component';
 import { ObjectiveListContentComponent } from './components/objective-list-content/objective-list-content.component';
+import { EditObjectiveComponent } from './components/edit-objective/edit-objective.component';
 
 registerLocaleData(localePt);
 
@@ -72,7 +73,8 @@ registerLocaleData(localePt);
     ColorProgressPipe,
     QuarterPipe,
     FiltersComponent,
-    ObjectiveListContentComponent
+    ObjectiveListContentComponent,
+    EditObjectiveComponent
   ],
   imports: [
     BrowserModule,

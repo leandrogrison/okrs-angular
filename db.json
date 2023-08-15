@@ -128,18 +128,21 @@
     },
     {
       "id": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "name": "Objetivo não associado",
-      "description": "",
+      "name": "Objetivo 1",
+      "description": "Descrição supimpa",
       "category": {
-        "id": 0,
-        "name": "Objetivo da empresa"
+        "id": 1,
+        "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 0,
-        "name": "Luiz Albuquerque",
-        "photo": null
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
-      "supporters": [],
+      "supporters": [
+        0,
+        1
+      ],
       "visibility": "public",
       "cycle": {
         "id": "2023Q3",
@@ -148,8 +151,7 @@
       "createdAt": "2023-08-08T12:59:21.191Z",
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": null
+      "finished": 0
     },
     {
       "id": "49c83ced-5bee-405f-b9d8-57e397188faa",
@@ -253,8 +255,8 @@
     },
     {
       "id": "9bb510b5-6880-44dd-b635-36e1d2331e04",
-      "name": "sdfdsfsf",
-      "description": "",
+      "name": "Objetivo individual associado",
+      "description": "Testando edição",
       "category": {
         "id": 2,
         "name": "Objetivo individual"
@@ -300,6 +302,88 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "9bb510b5-6880-44dd-b635-36e1d2331e04"
+    },
+    {
+      "id": "b42cb4a7-f905-430b-8fcc-3909989e0039",
+      "name": "teste para edição",
+      "description": "Descrição para edição",
+      "category": {
+        "id": 0,
+        "name": "Objetivo da empresa"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [
+        2
+      ],
+      "visibility": "private",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-12T01:31:05.554Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "99f7d38a-110b-4c60-8f9e-3baed9349061"
+    },
+    {
+      "id": "de617d3a-f94c-4eb1-b905-146239b222ce",
+      "name": "Objetivo 1 - 1",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": {
+        "id": 0,
+        "name": "Luiz Albuquerque",
+        "photo": null
+      },
+      "supporters": [
+        2
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-15T14:59:54.536Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "053e3d54-3536-4196-bc2e-3e928718881d"
+    },
+    {
+      "id": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
+      "name": "Objetivo 1 - 1 - 1",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [
+        2,
+        0
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-15T15:16:40.638Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "de617d3a-f94c-4eb1-b905-146239b222ce"
     }
   ],
   "cycles": [

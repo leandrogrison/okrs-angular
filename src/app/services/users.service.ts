@@ -19,4 +19,12 @@ export class UsersService {
     return this.http.get<User[]>(this.apiUrl + filter);
   }
 
+  getUsersById(ids?: any[]): Observable<User[]> {
+    let filter = '';
+    ids?.map((id) => {
+      filter += `&id=${id}`
+    })
+    return this.http.get<User[]>(this.apiUrl + filter);
+  }
+
 }
