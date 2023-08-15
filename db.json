@@ -411,6 +411,31 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "7283e72d-ce23-4afe-979f-ff27e13665fc"
+    },
+    {
+      "id": "b149e205-0b42-4ea5-a916-4abacce65f89",
+      "name": "Objetivo 1 - 1 - 1 - 1",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": {
+        "id": 0,
+        "name": "Luiz Albuquerque",
+        "photo": null
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-15T19:24:46.385Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc"
     }
   ],
   "cycles": [

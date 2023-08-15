@@ -17,12 +17,18 @@
   />
   <mat-spinner *ngIf="loading" diameter="20" class="mat-autocomplete-loading"></mat-spinner>
   <mat-autocomplete #associateAuto="matAutocomplete" [displayWith]="objectiveName">
-    <mat-option *ngIf="objectives.length === 0" disabled>
+    <mat-option *ngIf="objectivesInCategories.length === 0" disabled>
       Nenhum objetivo encontrado
     </mat-option>
-    <mat-option *ngFor="let objective of objectives" [value]="objective">
-      {{objective.name}}
-    </mat-option>
+    <mat-optgroup
+      *ngFor="let objectivesInCategory of objectivesInCategories"
+      [label]="objectivesInCategory.name"
+      class="mat-autocomplete-category"
+    >
+      <mat-option *ngFor="let objective of objectivesInCategory.objectives" [value]="objective">
+        {{objective.name}}
+      </mat-option>
+    </mat-optgroup>
   </mat-autocomplete>
   <mat-hint>{{ hint }}</mat-hint>
 </mat-form-field>

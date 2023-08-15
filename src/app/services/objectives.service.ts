@@ -31,6 +31,8 @@ export class ObjectivesService {
 
     result += filter.objectiveIdEdit ? `&id_ne=${filter.objectiveIdEdit}` : '';
 
+    result += filter.name ? `&name_like=${filter.name}` : '';
+
     return result;
   }
 

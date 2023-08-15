@@ -19,11 +19,11 @@ export class ObjectiveToAssociateComponent implements OnInit {
   @Input() objectiveIdEdit!: string;
   @Output() updateAssociate = new EventEmitter();
 
-  objectives: Objective[] = []
   loading: Boolean = true
   associateAutoComplete: any = ''
   delayToSearch: any = null
   categoriesToAssociate: number[] = []
+  objectivesInCategories: any[] = []
   onInit: boolean = true
 
   constructor(private objectivesService: ObjectivesService) {}
@@ -58,15 +58,44 @@ export class ObjectiveToAssociateComponent implements OnInit {
           category: this.categoriesToAssociate,
           objectiveIdEdit: this.objectiveIdEdit
         }).subscribe((data: any) => {
-          this.objectives = data;
+          this.insertObjectivesInCategories(data);
           this.loading = false;
         })
 
         if (!this.onInit) this.updateAssociate.emit(value);
-        this.onInit = true;
+        this.onInit = false;
 
       }, 500)
     }
+  }
+
+  getCategoryById(id: number) {
+    if (id === 0) return 'Objetivos de empresa';
+    if (id === 1) return 'Objetivos de grupo';
+    if (id === 2) return 'Objetivos individuais';
+    return '';
+  }
+
+  insertObjectivesInCategories(objectives: Objective[]) {
+    this.objectivesInCategories = [];
+
+    this.categoriesToAssociate.map((category) => {
+      let createCategory = true;
+
+      objectives.map((objective) => {
+        if (createCategory) {
+          this.objectivesInCategories.push({
+            name: this.getCategoryById(category),
+            objectives: []
+          })
+          createCategory = false;
+        }
+        if (category === objective.category!.id) {
+          this.objectivesInCategories[this.objectivesInCategories.length - 1].objectives.push(objective);
+        }
+      });
+
+    })
   }
 
   verifyCategoriesToAssociate() {
@@ -78,6 +107,11 @@ export class ObjectiveToAssociateComponent implements OnInit {
       if (this.category.id === 1) {
         this.categoriesToAssociate.push(0);
         this.categoriesToAssociate.push(1);
+      }
+      if (this.category.id === 2) {
+        this.categoriesToAssociate.push(0);
+        this.categoriesToAssociate.push(1);
+        this.categoriesToAssociate.push(2);
       }
     }
   }
