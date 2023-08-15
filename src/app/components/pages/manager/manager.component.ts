@@ -182,11 +182,11 @@ export class ManagerComponent implements OnInit {
       return objs.filter( obj => !(obj.associate))
     }
 
-    console.log(this.objectives);
+    const objectivesOrigin = this.objectives;
 
-    this.objectives.forEach(objective => {
-      this.objectives = insertObjectiveInPosition(this.objectives, objective)
-      this.objectives = removeObjectivesChindren(this.objectives)
+    objectivesOrigin.map(objective => {
+      this.objectives = insertObjectiveInPosition(objectivesOrigin, objective)
+      this.objectives = removeObjectivesChindren(objectivesOrigin)
     });
 
   }

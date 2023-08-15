@@ -291,7 +291,9 @@
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
-      "supporters": [],
+      "supporters": [
+        0
+      ],
       "visibility": "public",
       "cycle": {
         "id": "2023Q3",
@@ -384,6 +386,31 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce"
+    },
+    {
+      "id": "a7d4ab61-8d75-4505-94da-bb80b73bded6",
+      "name": "bbbb",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": {
+        "id": 0,
+        "name": "Luiz Albuquerque",
+        "photo": null
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-15T17:45:13.981Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "7283e72d-ce23-4afe-979f-ff27e13665fc"
     }
   ],
   "cycles": [
