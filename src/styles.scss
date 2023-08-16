@@ -68,6 +68,20 @@ body {
   }
 }
 
+.dialog-alert {
+  .mdc-dialog {
+    .mdc-dialog__title {
+      border-bottom: 0;
+      & + .mdc-dialog__content {
+        padding-top: 20px;
+      }
+    }
+    .mdc-dialog__actions {
+      border: 0;
+    }
+  }
+}
+
 .mat-mdc-form-field {
   display: flex;
 }

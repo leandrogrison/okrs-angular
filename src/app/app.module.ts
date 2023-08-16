@@ -51,6 +51,7 @@ import { QuarterPipe } from './pipes/quarter.pipe';
 import { FiltersComponent } from './components/filters/filters.component';
 import { ObjectiveListContentComponent } from './components/objective-list-content/objective-list-content.component';
 import { EditObjectiveComponent } from './components/edit-objective/edit-objective.component';
+import { DeleteObjectiveComponent } from './components/delete-objective/delete-objective.component';
 
 registerLocaleData(localePt);
 
@@ -74,7 +75,8 @@ registerLocaleData(localePt);
     QuarterPipe,
     FiltersComponent,
     ObjectiveListContentComponent,
-    EditObjectiveComponent
+    EditObjectiveComponent,
+    DeleteObjectiveComponent
   ],
   imports: [
     BrowserModule,

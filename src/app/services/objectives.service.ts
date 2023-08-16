@@ -61,4 +61,9 @@ export class ObjectivesService {
     return this.http.put<Objective>(url, objective);
   }
 
+  deleteObjective(objective: Objective) {
+    const url = `${this.apiUrl}/${objective.id}`;
+    return this.http.delete(url);
+  }
+
 }

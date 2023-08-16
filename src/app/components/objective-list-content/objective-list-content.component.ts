@@ -5,6 +5,7 @@ import { DaysToEndService } from 'src/app/services/days-to-end.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
 
 import { EditObjectiveComponent } from '../edit-objective/edit-objective.component';
+import { DeleteObjectiveComponent } from '../delete-objective/delete-objective.component';
 
 import { Objective } from 'src/app/Objective';
 
@@ -55,6 +56,17 @@ export class ObjectiveListContentComponent implements OnInit {
       maxWidth: 900,
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+    });
+  }
+
+  deleteObjective(objective: Objective) {
+    this.dialog.open(DeleteObjectiveComponent, {
+      data: { objective: objective },
+      maxWidth: 420,
+      minWidth: 320,
+      panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
     });
