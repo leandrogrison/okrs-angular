@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,4 @@ export class DrawerService {
     this.openDrawerSubject.next(componentAndData);
   }
 
-  closeDrawer() {
-    this.openDrawerSubject = new Subject<any>();
-    this.openDrawer$ = this.openDrawerSubject.asObservable();
-    this.openDrawerSubject.next('');
-  }
 }

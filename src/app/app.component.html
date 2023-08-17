@@ -1,11 +1,12 @@
-<mat-drawer-container class="example-container" autosize>
+<mat-drawer-container autosize>
 
-  <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="isDrawerOpen" position="end">
+  <mat-drawer #drawer class="drawer-main" mode="side" [opened]="isDrawerOpen" position="end">
     <ng-template #drawerContent></ng-template>
     <button
       (click)="closeDrawer()"
       mat-icon-button
       aria-label="Fechar painel"
+      class="drawer-button-close"
     >
       <mat-icon>close</mat-icon>
     </button>
