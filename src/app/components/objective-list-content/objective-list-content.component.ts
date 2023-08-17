@@ -3,9 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { DaysToEndService } from 'src/app/services/days-to-end.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 import { EditObjectiveComponent } from '../edit-objective/edit-objective.component';
 import { DeleteObjectiveComponent } from '../delete-objective/delete-objective.component';
+import { ObjectiveDetailsComponent } from '../objective-details/objective-details.component';
 
 import { Objective } from 'src/app/Objective';
 
@@ -32,7 +34,8 @@ export class ObjectiveListContentComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private daysToEndService: DaysToEndService,
-    private progressStatusService: ProgressStatusService
+    private progressStatusService: ProgressStatusService,
+    public drawerService: DrawerService
   ) {}
 
   daysToEnd(deadline: string): number {
@@ -70,6 +73,11 @@ export class ObjectiveListContentComponent implements OnInit {
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
     });
+  }
+
+  openDetails(objective: Objective) {
+    const data = { objective: objective };
+    this.drawerService.openDrawer(ObjectiveDetailsComponent, data);
   }
 
 }

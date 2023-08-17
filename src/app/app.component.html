@@ -1,4 +1,19 @@
-<app-header class="header"/>
-<main class="container">
-  <router-outlet />
-</main>
+<mat-drawer-container class="example-container" autosize>
+
+  <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="isDrawerOpen" position="end">
+    <ng-template #drawerContent></ng-template>
+    <button
+      (click)="closeDrawer()"
+      mat-icon-button
+      aria-label="Fechar painel"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-drawer>
+
+  <app-header class="header"/>
+  <main class="container">
+    <router-outlet />
+  </main>
+
+</mat-drawer-container>

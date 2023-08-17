@@ -31,6 +31,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -52,6 +53,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { ObjectiveListContentComponent } from './components/objective-list-content/objective-list-content.component';
 import { EditObjectiveComponent } from './components/edit-objective/edit-objective.component';
 import { DeleteObjectiveComponent } from './components/delete-objective/delete-objective.component';
+import { ObjectiveDetailsComponent } from './components/objective-details/objective-details.component';
 
 registerLocaleData(localePt);
 
@@ -76,7 +78,8 @@ registerLocaleData(localePt);
     FiltersComponent,
     ObjectiveListContentComponent,
     EditObjectiveComponent,
-    DeleteObjectiveComponent
+    DeleteObjectiveComponent,
+    ObjectiveDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +108,8 @@ registerLocaleData(localePt);
     MatTabsModule,
     MatListModule,
     MatTooltipModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSidenavModule
   ],
   providers: [
     {
