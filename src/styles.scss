@@ -46,6 +46,10 @@ body {
 
 // ANGULAR MATERIAL
 
+.mat-icon.user-photo {
+  @extend .user-photo;
+}
+
 .mdc-button__label {
   text-transform: uppercase;
 }
@@ -127,7 +131,14 @@ body {
   }
 }
 
+.drawer-container {
+  .mat-drawer-content {
+    height: 100vh;
+  }
+}
+
 .drawer-main {
+  position: fixed !important;
   .drawer-button-close {
     position: absolute;
     top: 8px;
@@ -139,6 +150,11 @@ body {
     font-weight: 500;
     letter-spacing: .25px;
     margin: 0;
-    padding: 20px 56px 16px 24px;
+    padding: 20px 56px 16px 16px;
+  }
+  .drawer-content {
+    width: 412px;
+    padding: 0 16px 16px 16px;
+    box-sizing: border-box;
   }
 }

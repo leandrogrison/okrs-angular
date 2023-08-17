@@ -29,6 +29,10 @@ export class ObjectiveListContentComponent implements OnInit {
     if (expanded === 'true' && this.objective.children) {
       this.expandedItem = true;
     }
+
+    setTimeout(() => {
+      this.openDetails(this.objective);
+    }, 200);
   }
 
   constructor(
@@ -54,6 +58,7 @@ export class ObjectiveListContentComponent implements OnInit {
   }
 
   openEditObjective(objective: Objective) {
+    this.drawerService.openDrawer();
     this.dialog.open(EditObjectiveComponent, {
       data: { objective: objective },
       maxWidth: 900,
@@ -65,6 +70,7 @@ export class ObjectiveListContentComponent implements OnInit {
   }
 
   deleteObjective(objective: Objective) {
+    this.drawerService.openDrawer();
     this.dialog.open(DeleteObjectiveComponent, {
       data: { objective: objective },
       maxWidth: 420,

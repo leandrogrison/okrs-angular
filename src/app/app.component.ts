@@ -10,12 +10,6 @@ import { DrawerService } from './services/drawer.service';
 export class AppComponent {
 
   isDrawerOpen = false;
-  dataDrawer = null;
-  dataDefault = 'teste';
-  oldResult = {
-    component: null,
-    data: null
-  };
 
   @ViewChild('drawerContent', {read: ViewContainerRef}) drawerContent!: ViewContainerRef;
 
@@ -24,10 +18,12 @@ export class AppComponent {
   ) {
     this.drawerService.openDrawer$.subscribe((result) => {
       this.drawerContent.remove();
+
+      if (!result.component) return;
+
       let componentRef = this.drawerContent.createComponent(result.component);
       (<any>componentRef.instance).data = result.data;
       this.isDrawerOpen = true;
-      this.oldResult = result;
     });
   }
 

@@ -1,1 +1,87 @@
-<h2 class="drawer-title">Dados: {{objective.name}}</h2>
+<h2 class="drawer-title">{{ objective.name }}</h2>
+
+<div class="drawer-content">
+  <small
+    *ngIf="objective.description"
+    [ngClass]="{'description-truncate': descriptionTruncate}"
+    (click)="descriptionTruncate = !descriptionTruncate"
+    class="description"
+  >
+    {{ objective.description }}
+  </small>
+</div>
+
+<div class="drawer-content" fxLayout fxLayoutGap="8px">
+  <div fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="center center" fxFlexAlign="start">
+    <small>Responsável</small>
+    <img
+      *ngIf="objective.owner!.photo; else noPhoto"
+      [src]="objective.owner!.photo"
+      [alt]="objective.owner!.name"
+      class="user-photo user-photo-md"
+      [matTooltip]="objective.owner!.name"
+      matTooltipPosition="above"
+    />
+    <ng-template #noPhoto>
+      <mat-icon
+        class="user-photo user-photo-md"
+        [matTooltip]="objective.owner!.name"
+        matTooltipPosition="above"
+      >
+        person
+      </mat-icon>
+    </ng-template>
+  </div>
+  <mat-divider [vertical]="true" />
+  <div fxFlex fxLayout="column" fxLayoutGap="8px">
+    <small>Apoiadores</small>
+    <div *ngIf="supporters && supporters.length > 0, else noSupporters" class="supporters">
+      <div *ngFor="let supporter of supporters" class="supporter">
+        <img
+          *ngIf="supporter.photo, else noPhoto"
+          [src]="supporter.photo"
+          class="user-photo user-photo-md"
+          [matTooltip]="supporter.name"
+          matTooltipPosition="above"
+        />
+        <ng-template #noPhoto>
+          <mat-icon
+            class="user-photo user-photo-md"
+            [matTooltip]="supporter.name"
+            matTooltipPosition="above"
+          >
+            person
+          </mat-icon>
+        </ng-template>
+      </div>
+    </div>
+    <ng-template #noSupporters>
+      <span class="no-supporters">Nenhum colaborador cadastrado.</span>
+    </ng-template>
+  </div>
+</div>
+
+<mat-divider />
+
+<div class="drawer-content chart">
+  <div class="chart-donut">
+    <mat-progress-spinner
+      class="chart-donut-progress"
+      mode="determinate"
+      diameter="48"
+      [ngClass]="getProgressStatus(objective) | ColorProgress"
+      [value]="objective.conclusionPercent"
+    />
+    <span class="chart-donut-value">
+      {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-2') : '0%' }}
+    </span>
+  </div>
+  <div class="chart-resume">
+    <div>Percentual de conclusão</div>
+    <small [matTooltip]="'Prazo: ' + (objective.deadline | date: 'dd/MM/yyyy')" matTooltipPosition="above">
+      Restam {{ daysToEnd(objective.deadline) }} dias
+    </small>
+  </div>
+</div>
+
+<mat-divider />

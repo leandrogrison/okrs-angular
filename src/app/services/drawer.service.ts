@@ -10,7 +10,7 @@ export class DrawerService {
 
   openDrawer$ = this.openDrawerSubject.asObservable();
 
-  openDrawer(component: any, data: any) {
+  openDrawer(component?: any, data?: any) {
     const componentAndData = {
       component: component,
       data: data

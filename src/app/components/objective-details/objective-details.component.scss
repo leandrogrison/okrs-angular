@@ -1,0 +1,57 @@
+.description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  max-width: 100%;
+  cursor: pointer;
+  &.description-truncate {
+    white-space: nowrap;
+  }
+}
+
+.no-supporters {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.supporters {
+  display: flex;
+  flex-wrap: wrap;
+  .supporter {
+    margin-right: -8px;
+  }
+}
+
+.chart {
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  .chart-donut {
+    border-radius: 100%;
+    outline: 5px solid rgba(0,0,0,.12);
+    outline-offset: -5px;
+    position: relative;
+    .chart-donut-value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .chart-donut-progress {
+      &.warn {
+        --mdc-circular-progress-active-indicator-color: #d32f2f;
+      }
+      &.accent {
+        --mdc-circular-progress-active-indicator-color: #ed6c02;
+      }
+      &.success {
+        --mdc-circular-progress-active-indicator-color: #2E7D32;
+      }
+    }
+  }
+}

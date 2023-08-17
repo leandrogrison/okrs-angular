@@ -28,7 +28,7 @@
     {
       "id": "053e3d54-3536-4196-bc2e-3e928718881d",
       "name": "Objetivo 1",
-      "description": "Descrição supimpa",
+      "description": "Descrição supimpa que pode ser longa para estar a quebra de texto nos detalhes do objetivo.",
       "category": {
         "id": 1,
         "name": "Objetivo do grupo"
@@ -50,12 +50,13 @@
       "createdAt": "2023-08-08T12:59:21.191Z",
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
-      "finished": 0
+      "finished": 0,
+      "conclusionPercent": 90
     },
     {
       "id": "de617d3a-f94c-4eb1-b905-146239b222ce",
       "name": "Objetivo 1 - 1",
-      "description": "",
+      "description": "foi",
       "category": {
         "id": 1,
         "name": "Objetivo do grupo"
@@ -65,9 +66,7 @@
         "name": "Luiz Albuquerque",
         "photo": null
       },
-      "supporters": [
-        2
-      ],
+      "supporters": [],
       "visibility": "public",
       "cycle": {
         "id": "2023Q3",
@@ -77,12 +76,13 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "associate": "053e3d54-3536-4196-bc2e-3e928718881d"
+      "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
+      "conclusionPercent": 22.6
     },
     {
       "id": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
       "name": "Objetivo 1 - 1 - 1",
-      "description": "",
+      "description": "Aqui também tem uma descrição grande para testar a descrição grande nos detalhes do objetivo.",
       "category": {
         "id": 2,
         "name": "Objetivo individual"
@@ -105,7 +105,8 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "associate": "de617d3a-f94c-4eb1-b905-146239b222ce"
+      "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
+      "conclusionPercent": 50
     }
   ],
   "cycles": [
