@@ -1,12 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Objective } from 'src/app/Objective';
 import { User } from 'src/app/User';
+import { KR } from 'src/app/KR';
 
 import { UsersService } from 'src/app/services/users.service';
 import { MessagesService } from 'src/app/services/messages.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
 import { DaysToEndService } from 'src/app/services/days-to-end.service';
+
+import { CreateKrComponent } from '../create-kr/create-kr.component';
 
 @Component({
   selector: 'app-objective-details',
@@ -16,12 +20,15 @@ import { DaysToEndService } from 'src/app/services/days-to-end.service';
 export class ObjectiveDetailsComponent implements OnInit {
 
   @Input() data: any;
+  @Output() updateObjectives = new EventEmitter();
 
   objective!: Objective;
   descriptionTruncate: boolean = true;
   supporters: User[] = [];
+  krs: KR[] = [];
 
   constructor(
+    public dialog: MatDialog,
     private usersService: UsersService,
     private messagesService: MessagesService,
     private progressStatusService: ProgressStatusService,
@@ -54,5 +61,16 @@ export class ObjectiveDetailsComponent implements OnInit {
 
   daysToEnd(deadline: string): number {
     return this.daysToEndService.daysToEnd(deadline);
+  }
+
+  createKR(objective: Objective) {
+    this.dialog.open(CreateKrComponent, {
+      data: { objective: objective },
+      maxWidth: 900,
+      width: 'calc(100% - 32px)',
+      position: { top: '32px' },
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+    });
   }
 }

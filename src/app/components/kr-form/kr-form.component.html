@@ -1,0 +1,182 @@
+<form
+  #formKr="ngForm"
+  (ngSubmit)="saveKr()"
+  fxLayout="column wrap"
+  fxLayoutAlign="start start"
+  fxLayoutGap="24px"
+>
+
+  <mat-form-field fxFlexFill>
+    <mat-label>Nome do KR</mat-label>
+    <input
+      [(ngModel)]="kr.name"
+      name="name"
+      #nameField="ngModel"
+      matInput
+      required
+      cdkFocusInitial
+    >
+    <mat-error *ngIf="nameField.invalid">
+      <span *ngIf="nameField.errors?.['required']">Campo obrigatório</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field fxFlexFill>
+    <mat-label>Descrição do KR</mat-label>
+    <textarea
+      [(ngModel)]="kr.description"
+      name="description"
+      #descriptionField="ngModel"
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5"
+    ></textarea>
+  </mat-form-field>
+
+  <div fxLayout="row wrap" fxFlexFill fxLayoutGap.gt-sm="16px">
+    <app-user-single-select
+      [user]="kr.owner"
+      [required]="true"
+      (updateOwner)="updateOwnerHandler($event)"
+      label="Responsável pelo KR"
+      fxFlex.gt-sm="50%"
+      fxFlex="100%"
+    />
+    <input
+      type="hidden"
+      [(ngModel)]="kr.owner"
+      name="ownerForValidation"
+      #ownerField="ngModel"
+      required
+    />
+    <div>
+      <mat-checkbox
+        [checked]="kr.owner && kr.owner.id === ownerMe.id"
+        (change)="setOwnerMe($event)"
+        name="ownerMe"
+        #ownerMeField
+        [ngStyle.gt-sm]="{'margin-top.px': 8}"
+        [ngStyle]="{'margin-top.px': -8}"
+      >
+        Sou o responsável
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <div fxLayout='column' fxFlexFill>
+    <label id="type-label">Tipo de atualização *</label>
+    <mat-radio-group
+      aria-labelledby="type-label"
+      [(ngModel)]="kr.type"
+      name="type"
+      #typeField="ngModel"
+      required
+      class="type-field"
+    >
+      <mat-radio-button value="percent">
+        Informando um percentual (0% a 100%)
+      </mat-radio-button>
+      <mat-radio-button value="task">
+        Através das tarefas concluídas
+      </mat-radio-button>
+      <mat-radio-button value="value">
+        Informando um valor
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="typeField.invalid">
+      <span *ngIf="typeField.errors?.['required']">Campo obrigatório</span>
+    </mat-error>
+
+    <div *ngIf="kr.type === 'value'" class="type-value">
+      <mat-form-field>
+        <mat-label>Informe um valor</mat-label>
+        <input
+          [(ngModel)]="kr.value"
+          name="value"
+          #valueField="ngModel"
+          mask="separator.2"
+          thousandSeparator="."
+          matInput
+          required
+        >
+        <mat-error *ngIf="valueField.invalid">
+          <span *ngIf="valueField.errors?.['required']">Campo obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Unidade (opcional)</mat-label>
+        <input
+          [(ngModel)]="kr.unit"
+          name="unit"
+          #unitField="ngModel"
+          matInput
+        >
+        <mat-error *ngIf="unitField.invalid">
+          <span *ngIf="unitField.errors?.['required']">Campo obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-divider fxFlexFill />
+
+  <div fxLayout='column' fxFlexFill>
+
+    <div>Tarefas</div>
+
+    <div
+      cdkDropList
+      (cdkDropListDropped)="orderTasks($event)"
+      class="tasks"
+    >
+      <div
+        *ngFor="let task of kr.tasks; let i = index; trackBy: trackByTask"
+        cdkDrag
+        cdkDragLockAxis="y"
+        cdkDragBoundary=".tasks"
+        cdkDragPreviewContainer="parent"
+        class="task"
+      >
+        <div cdkDragHandle>
+          <mat-icon class="task-drag-icon">drag_indicator</mat-icon>
+        </div>
+        <mat-form-field class="task-name">
+          <mat-label>Nome da tarefa</mat-label>
+          <input
+            [(ngModel)]="task.name"
+            [name]="'task' + i"
+            #taskField="ngModel"
+            matInput
+            [required]="kr.type === 'task'"
+          >
+          <mat-error *ngIf="taskField.invalid">
+            <span *ngIf="taskField.errors?.['required']">Campo obrigatório</span>
+          </mat-error>
+        </mat-form-field>
+        <button
+          (click)="deleteTask(task)"
+          mat-icon-button
+          matTooltip="Excluir tarefa"
+          matTooltipPosition="above"
+          aria-label="Excluir tarefa"
+          class="task-button-delete"
+          [disabled]="kr.tasks.length <= 1"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="task-button-add">
+      <button (click)="addTask()" mat-button mat-flat-button color="primary">
+        <mat-icon>add</mat-icon> Adicionar tarefa
+      </button>
+    </div>
+
+  </div>
+
+
+  <input #buttonSubmitHidden fxHide type="submit">
+
+</form>

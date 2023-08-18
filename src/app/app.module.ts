@@ -10,6 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+
 // ANGULAR MATERIAL
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -54,6 +58,8 @@ import { ObjectiveListContentComponent } from './components/objective-list-conte
 import { EditObjectiveComponent } from './components/edit-objective/edit-objective.component';
 import { DeleteObjectiveComponent } from './components/delete-objective/delete-objective.component';
 import { ObjectiveDetailsComponent } from './components/objective-details/objective-details.component';
+import { CreateKrComponent } from './components/create-kr/create-kr.component';
+import { KrFormComponent } from './components/kr-form/kr-form.component';
 
 registerLocaleData(localePt);
 
@@ -79,7 +85,9 @@ registerLocaleData(localePt);
     ObjectiveListContentComponent,
     EditObjectiveComponent,
     DeleteObjectiveComponent,
-    ObjectiveDetailsComponent
+    ObjectiveDetailsComponent,
+    CreateKrComponent,
+    KrFormComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +117,10 @@ registerLocaleData(localePt);
     MatListModule,
     MatTooltipModule,
     MatProgressBarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    DragDropModule
   ],
   providers: [
     {
@@ -128,6 +139,7 @@ registerLocaleData(localePt);
       provide: LOCALE_ID,
       useValue: 'pt-BR'
     },
+    provideNgxMask(),
     QuarterPipe
   ],
   bootstrap: [AppComponent]

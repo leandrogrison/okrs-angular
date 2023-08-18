@@ -1,0 +1,47 @@
+.type-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.type-value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+  padding-left: 44px;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  .task {
+    display: flex;
+    margin: 8px 0;
+    .task-drag-icon {
+      padding: 16px 8px 16px 0;
+      margin-bottom: -8px;
+      cursor: grab;
+    }
+    .task-name {
+      flex: 1 0 auto;
+    }
+    .task-button-delete {
+      margin: 4px -8px 0 8px;
+    }
+  }
+}
+.task-button-add {
+  padding: 8px 0 0 32px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.tasks.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

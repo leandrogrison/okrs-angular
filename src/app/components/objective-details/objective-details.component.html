@@ -85,3 +85,17 @@
 </div>
 
 <mat-divider />
+
+<div class="drawer-content">
+  <div class="krs">
+    <div class="krs-header">
+      <div *ngIf="krs && krs.length > 0, else noResults">KR encontrado</div>
+      <ng-template #noResults>
+        Nenhum KR cadastrado
+      </ng-template>
+      <button (click)="createKR(objective)" mat-flat-button color="primary">
+        <mat-icon>add</mat-icon> CRIAR KR
+      </button>
+    </div>
+  </div>
+</div>

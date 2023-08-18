@@ -109,6 +109,75 @@
       "conclusionPercent": 50
     }
   ],
+  "krs": [
+    {
+      "id": "8ebe6bf7-d423-497e-aeaa-774db22978b3",
+      "name": "Kr teste",
+      "description": "descrição",
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "type": "percent",
+      "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
+      "progress": 0,
+      "tasks": [
+        {
+          "id": "819981c6-de7a-42cd-8b96-604e8a51c3ee",
+          "name": "",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "0cb90c1c-3d63-475d-a32c-2b75df41f30c",
+      "name": "teste 2",
+      "description": "",
+      "owner": {
+        "id": 0,
+        "name": "Luiz Albuquerque",
+        "photo": null
+      },
+      "type": "task",
+      "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
+      "progress": 0,
+      "tasks": [
+        {
+          "id": "36157f2d-0d7f-49cf-ac59-5c07036b2285",
+          "name": "Tarefa 1",
+          "checked": false
+        },
+        {
+          "id": "8221421f-cb60-4a87-92b8-1e4562b577ad",
+          "name": "Tarefs 2",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "b556d12b-e601-4ad0-8f39-4a3f57ad215f",
+      "name": "teste 3",
+      "description": "asdfsdfdasfadsfadsfadsf",
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "type": "value",
+      "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
+      "progress": 0,
+      "tasks": [
+        {
+          "id": "dda34460-c0a1-4bd3-847b-160e32b91d04",
+          "name": "",
+          "checked": false
+        }
+      ],
+      "value": 100000,
+      "unit": "R$"
+    }
+  ],
   "cycles": [
     {
       "id": "2023Q3",
