@@ -9,6 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { MessagesService } from 'src/app/services/messages.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
 import { DaysToEndService } from 'src/app/services/days-to-end.service';
+import { KrsService } from 'src/app/services/krs.service';
 
 import { CreateKrComponent } from '../create-kr/create-kr.component';
 
@@ -26,21 +27,40 @@ export class ObjectiveDetailsComponent implements OnInit {
   descriptionTruncate: boolean = true;
   supporters: User[] = [];
   krs: KR[] = [];
+  loadingKrs: boolean = true;
 
   constructor(
     public dialog: MatDialog,
     private usersService: UsersService,
     private messagesService: MessagesService,
     private progressStatusService: ProgressStatusService,
-    private daysToEndService: DaysToEndService
+    private daysToEndService: DaysToEndService,
+    private krsService: KrsService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.objective = this.data.objective;
+
+    this.getKrs();
 
     if (this.objective.supporters && this.objective.supporters.length > 0) {
       this.getSupporters();
     }
+  }
+
+  getKrs() {
+    this.loadingKrs = true;
+    this.krsService.getKrs(this.objective).subscribe({
+      next: (krs) => {
+        this.krs = krs;
+        this.loadingKrs = false;
+      },
+      error: (error) => {
+        this.loadingKrs = false;
+        this.messagesService.show('Erro ao buscar krs! Tente novamente mais tarde.', 'warn');
+        console.log(error);
+      }
+    })
   }
 
   getSupporters() {
@@ -70,7 +90,15 @@ export class ObjectiveDetailsComponent implements OnInit {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+      if (result && result.hasOwnProperty('id')) this.getKrs();
     });
+  }
+
+  openEditKr(kr: KR) {
+
+  }
+
+  deleteKr(kr: KR) {
+
   }
 }

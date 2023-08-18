@@ -36,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -120,7 +121,8 @@ registerLocaleData(localePt);
     MatSidenavModule,
     NgxMaskDirective,
     NgxMaskPipe,
-    DragDropModule
+    DragDropModule,
+    MatSliderModule
   ],
   providers: [
     {

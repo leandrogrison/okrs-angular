@@ -45,7 +45,7 @@ export class CreateKrComponent implements OnInit {
       next: () => {
         this.loading = false;
         this.messagesService.show('KR criado com sucesso!', 'success');
-        this.closeModal(this.objective);
+        this.closeModal(kr);
       },
       error: (error) => {
         this.loading = false;
@@ -55,7 +55,7 @@ export class CreateKrComponent implements OnInit {
     })
   }
 
-  closeModal(objective?: Objective) {
-    this.dialogRef.close(objective);
+  closeModal(kr?: KR) {
+    this.dialogRef.close(kr);
   }
 }

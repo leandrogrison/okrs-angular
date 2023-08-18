@@ -87,15 +87,98 @@
 <mat-divider />
 
 <div class="drawer-content">
-  <div class="krs">
-    <div class="krs-header">
-      <div *ngIf="krs && krs.length > 0, else noResults">KR encontrado</div>
-      <ng-template #noResults>
-        Nenhum KR cadastrado
-      </ng-template>
-      <button (click)="createKR(objective)" mat-flat-button color="primary">
-        <mat-icon>add</mat-icon> CRIAR KR
-      </button>
-    </div>
+
+  <div
+    *ngIf="loadingKrs, else noLoadingKrs"
+    fxLayout
+    fxLayoutAlign="center center"
+    style="margin: 40px 0;"
+  >
+    <mat-spinner diameter="40"></mat-spinner>
   </div>
+
+  <ng-template #noLoadingKrs>
+    <div class="krs">
+
+      <div class="krs-header">
+        <div *ngIf="krs && krs.length > 0, else noResults">
+          {{krs.length}} KR{{krs.length > 1 ? 's' : ''}} encontrado{{krs.length > 1 ? 's' : ''}}
+        </div>
+        <ng-template #noResults>
+          Nenhum KR cadastrado
+        </ng-template>
+        <button (click)="createKR(objective)" mat-flat-button color="primary">
+          <mat-icon>add</mat-icon> CRIAR KR
+        </button>
+      </div>
+
+      <ul *ngIf="krs && krs.length > 0" class="krs-list">
+        <li *ngFor="let kr of krs">
+          <img
+            *ngIf="kr.owner!.photo; else noPhoto"
+            [src]="kr.owner!.photo"
+            [alt]="kr.owner!.name"
+            class="user-photo user-photo-xs"
+            [matTooltip]="kr.owner!.name"
+            matTooltipPosition="above"
+          />
+          <ng-template #noPhoto>
+            <mat-icon
+              class="user-photo user-photo-xs"
+              [matTooltip]="kr.owner!.name"
+              matTooltipPosition="above"
+            >
+              person
+            </mat-icon>
+          </ng-template>
+          <div class="krs-list-content">
+            <p class="krs-list-name">
+              {{ kr.name }}
+              <mat-icon *ngIf="kr.description" [matTooltip]="kr.description" matTooltipPosition="above">
+                info
+              </mat-icon>
+            </p>
+            <div class="krs-list-actions">
+              <mat-slider class="krs-list-slider">
+                <input matSliderThumb [(ngModel)]="kr.progress" min="0" max="100">
+              </mat-slider>
+              <div class="krs-list-actions-progress">
+                {{ kr.progress / 100 | percent: '1.0-2' }}
+              </div>
+              <button
+                (click)="openEditKr(kr)"
+                mat-icon-button
+                matTooltip="Editar KR"
+                matTooltipPosition="above"
+                aria-label="Editar KR"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                (click)="deleteKr(kr)"
+                mat-icon-button
+                matTooltip="Excluir KR"
+                matTooltipPosition="above"
+                aria-label="Excluir KR"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+            <div *ngIf="kr.tasks && kr.tasks.length > 0" class="krs-list-tasks">
+              <div class="krs-list-tasks-title">
+                <small>{{kr.tasks.length}} tarefa{{kr.tasks.length > 1 ? 's' : ''}}</small>
+              </div>
+              <div *ngFor="let task of kr.tasks" class="krs-list-tasks-checkbox">
+                <mat-checkbox [checked]="task.checked">
+                  {{ task.name }}
+                </mat-checkbox>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </ng-template>
+
 </div>
