@@ -155,13 +155,14 @@
           </mat-error>
         </mat-form-field>
         <button
-          (click)="deleteTask(task)"
+          (click)="confirmDeleteTask(task)"
           mat-icon-button
           matTooltip="Excluir tarefa"
           matTooltipPosition="above"
           aria-label="Excluir tarefa"
           class="task-button-delete"
           [disabled]="kr.tasks.length <= 1"
+          type="button"
         >
           <mat-icon>delete</mat-icon>
         </button>
@@ -169,7 +170,7 @@
     </div>
 
     <div class="task-button-add">
-      <button (click)="addTask()" mat-button mat-flat-button color="primary">
+      <button (click)="addTask()" mat-button mat-flat-button color="primary" type="button">
         <mat-icon>add</mat-icon> Adicionar tarefa
       </button>
     </div>

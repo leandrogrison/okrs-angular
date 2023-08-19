@@ -12,6 +12,7 @@ import { DaysToEndService } from 'src/app/services/days-to-end.service';
 import { KrsService } from 'src/app/services/krs.service';
 
 import { CreateKrComponent } from '../create-kr/create-kr.component';
+import { EditKrComponent } from '../edit-kr/edit-kr.component';
 
 @Component({
   selector: 'app-objective-details',
@@ -95,7 +96,14 @@ export class ObjectiveDetailsComponent implements OnInit {
   }
 
   openEditKr(kr: KR) {
-
+    this.dialog.open(EditKrComponent, {
+      data: { kr: kr, objective: this.objective },
+      maxWidth: 900,
+      width: 'calc(100% - 32px)',
+      position: { top: '32px' },
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.getKrs();
+    });
   }
 
   deleteKr(kr: KR) {

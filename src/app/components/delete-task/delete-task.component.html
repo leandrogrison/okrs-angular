@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Excluir tarefa?</h2>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="primary">
+    Não
+  </button>
+  <button
+    (click)="deleteTask()"
+    mat-button
+    mat-flat-button
+    color="warn"
+  >
+    <mat-icon>check</mat-icon>
+    <span>Sim</span>
+  </button>
+</mat-dialog-actions>

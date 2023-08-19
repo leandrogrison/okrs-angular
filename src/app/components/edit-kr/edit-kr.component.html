@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Editar KR
+  <button mat-icon-button mat-dialog-close aria-label="Fechar modal" class="dialog-close-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+
+<mat-dialog-content>
+  <app-kr-form [objective]="objective" [krToEdit]="kr" (onSubmit)="editKrHandler($event)" />
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="primary">
+    Cancelar
+  </button>
+  <button
+    (click)="saveKr()"
+    [disabled]="loading"
+    mat-button
+    mat-flat-button
+    color="primary"
+  >
+    <mat-icon *ngIf="loading; else noLoading">
+      <mat-spinner diameter="18" class="loading-disabled"></mat-spinner>
+    </mat-icon>
+    <ng-template #noLoading>
+      <mat-icon>check</mat-icon>
+    </ng-template>
+    <span>{{ loading ? 'Salvando KR...' : 'Salvar KR'}}</span>
+  </button>
+</mat-dialog-actions>

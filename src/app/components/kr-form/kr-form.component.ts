@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { v4 as uuidv4 } from 'uuid';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -10,6 +11,7 @@ import { User } from 'src/app/User';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { Objective } from 'src/app/Objective';
+import { DeleteTaskComponent } from '../delete-task/delete-task.component';
 
 @Component({
   selector: 'app-kr-form',
@@ -18,8 +20,9 @@ import { Objective } from 'src/app/Objective';
 })
 export class KrFormComponent implements OnInit {
 
-  @Input() objective!: Objective
-  @Output() onSubmit = new EventEmitter<KR>()
+  @Input() objective!: Objective;
+  @Input() krToEdit!: KR;
+  @Output() onSubmit = new EventEmitter<KR>();
 
   @ViewChild('formKr') formKr!: any;
   @ViewChild('buttonSubmitHidden') buttonSubmitHidden!: ElementRef<HTMLElement>;
@@ -44,14 +47,26 @@ export class KrFormComponent implements OnInit {
   }
 
   constructor(
+    public dialog: MatDialog,
     private authService: AuthService
   ) {
     this.ownerMe = this.authService.getUserInfo();
   }
 
   ngOnInit(): void {
-    this.kr.owner = this.objective.owner;
-    this.kr.objective = this.objective.id!;
+    if (this.krToEdit) {
+      this.kr = JSON.parse(JSON.stringify(this.krToEdit));
+      if (!this.krToEdit.tasks || this.krToEdit.tasks.length === 0) {
+        this.kr.tasks = [{
+          id: uuidv4(),
+          name: '',
+          checked: false
+        }]
+      }
+    } else {
+      this.kr.owner = this.objective.owner;
+      this.kr.objective = this.objective.id!;
+    }
   }
 
   updateOwnerHandler(owner: any) {
@@ -66,6 +81,17 @@ export class KrFormComponent implements OnInit {
       this.updateOwnerHandler(undefined);
       this.userSingleSelect.autoCompleteUserExternal(undefined);
     }
+  }
+
+  confirmDeleteTask(task: any) {
+    this.dialog.open(DeleteTaskComponent, {
+      data: { task: task },
+      maxWidth: 420,
+      minWidth: 320,
+      panelClass: 'dialog-alert'
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.deleteTask(task)
+    });
   }
 
   deleteTask(task: any) {
@@ -99,6 +125,10 @@ export class KrFormComponent implements OnInit {
 
   saveKr() {
     if (this.formKr.invalid) return;
+
+    this.kr.tasks.map(task => {
+      if (task.name.trim().length === 0) this.deleteTask(task);
+    })
 
     this.onSubmit.emit(this.kr);
   }

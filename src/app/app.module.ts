@@ -61,6 +61,8 @@ import { DeleteObjectiveComponent } from './components/delete-objective/delete-o
 import { ObjectiveDetailsComponent } from './components/objective-details/objective-details.component';
 import { CreateKrComponent } from './components/create-kr/create-kr.component';
 import { KrFormComponent } from './components/kr-form/kr-form.component';
+import { EditKrComponent } from './components/edit-kr/edit-kr.component';
+import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 
 registerLocaleData(localePt);
 
@@ -88,7 +90,9 @@ registerLocaleData(localePt);
     DeleteObjectiveComponent,
     ObjectiveDetailsComponent,
     CreateKrComponent,
-    KrFormComponent
+    KrFormComponent,
+    EditKrComponent,
+    DeleteTaskComponent
   ],
   imports: [
     BrowserModule,

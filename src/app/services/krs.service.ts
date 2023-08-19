@@ -26,4 +26,10 @@ export class KrsService {
   createKr(kr: KR): Observable<KR> {
     return this.http.post<KR>(this.apiUrl, kr);
   }
+
+  updateKr(kr: KR): Observable<KR> {
+    const url = this.apiUrl + '/' + kr.id;
+
+    return this.http.put<KR>(url, kr);
+  }
 }

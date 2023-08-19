@@ -112,12 +112,12 @@
   "krs": [
     {
       "id": "8ebe6bf7-d423-497e-aeaa-774db22978b3",
-      "name": "Kr teste",
-      "description": "descrição",
+      "name": "Kr teste alterado",
+      "description": "descrição 2",
       "owner": {
-        "id": 1,
-        "name": "Maurício Ribeiro Andrade",
-        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
       "type": "percent",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
@@ -162,8 +162,8 @@
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
       "progress": 0,
       "tasks": [],
-      "value": 100000,
-      "unit": "R$"
+      "value": 1000000,
+      "unit": "Reais"
     },
     {
       "id": "c4ae9a50-9354-485d-ba4a-93df51eb31e0",
