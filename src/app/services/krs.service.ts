@@ -32,4 +32,9 @@ export class KrsService {
 
     return this.http.put<KR>(url, kr);
   }
+
+  deleteKr(kr: KR) {
+    const url = `${this.apiUrl}/${kr.id}`;
+    return this.http.delete(url);
+  }
 }

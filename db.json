@@ -150,22 +150,6 @@
       ]
     },
     {
-      "id": "b556d12b-e601-4ad0-8f39-4a3f57ad215f",
-      "name": "teste 3",
-      "description": "asdfsdfdasfadsfadsfadsf",
-      "owner": {
-        "id": 1,
-        "name": "Maurício Ribeiro Andrade",
-        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
-      },
-      "type": "value",
-      "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 0,
-      "tasks": [],
-      "value": 1000000,
-      "unit": "Reais"
-    },
-    {
       "id": "c4ae9a50-9354-485d-ba4a-93df51eb31e0",
       "name": "Teste de outro objetivo",
       "description": "",

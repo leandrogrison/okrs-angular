@@ -13,6 +13,7 @@ import { KrsService } from 'src/app/services/krs.service';
 
 import { CreateKrComponent } from '../create-kr/create-kr.component';
 import { EditKrComponent } from '../edit-kr/edit-kr.component';
+import { DeleteKrComponent } from '../delete-kr/delete-kr.component';
 
 @Component({
   selector: 'app-objective-details',
@@ -107,6 +108,13 @@ export class ObjectiveDetailsComponent implements OnInit {
   }
 
   deleteKr(kr: KR) {
-
+    this.dialog.open(DeleteKrComponent, {
+      data: { kr: kr },
+      maxWidth: 420,
+      minWidth: 320,
+      panelClass: 'dialog-alert'
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.getKrs();
+    });
   }
 }

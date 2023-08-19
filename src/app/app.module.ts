@@ -63,6 +63,7 @@ import { CreateKrComponent } from './components/create-kr/create-kr.component';
 import { KrFormComponent } from './components/kr-form/kr-form.component';
 import { EditKrComponent } from './components/edit-kr/edit-kr.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
+import { DeleteKrComponent } from './components/delete-kr/delete-kr.component';
 
 registerLocaleData(localePt);
 
@@ -92,7 +93,8 @@ registerLocaleData(localePt);
     CreateKrComponent,
     KrFormComponent,
     EditKrComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    DeleteKrComponent
   ],
   imports: [
     BrowserModule,
