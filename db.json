@@ -106,7 +106,7 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "conclusionPercent": 66.66666666666667
+      "conclusionPercent": 70.33333333333333
     }
   ],
   "krs": [
@@ -122,7 +122,23 @@
       "type": "percent",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
       "progress": 100,
-      "tasks": []
+      "tasks": [
+        {
+          "id": "8e43edbe-aa81-4060-b40a-7cfec5b43a94",
+          "name": "Eita 1",
+          "checked": true
+        },
+        {
+          "id": "8ab97329-7a96-4b48-bad8-d8a1f268d742",
+          "name": "Eita 2",
+          "checked": false
+        },
+        {
+          "id": "2bcec9fb-37eb-40f1-99de-085ab4bb42b2",
+          "name": "Eita 3",
+          "checked": false
+        }
+      ]
     },
     {
       "id": "0cb90c1c-3d63-475d-a32c-2b75df41f30c",
@@ -135,7 +151,7 @@
       },
       "type": "task",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 0,
+      "progress": 50,
       "tasks": [
         {
           "id": "36157f2d-0d7f-49cf-ac59-5c07036b2285",
@@ -174,7 +190,7 @@
       },
       "type": "percent",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 100,
+      "progress": 61,
       "tasks": []
     }
   ],

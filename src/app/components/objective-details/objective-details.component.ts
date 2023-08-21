@@ -31,6 +31,7 @@ export class ObjectiveDetailsComponent implements OnInit {
   supporters: User[] = [];
   krs: KR[] = [];
   oldKrProgress!: number;
+  oldKrTask!: any;
   loadingKrs: boolean = true;
 
   constructor(
@@ -135,6 +136,16 @@ export class ObjectiveDetailsComponent implements OnInit {
     this.objective.conclusionPercent = this.calcConclusionPercentOfObjective();
   }
 
+  restoreTask(oldTask: any) {
+    this.krs.forEach((kr, indexK) => {
+      kr.tasks.forEach((task, indexT) => {
+        if (task.id === oldTask.id) {
+          this.krs[indexK].tasks[indexT] = oldTask;
+        }
+      })
+    });
+  }
+
   calcConclusionPercentOfObjective(): number {
     const progressValues = this.krs.map(kr => kr.progress);
     const sumPercentOfKRs = progressValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -143,7 +154,7 @@ export class ObjectiveDetailsComponent implements OnInit {
     return conclusionPercentOfObjective;
   }
 
-  async updateProgress(kr: KR) {
+  async updateProgress(kr: KR, oldTask?: any) {
     const oldKrProgress = this.oldKrProgress;
 
     this.objective.conclusionPercent = this.calcConclusionPercentOfObjective();
@@ -153,6 +164,9 @@ export class ObjectiveDetailsComponent implements OnInit {
         this.objectivesService.updateObjective(this.objective).subscribe({
           next: () => {},
           error: (error) => {
+            if (oldTask) {
+              this.restoreTask(oldTask);
+            }
             this.restoreProgress(kr, oldKrProgress);
             this.messagesService.show('Erro ao salvar progresso do objetivo! Tente novamente mais tarde.', 'warn');
             console.log(error);
@@ -160,10 +174,29 @@ export class ObjectiveDetailsComponent implements OnInit {
         })
       },
       error: (error) => {
+        if (oldTask) {
+          this.restoreTask(oldTask);
+        }
         this.restoreProgress(kr, oldKrProgress);
         this.messagesService.show('Erro ao salvar progresso do KR! Tente novamente mais tarde.', 'warn');
         console.log(error);
       }
     })
+  }
+
+  updateTasks(kr: KR, task: any) {
+    const totalChecked = kr.tasks.filter(task => task.checked);
+
+    const oldKrTask = {
+      id: task.id,
+      name: task.name,
+      checked: !task.checked
+    };
+
+    if (kr.type === 'task') {
+      kr.progress = totalChecked.length / kr.tasks.length * 100;
+    }
+
+    this.updateProgress(kr, oldKrTask);
   }
 }

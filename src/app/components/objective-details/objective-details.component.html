@@ -73,7 +73,7 @@
       [value]="objective.conclusionPercent"
     />
     <span class="chart-donut-value">
-      {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-2') : '0%' }}
+      {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
     </span>
   </div>
   <div class="chart-resume">
@@ -139,11 +139,19 @@
               </mat-icon>
             </p>
             <div class="krs-list-actions">
-              <mat-slider class="krs-list-slider">
-                <input matSliderThumb [(ngModel)]="kr.progress" (mousedown)="getCurrentProgress(kr)" (change)="updateProgress(kr)" min="0" max="100">
+              <mat-slider class="krs-list-slider" [ngClass]="{'no-slider-thumb': kr.type === 'task'}">
+                <input
+                  matSliderThumb
+                  [(ngModel)]="kr.progress"
+                  (mousedown)="getCurrentProgress(kr)"
+                  (change)="updateProgress(kr)"
+                  [disabled]="kr.type === 'task'"
+                  min="0"
+                  max="100"
+                >
               </mat-slider>
               <div class="krs-list-actions-progress">
-                {{ kr.progress / 100 | percent: '1.0-2' }}
+                {{ kr.progress / 100 | percent: '1.0-1' }}
               </div>
               <button
                 (click)="openEditKr(kr)"
@@ -169,7 +177,12 @@
                 <small>{{kr.tasks.length}} tarefa{{kr.tasks.length > 1 ? 's' : ''}}</small>
               </div>
               <div *ngFor="let task of kr.tasks" class="krs-list-tasks-checkbox">
-                <mat-checkbox [checked]="task.checked">
+                <mat-checkbox
+                  [checked]="task.checked"
+                  [(ngModel)]="task.checked"
+                  (mousedown)="getCurrentProgress(kr)"
+                  (ngModelChange)="updateTasks(kr, task)"
+                >
                   {{ task.name }}
                 </mat-checkbox>
               </div>

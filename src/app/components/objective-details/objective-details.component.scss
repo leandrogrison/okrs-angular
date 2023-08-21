@@ -109,3 +109,20 @@
     }
   }
 }
+
+.no-slider-thumb.mdc-slider--disabled {
+  opacity: 1;
+  input {
+    cursor: default;
+  }
+  ::ng-deep .mat-mdc-slider-visual-thumb {
+    visibility: hidden;
+  }
+  ::ng-deep .mdc-slider__track--active {
+    background-color: #D1D5ED;
+  }
+  ::ng-deep .mdc-slider__track--active_fill {
+    border-color: #3F51B5;
+    transition: .2s;
+  }
+}
