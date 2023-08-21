@@ -18,6 +18,10 @@ const routes: Routes = [
     {
       title: 'Gestão de OKRs'
     }
+  },
+  {
+    path: '**',
+    redirectTo: '/manager'
   }
 ];
 

@@ -106,7 +106,7 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "conclusionPercent": 50
+      "conclusionPercent": 66.66666666666667
     }
   ],
   "krs": [
@@ -121,7 +121,7 @@
       },
       "type": "percent",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 0,
+      "progress": 100,
       "tasks": []
     },
     {
@@ -152,7 +152,7 @@
     {
       "id": "c4ae9a50-9354-485d-ba4a-93df51eb31e0",
       "name": "Teste de outro objetivo",
-      "description": "",
+      "description": "supimpasso",
       "owner": {
         "id": 1,
         "name": "Maurício Ribeiro Andrade",
@@ -174,7 +174,7 @@
       },
       "type": "percent",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 0,
+      "progress": 100,
       "tasks": []
     }
   ],

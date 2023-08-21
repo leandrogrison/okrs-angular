@@ -140,7 +140,7 @@
             </p>
             <div class="krs-list-actions">
               <mat-slider class="krs-list-slider">
-                <input matSliderThumb [(ngModel)]="kr.progress" min="0" max="100">
+                <input matSliderThumb [(ngModel)]="kr.progress" (mousedown)="getCurrentProgress(kr)" (change)="updateProgress(kr)" min="0" max="100">
               </mat-slider>
               <div class="krs-list-actions-progress">
                 {{ kr.progress / 100 | percent: '1.0-2' }}
