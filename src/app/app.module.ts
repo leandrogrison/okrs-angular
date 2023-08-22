@@ -14,6 +14,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+
 // ANGULAR MATERIAL
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -128,7 +131,8 @@ registerLocaleData(localePt);
     NgxMaskDirective,
     NgxMaskPipe,
     DragDropModule,
-    MatSliderModule
+    MatSliderModule,
+    NgxEchartsModule.forRoot({ echarts })
   ],
   providers: [
     {

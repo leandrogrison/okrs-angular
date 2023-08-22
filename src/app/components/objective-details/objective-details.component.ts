@@ -1,4 +1,3 @@
-import { async } from '@angular/core/testing';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
