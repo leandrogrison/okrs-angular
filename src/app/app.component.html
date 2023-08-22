@@ -1,6 +1,6 @@
 <mat-drawer-container autosize class="drawer-container">
 
-  <mat-drawer #drawer class="drawer-main" mode="side" [opened]="isDrawerOpen" position="end">
+  <mat-drawer #drawer class="drawer-main" mode="side" [opened]="isDrawerOpen" (keydown.escape)="closeDrawer()" position="end">
     <ng-template #drawerContent></ng-template>
     <button
       (click)="closeDrawer()"
