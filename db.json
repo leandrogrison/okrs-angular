@@ -106,7 +106,7 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "conclusionPercent": 70.33333333333333
+      "conclusionPercent": 72.66666666666667
     }
   ],
   "krs": [
@@ -131,7 +131,7 @@
         {
           "id": "8ab97329-7a96-4b48-bad8-d8a1f268d742",
           "name": "Eita 2",
-          "checked": false
+          "checked": true
         },
         {
           "id": "2bcec9fb-37eb-40f1-99de-085ab4bb42b2",
@@ -151,7 +151,7 @@
       },
       "type": "task",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 50,
+      "progress": 100,
       "tasks": [
         {
           "id": "36157f2d-0d7f-49cf-ac59-5c07036b2285",
@@ -161,7 +161,7 @@
         {
           "id": "8221421f-cb60-4a87-92b8-1e4562b577ad",
           "name": "Tarefs 2",
-          "checked": false
+          "checked": true
         }
       ]
     },
@@ -188,10 +188,13 @@
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
-      "type": "percent",
+      "type": "value",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 61,
-      "tasks": []
+      "progress": 18,
+      "tasks": [],
+      "value": 500,
+      "valued": 90,
+      "unit": "R$"
     }
   ],
   "cycles": [

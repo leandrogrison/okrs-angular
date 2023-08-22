@@ -126,6 +126,8 @@ export class KrFormComponent implements OnInit {
   saveKr() {
     if (this.formKr.invalid) return;
 
+    if (this.kr.type === 'value' && !this.krToEdit) this.kr.valued = 0;
+
     this.kr.tasks.map(task => {
       if (task.name.trim().length === 0) this.deleteTask(task);
     })

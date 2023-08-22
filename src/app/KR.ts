@@ -10,6 +10,7 @@ export interface KR {
   type: string,
   value?: number,
   unit?: string,
+  valued?: number,
   objective: string,
   percent?: number,
   progress: number,

@@ -139,13 +139,13 @@
               </mat-icon>
             </p>
             <div class="krs-list-actions">
-              <mat-slider class="krs-list-slider" [ngClass]="{'no-slider-thumb': kr.type === 'task'}">
+              <mat-slider class="krs-list-slider" [ngClass]="{'no-slider-thumb': kr.type === 'task' || kr.type === 'value'}">
                 <input
                   matSliderThumb
                   [(ngModel)]="kr.progress"
                   (mousedown)="getCurrentProgress(kr)"
                   (change)="updateProgress(kr)"
-                  [disabled]="kr.type === 'task'"
+                  [disabled]="kr.type === 'task' || kr.type === 'value'"
                   min="0"
                   max="100"
                 >
@@ -171,6 +171,30 @@
               >
                 <mat-icon>delete</mat-icon>
               </button>
+            </div>
+            <div *ngIf="kr.type === 'value' && kr.value" fxLayout fxLayoutAlign="center center" fxLayoutGap="8px">
+              <mat-form-field fxFlex="50%">
+                <mat-label>Informe um valor</mat-label>
+                <input
+                  [(ngModel)]="kr.valued"
+                  (ngModelChange)="updateValue(kr)"
+                  (focus)="getCurrentValue(kr)"
+                  name="valued"
+                  #valuedField="ngModel"
+                  mask="separator.2"
+                  thousandSeparator="."
+                  decimalMarker=","
+                  matInput
+                >
+                <mat-error *ngIf="valuedField.invalid">
+                  <span *ngIf="valuedField.errors?.['required']">Campo obrigatório</span>
+                </mat-error>
+              </mat-form-field>
+              <div fxFlex="50%">
+                Meta: <strong>{{ kr.value | mask: 'separator.2': {thousandSeparator: '.', decimalMarker: ','} }}</strong>
+                <br>
+                <small>({{ kr.unit }})</small>
+              </div>
             </div>
             <div *ngIf="kr.tasks && kr.tasks.length > 0" class="krs-list-tasks">
               <div class="krs-list-tasks-title">

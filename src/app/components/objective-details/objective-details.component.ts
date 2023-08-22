@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -32,7 +33,9 @@ export class ObjectiveDetailsComponent implements OnInit {
   krs: KR[] = [];
   oldKrProgress!: number;
   oldKrTask!: any;
+  oldValued!: number;
   loadingKrs: boolean = true;
+  delayToValued: any = null;
 
   constructor(
     public dialog: MatDialog,
@@ -107,8 +110,24 @@ export class ObjectiveDetailsComponent implements OnInit {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.getKrs();
+      if (result && result.hasOwnProperty('id')) {
+        if (result.type === 'value') {
+          this.updateOnEdit(result);
+        } else {
+          this.getKrs();
+        }
+      }
     });
+  }
+
+  async updateOnEdit(kr: KR) {
+    this.getCurrentProgress(kr);
+    kr.progress = (kr.valued ? kr.valued : 0) / (kr.value ? kr.value : 0) * 100;
+    this.krs.map((k, index) => {
+      if (k.id === kr.id) this.krs[index] = kr;
+    })
+    this.updateProgress(kr);
+    await this.getKrs();
   }
 
   deleteKr(kr: KR) {
@@ -124,6 +143,11 @@ export class ObjectiveDetailsComponent implements OnInit {
 
   getCurrentProgress(kr: KR) {
     this.oldKrProgress = kr.progress;
+  }
+
+  getCurrentValue(kr: KR) {
+    this.getCurrentProgress(kr);
+    this.oldValued = kr.valued ? kr.valued : 0;
   }
 
   restoreProgress(kr: KR, oldKrProgress: number) {
@@ -146,8 +170,16 @@ export class ObjectiveDetailsComponent implements OnInit {
     });
   }
 
+  restoreValue(kr: KR, oldValued: number) {
+    this.krs.forEach((k, index) => {
+      if (kr.id === k.id) {
+        this.krs[index].valued = oldValued;
+      }
+    });
+  }
+
   calcConclusionPercentOfObjective(): number {
-    const progressValues = this.krs.map(kr => kr.progress);
+    const progressValues = this.krs.map(kr => kr.progress > 100 ? 100 : kr.progress);
     const sumPercentOfKRs = progressValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     const conclusionPercentOfObjective = (sumPercentOfKRs / this.krs.length) || 0;
 
@@ -156,6 +188,7 @@ export class ObjectiveDetailsComponent implements OnInit {
 
   async updateProgress(kr: KR, oldTask?: any) {
     const oldKrProgress = this.oldKrProgress;
+    const oldValued = this.oldValued;
 
     this.objective.conclusionPercent = this.calcConclusionPercentOfObjective();
 
@@ -167,6 +200,9 @@ export class ObjectiveDetailsComponent implements OnInit {
             if (oldTask) {
               this.restoreTask(oldTask);
             }
+            if (kr.type === 'value') {
+              this.restoreValue(kr, oldValued);
+            }
             this.restoreProgress(kr, oldKrProgress);
             this.messagesService.show('Erro ao salvar progresso do objetivo! Tente novamente mais tarde.', 'warn');
             console.log(error);
@@ -176,6 +212,9 @@ export class ObjectiveDetailsComponent implements OnInit {
       error: (error) => {
         if (oldTask) {
           this.restoreTask(oldTask);
+        }
+        if (kr.type === 'value') {
+          this.restoreValue(kr, oldValued);
         }
         this.restoreProgress(kr, oldKrProgress);
         this.messagesService.show('Erro ao salvar progresso do KR! Tente novamente mais tarde.', 'warn');
@@ -198,5 +237,15 @@ export class ObjectiveDetailsComponent implements OnInit {
     }
 
     this.updateProgress(kr, oldKrTask);
+  }
+
+  updateValue(kr: KR) {
+    clearTimeout(this.delayToValued);
+
+    this.delayToValued = setTimeout(() => {
+      kr.progress = (kr.valued ? kr.valued : 0) / (kr.value ? kr.value : 0) * 100;
+      this.updateProgress(kr);
+    }, 500);
+
   }
 }
