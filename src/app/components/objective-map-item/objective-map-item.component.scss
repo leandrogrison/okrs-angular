@@ -1,0 +1,143 @@
+.objective {
+  max-width: 200px;
+  min-width: 200px;
+  position: relative;
+  margin: 32px auto;
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    bottom: 100%;
+    left: 50%;
+    height: 32px;
+    position: absolute;
+    border-left: 1px solid #ccc;
+  }
+  &.objective-with-children {
+    &:after {
+      bottom:unset;
+      top: 100%;
+    }
+    .objective-connections {
+      &:last-child:before {
+        right: -16px;
+        left: 50%;
+      }
+      &:first-child:after {
+        right: 50%;
+        left: -16px;
+      }
+    }
+  }
+  .objective-card {
+    box-shadow: 0 3px 9px rgba(0,0,0,.2);
+  }
+  .objective-status,
+  .objective-category {
+    font-size: 18px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    color: rgba(0, 0, 0, 0.66);
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .objective-status {
+    font-size: 13px;
+    padding: 4px 12px;
+    font-weight: 500;
+  }
+  .objective-name {
+    margin-top: 16px;
+    text-align: center;
+  }
+  .objective-graph {
+    margin: 8px 0;
+    .objective-graph-content {
+      width: 100%;
+    }
+
+    .objective-graph-conclusion-progress {
+      &.warn {
+        ::ng-deep .mdc-linear-progress__bar-inner {
+          border-color: #d32f2f;
+        }
+      }
+      &.accent {
+        ::ng-deep .mdc-linear-progress__bar-inner {
+          border-color: #ed6c02;
+        }
+      }
+      &.success {
+        ::ng-deep .mdc-linear-progress__bar-inner {
+          border-color: #2E7D32;
+        }
+      }
+    }
+
+    .objective-graph-conclusion-percent {
+      min-width: 36px;
+      font-weight: bold;
+      text-align: right;
+      &.warn {
+        color: #d32f2f;
+      }
+      &.accent {
+        color: #ed6c02;
+      }
+      &.success {
+        color: #2E7D32;
+      }
+    }
+  }
+
+  .objective-krs {
+    text-align: center;
+    display: block;
+  }
+}
+
+.objective-children {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  .objective-map-item {
+    .objective-connections {
+      &:after {
+        right: -16px;
+        left: 50%;
+      }
+    }
+    &:last-child {
+      .objective-connections {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    .objective-connections {
+      &:before {
+        right: 50%;
+        left: -16px;
+      }
+    }
+    &:first-child {
+      .objective-connections {
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+  .objective-connections {
+    &:after,
+    &:before {
+      content: "";
+      display: block;
+      top: -32px;
+      position: absolute;
+      border-top: 1px solid #ccc;
+    }
+  }
+}

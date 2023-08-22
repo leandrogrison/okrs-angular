@@ -107,6 +107,83 @@
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
       "conclusionPercent": 68.75
+    },
+    {
+      "id": "3be02eb5-384d-49ba-8117-082c701976dd",
+      "name": "Objetivo 2",
+      "description": "",
+      "category": {
+        "id": 0,
+        "name": "Objetivo da empresa"
+      },
+      "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "supporters": [
+        0,
+        2
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-22T15:28:11.387Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0
+    },
+    {
+      "id": "7484a83f-a4d2-4210-ab42-97d21edb8cc7",
+      "name": "Objetivo 1 - 2",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-22T19:20:29.834Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "053e3d54-3536-4196-bc2e-3e928718881d"
+    },
+    {
+      "id": "741df46d-5cc0-4316-b940-4f3f042988eb",
+      "name": "Objetivo 1 - 3",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-22T21:04:25.043Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "053e3d54-3536-4196-bc2e-3e928718881d"
     }
   ],
   "krs": [

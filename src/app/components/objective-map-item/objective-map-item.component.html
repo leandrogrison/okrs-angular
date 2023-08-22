@@ -1,0 +1,58 @@
+<div class="objective" [ngClass]="{'objective-with-children': objective.children && objective.children.length > 0}">
+  <div class="objective-connections">
+    <mat-card class="objective-card">
+      <mat-card-content>
+
+        <div fxLayout fxLayoutGap="8px" fxLayoutAlign="center">
+          <mat-icon [matTooltip]="objective.category!.name" matTooltipPosition="above" class="objective-category">
+            {{ objective.category | IconCategory }}
+          </mat-icon>
+          <div class="objective-status">{{objective.finished ? 'Finalizado' : 'Em aberto'}}</div>
+          <div class="objective-owner" [matTooltip]="objective.owner!.name" matTooltipPosition="above" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+            <img
+              *ngIf="objective.owner!.photo; else noPhoto"
+              [src]="objective.owner!.photo"
+              [alt]="objective.owner!.name"
+              class="user-photo user-photo-xs"
+            />
+            <ng-template #noPhoto>
+              <mat-icon class="user-photo user-photo-xs">person</mat-icon>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="objective-name">{{ objective.name }}</div>
+
+        <div class="objective-graph" fxFlexAlign="center center" fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+          <div class="objective-graph-content" fxLayout="column" fxLayoutGap="8px">
+            <mat-progress-bar
+              mode="determinate"
+              [value]="objective.conclusionPercent ? objective.conclusionPercent : 0"
+              [ngClass]="getProgressStatus(objective) | ColorProgress"
+              class="objective-graph-conclusion-progress"
+            />
+          </div>
+          <div
+            [ngClass]="getProgressStatus(objective) | ColorProgress"
+            class="objective-graph-conclusion-percent"
+          >
+            {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
+          </div>
+        </div>
+        <small class="objective-krs">
+          Nenhum KR cadastrado
+        </small>
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="objective.children && objective.children.length > 0" class="objective-children">
+  <app-objective-map-item
+    [objective]="objective"
+    *ngFor="let objective of objective.children; trackBy: trackByObjective"
+    class="objective-map-item"
+  />
+</div>

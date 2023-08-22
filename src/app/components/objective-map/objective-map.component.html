@@ -1,0 +1,29 @@
+<div class="map">
+
+  <!-- <div class="map-header">
+    <div class="map-header-actions">
+      <button mat-icon-button aria-label="Diminuir zoom" matTooltip="Diminuir zoom" matTooltipPosition="above">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <div class="map-zoom" matTooltip="Ajustar zoom para 100%" matTooltipPosition="above">{{ zoomFactor }}%</div>
+      <button mat-icon-button aria-label="Aumentar zoom" matTooltip="Aumentar zoom" matTooltipPosition="above">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-divider [vertical]="true" />
+      <button mat-icon-button aria-label="Fechar todos" matTooltip="Fechar todos" matTooltipPosition="above">
+        <mat-icon>unfold_less</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Abrir todos" matTooltip="Abrir todos" matTooltipPosition="above">
+        <mat-icon>unfold_more</mat-icon>
+      </button>
+    </div>
+  </div> -->
+
+  <div class="map-container">
+    <app-objective-map-item
+      [objective]="objective"
+      *ngFor="let objective of objectives; trackBy: trackByObjective"
+      class="map-root"
+    />
+  </div>
+</div>

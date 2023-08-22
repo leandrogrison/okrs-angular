@@ -40,6 +40,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -67,6 +68,8 @@ import { KrFormComponent } from './components/kr-form/kr-form.component';
 import { EditKrComponent } from './components/edit-kr/edit-kr.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 import { DeleteKrComponent } from './components/delete-kr/delete-kr.component';
+import { ObjectiveMapComponent } from './components/objective-map/objective-map.component';
+import { ObjectiveMapItemComponent } from './components/objective-map-item/objective-map-item.component';
 
 registerLocaleData(localePt);
 
@@ -97,7 +100,9 @@ registerLocaleData(localePt);
     KrFormComponent,
     EditKrComponent,
     DeleteTaskComponent,
-    DeleteKrComponent
+    DeleteKrComponent,
+    ObjectiveMapComponent,
+    ObjectiveMapItemComponent
   ],
   imports: [
     BrowserModule,
@@ -132,7 +137,8 @@ registerLocaleData(localePt);
     NgxMaskPipe,
     DragDropModule,
     MatSliderModule,
-    NgxEchartsModule.forRoot({ echarts })
+    NgxEchartsModule.forRoot({ echarts }),
+    MatCardModule
   ],
   providers: [
     {

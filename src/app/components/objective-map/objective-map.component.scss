@@ -1,0 +1,54 @@
+.map {
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: #eee;
+  padding: 8px;
+  position: relative;
+  z-index: 2;
+  .map-header-actions {
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+    background-color: #fff;
+    padding: 0 4px;
+    .map-zoom {
+      padding: 0 4px;
+      cursor: pointer;
+    }
+    .mdc-icon-button {
+      transform: scale(0.84);
+      margin: 0 -4px;
+    }
+    .mat-divider {
+      height: 32px;
+      margin: 0 4px;
+    }
+  }
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px;
+  .map-root {
+    ::ng-deep > .objective {
+      margin-top: 16px;
+      &:before {
+        display: none;
+      }
+      &:not(.objective-with-children) {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}

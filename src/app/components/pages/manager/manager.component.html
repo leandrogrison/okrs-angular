@@ -19,7 +19,7 @@
 
   <mat-divider [vertical]="true" />
 
-  <div fxFlex>
+  <div fxFlex class="manager-content">
 
     <div class="search-field">
       <mat-form-field class="search-field-container">
@@ -42,38 +42,55 @@
       </mat-form-field>
     </div>
 
-    <mat-tab-group animationDuration="0ms" mat-stretch-tabs="false">
+    <mat-tab-group animationDuration="0ms" mat-stretch-tabs="false" [selectedIndex]="1">
 
-      <mat-tab label="OBJETIVOS">
+        <mat-tab label="OBJETIVOS">
 
-        <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
 
-        <div
-          *ngIf="loadingObjectives, else noLoading"
-          fxLayout
-          fxLayoutAlign="center center"
-          style="margin: 40px 0;"
-        >
-          <mat-spinner diameter="40"></mat-spinner>
-        </div>
-        <ng-template #noLoading>
-          <app-objective-list
-            *ngIf="objectives.length > 0, else noObjectives"
-            [objectives]="objectives"
-            (updateObjectives)="getObjectives(this.filter)"
-            class="objectives-list"
-          />
-          <ng-template #noObjectives>
-            <div class="no-result">
-              <mat-icon>error_outline</mat-icon>
-              Nenhum objetivo cadastrado.
-            </div>
+          <div *ngIf="loadingObjectives, else noLoadingList" class="loading">
+            <mat-spinner diameter="40"></mat-spinner>
+          </div>
+          <ng-template #noLoadingList>
+
+            <app-objective-list
+              *ngIf="objectives.length > 0, else noObjectives"
+              [objectives]="objectives"
+              (updateObjectives)="getObjectives(this.filter)"
+              class="objectives-list"
+            />
+
           </ng-template>
+
+        </mat-tab>
+
+        <mat-tab label="MAPA ESTRATÉGICO">
+
+          <mat-divider></mat-divider>
+
+          <div *ngIf="loadingObjectives, else noLoadingMap" class="loading">
+            <mat-spinner diameter="40"></mat-spinner>
+          </div>
+          <ng-template #noLoadingMap>
+
+            <app-objective-map
+              *ngIf="objectives.length > 0, else noObjectives"
+              [objectives]="objectives"
+              (updateObjectives)="getObjectives(this.filter)"
+              class="objectives-map"
+            />
+
+          </ng-template>
+
+        </mat-tab>
+
+        <ng-template #noObjectives>
+          <div class="no-result">
+            <mat-icon>error_outline</mat-icon>
+            Nenhum objetivo cadastrado.
+          </div>
         </ng-template>
 
-      </mat-tab>
-
-      <!-- <mat-tab label="MAPA ESTRATÉGICO">Mapa estratégico</mat-tab> -->
 
     </mat-tab-group>
 

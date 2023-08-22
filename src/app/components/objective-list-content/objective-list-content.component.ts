@@ -29,10 +29,6 @@ export class ObjectiveListContentComponent implements OnInit {
     if (expanded === 'true' && this.objective.children) {
       this.expandedItem = true;
     }
-
-    setTimeout(() => {
-      this.openDetails(this.objective);
-    }, 200);
   }
 
   constructor(
