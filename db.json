@@ -51,7 +51,9 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 90
+      "conclusionPercent": 60.666666666666664,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 0
     },
     {
       "id": "de617d3a-f94c-4eb1-b905-146239b222ce",
@@ -77,7 +79,8 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 22.6
+      "conclusionPercent": 0,
+      "numberOfKRs": 1
     },
     {
       "id": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
@@ -106,7 +109,8 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "conclusionPercent": 68.75
+      "conclusionPercent": 68.75,
+      "numberOfKRs": 3
     },
     {
       "id": "3be02eb5-384d-49ba-8117-082c701976dd",
@@ -184,6 +188,36 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "053e3d54-3536-4196-bc2e-3e928718881d"
+    },
+    {
+      "id": "00186fe4-9fe1-467c-9a75-cfd70c2b93fc",
+      "name": "Objetivo 1 - 4",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [
+        2
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-23T13:28:01.736Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
+      "conclusionPercent": 55,
+      "numberOfKRs": 1,
+      "numberOfKRsCompleted": 0
     }
   ],
   "krs": [
@@ -243,20 +277,6 @@
       ]
     },
     {
-      "id": "c4ae9a50-9354-485d-ba4a-93df51eb31e0",
-      "name": "Teste de outro objetivo",
-      "description": "supimpasso",
-      "owner": {
-        "id": 1,
-        "name": "Maurício Ribeiro Andrade",
-        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
-      },
-      "type": "percent",
-      "objective": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "progress": 0,
-      "tasks": []
-    },
-    {
       "id": "f4fd85ab-5522-4c4c-ac50-96e603f52518",
       "name": "mais um kr de teste e que deve ser grande para testar a bagaça",
       "description": "",
@@ -272,6 +292,76 @@
       "value": 500,
       "valued": 90,
       "unit": "R$"
+    },
+    {
+      "id": "08802f13-2f82-4d95-8b41-e95fa748239e",
+      "name": "Kr 1",
+      "description": "",
+      "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "type": "percent",
+      "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
+      "progress": 72,
+      "tasks": []
+    },
+    {
+      "id": "a0b22ea3-696d-4384-bab9-449a7961863f",
+      "name": "Kr 2",
+      "description": "",
+      "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "type": "percent",
+      "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
+      "progress": 78,
+      "tasks": []
+    },
+    {
+      "id": "0b981522-21a8-4c27-92c2-af18c87ef831",
+      "name": "kr 3",
+      "description": "",
+      "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "type": "percent",
+      "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
+      "progress": 32,
+      "tasks": []
+    },
+    {
+      "id": "d56b63a9-88ae-425a-ac4b-1607b7e0b659",
+      "name": "kr 1",
+      "description": "",
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "type": "percent",
+      "objective": "00186fe4-9fe1-467c-9a75-cfd70c2b93fc",
+      "progress": 55,
+      "tasks": []
+    },
+    {
+      "id": "ea271e1c-9126-4ba9-9ff9-7b025a399f00",
+      "name": "kr 1",
+      "description": "",
+      "owner": {
+        "id": 0,
+        "name": "Luiz Albuquerque",
+        "photo": null
+      },
+      "type": "percent",
+      "objective": "de617d3a-f94c-4eb1-b905-146239b222ce",
+      "progress": 0,
+      "tasks": []
     }
   ],
   "cycles": [

@@ -93,7 +93,10 @@ export class ObjectiveDetailsComponent implements OnInit {
 
   createKR(objective: Objective) {
     this.dialog.open(CreateKrComponent, {
-      data: { objective: objective },
+      data: {
+        objective: objective,
+        krs: this.krs
+      },
       maxWidth: 900,
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
@@ -131,7 +134,11 @@ export class ObjectiveDetailsComponent implements OnInit {
 
   deleteKr(kr: KR) {
     this.dialog.open(DeleteKrComponent, {
-      data: { kr: kr },
+      data: {
+        kr: kr,
+        krs: this.krs,
+        objective: this.objective
+      },
       maxWidth: 420,
       minWidth: 320,
       panelClass: 'dialog-alert'
@@ -188,12 +195,18 @@ export class ObjectiveDetailsComponent implements OnInit {
   async updateProgress(kr: KR, oldTask?: any) {
     const oldKrProgress = this.oldKrProgress;
     const oldValued = this.oldValued;
+    const oldNumberOfKRsCompleted = this.objective.numberOfKRsCompleted;
 
     this.objective.conclusionPercent = this.calcConclusionPercentOfObjective();
+    this.objective.numberOfKRsCompleted = this.krs.filter(kr => kr.progress >= 100).length;
+
+    let objectiveToSave: Objective = JSON.parse(JSON.stringify(this.objective));
+
+    if (objectiveToSave.children) delete objectiveToSave.children;
 
     await this.krsService.updateKr(kr).subscribe({
       next: () => {
-        this.objectivesService.updateObjective(this.objective).subscribe({
+        this.objectivesService.updateObjective(objectiveToSave).subscribe({
           next: () => {},
           error: (error) => {
             if (oldTask) {
@@ -203,6 +216,7 @@ export class ObjectiveDetailsComponent implements OnInit {
               this.restoreValue(kr, oldValued);
             }
             this.restoreProgress(kr, oldKrProgress);
+            this.objective.numberOfKRsCompleted = oldNumberOfKRsCompleted;
             this.messagesService.show('Erro ao salvar progresso do objetivo! Tente novamente mais tarde.', 'warn');
             console.log(error);
           }

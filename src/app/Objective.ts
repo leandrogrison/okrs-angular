@@ -25,5 +25,6 @@ export interface Objective {
   finished: number,
   conclusionPercent?: number,
   numberOfKRs?: number,
+  numberOfKRsCompleted?: number,
   children?: any
 }

@@ -77,7 +77,9 @@ export class ObjectiveFormComponent implements OnInit {
         startDate: this.objectiveToEdit.startDate,
         deadline: this.objectiveToEdit.deadline,
         finished: this.objectiveToEdit.finished,
-        associate: this.objectiveToEdit.associate
+        associate: this.objectiveToEdit.associate,
+        numberOfKRs: this.objectiveToEdit.numberOfKRs,
+        numberOfKRsCompleted: this.objectiveToEdit.numberOfKRsCompleted
       }
     }
 

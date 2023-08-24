@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div class="objective-graph" fxFlexAlign="center center" fxLayout fxLayoutAlign="start center" fxLayoutGap="16px">
+  <div class="objective-graph" fxFlexAlign="center center" fxLayout fxLayoutAlign="start center" fxLayoutGap="8px">
     <div class="objective-graph-content" fxLayout="column" fxLayoutGap="8px">
       <small [matTooltip]="'Prazo: ' + (objective.deadline | date: 'dd/MM/yyyy')" matTooltipPosition="above">
         Restam {{ daysToEnd(objective.deadline) }} dias
@@ -66,9 +66,14 @@
         [ngClass]="getProgressStatus(objective) | ColorProgress"
         class="objective-graph-conclusion-progress"
       />
-      <small>
-        Nenhum KR cadastrado
+      <small *ngIf="objective.numberOfKRs && objective.numberOfKRs > 0; else noKrs">
+        {{ objective.numberOfKRsCompleted ? objective.numberOfKRsCompleted : 0 }} de
+        {{ objective.numberOfKRs }} KR{{objective.numberOfKRs > 1 ? 's' : ''}}
+        completo{{objective.numberOfKRs > 1 ? 's' : ''}}
       </small>
+      <ng-template #noKrs>
+        <small>Nenhum KR cadastrado</small>
+      </ng-template>
     </div>
     <div
       [ngClass]="getProgressStatus(objective) | ColorProgress"
