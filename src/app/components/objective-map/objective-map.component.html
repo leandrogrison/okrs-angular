@@ -1,13 +1,19 @@
-<div class="map">
+<div class="map" #mapRoot>
 
-  <!-- <div class="map-header">
+  <div #mapHeader class="map-header">
     <div class="map-header-actions">
-      <button mat-icon-button aria-label="Diminuir zoom" matTooltip="Diminuir zoom" matTooltipPosition="above">
+      <button (click)="zoomOut()" mat-icon-button aria-label="Diminuir zoom" matTooltip="Diminuir zoom" matTooltipPosition="above">
         <mat-icon>remove</mat-icon>
       </button>
-      <div class="map-zoom" matTooltip="Ajustar zoom para 100%" matTooltipPosition="above">{{ zoomFactor }}%</div>
-      <button mat-icon-button aria-label="Aumentar zoom" matTooltip="Aumentar zoom" matTooltipPosition="above">
+      <div (click)="zoomDefault()" class="map-zoom" matTooltip="Ajustar zoom para 100%" matTooltipPosition="above">
+        {{ zoomFactor | percent }}
+      </div>
+      <button (click)="zoomIn()" mat-icon-button aria-label="Aumentar zoom" matTooltip="Aumentar zoom" matTooltipPosition="above">
         <mat-icon>add</mat-icon>
+      </button>
+      <mat-divider [vertical]="true" />
+      <button (click)="zoomFit()" mat-icon-button aria-label="Ajustar zoom para encaixar na tela" matTooltip="Ajustar zoom para encaixar na tela" matTooltipPosition="above">
+        <mat-icon>aspect_ratio</mat-icon>
       </button>
       <mat-divider [vertical]="true" />
       <button mat-icon-button aria-label="Fechar todos" matTooltip="Fechar todos" matTooltipPosition="above">
@@ -17,13 +23,26 @@
         <mat-icon>unfold_more</mat-icon>
       </button>
     </div>
-  </div> -->
+  </div>
 
-  <div class="map-container">
+  <div
+    #mapContainer
+    class="map-container"
+    [style.transform]="'scale(' + zoomFactor + ') translateX(' + translateX + 'px)'"
+    [style.marginBottom.px]="marginBottomMap"
+    [class.block-actions]="isMoving"
+    [class.map-container-animation]="!isMoving"
+    (mousedown)="setMouseMoving(true)"
+    (mouseup)="setMouseMoving(false)"
+    (mouseleave)="setMouseMoving(false)"
+    (mouseenter)="setMouseMoving(false)"
+    (mousemove)="moveMap($event)"
+  >
     <app-objective-map-item
+      #mapFirstLevel
       [objective]="objective"
       *ngFor="let objective of objectives; trackBy: trackByObjective"
-      class="map-root"
+      class="map-first-level"
     />
   </div>
 </div>

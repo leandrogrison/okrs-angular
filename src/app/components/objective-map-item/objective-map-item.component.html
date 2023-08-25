@@ -1,7 +1,7 @@
 <div class="objective" [ngClass]="{'objective-with-children': objective.children && objective.children.length > 0}">
   <div class="objective-connections">
     <mat-card class="objective-card">
-      <mat-card-content>
+      <mat-card-content class="objective-card-content">
 
         <div fxLayout fxLayoutGap="8px" fxLayoutAlign="center">
           <mat-icon [matTooltip]="objective.category!.name" matTooltipPosition="above" class="objective-category">
@@ -39,9 +39,16 @@
             {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
           </div>
         </div>
-        <small class="objective-krs">
-          Nenhum KR cadastrado
-        </small>
+        <div class="objective-krs">
+          <small *ngIf="objective.numberOfKRs && objective.numberOfKRs > 0; else noKrs">
+            {{ objective.numberOfKRsCompleted ? objective.numberOfKRsCompleted : 0 }} de
+            {{ objective.numberOfKRs }} KR{{objective.numberOfKRs > 1 ? 's' : ''}}
+            completo{{objective.numberOfKRs > 1 ? 's' : ''}}
+          </small>
+          <ng-template #noKrs>
+            <small>Nenhum KR cadastrado</small>
+          </ng-template>
+        </div>
 
 
       </mat-card-content>

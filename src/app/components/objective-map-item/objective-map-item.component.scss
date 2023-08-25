@@ -1,22 +1,15 @@
 .objective {
   max-width: 200px;
   min-width: 200px;
-  position: relative;
   margin: 32px auto;
-  &:after,
-  &:before {
-    content: "";
-    display: block;
-    bottom: 100%;
-    left: 50%;
-    height: 32px;
-    position: absolute;
-    border-left: 1px solid #ccc;
-  }
   &.objective-with-children {
-    &:after {
-      bottom:unset;
-      top: 100%;
+    .objective-card {
+      .objective-card-content {
+        &:after {
+          bottom:unset;
+          top: 100%;
+        }
+      }
     }
     .objective-connections {
       &:last-child:before {
@@ -31,6 +24,18 @@
   }
   .objective-card {
     box-shadow: 0 3px 9px rgba(0,0,0,.2);
+    .objective-card-content {
+      &:after,
+      &:before {
+        content: "";
+        display: block;
+        bottom: 100%;
+        left: 50%;
+        height: 32px;
+        position: absolute;
+        border-left: 1px solid #ccc;
+      }
+    }
   }
   .objective-status,
   .objective-category {
@@ -103,6 +108,7 @@
   justify-content: center;
   gap: 32px;
   .objective-map-item {
+    position: relative;
     .objective-connections {
       &:after {
         right: -16px;
@@ -135,7 +141,7 @@
     &:before {
       content: "";
       display: block;
-      top: -32px;
+      top: 0;
       position: absolute;
       border-top: 1px solid #ccc;
     }

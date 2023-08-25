@@ -51,7 +51,7 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 60.666666666666664,
+      "conclusionPercent": 67.33333333333333,
       "numberOfKRs": 3,
       "numberOfKRsCompleted": 0
     },
@@ -215,9 +215,109 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 55,
+      "conclusionPercent": 50,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
+    },
+    {
+      "id": "73197e76-4cef-494a-a9ed-61aaa6dbf0ff",
+      "name": "Objetivo 1 - 3 - 1",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": {
+        "id": 0,
+        "name": "Luiz Albuquerque",
+        "photo": null
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-24T12:06:23.200Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "741df46d-5cc0-4316-b940-4f3f042988eb"
+    },
+    {
+      "id": "c3f0ffd9-4841-47e9-b4a3-367fa6c957e6",
+      "name": "Objetivo 1 - 3 - 2",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-24T12:06:55.349Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "741df46d-5cc0-4316-b940-4f3f042988eb"
+    },
+    {
+      "id": "c5d1dce2-fbf7-4c16-bd10-d1261b9f1e0e",
+      "name": "Objetivo 1 - 3 - 1 - 1",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-08-24T13:27:58.081Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "73197e76-4cef-494a-a9ed-61aaa6dbf0ff"
+    },
+    {
+      "id": "70f4cdb5-22ab-4a8d-92de-9e5f4e371f32",
+      "name": "Ciclo 4 - 1",
+      "description": "",
+      "category": {
+        "id": 0,
+        "name": "Objetivo da empresa"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q4",
+        "name": "4° Trimestre 2023"
+      },
+      "createdAt": "2023-08-25T13:38:30.349Z",
+      "startDate": "2023-10-01",
+      "deadline": "2023-12-31",
+      "finished": 0,
+      "associate": "95b383f3-aca3-43dd-b8e3-dc305d462abf"
     }
   ],
   "krs": [
@@ -304,7 +404,7 @@
       },
       "type": "percent",
       "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 72,
+      "progress": 92,
       "tasks": []
     },
     {
@@ -336,20 +436,6 @@
       "tasks": []
     },
     {
-      "id": "d56b63a9-88ae-425a-ac4b-1607b7e0b659",
-      "name": "kr 1",
-      "description": "",
-      "owner": {
-        "id": 1,
-        "name": "Maurício Ribeiro Andrade",
-        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
-      },
-      "type": "percent",
-      "objective": "00186fe4-9fe1-467c-9a75-cfd70c2b93fc",
-      "progress": 55,
-      "tasks": []
-    },
-    {
       "id": "ea271e1c-9126-4ba9-9ff9-7b025a399f00",
       "name": "kr 1",
       "description": "",
@@ -361,6 +447,20 @@
       "type": "percent",
       "objective": "de617d3a-f94c-4eb1-b905-146239b222ce",
       "progress": 0,
+      "tasks": []
+    },
+    {
+      "id": "65700957-193d-4187-88dc-d6aee1a339cd",
+      "name": "teste",
+      "description": "",
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "type": "percent",
+      "objective": "00186fe4-9fe1-467c-9a75-cfd70c2b93fc",
+      "progress": 50,
       "tasks": []
     }
   ],

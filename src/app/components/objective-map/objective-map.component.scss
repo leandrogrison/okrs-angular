@@ -1,6 +1,8 @@
 .map {
   max-width: 100%;
   width: 100%;
+  padding-top: 64px;
+  min-height: calc(100vh - 64px);
   overflow: hidden;
 }
 
@@ -10,8 +12,12 @@
   justify-content: flex-end;
   background: #eee;
   padding: 8px;
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
   z-index: 2;
+  user-select: none;
   .map-header-actions {
     display: flex;
     align-items: center;
@@ -19,7 +25,8 @@
     background-color: #fff;
     padding: 0 4px;
     .map-zoom {
-      padding: 0 4px;
+      width: 48px;
+      text-align: center;
       cursor: pointer;
     }
     .mdc-icon-button {
@@ -38,15 +45,36 @@
   justify-content: center;
   gap: 32px;
   padding: 16px;
-  .map-root {
+  transform: scale(1);
+  transform-origin: top;
+  margin: 0 auto;
+  position: relative;
+  user-select: none;
+  &.map-container-animation {
+    transition: .2s;
+  }
+  &.block-actions {
+    ::ng-deep .objective {
+      pointer-events: none;
+    }
+  }
+  .map-first-level {
     ::ng-deep > .objective {
       margin-top: 16px;
-      &:before {
-        display: none;
+      .objective-card {
+        .objective-card-content {
+          &:before {
+            display: none;
+          }
+        }
       }
       &:not(.objective-with-children) {
-        &:after {
-          display: none;
+        .objective-card {
+          .objective-card-content {
+            &:after {
+              display: none;
+            }
+          }
         }
       }
     }
