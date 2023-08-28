@@ -1,6 +1,6 @@
 .objective {
-  max-width: 200px;
-  min-width: 200px;
+  max-width: 240px;
+  min-width: 240px;
   margin: 32px auto;
   &.objective-with-children {
     .objective-card {
@@ -100,6 +100,18 @@
   .objective-krs {
     text-align: center;
     display: block;
+  }
+
+  .objective-label-children {
+    .objective-button-children {
+      pointer-events: all;
+      margin-top: 16px;
+      width: 100%;
+      .objective-button-icon-right {
+        order: 1;
+        margin: 0 -4px 0 8px;
+      }
+    }
   }
 }
 

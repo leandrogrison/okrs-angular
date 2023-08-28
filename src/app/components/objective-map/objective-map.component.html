@@ -16,10 +16,10 @@
         <mat-icon>aspect_ratio</mat-icon>
       </button>
       <mat-divider [vertical]="true" />
-      <button mat-icon-button aria-label="Fechar todos" matTooltip="Fechar todos" matTooltipPosition="above">
+      <button (click)="expandAll(false)" mat-icon-button aria-label="Fechar todos" matTooltip="Fechar todos" matTooltipPosition="above">
         <mat-icon>unfold_less</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Abrir todos" matTooltip="Abrir todos" matTooltipPosition="above">
+      <button (click)="expandAll(true)" mat-icon-button aria-label="Abrir todos" matTooltip="Abrir todos" matTooltipPosition="above">
         <mat-icon>unfold_more</mat-icon>
       </button>
     </div>
@@ -33,7 +33,7 @@
     [class.block-actions]="isMoving"
     [class.map-container-animation]="!isMoving"
     (mousedown)="setMouseMoving(true)"
-    (mouseup)="setMouseMoving(false)"
+    (mouseup)="setMouseMoving(false);"
     (mouseleave)="setMouseMoving(false)"
     (mouseenter)="setMouseMoving(false)"
     (mousemove)="moveMap($event)"

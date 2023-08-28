@@ -2,6 +2,8 @@ import { Component, Input, OnInit, ViewChild, ViewChildren, ElementRef, QueryLis
 
 import { Objective } from 'src/app/Objective';
 
+import { ExpandAllService } from 'src/app/services/expand-all.service';
+
 @Component({
   selector: 'app-objective-map',
   templateUrl: './objective-map.component.html',
@@ -22,7 +24,7 @@ export class ObjectiveMapComponent implements OnInit {
   isMoving: boolean = false;
   controlPressed: boolean = false;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private expandAllService: ExpandAllService) {}
 
   @HostListener('mousewheel', ['$event'])
   zoomScroll(event: any) {
@@ -105,17 +107,19 @@ export class ObjectiveMapComponent implements OnInit {
     const widthMapRoot = this.mapRoot.nativeElement.offsetWidth;
     const heightMap = this.map.nativeElement.offsetHeight;
     const heightArea = window.innerHeight - this.map.nativeElement.getBoundingClientRect().top;
+    const gapBetweenObjectives = 32;
+    const maxZoomFactor = 3;
     let widthMap = 0;
 
     this.mapFirstLevel.map(obj => {
-      widthMap += obj.nativeElement.offsetWidth + 32; // 32 corresponde ao gap entre os objetivos
+      widthMap += obj.nativeElement.offsetWidth + gapBetweenObjectives;
     })
 
     const percentToAdjustWidth = Math.floor(widthMapRoot / widthMap * 10) / 10;
     const percentToAdjustHeight = Math.floor(heightArea / heightMap * 10) / 10;
     const percentToAdjustZoom = Math.min(percentToAdjustWidth, percentToAdjustHeight);
 
-    this.zoomFactor = percentToAdjustZoom > 3 ? 3 : percentToAdjustZoom; // 3 é o fator máximo de zoom
+    this.zoomFactor = percentToAdjustZoom > maxZoomFactor ? maxZoomFactor : percentToAdjustZoom;
     this.getMarginByZoom();
     setTimeout(() => {
       this.verifyCenterOfMap();
@@ -168,5 +172,11 @@ export class ObjectiveMapComponent implements OnInit {
 
   }
 
+  expandAll(action: boolean) {
+    this.expandAllService.expandAll(action);
 
+    setTimeout(() => {
+      this.verifyCenterOfMap();
+    }, 200);
+  }
 }

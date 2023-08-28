@@ -1,4 +1,4 @@
-<div class="objective" [ngClass]="{'objective-with-children': objective.children && objective.children.length > 0}">
+<div class="objective" [ngClass]="{'objective-with-children': objective.children && expandedItem}">
   <div class="objective-connections">
     <mat-card class="objective-card">
       <mat-card-content class="objective-card-content">
@@ -39,6 +39,7 @@
             {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
           </div>
         </div>
+
         <div class="objective-krs">
           <small *ngIf="objective.numberOfKRs && objective.numberOfKRs > 0; else noKrs">
             {{ objective.numberOfKRsCompleted ? objective.numberOfKRsCompleted : 0 }} de
@@ -50,13 +51,26 @@
           </ng-template>
         </div>
 
+        <div *ngIf="objective.children" class="objective-label-children">
+          <button
+            (mousedown)="expandClicked($event)"
+            (mouseup)="expandItem(objective, $event)"
+            mat-stroked-button
+            color="primary"
+            class="objective-button-children"
+          >
+            <mat-icon class="objective-button-icon-left">{{ expandedItem ? 'expand_more' : 'expand_less'}}</mat-icon>
+            <div>{{ objective.children.length }} objetivo{{objective.children.length > 1 ? 's' : ''}}</div>
+            <mat-icon class="objective-button-icon-right">{{ expandedItem ? 'expand_more' : 'expand_less'}}</mat-icon>
+          </button>
+        </div>
 
       </mat-card-content>
     </mat-card>
   </div>
 </div>
 
-<div *ngIf="objective.children && objective.children.length > 0" class="objective-children">
+<div *ngIf="objective.children && expandedItem" class="objective-children">
   <app-objective-map-item
     [objective]="objective"
     *ngFor="let objective of objective.children; trackBy: trackByObjective"
