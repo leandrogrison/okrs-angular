@@ -53,7 +53,7 @@
 
         <div *ngIf="objective.children" class="objective-label-children">
           <button
-            (mousedown)="expandClicked($event)"
+            (mousedown)="clickedOnly($event)"
             (mouseup)="expandItem(objective, $event)"
             mat-stroked-button
             color="primary"
@@ -66,6 +66,44 @@
         </div>
 
       </mat-card-content>
+      <div class="objective-actions">
+        <button
+          (mousedown)="clickedOnly($event)"
+          (mouseup)="openDetails(objective, $event)"
+          mat-mini-fab
+          aria-label="Mais detalhes"
+          color="primary"
+          matTooltip="Mais detalhes"
+          matTooltipPosition="above"
+          class="objective-actions-buttons"
+        >
+          <mat-icon>info</mat-icon>
+        </button>
+        <button
+          (mousedown)="clickedOnly($event)"
+          (mouseup)="openEditObjective(objective, $event)"
+          mat-mini-fab
+          aria-label="Editar objetivo"
+          color="primary"
+          matTooltip="Editar objetivo"
+          matTooltipPosition="above"
+          class="objective-actions-buttons"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          (mousedown)="clickedOnly($event)"
+          (mouseup)="deleteObjective(objective, $event)"
+          mat-mini-fab
+          aria-label="Excluir objetivo"
+          color="warn"
+          matTooltip="Excluir objetivo"
+          matTooltipPosition="above"
+          class="objective-actions-buttons"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </mat-card>
   </div>
 </div>
@@ -73,6 +111,7 @@
 <div *ngIf="objective.children && expandedItem" class="objective-children">
   <app-objective-map-item
     [objective]="objective"
+    (updateObjectives)="updateObjectives.emit()"
     *ngFor="let objective of objective.children; trackBy: trackByObjective"
     class="objective-map-item"
   />

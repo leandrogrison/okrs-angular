@@ -22,9 +22,18 @@
       }
     }
   }
+
   .objective-card {
     box-shadow: 0 3px 9px rgba(0,0,0,.2);
+    &:hover {
+      .objective-actions {
+        .objective-actions-buttons {
+          transform: translateY(0);
+        }
+      }
+    }
     .objective-card-content {
+      padding-bottom: 16px;
       &:after,
       &:before {
         content: "";
@@ -34,6 +43,22 @@
         height: 32px;
         position: absolute;
         border-left: 1px solid #ccc;
+      }
+    }
+    .objective-actions {
+      position: absolute;
+      z-index: 2;
+      top: 100%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 10px 0;
+      gap: 8px;
+      overflow: hidden;
+      .objective-actions-buttons {
+        pointer-events: all;
+        transition: .2s .2s;
+        transform: translateY(-60px);
       }
     }
   }

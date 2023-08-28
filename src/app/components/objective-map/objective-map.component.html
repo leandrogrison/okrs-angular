@@ -41,6 +41,7 @@
     <app-objective-map-item
       #mapFirstLevel
       [objective]="objective"
+      (updateObjectives)="handleUpdateObjectives()"
       *ngFor="let objective of objectives; trackBy: trackByObjective"
       class="map-first-level"
     />

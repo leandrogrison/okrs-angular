@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, HostListener, Renderer2 } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, HostListener, Renderer2 } from '@angular/core';
 
 import { Objective } from 'src/app/Objective';
 
@@ -12,6 +12,7 @@ import { ExpandAllService } from 'src/app/services/expand-all.service';
 export class ObjectiveMapComponent implements OnInit {
 
   @Input() objectives!: Objective[];
+  @Output() updateObjectives = new EventEmitter();
 
   @ViewChild('mapContainer') map!: ElementRef;
   @ViewChild('mapRoot') mapRoot!: ElementRef;
@@ -178,5 +179,9 @@ export class ObjectiveMapComponent implements OnInit {
     setTimeout(() => {
       this.verifyCenterOfMap();
     }, 200);
+  }
+
+  handleUpdateObjectives() {
+    this.updateObjectives.emit();
   }
 }

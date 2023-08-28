@@ -51,7 +51,6 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 67.33333333333333,
       "numberOfKRs": 3,
       "numberOfKRsCompleted": 0
     },
@@ -79,8 +78,8 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 0,
-      "numberOfKRs": 1
+      "numberOfKRs": 1,
+      "numberOfKRsCompleted": 0
     },
     {
       "id": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
@@ -109,7 +108,6 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "conclusionPercent": 68.75,
       "numberOfKRs": 3
     },
     {
@@ -442,7 +440,7 @@
       },
       "type": "percent",
       "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 78,
+      "progress": 94,
       "tasks": []
     },
     {
@@ -470,7 +468,7 @@
       },
       "type": "percent",
       "objective": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "progress": 0,
+      "progress": 31,
       "tasks": []
     },
     {
