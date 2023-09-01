@@ -12,6 +12,7 @@ import { ExpandAllService } from 'src/app/services/expand-all.service';
 export class ObjectiveMapComponent implements OnInit {
 
   @Input() objectives!: Objective[];
+  @Input() objectivesInBackground!: Objective[];
   @Output() updateObjectives = new EventEmitter();
 
   @ViewChild('mapContainer') map!: ElementRef;
@@ -24,6 +25,7 @@ export class ObjectiveMapComponent implements OnInit {
   marginBottomMap!: number;
   isMoving: boolean = false;
   controlPressed: boolean = false;
+  marginMap: number = 24;
 
   constructor(private renderer: Renderer2, private expandAllService: ExpandAllService) {}
 
@@ -159,8 +161,8 @@ export class ObjectiveMapComponent implements OnInit {
     const mapPositionLeft = this.mapFirstLevel.first.nativeElement.getBoundingClientRect().left;
     const mapPositionRight = this.mapFirstLevel.last.nativeElement.getBoundingClientRect().right;
 
-    const mapRootPositionLeft = this.mapRoot.nativeElement.getBoundingClientRect().left;
-    const mapRootPositionRight = this.mapRoot.nativeElement.getBoundingClientRect().right;
+    const mapRootPositionLeft = this.mapRoot.nativeElement.getBoundingClientRect().left + this.marginMap;
+    const mapRootPositionRight = this.mapRoot.nativeElement.getBoundingClientRect().right - this.marginMap;
 
     if (
       (mapPositionRight >= mapRootPositionRight && event.movementX < 0) ||
@@ -181,7 +183,7 @@ export class ObjectiveMapComponent implements OnInit {
     }, 200);
   }
 
-  handleUpdateObjectives() {
-    this.updateObjectives.emit();
+  handleUpdateObjectives(objective: Objective) {
+    this.updateObjectives.emit(objective);
   }
 }

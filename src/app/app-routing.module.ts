@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagerComponent } from './components/pages/manager/manager.component';
+import { EstrategicMapComponent } from './components/pages/estrategic-map/estrategic-map.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
     data:
     {
       title: 'Gestão de OKRs'
+    }
+  },
+  {
+    path: 'estrategic-map',
+    component: EstrategicMapComponent,
+    data:
+    {
+      title: 'Mapa estratégico'
     }
   },
   {

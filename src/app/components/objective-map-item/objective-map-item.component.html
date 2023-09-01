@@ -1,4 +1,7 @@
-<div class="objective" [ngClass]="{'objective-with-children': objective.children && expandedItem}">
+<div class="objective" [ngClass]="{
+  'objective-with-children': objective.children && expandedItem,
+  'disabled': updatingObjective().length > 0
+}">
   <div class="objective-connections">
     <mat-card class="objective-card">
       <mat-card-content class="objective-card-content">
@@ -111,7 +114,8 @@
 <div *ngIf="objective.children && expandedItem" class="objective-children">
   <app-objective-map-item
     [objective]="objective"
-    (updateObjectives)="updateObjectives.emit()"
+    [objectivesInBackground]="objectivesInBackground"
+    (updateObjectives)="updateObjectives.emit($event)"
     *ngFor="let objective of objective.children; trackBy: trackByObjective"
     class="objective-map-item"
   />

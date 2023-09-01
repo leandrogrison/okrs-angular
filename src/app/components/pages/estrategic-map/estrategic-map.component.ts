@@ -5,7 +5,6 @@ import { CreateObjectiveComponent } from '../../create-objective/create-objectiv
 import { CyclesService } from 'src/app/services/cycles.service';
 import { ObjectivesService } from 'src/app/services/objectives.service';
 import { MessagesService } from 'src/app/services/messages.service';
-import { ProgressStatusService } from 'src/app/services/progress-status.service';
 
 import { Objective } from 'src/app/Objective';
 import { Cycle } from 'src/app/Cycle';
@@ -13,33 +12,21 @@ import { Cycle } from 'src/app/Cycle';
 import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
 
 @Component({
-  selector: 'app-manager',
-  templateUrl: './manager.component.html',
-  styleUrls: ['./manager.component.scss']
+  selector: 'app-estrategic-map',
+  templateUrl: './estrategic-map.component.html',
+  styleUrls: ['./estrategic-map.component.scss']
 })
-export class ManagerComponent implements OnInit {
+export class EstrategicMapComponent implements OnInit {
 
   objectives: Objective[] = [];
   objectivesInBackground: Objective[] = [];
-  objectivesLength: number = 0;
   cycles: Cycle[] = [];
-  keyword: string = '';
   filter = {
-    search: '',
-    category: [] as any,
-    owner: null as any,
-    supporter: null as any,
     cycle: {
       id: `${new Date().getFullYear()}Q${this.quarterPipe.transform(new Date())}`,
       name: `${this.quarterPipe.transform(new Date())}° Trimestre ${new Date().getFullYear()}`
-    },
-    status: {
-      onTime: false,
-      alert: false,
-      outTime: false
     }
   }
-  delayToSearch: any = null
 
   loadingObjectives: boolean = true;
 
@@ -48,7 +35,6 @@ export class ManagerComponent implements OnInit {
     private objectivesService: ObjectivesService,
     private cyclesService: CyclesService,
     private messagesService: MessagesService,
-    private progressStatusService: ProgressStatusService,
     private quarterPipe: QuarterPipe
   ) {}
 
@@ -112,9 +98,6 @@ export class ManagerComponent implements OnInit {
     this.objectivesService.getObjectives(filter).subscribe({
       next: (objectives) => {
         this.objectives = objectives;
-        this.filterSupporterAfterResponse();
-        this.filterStatusAfterResponse();
-        this.objectivesLength = this.objectives.length;
         this.mountAssociates();
         this.loadingObjectives = false;
         if (updateInBackground) this.removeObjectiveInBackground(updateInBackground);
@@ -125,44 +108,6 @@ export class ManagerComponent implements OnInit {
         console.log(error);
       }
     })
-  }
-
-  changeSearchKeyword() {
-    clearTimeout(this.delayToSearch);
-
-    this.delayToSearch = setTimeout(() => {
-      this.filter.search = this.keyword;
-      this.getObjectives(this.filter);
-    }, 500);
-
-  }
-
-  clearSearchKeyword() {
-    this.keyword = '';
-    this.filter.search = '';
-
-    this.getObjectives(this.filter);
-  }
-
-  filterStatusAfterResponse() {
-    if (this.filter.status.onTime || this.filter.status.alert || this.filter.status.outTime) {
-      this.objectives = this.objectives.filter((objective: Objective) => {
-        const status = this.progressStatusService.getProgressStatus(objective);
-        const isOnTime = status === 'on-time' && this.filter.status.onTime;
-        const isAlert = status === 'alert' && this.filter.status.alert;
-        const isOutTime = status === 'out-time' && this.filter.status.outTime;
-
-        return isOnTime || isAlert || isOutTime;
-      })
-    }
-  }
-
-  filterSupporterAfterResponse() {
-    if (!this.filter.supporter) return;
-
-    this.objectives = this.objectives.filter((obj: Objective) =>
-      obj.supporters!.some(supporter => supporter === this.filter.supporter)
-    )
   }
 
   insertObjectiveInPosition = (objs: Objective[], objective: Objective) => {
@@ -185,16 +130,6 @@ export class ManagerComponent implements OnInit {
   }
 
   mountAssociates() {
-    if (
-      this.filter.search !== '' ||
-      this.filter.category.length !== 0 ||
-      this.filter.owner ||
-      this.filter.supporter ||
-      this.filter.status.onTime ||
-      this.filter.status.alert ||
-      this.filter.status.outTime
-    ) return;
-
     const objectivesOrigin = this.objectives;
 
     objectivesOrigin.map(objective => {
@@ -203,4 +138,5 @@ export class ManagerComponent implements OnInit {
     });
 
   }
+
 }

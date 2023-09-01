@@ -70,6 +70,7 @@ import { DeleteTaskComponent } from './components/delete-task/delete-task.compon
 import { DeleteKrComponent } from './components/delete-kr/delete-kr.component';
 import { ObjectiveMapComponent } from './components/objective-map/objective-map.component';
 import { ObjectiveMapItemComponent } from './components/objective-map-item/objective-map-item.component';
+import { EstrategicMapComponent } from './components/pages/estrategic-map/estrategic-map.component';
 
 registerLocaleData(localePt);
 
@@ -102,7 +103,8 @@ registerLocaleData(localePt);
     DeleteTaskComponent,
     DeleteKrComponent,
     ObjectiveMapComponent,
-    ObjectiveMapItemComponent
+    ObjectiveMapItemComponent,
+    EstrategicMapComponent
   ],
   imports: [
     BrowserModule,

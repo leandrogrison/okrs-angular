@@ -10,6 +10,7 @@ import { Objective } from 'src/app/Objective';
 export class ObjectiveListComponent implements OnInit {
 
   @Input() objectives!: Objective[];
+  @Input() objectivesInBackground!: Objective[];
   @Output() updateObjectives = new EventEmitter();
 
   constructor() {}
@@ -20,8 +21,8 @@ export class ObjectiveListComponent implements OnInit {
     return item.id;
   }
 
-  handleUpdateObjectives() {
-    this.updateObjectives.emit();
+  handleUpdateObjectives(objective: Objective) {
+    this.updateObjectives.emit(objective);
   }
 
 }

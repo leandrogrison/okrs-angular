@@ -19,14 +19,17 @@ import { Objective } from 'src/app/Objective';
 export class ObjectiveListContentComponent implements OnInit {
 
   @Input() objective!: Objective;
+  @Input() objectivesInBackground!: Objective[];
   @Output() updateObjectives = new EventEmitter();
 
-  expandedItem: boolean = false;
+  expandedItem: boolean = true;
 
   ngOnInit(): void {
     const expanded = this.objective.id ? localStorage.getItem(this.objective.id) : '';
 
-    if (expanded === 'true' && this.objective.children) {
+    if (expanded === 'false') {
+      this.expandedItem = false;
+    } else {
       this.expandedItem = true;
     }
   }
@@ -53,6 +56,10 @@ export class ObjectiveListContentComponent implements OnInit {
     }
   }
 
+  updatingObjective() {
+    return this.objectivesInBackground.filter(obj => obj.id === this.objective.id).length ? 'disabled' : '';
+  }
+
   openEditObjective(objective: Objective) {
     this.drawerService.openDrawer();
     this.dialog.open(EditObjectiveComponent, {
@@ -61,7 +68,8 @@ export class ObjectiveListContentComponent implements OnInit {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+      console.log(result)
+      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit(result);
     });
   }
 
@@ -73,7 +81,7 @@ export class ObjectiveListContentComponent implements OnInit {
       minWidth: 320,
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit(result);
     });
   }
 

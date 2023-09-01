@@ -1,17 +1,18 @@
 .map {
   max-width: 100%;
   width: 100%;
-  padding-top: 64px;
-  padding-bottom: 20px;
+  margin: -24px -24px 0 -24px;
+  padding: 64px 24px 24px 24px;
   min-height: calc(100vh - 64px);
   overflow: hidden;
+  position: relative;
 }
 
 .map-header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: #eee;
+  background: #fff;
   padding: 8px;
   position: absolute;
   left: 0;
@@ -19,11 +20,34 @@
   top: 0;
   z-index: 2;
   user-select: none;
+  box-shadow: 0 0 8px rgba(0,0,0,.12);
+  .updating-background {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(0,0,0,.66);
+    animation: showLoadingBackground .2s;
+    .mat-icon {
+      max-width: 18px;
+      max-height: 18px;
+      font-size: 18px;
+    }
+  }
+
+  @keyframes showLoadingBackground {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   .map-header-actions {
     display: flex;
     align-items: center;
     border-radius: 100px;
-    background-color: #fff;
     padding: 0 4px;
     .map-zoom {
       width: 48px;
@@ -34,10 +58,10 @@
       transform: scale(0.84);
       margin: 0 -4px;
     }
-    .mat-divider {
-      height: 32px;
-      margin: 0 4px;
-    }
+  }
+  .mat-divider {
+    height: 32px;
+    margin: 0 4px;
   }
 }
 

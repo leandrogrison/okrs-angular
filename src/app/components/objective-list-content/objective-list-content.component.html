@@ -8,7 +8,7 @@
   <mat-divider *ngIf="expandedItem" [vertical]="true" class="associate-connect"></mat-divider>
 </div>
 
-<div class="objective" fxLayout.gt-xs fxLayoutGap="16px">
+<div class="objective" fxLayout.gt-xs fxLayoutGap="16px" [ngClass]="updatingObjective()">
 
   <div class="objective-content" fxFlex fxLayout="column">
     <div class="objective-name">{{ objective.name }}</div>
@@ -88,7 +88,8 @@
 <div *ngIf="objective.children && expandedItem">
   <app-objective-list
     [objectives]="objective.children"
-    (updateObjectives)="updateObjectives.emit()"
+    [objectivesInBackground]="objectivesInBackground"
+    (updateObjectives)="updateObjectives.emit($event)"
     class="objectives-children"
   />
 </div>

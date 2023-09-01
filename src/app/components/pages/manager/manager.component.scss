@@ -3,45 +3,60 @@
   max-width: 100%;
 }
 
-.search-field {
-  position: relative;
-  z-index: 2;
-  .search-field-container {
-    width: 300px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    ::ng-deep {
-      label {
-        transition: .2s;
-        &:not(.mdc-floating-label--float-above) {
-          top: 19px;
-        }
-      }
-      .mat-mdc-form-field-infix {
-        min-height: 32px;
-        padding-top: 10px;
-        padding-bottom: 4px;
-      }
-      .mdc-icon-button {
-        height: 40px;
-        display: flex;
-        align-items: center;
-        ::ng-deep {
-          .mat-mdc-button-ripple,
-          .mat-mdc-button-persistent-ripple {
-            display: none;
-          }
-        }
-      }
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  .search-title {
+    font-weight: 200;
+    font-size: 24px;
+    margin: 0;
+  }
+  .search-field {
+    .search-field-container {
+      width: 300px;
+    }
+  }
+  .no-result {
+    padding: 0;
+    .mat-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 36px;
     }
   }
 }
 
-.objectives-list {
-  ::ng-deep & > .objective-container:first-child {
-    & > .objective-line:first-child {
-      display: none;
-    }
+.updating-background {
+  position: sticky;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: -34px;
+  font-size: 12px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(0,0,0,.66);
+  background-color: #eee;
+  animation: showLoadingBackground .2s;
+  .mat-icon {
+    max-width: 18px;
+    max-height: 18px;
+    font-size: 18px;
+  }
+}
+
+@keyframes showLoadingBackground {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -1,6 +1,12 @@
 <div class="map" #mapRoot>
 
   <div #mapHeader class="map-header">
+
+    <div *ngIf="objectivesInBackground.length" class="updating-background">
+      <mat-icon>update</mat-icon> Atualizando objetivos...
+      <mat-divider [vertical]="true" />
+    </div>
+
     <div class="map-header-actions">
       <button (click)="zoomOut()" mat-icon-button aria-label="Diminuir zoom" matTooltip="Diminuir zoom" matTooltipPosition="above">
         <mat-icon>remove</mat-icon>
@@ -23,6 +29,7 @@
         <mat-icon>unfold_more</mat-icon>
       </button>
     </div>
+
   </div>
 
   <div
@@ -41,7 +48,8 @@
     <app-objective-map-item
       #mapFirstLevel
       [objective]="objective"
-      (updateObjectives)="handleUpdateObjectives()"
+      [objectivesInBackground]="objectivesInBackground"
+      (updateObjectives)="handleUpdateObjectives($event)"
       *ngFor="let objective of objectives; trackBy: trackByObjective"
       class="map-first-level"
     />

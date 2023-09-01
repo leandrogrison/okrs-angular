@@ -1,0 +1,26 @@
+<app-page-header
+  [buttonText]="'Criar objetivo'"
+  [buttonIcon]="'add'"
+  (buttonAction)="openCreateObjective()"
+/>
+
+<div *ngIf="loadingObjectives, else noLoadingMap" class="loading">
+  <mat-spinner diameter="40"></mat-spinner>
+</div>
+
+<ng-template #noLoadingMap>
+  <app-objective-map
+    *ngIf="objectives.length > 0, else noObjectives"
+    [objectives]="objectives"
+    [objectivesInBackground]="objectivesInBackground"
+    (updateObjectives)="updateObjectivesInBackground($event)"
+    class="objectives-map"
+  />
+</ng-template>
+
+<ng-template #noObjectives>
+  <div class="no-result">
+    <mat-icon>error_outline</mat-icon>
+    Nenhum objetivo cadastrado.
+  </div>
+</ng-template>

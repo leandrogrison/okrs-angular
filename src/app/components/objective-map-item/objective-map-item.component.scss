@@ -2,6 +2,23 @@
   max-width: 240px;
   min-width: 240px;
   margin: 32px auto;
+  &.disabled {
+    pointer-events: none;
+    opacity: .5;
+    transition: .2s .2s;
+    .objective-card {
+      .objective-actions {
+        .objective-actions-buttons {
+          pointer-events: none;
+        }
+      }
+    }
+    .objective-label-children {
+      .objective-button-children {
+        pointer-events: none;
+      }
+    }
+  }
   &.objective-with-children {
     .objective-card {
       .objective-card-content {
@@ -9,16 +26,6 @@
           bottom:unset;
           top: 100%;
         }
-      }
-    }
-    .objective-connections {
-      &:last-child:before {
-        right: -16px;
-        left: 50%;
-      }
-      &:first-child:after {
-        right: 50%;
-        left: -16px;
       }
     }
   }
@@ -153,9 +160,11 @@
       }
     }
     &:last-child {
-      .objective-connections {
-        &:after {
-          display: none;
+      & > .objective {
+        & > .objective-connections {
+          &:after {
+            display: none;
+          }
         }
       }
     }
@@ -166,9 +175,11 @@
       }
     }
     &:first-child {
-      .objective-connections {
-        &:before {
-          display: none;
+      & > .objective {
+        & > .objective-connections {
+          &:before {
+            display: none;
+          }
         }
       }
     }

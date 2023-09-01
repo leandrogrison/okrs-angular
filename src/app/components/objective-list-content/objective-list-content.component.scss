@@ -32,6 +32,11 @@
 
 .objective {
   margin: 16px 0;
+  &.disabled {
+    pointer-events: none;
+    opacity: .5;
+    transition: .2s .2s;
+  }
   .objective-content {
     .objective-name {
       font-size: 20px;

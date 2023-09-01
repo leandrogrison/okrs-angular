@@ -4,6 +4,10 @@
 >
 
   <mat-divider class="objective-line"></mat-divider>
-  <app-objective-list-content [objective]="objective" (updateObjectives)="handleUpdateObjectives()" />
+  <app-objective-list-content
+    [objective]="objective"
+    [objectivesInBackground]="objectivesInBackground"
+    (updateObjectives)="handleUpdateObjectives($event)"
+  />
 
 </div>

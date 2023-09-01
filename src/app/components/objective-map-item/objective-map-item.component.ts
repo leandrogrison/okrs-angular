@@ -19,12 +19,13 @@ import { DeleteObjectiveComponent } from '../delete-objective/delete-objective.c
 export class ObjectiveMapItemComponent implements OnInit {
 
   @Input() objective!: Objective;
+  @Input() objectivesInBackground!: Objective[];
   @Output() updateObjectives = new EventEmitter();
 
   positionMouseX: number = 0;
   positionMouseY: number = 0;
 
-  expandedItem: boolean = false;
+  expandedItem: boolean = true;
 
   constructor(
     public dialog: MatDialog,
@@ -40,7 +41,9 @@ export class ObjectiveMapItemComponent implements OnInit {
   ngOnInit(): void {
     const expanded = this.objective.id ? localStorage.getItem(this.objective.id) : '';
 
-    if (expanded === 'true' && this.objective.children) {
+    if (expanded === 'false') {
+      this.expandedItem = false;
+    } else {
       this.expandedItem = true;
     }
   }
@@ -95,7 +98,7 @@ export class ObjectiveMapItemComponent implements OnInit {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit(result);
     });
   }
 
@@ -109,8 +112,12 @@ export class ObjectiveMapItemComponent implements OnInit {
       minWidth: 320,
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit();
+      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit(result);
     });
+  }
+
+  updatingObjective() {
+    return this.objectivesInBackground.filter(obj => obj.id === this.objective.id).length ? 'disabled' : '';
   }
 
 }

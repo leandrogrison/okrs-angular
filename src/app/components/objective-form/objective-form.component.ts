@@ -64,23 +64,8 @@ export class ObjectiveFormComponent implements OnInit {
     this.categories = this.categoriesService.setCategories();
 
     if (this.objectiveToEdit) {
-      this.objective = {
-        id: this.objectiveToEdit.id,
-        name: this.objectiveToEdit.name,
-        description: this.objectiveToEdit.description,
-        category: this.objectiveToEdit.category,
-        owner: this.objectiveToEdit.owner,
-        supporters: this.objectiveToEdit.supporters,
-        visibility: this.objectiveToEdit.visibility,
-        cycle: this.objectiveToEdit.cycle,
-        createdAt: this.objectiveToEdit.createdAt,
-        startDate: this.objectiveToEdit.startDate,
-        deadline: this.objectiveToEdit.deadline,
-        finished: this.objectiveToEdit.finished,
-        associate: this.objectiveToEdit.associate,
-        numberOfKRs: this.objectiveToEdit.numberOfKRs,
-        numberOfKRsCompleted: this.objectiveToEdit.numberOfKRsCompleted
-      }
+      this.objective = { ...this.objectiveToEdit };
+      delete this.objective['children'];
     }
 
   }
