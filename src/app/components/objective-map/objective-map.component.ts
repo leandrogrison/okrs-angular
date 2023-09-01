@@ -1,8 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, HostListener, Renderer2 } from '@angular/core';
 
 import { Objective } from 'src/app/Objective';
+import { Cycle } from 'src/app/Cycle';
 
 import { ExpandAllService } from 'src/app/services/expand-all.service';
+
+import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
 
 @Component({
   selector: 'app-objective-map',
@@ -27,7 +30,7 @@ export class ObjectiveMapComponent implements OnInit {
   controlPressed: boolean = false;
   marginMap: number = 24;
 
-  constructor(private renderer: Renderer2, private expandAllService: ExpandAllService) {}
+  constructor(private renderer: Renderer2, private expandAllService: ExpandAllService, private quarterPipe: QuarterPipe) {}
 
   @HostListener('mousewheel', ['$event'])
   zoomScroll(event: any) {

@@ -136,7 +136,8 @@
       "createdAt": "2023-08-22T15:28:11.387Z",
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
-      "finished": 0
+      "finished": 0,
+      "conclusionPercent": 0
     },
     {
       "id": "7484a83f-a4d2-4210-ab42-97d21edb8cc7",

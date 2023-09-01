@@ -4,6 +4,19 @@
   (buttonAction)="openCreateObjective()"
 />
 
+<div class="filter">
+  <div class="cycles">
+    <mat-form-field>
+      <mat-label>Objetivos do ciclo:</mat-label>
+      <mat-select [(value)]="filter.cycle.id" (valueChange)="getObjectives(this.filter);">
+        <mat-option *ngFor="let cycle of cycles" [value]="cycle.id" >
+          {{cycle.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
 <div *ngIf="loadingObjectives, else noLoadingMap" class="loading">
   <mat-spinner diameter="40"></mat-spinner>
 </div>
@@ -14,6 +27,7 @@
     [objectives]="objectives"
     [objectivesInBackground]="objectivesInBackground"
     (updateObjectives)="updateObjectivesInBackground($event)"
+    (getObjectives)="getObjectives($event)"
     class="objectives-map"
   />
 </ng-template>

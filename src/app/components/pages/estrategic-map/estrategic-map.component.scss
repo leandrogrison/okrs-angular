@@ -1,0 +1,12 @@
+.filter {
+  position: relative;
+  z-index: 9;
+  .cycles {
+    position: absolute;
+    top: -36px;
+    left: -24px;
+    padding: 16px 16px 16px 24px;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+  }
+}
