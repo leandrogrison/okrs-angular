@@ -345,7 +345,7 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 75,
+      "conclusionPercent": 69,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
     },
@@ -546,7 +546,7 @@
       },
       "type": "percent",
       "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "progress": 75,
+      "progress": 69,
       "tasks": []
     }
   ],

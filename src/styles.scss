@@ -148,8 +148,12 @@ body {
 }
 
 .drawer-container {
+  &.disabled {
+    pointer-events: none;
+  }
   .mat-drawer-content {
     height: 100vh;
+    z-index: 3;
   }
 }
 

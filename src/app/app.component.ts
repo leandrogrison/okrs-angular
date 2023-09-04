@@ -10,6 +10,7 @@ import { DrawerService } from './services/drawer.service';
 export class AppComponent {
 
   isDrawerOpen = false;
+  isMenuOpen = false;
 
   @ViewChild('drawerContent', {read: ViewContainerRef}) drawerContent!: ViewContainerRef;
 
@@ -25,6 +26,10 @@ export class AppComponent {
       (<any>componentRef.instance).data = result.data;
       this.isDrawerOpen = true;
     });
+  }
+
+  verifyMenuOpened(opened: boolean) {
+    this.isMenuOpen = opened;
   }
 
   closeDrawer() {

@@ -1,13 +1,23 @@
 <div class="page-header">
   <h1>{{ titlePage }}</h1>
   <button
+    fxHide.lt-md
     *ngIf="buttonText"
     (click)="buttonAction.emit()"
     mat-flat-button
     color="primary"
-    id="buttonPageHeader"
   >
     <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
-    {{ buttonText }}
+    <span>{{ buttonText }}</span>
+  </button>
+  <button
+    fxHide.gt-sm
+    *ngIf="buttonText"
+    (click)="buttonAction.emit()"
+    mat-fab
+    color="primary"
+  >
+    <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
+    <span *ngIf="!buttonIcon">{{ buttonText }}</span>
   </button>
 </div>

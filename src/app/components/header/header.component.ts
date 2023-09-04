@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,11 +8,24 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  @Output() verifyMenuOpened = new EventEmitter();
+
   userPhoto = '';
+  menuOpened: boolean = false;
 
   constructor(private authService: AuthService) {
     this.userPhoto = this.authService.getUserInfo().photo;
   }
 
+  openMenu() {
+    this.menuOpened = true;
+    this.verifyMenuOpened.emit(true);
+  }
+
+  closeMenu() {
+    this.menuOpened = false;
+    this.verifyMenuOpened.emit(false);
+  }
 
 }

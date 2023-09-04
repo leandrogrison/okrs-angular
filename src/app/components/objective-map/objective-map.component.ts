@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, HostListener, Renderer2 } from '@angular/core';
 
 import { Objective } from 'src/app/Objective';
-import { Cycle } from 'src/app/Cycle';
 
 import { ExpandAllService } from 'src/app/services/expand-all.service';
 

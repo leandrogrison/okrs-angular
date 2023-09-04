@@ -1,14 +1,19 @@
 <mat-toolbar color="primary">
 
-  <button fxHide.gt-sm mat-icon-button aria-label="Menu principal">
-    <mat-icon>menu</mat-icon>
-  </button>
   <a routerLink="/" class="logo">
     <mat-icon>crisis_alert</mat-icon>
     OKRs
   </a>
-  <a routerLink="/manager" mat-button class="menu-option">Gestão de OKRs</a>
-  <a routerLink="/estrategic-map" mat-button class="menu-option">Mapa estratégico</a>
+
+  <div class="main-menu" [ngClass]="{ 'opened': menuOpened }">
+    <button (click)="closeMenu()" fxHide.gt-sm mat-icon-button aria-label="Fechar menu">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-divider fxHide.gt-sm />
+    <a routerLink="/manager" (click)="closeMenu()" mat-button class="menu-option">Gestão de OKRs</a>
+    <mat-divider fxHide.gt-sm />
+    <a routerLink="/estrategic-map" (click)="closeMenu()" mat-button class="menu-option">Mapa estratégico</a>
+  </div>
 
   <span fxFlex></span>
 
@@ -21,5 +26,11 @@
       <span>Sair</span>
     </button>
   </mat-menu>
+
+  <button (click)="openMenu()" fxHide.gt-sm mat-icon-button aria-label="Menu principal">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div (click)="closeMenu()" class="menu-overlay" [ngClass]="{ 'opened': menuOpened }"></div>
 
 </mat-toolbar>
