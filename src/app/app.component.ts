@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, OnInit, Renderer2 } from '@angular/core';
 
 import { DrawerService } from './services/drawer.service';
 
@@ -7,15 +7,17 @@ import { DrawerService } from './services/drawer.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   isDrawerOpen = false;
   isMenuOpen = false;
+  isSmallScreen = document.body.clientWidth < 1300;
 
   @ViewChild('drawerContent', {read: ViewContainerRef}) drawerContent!: ViewContainerRef;
 
   constructor(
-    private drawerService: DrawerService
+    private drawerService: DrawerService,
+    private renderer: Renderer2
   ) {
     this.drawerService.openDrawer$.subscribe((result) => {
       this.drawerContent.remove();
@@ -26,6 +28,18 @@ export class AppComponent {
       (<any>componentRef.instance).data = result.data;
       this.isDrawerOpen = true;
     });
+  }
+
+  windowResize = () => {};
+
+  ngOnInit(): void {
+    this.windowResize = this.renderer.listen(window, 'resize', () => {
+      this.isSmallScreen = document.body.clientWidth < 1300;
+    });
+  }
+
+  ngOnDestroy() {
+    this.windowResize();
   }
 
   verifyMenuOpened(opened: boolean) {

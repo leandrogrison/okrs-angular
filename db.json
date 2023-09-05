@@ -345,13 +345,13 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 69,
+      "conclusionPercent": 75,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
     },
     {
       "id": "866a291e-3a45-445b-beea-33f156f327a3",
-      "name": "Objetivo 3 testando",
+      "name": "Objetivo 3 testando, com bastante texto para testar a responsividade do nome do objetivo em diversas telas",
       "description": "",
       "category": {
         "id": 0,
@@ -373,7 +373,7 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "conclusionPercent": 65,
+      "conclusionPercent": 69,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
     }
@@ -532,7 +532,7 @@
       },
       "type": "percent",
       "objective": "866a291e-3a45-445b-beea-33f156f327a3",
-      "progress": 65,
+      "progress": 69,
       "tasks": []
     },
     {
@@ -546,7 +546,7 @@
       },
       "type": "percent",
       "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "progress": 69,
+      "progress": 75,
       "tasks": []
     }
   ],

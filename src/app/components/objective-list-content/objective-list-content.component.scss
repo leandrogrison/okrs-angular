@@ -32,12 +32,22 @@
 
 .objective {
   margin: 16px 0;
+  min-width: 260px;
+  @media (min-width: 600px) {
+    display: flex;
+    gap: 16px;
+  }
   &.disabled {
     pointer-events: none;
     opacity: .5;
     transition: .2s .2s;
   }
+  ::ng-deep .mdc-button__label {
+    white-space: nowrap;
+  }
   .objective-content {
+    flex: 1 0 auto;
+    width: min-content;
     .objective-name {
       font-size: 20px;
       margin-bottom: 16px;
@@ -69,6 +79,7 @@
           max-width: 28px;
           max-height: 28px;
           border-radius: 100%;
+          pointer-events: none;
           &.mat-icon {
             font-size: 18px;
             display: flex;
@@ -82,6 +93,8 @@
     }
   }
   .objective-graph {
+    align-self: center;
+    margin: 16px 0;
     .objective-graph-content {
       min-width: 200px;
       max-width: 200px;

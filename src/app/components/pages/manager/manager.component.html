@@ -5,9 +5,9 @@
   (buttonAction)="openCreateObjective()"
 />
 
-<div fxLayout.gt-sm fxLayoutGap="16px">
+<div class="manager-container">
 
-  <div fxFlex.gt-sm="240px" fxLayout="column">
+  <div class="manager-filters">
     <app-filters
       fxLayout="column"
       fxLayoutGap="24px"
@@ -19,7 +19,7 @@
 
   <mat-divider [vertical]="true" />
 
-  <div fxFlex class="manager-content">
+  <div class="manager-content">
 
     <div class="search-header">
 
@@ -70,13 +70,15 @@
     </div>
 
     <ng-template #noLoadingList>
-      <app-objective-list
-        *ngIf="objectives.length > 0"
-        [objectives]="objectives"
-        [objectivesInBackground]="objectivesInBackground"
-        (updateObjectives)="updateObjectivesInBackground($event)"
-        class="objectives-list"
-      />
+      <div class="objectives-container">
+        <app-objective-list
+          *ngIf="objectives.length > 0"
+          [objectives]="objectives"
+          [objectivesInBackground]="objectivesInBackground"
+          (updateObjectives)="updateObjectivesInBackground($event)"
+          class="objectives-list"
+        />
+      </div>
     </ng-template>
 
   </div>

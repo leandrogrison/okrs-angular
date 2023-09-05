@@ -15,6 +15,8 @@ export class FiltersComponent {
   @Output() filterChange = new EventEmitter();
   @Output() handleGetObjectives = new EventEmitter();
 
+  openedFilters: boolean = false;
+
   constructor(private authService: AuthService) {}
 
   filterObjectives() {
@@ -51,5 +53,9 @@ export class FiltersComponent {
     }
 
     this.filterObjectives();
+  }
+
+  openFilters() {
+    this.openedFilters = !this.openedFilters;
   }
 }

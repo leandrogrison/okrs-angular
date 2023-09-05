@@ -58,6 +58,9 @@
 
 .krs {
   margin-top: 16px;
+  ::ng-deep .mdc-button__label {
+    white-space: nowrap;
+  }
   .krs-header {
     display: flex;
     justify-content: space-between;

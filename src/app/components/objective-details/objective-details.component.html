@@ -14,45 +14,37 @@
 <div class="drawer-content" fxLayout fxLayoutGap="8px">
   <div fxLayout="column" fxLayoutGap="8px" fxLayoutAlign="center center" fxFlexAlign="start">
     <small>Responsável</small>
-    <img
-      *ngIf="objective.owner!.photo; else noPhoto"
-      [src]="objective.owner!.photo"
-      [alt]="objective.owner!.name"
-      class="user-photo user-photo-md"
-      [matTooltip]="objective.owner!.name"
-      matTooltipPosition="above"
-    />
-    <ng-template #noPhoto>
-      <mat-icon
+    <div [matTooltip]="objective.owner!.name" matTooltipPosition="above">
+      <img
+        *ngIf="objective.owner!.photo; else noPhoto"
+        [src]="objective.owner!.photo"
+        [alt]="objective.owner!.name"
         class="user-photo user-photo-md"
-        [matTooltip]="objective.owner!.name"
-        matTooltipPosition="above"
-      >
-        person
-      </mat-icon>
-    </ng-template>
+      />
+      <ng-template #noPhoto>
+        <mat-icon class="user-photo user-photo-md">
+          person
+        </mat-icon>
+      </ng-template>
+    </div>
   </div>
   <mat-divider [vertical]="true" />
   <div fxFlex fxLayout="column" fxLayoutGap="8px">
     <small>Apoiadores</small>
     <div *ngIf="supporters && supporters.length > 0, else noSupporters" class="supporters">
       <div *ngFor="let supporter of supporters" class="supporter">
-        <img
-          *ngIf="supporter.photo, else noPhoto"
-          [src]="supporter.photo"
-          class="user-photo user-photo-md"
-          [matTooltip]="supporter.name"
-          matTooltipPosition="above"
-        />
-        <ng-template #noPhoto>
-          <mat-icon
+        <div [matTooltip]="supporter.name" matTooltipPosition="above">
+          <img
+            *ngIf="supporter.photo, else noPhoto"
+            [src]="supporter.photo"
             class="user-photo user-photo-md"
-            [matTooltip]="supporter.name"
-            matTooltipPosition="above"
-          >
-            person
-          </mat-icon>
-        </ng-template>
+          />
+          <ng-template #noPhoto>
+            <mat-icon class="user-photo user-photo-md">
+              person
+            </mat-icon>
+          </ng-template>
+        </div>
       </div>
     </div>
     <ng-template #noSupporters>
@@ -114,23 +106,19 @@
 
       <ul *ngIf="krs && krs.length > 0" class="krs-list">
         <li *ngFor="let kr of krs">
-          <img
-            *ngIf="kr.owner!.photo; else noPhoto"
-            [src]="kr.owner!.photo"
-            [alt]="kr.owner!.name"
-            class="user-photo user-photo-xs"
-            [matTooltip]="kr.owner!.name"
-            matTooltipPosition="above"
-          />
-          <ng-template #noPhoto>
-            <mat-icon
+          <div [matTooltip]="kr.owner!.name" matTooltipPosition="above">
+            <img
+              *ngIf="kr.owner!.photo; else noPhoto"
+              [src]="kr.owner!.photo"
+              [alt]="kr.owner!.name"
               class="user-photo user-photo-xs"
-              [matTooltip]="kr.owner!.name"
-              matTooltipPosition="above"
-            >
-              person
-            </mat-icon>
-          </ng-template>
+            />
+            <ng-template #noPhoto>
+              <mat-icon class="user-photo user-photo-xs">
+                person
+              </mat-icon>
+            </ng-template>
+          </div>
           <div class="krs-list-content">
             <p class="krs-list-name">
               {{ kr.name }}

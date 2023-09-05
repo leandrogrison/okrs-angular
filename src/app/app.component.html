@@ -1,11 +1,16 @@
-<mat-drawer-container autosize class="drawer-container" [ngClass]="{ 'disabled': isMenuOpen }">
+<mat-drawer-container
+  autosize
+  class="drawer-container"
+  [ngClass]="{ 'disabled': isMenuOpen }"
+>
 
   <mat-drawer
     #drawer
     class="drawer-main"
-    mode="side"
+    [mode]="isSmallScreen ? 'over' : 'side'"
     [opened]="isDrawerOpen"
     (keydown.escape)="closeDrawer()"
+    (closedStart)="closeDrawer()"
     position="end"
   >
     <ng-template #drawerContent></ng-template>
@@ -20,6 +25,7 @@
   </mat-drawer>
 
   <app-header class="header" (verifyMenuOpened)="verifyMenuOpened($event)" />
+
   <main class="container">
     <router-outlet />
   </main>

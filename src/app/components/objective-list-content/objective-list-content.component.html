@@ -8,16 +8,17 @@
   <mat-divider *ngIf="expandedItem" [vertical]="true" class="associate-connect"></mat-divider>
 </div>
 
-<div class="objective" fxLayout.gt-xs fxLayoutGap="16px" [ngClass]="updatingObjective()">
+<div class="objective" [ngClass]="updatingObjective()">
 
-  <div class="objective-content" fxFlex fxLayout="column">
+  <div class="objective-content" fxLayout="column">
     <div class="objective-name">{{ objective.name }}</div>
     <div class="objective-details" fxLayout fxLayoutGap="8px">
       <mat-icon [matTooltip]="objective.category!.name" matTooltipPosition="above" class="objective-category">
         {{ objective.category | IconCategory }}
       </mat-icon>
       <div class="objective-status">{{objective.finished ? 'Finalizado' : 'Em aberto'}}</div>
-      <div class="objective-owner" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+      <div class="objective-owner" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px" [matTooltip]="objective.owner!.name"
+      matTooltipPosition="above">
         <img
           *ngIf="objective.owner!.photo; else noPhoto"
           [src]="objective.owner!.photo"
@@ -27,7 +28,7 @@
         <ng-template #noPhoto>
           <mat-icon class="objective-owner-image">person</mat-icon>
         </ng-template>
-        <span>{{ objective.owner!.name }}</span>
+        <span fxHide.lt-sm>{{ objective.owner!.name }}</span>
       </div>
     </div>
     <div fxLayout fxLayoutAlign="start center" fxLayoutGap="8px">
@@ -55,7 +56,7 @@
     </div>
   </div>
 
-  <div class="objective-graph" fxFlexAlign="center center" fxLayout fxLayoutAlign="start center" fxLayoutGap="8px">
+  <div class="objective-graph" fxLayout fxLayoutAlign="start center" fxLayoutGap="8px">
     <div class="objective-graph-content" fxLayout="column" fxLayoutGap="8px">
       <small [matTooltip]="'Prazo: ' + (objective.deadline | date: 'dd/MM/yyyy')" matTooltipPosition="above">
         Restam {{ daysToEnd(objective.deadline) }} dias
