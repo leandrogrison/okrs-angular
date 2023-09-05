@@ -61,6 +61,7 @@ export class ManagerComponent implements OnInit {
     this.dialog.open(CreateObjectiveComponent, {
       maxWidth: 900,
       width: 'calc(100% - 32px)',
+      panelClass: 'dialog-container-component',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
       if (result && result.id) this.updateObjectivesInBackground(result);

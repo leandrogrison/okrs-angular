@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Objective } from 'src/app/Objective';
@@ -35,6 +35,8 @@ export class ObjectiveDetailsComponent implements OnInit {
   oldValued!: number;
   loadingKrs: boolean = true;
   delayToValued: any = null;
+  isMobile: boolean = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  unblockSlider: boolean[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -43,7 +45,8 @@ export class ObjectiveDetailsComponent implements OnInit {
     private progressStatusService: ProgressStatusService,
     private daysToEndService: DaysToEndService,
     private krsService: KrsService,
-    private objectivesService: ObjectivesService
+    private objectivesService: ObjectivesService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -261,4 +264,12 @@ export class ObjectiveDetailsComponent implements OnInit {
     }, 500);
 
   }
+
+  blockSlider(i: number) {
+    setTimeout(() => {
+      this.unblockSlider[i] = false;
+      this.changeDetectorRef.detectChanges();
+    }, 400);
+  }
+
 }

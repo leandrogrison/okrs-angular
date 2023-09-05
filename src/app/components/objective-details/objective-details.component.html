@@ -105,7 +105,7 @@
       </div>
 
       <ul *ngIf="krs && krs.length > 0" class="krs-list">
-        <li *ngFor="let kr of krs">
+        <li *ngFor="let kr of krs; let i = index">
           <div [matTooltip]="kr.owner!.name" matTooltipPosition="above">
             <img
               *ngIf="kr.owner!.photo; else noPhoto"
@@ -127,20 +127,32 @@
               </mat-icon>
             </p>
             <div class="krs-list-actions">
-              <mat-slider class="krs-list-slider" [ngClass]="{'no-slider-thumb': kr.type === 'task' || kr.type === 'value'}">
+              <mat-slider
+                class="krs-list-slider"
+                [ngClass]="{
+                  'no-slider-thumb': kr.type === 'task' || kr.type === 'value',
+                  'block-slider': isMobile && (!unblockSlider[i] || unblockSlider[i] === false)
+                }"
+              >
                 <input
                   matSliderThumb
                   [(ngModel)]="kr.progress"
                   (mousedown)="getCurrentProgress(kr)"
+                  (dragStart)="getCurrentProgress(kr)"
+                  (dragEnd)="blockSlider(i)"
                   (change)="updateProgress(kr)"
                   [disabled]="kr.type === 'task' || kr.type === 'value'"
                   min="0"
                   max="100"
                 >
+                <div *ngIf="isMobile" class="click-to-slider" (click)="unblockSlider[i] = true">
+                  Alterar
+                </div>
               </mat-slider>
               <div class="krs-list-actions-progress">
                 {{ kr.progress / 100 | percent: '1.0-1' }}
               </div>
+
               <button
                 (click)="openEditKr(kr)"
                 mat-icon-button

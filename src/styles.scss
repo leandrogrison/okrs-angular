@@ -190,3 +190,26 @@ body {
     }
   }
 }
+
+.cdk-overlay-pane {
+  @media (max-width: 767px) {
+    width: 100% !important;
+    margin-top: 0 !important;
+    .mat-mdc-dialog-container {
+      .mdc-dialog__surface {
+        border-radius: 0;
+        & > .ng-star-inserted {
+          display: flex;
+          flex-direction: column;
+          max-height: 100svh;
+        }
+      }
+    }
+  }
+}
+
+.mat-mdc-dialog-content {
+  @media (max-width: 767px) {
+    max-height: none !important;
+  }
+}
