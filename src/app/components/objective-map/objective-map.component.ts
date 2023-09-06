@@ -28,8 +28,36 @@ export class ObjectiveMapComponent implements OnInit {
   isMoving: boolean = false;
   controlPressed: boolean = false;
   marginMap: number = 24;
+  clientXOld: number = 0;
+  clientYOld: number = 0;
+  diffBetweenPointsOld = { x: 0, y: 0 };
+  isMobile: boolean = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   constructor(private renderer: Renderer2, private expandAllService: ExpandAllService, private quarterPipe: QuarterPipe) {}
+
+  @HostListener('touchstart', ['$event'])
+  zoomMobileStart(event: any) {
+    if (event.touches.length < 2) return;
+
+    this.diffBetweenPointsOld = this.getDiffBetweenPoints(event);
+  }
+
+  @HostListener('touchmove', ['$event'])
+  zoomMobile(event: any) {
+    if (event.touches.length < 2) return;
+
+    const diffBetweenPoints = this.getDiffBetweenPoints(event);
+
+    if (diffBetweenPoints.x > this.diffBetweenPointsOld.x || diffBetweenPoints.y > this.diffBetweenPointsOld.y) {
+      this.zoomIn();
+      this.diffBetweenPointsOld = diffBetweenPoints;
+    }
+    if (diffBetweenPoints.x < this.diffBetweenPointsOld.x || diffBetweenPoints.y < this.diffBetweenPointsOld.y) {
+      this.zoomOut();
+      this.diffBetweenPointsOld = diffBetweenPoints;
+    }
+
+  }
 
   @HostListener('mousewheel', ['$event'])
   zoomScroll(event: any) {
@@ -66,6 +94,14 @@ export class ObjectiveMapComponent implements OnInit {
 
   ngOnDestroy() {
     this.listenerDrawer();
+  }
+
+  getDiffBetweenPoints(event: any) {
+    const factorZoom = 50;
+    const diffX = Math.floor((Math.abs(event.touches[1].screenX - event.touches[0].screenX)) / factorZoom);
+    const diffY = Math.floor((Math.abs(event.touches[1].screenY - event.touches[0].screenY)) / factorZoom);
+
+    return { x: diffX, y: diffY };
   }
 
   trackByObjective(index: number, item: Objective): any {
@@ -153,8 +189,12 @@ export class ObjectiveMapComponent implements OnInit {
     this.marginBottomMap = diffHeight;
   }
 
-  setMouseMoving(isMoving: boolean) {
+  setMouseMoving(isMoving: boolean, event?: any) {
     this.isMoving = isMoving;
+    if (event) {
+      this.clientXOld = event.touches[0].screenX;
+      this.clientYOld = event.touches[0].screenY;
+    }
   }
 
   moveMap(event: any) {
@@ -166,14 +206,28 @@ export class ObjectiveMapComponent implements OnInit {
     const mapRootPositionLeft = this.mapRoot.nativeElement.getBoundingClientRect().left + this.marginMap;
     const mapRootPositionRight = this.mapRoot.nativeElement.getBoundingClientRect().right - this.marginMap;
 
-    if (
-      (mapPositionRight >= mapRootPositionRight && event.movementX < 0) ||
-      (mapPositionLeft <= mapRootPositionLeft && event.movementX > 0)
-    ) {
-      this.translateX = this.translateX + (event.movementX / this.zoomFactor);
+    let positionX = event.movementX;
+    let positionY = event.movementY;
+
+    if (this.isMobile) {
+      positionX = event.touches[0].screenX - this.clientXOld
+      positionY = event.touches[0].screenY - this.clientYOld
+      this.clientXOld = event.touches[0].screenX;
+      this.clientYOld = event.touches[0].screenY;
     }
 
-    document.getElementsByClassName('mat-drawer-content')[0].scrollBy(0, -event.movementY);
+    if (
+      (mapPositionRight >= mapRootPositionRight && positionX < 0) ||
+      (mapPositionLeft <= mapRootPositionLeft && positionX > 0)
+    ) {
+      this.translateX = this.translateX + (positionX / this.zoomFactor);
+    }
+
+    if (!this.isMobile) {
+      document.getElementsByClassName('mat-drawer-content')[0].scrollBy(0, -event.movementY);
+    } else {
+      document.getElementsByClassName('mat-drawer-content')[0].scrollBy(0, -positionY);
+    }
 
   }
 

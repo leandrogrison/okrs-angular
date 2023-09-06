@@ -53,7 +53,7 @@
       "finished": 0,
       "numberOfKRs": 3,
       "numberOfKRsCompleted": 0,
-      "conclusionPercent": 66.66666666666667
+      "conclusionPercent": 76
     },
     {
       "id": "de617d3a-f94c-4eb1-b905-146239b222ce",
@@ -295,7 +295,8 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "associate": "73197e76-4cef-494a-a9ed-61aaa6dbf0ff"
+      "associate": "73197e76-4cef-494a-a9ed-61aaa6dbf0ff",
+      "conclusionPercent": 0
     },
     {
       "id": "70f4cdb5-22ab-4a8d-92de-9e5f4e371f32",
@@ -345,7 +346,7 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 69,
+      "conclusionPercent": 80,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
     },
@@ -373,7 +374,7 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "conclusionPercent": 81,
+      "conclusionPercent": 93,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
     }
@@ -462,7 +463,7 @@
       },
       "type": "percent",
       "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 68,
+      "progress": 77,
       "tasks": []
     },
     {
@@ -476,7 +477,7 @@
       },
       "type": "percent",
       "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 53,
+      "progress": 72,
       "tasks": []
     },
     {
@@ -532,7 +533,7 @@
       },
       "type": "percent",
       "objective": "866a291e-3a45-445b-beea-33f156f327a3",
-      "progress": 81,
+      "progress": 93,
       "tasks": []
     },
     {
@@ -546,7 +547,7 @@
       },
       "type": "percent",
       "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "progress": 69,
+      "progress": 80,
       "tasks": []
     }
   ],

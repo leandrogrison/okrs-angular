@@ -6,6 +6,13 @@
   min-height: calc(100vh - 64px);
   overflow: hidden;
   position: relative;
+  @media (max-width: 599px) {
+    margin-top: -16px;
+  }
+  @media (max-width: 959px) {
+    padding: 64px 16px 24px 16px;
+    margin: -24px -16px 0 -16px;
+  }
 }
 
 .map-header {
@@ -70,13 +77,16 @@
   justify-content: center;
   gap: 32px;
   padding: 16px;
-  transform: scale(1);
+  transform: scale(1) translate3d(0,0,0);
   transform-origin: top;
   margin: 0 auto;
   position: relative;
   user-select: none;
+  backface-visibility: visible;
+  perspective: 1000;
+  touch-action: none;
   &.map-container-animation {
-    transition: .2s;
+    transition: .2s ease;
   }
   &.block-actions {
     ::ng-deep .objective {

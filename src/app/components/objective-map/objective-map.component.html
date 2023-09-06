@@ -40,10 +40,13 @@
     [class.block-actions]="isMoving"
     [class.map-container-animation]="!isMoving"
     (mousedown)="setMouseMoving(true)"
-    (mouseup)="setMouseMoving(false);"
+    (touchstart)="setMouseMoving(true, $event)"
+    (mouseup)="setMouseMoving(false)"
+    (touchend)="setMouseMoving(false)"
     (mouseleave)="setMouseMoving(false)"
     (mouseenter)="setMouseMoving(false)"
     (mousemove)="moveMap($event)"
+    (touchmove)="moveMap($event)"
   >
     <app-objective-map-item
       #mapFirstLevel

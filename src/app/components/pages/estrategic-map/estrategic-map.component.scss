@@ -1,13 +1,27 @@
-.filter {
-  position: sticky;
-  top: 32px;
-  z-index: 9;
-  .cycles {
-    position: absolute;
-    top: -36px;
-    left: -24px;
-    padding: 16px 16px 16px 24px;
-    background: #fff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+
+@media (max-width: 599px) {
+  .filter {
+    padding: 0 16px 16px 16px;
+    margin: -8px -16px 24px -16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    .mat-mdc-form-field,
+    .cycles {
+      width: 100%;
+    }
+  }
+}
+@media (min-width: 600px) {
+  .filter {
+    position: sticky;
+    top: 32px;
+    z-index: 9;
+    .cycles {
+      position: absolute;
+      top: -36px;
+      left: -24px;
+      padding: 16px 16px 16px 24px;
+      background: #fff;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+    }
   }
 }
