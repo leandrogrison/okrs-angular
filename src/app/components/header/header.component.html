@@ -10,6 +10,8 @@
       <mat-icon>close</mat-icon>
     </button>
     <mat-divider fxHide.gt-sm />
+    <a routerLink="/" (click)="closeMenu()" mat-button class="menu-option">Dashboard</a>
+    <mat-divider fxHide.gt-sm />
     <a routerLink="/manager" (click)="closeMenu()" mat-button class="menu-option">Gestão de OKRs</a>
     <mat-divider fxHide.gt-sm />
     <a routerLink="/estrategic-map" (click)="closeMenu()" mat-button class="menu-option">Mapa estratégico</a>

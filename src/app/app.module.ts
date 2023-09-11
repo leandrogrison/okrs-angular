@@ -71,6 +71,7 @@ import { DeleteKrComponent } from './components/delete-kr/delete-kr.component';
 import { ObjectiveMapComponent } from './components/objective-map/objective-map.component';
 import { ObjectiveMapItemComponent } from './components/objective-map-item/objective-map-item.component';
 import { EstrategicMapComponent } from './components/pages/estrategic-map/estrategic-map.component';
+import { DashboardIndicatorsComponent } from './components/dashboard-indicators/dashboard-indicators.component';
 
 registerLocaleData(localePt);
 
@@ -104,7 +105,8 @@ registerLocaleData(localePt);
     DeleteKrComponent,
     ObjectiveMapComponent,
     ObjectiveMapItemComponent,
-    EstrategicMapComponent
+    EstrategicMapComponent,
+    DashboardIndicatorsComponent
   ],
   imports: [
     BrowserModule,

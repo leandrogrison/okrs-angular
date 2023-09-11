@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagerComponent } from './components/pages/manager/manager.component';
 import { EstrategicMapComponent } from './components/pages/estrategic-map/estrategic-map.component';
+import { HomeComponent } from './components/pages/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/manager',
     pathMatch: 'full',
+    component: HomeComponent,
     data: {
-      title: 'Página inicial'
+      title: 'Dashboard'
     }
   },
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/manager'
+    redirectTo: '/'
   }
 ];
 

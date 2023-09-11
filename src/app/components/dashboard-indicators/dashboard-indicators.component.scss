@@ -1,0 +1,209 @@
+
+.dashboard-percent-conclusion {
+  max-width: 900px;
+  margin: 0 auto 48px auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 601px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 96px;
+  }
+}
+.dashboard-percent-conclusion-totals,
+.dashboard-percent-conclusion-title {
+  flex: 1;
+}
+.dashboard-percent-conclusion-totals {
+  @media (max-width: 600px) {
+    width: 200px;
+    margin: auto;
+  }
+}
+.dashboard-percent-conclusion-title {
+  text-align: center;
+  @media (min-width: 601px) {
+    text-align: right;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: 200;
+    margin: 0;
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
+}
+
+.dashboard-percent-conclusion-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  .dashboard-percent-conclusion-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    &.on-time {
+      strong {
+        color: #2E7D32;
+      }
+    }
+    &.alert {
+      strong {
+        color: #ed6c02;
+      }
+    }
+    &.out-time {
+      strong {
+        color: #d32f2f;
+      }
+    }
+    span {
+      font-size: 18px;
+      @media (max-width: 767px) {
+        font-size: 16px;
+      }
+      &.total {
+        font-weight: 500;
+      }
+    }
+    strong {
+      font-size: 22px;
+      font-weight: 500;
+      @media (max-width: 767px) {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.chart-donut {
+  border-radius: 100%;
+  position: relative;
+  transform: translateZ(0);
+  box-shadow: 0 0 0 16px rgba(0,0,0,.12) inset;
+  @media (max-width: 767px) {
+    width: 144px;
+    box-shadow: 0 0 0 14px rgba(0,0,0,.12) inset;
+    margin: auto;
+  }
+  @media (min-width: 601px) {
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: calc(50% - 1px);
+      height: 48px;
+      border-left: 2px solid rgba(0,0,0,.12);
+    }
+  }
+  .chart-donut-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    @media (max-width: 767px) {
+      font-size: 24px;
+    }
+  }
+  .chart-donut-progress {
+    &.warn {
+      --mdc-circular-progress-active-indicator-color: #d32f2f;
+    }
+    &.accent {
+      --mdc-circular-progress-active-indicator-color: #ed6c02;
+    }
+    &.success {
+      --mdc-circular-progress-active-indicator-color: #2E7D32;
+    }
+  }
+}
+
+.dashboard-percent-conclusion-title.categories {
+  display: block;
+  margin-bottom: 48px;
+  @media (min-width: 601px) {
+    display: none;
+  }
+}
+
+.dashboard-percent-conclusion-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  @media (min-width: 601px) {
+    gap: 0;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .dashboard-percent-conclusion-category {
+    flex: 1 0 100%;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    @media (min-width: 601px) {
+      max-width: 33.3%;
+      padding: 0 16px;
+      &:before {
+        content: "";
+        display: block;
+        left: 0;
+        right: 0;
+        top: -48px;
+        position: absolute;
+        border-top: 2px solid rgba(0,0,0,.12);
+      }
+      &:first-child {
+        &:before {
+          left: 50%;
+        }
+      }
+      &:last-child {
+        &:before {
+          right: 50%;
+        }
+      }
+    }
+    h3 {
+      font-weight: 500;
+      @media (min-width: 600px) and (max-width: 767px) {
+        max-width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .chart-donut {
+      width: 144px;
+      margin: auto;
+      box-shadow: 0 0 0 14px rgba(0,0,0,.12) inset;
+      &:after {
+        top: -48px;
+        left: calc(50% - 1px);
+        height: 48px;
+        border-left: 2px solid rgba(0,0,0,.12);
+      }
+      .chart-donut-value {
+        font-size: 24px;
+      }
+    }
+    .dashboard-percent-conclusion-totals {
+      max-width: 200px;
+      margin: 0 auto;
+      .dashboard-percent-conclusion-total {
+        span {
+          font-size: 16px;
+        }
+        strong {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

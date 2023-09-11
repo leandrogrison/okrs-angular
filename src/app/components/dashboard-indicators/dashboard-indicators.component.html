@@ -1,0 +1,206 @@
+
+<div class="dashboard-percent-conclusion">
+
+  <div class="dashboard-percent-conclusion-title">
+    <h2>Percentual de conclusão de todos os objetivos</h2>
+  </div>
+
+  <div class="chart-donut">
+    <mat-progress-spinner
+      class="chart-donut-progress"
+      mode="determinate"
+      [diameter]="isSmallScreen ? 144 : 192"
+      [strokeWidth]="isSmallScreen ? 14 : 16"
+      [ngClass]="getProgressStatusOfObjectives('allObjectives') | ColorProgress"
+      [value]="indicators.allObjectives.conclusionPercent"
+    />
+    <span class="chart-donut-value">
+      <div>
+        {{ indicators.allObjectives.conclusionPercent ? (indicators.allObjectives.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
+      </div>
+    </span>
+  </div>
+
+  <div class="dashboard-percent-conclusion-totals">
+    <div class="dashboard-percent-conclusion-total on-time">
+      <div>
+        <span>Dentro do prazo</span>
+      </div>
+      <strong>{{ indicators.allObjectives.onTimeNumberOfObjectives }}</strong>
+    </div>
+    <mat-divider />
+    <div class="dashboard-percent-conclusion-total alert">
+      <div>
+        <span>Em alerta</span>
+      </div>
+      <strong>{{ indicators.allObjectives.alertNumberOfObjectives }}</strong>
+    </div>
+    <mat-divider />
+    <div class="dashboard-percent-conclusion-total out-time">
+      <div>
+        <span>Fora do prazo</span>
+      </div>
+      <strong>{{ indicators.allObjectives.outTimeNumberOfObjectives }}</strong>
+    </div>
+    <mat-divider />
+    <div class="dashboard-percent-conclusion-total">
+      <div>
+        <span class="total">Total de objetivos</span>
+      </div>
+      <strong>{{ indicators.allObjectives.numberOfObjectives }}</strong>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="indicators.company.numberOfObjectives" class="dashboard-percent-conclusion-title categories">
+  <h2>Percentual de conclusão dos objetivos por categoria</h2>
+</div>
+
+<div class="dashboard-percent-conclusion-categories">
+
+  <div *ngIf="indicators.company.numberOfObjectives" class="dashboard-percent-conclusion-category">
+    <div class="chart-donut">
+      <mat-progress-spinner
+        class="chart-donut-progress"
+        mode="determinate"
+        diameter="144"
+        strokeWidth="14"
+        [ngClass]="getProgressStatusOfObjectives('company') | ColorProgress"
+        [value]="indicators.company.conclusionPercent"
+      />
+      <span class="chart-donut-value">
+        <div>
+          {{ indicators.company.conclusionPercent ? (indicators.company.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
+        </div>
+      </span>
+    </div>
+    <h3>Objetivos de empresa</h3>
+    <div class="dashboard-percent-conclusion-totals">
+      <div class="dashboard-percent-conclusion-total on-time">
+        <div>
+          <span>Dentro do prazo</span>
+        </div>
+        <strong>{{ indicators.company.onTimeNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total alert">
+        <div>
+          <span>Em alerta</span>
+        </div>
+        <strong>{{ indicators.company.alertNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total out-time">
+        <div>
+          <span>Fora do prazo</span>
+        </div>
+        <strong>{{ indicators.company.outTimeNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total">
+        <div>
+          <span class="total">Total de objetivos</span>
+        </div>
+        <strong>{{ indicators.company.numberOfObjectives }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="indicators.group.numberOfObjectives" class="dashboard-percent-conclusion-category">
+    <div class="chart-donut">
+      <mat-progress-spinner
+        class="chart-donut-progress"
+        mode="determinate"
+        diameter="144"
+        strokeWidth="14"
+        [ngClass]="getProgressStatusOfObjectives('group') | ColorProgress"
+        [value]="indicators.group.conclusionPercent"
+      />
+      <span class="chart-donut-value">
+        <div>
+          {{ indicators.group.conclusionPercent ? (indicators.group.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
+        </div>
+      </span>
+    </div>
+    <h3>Objetivos de grupo</h3>
+    <div class="dashboard-percent-conclusion-totals">
+      <div class="dashboard-percent-conclusion-total on-time">
+        <div>
+          <span>Dentro do prazo</span>
+        </div>
+        <strong>{{ indicators.group.onTimeNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total alert">
+        <div>
+          <span>Em alerta</span>
+        </div>
+        <strong>{{ indicators.group.alertNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total out-time">
+        <div>
+          <span>Fora do prazo</span>
+        </div>
+        <strong>{{ indicators.group.outTimeNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total">
+        <div>
+          <span class="total">Total de objetivos</span>
+        </div>
+        <strong>{{ indicators.group.numberOfObjectives }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="indicators.individual.numberOfObjectives" class="dashboard-percent-conclusion-category">
+    <div class="chart-donut">
+      <mat-progress-spinner
+        class="chart-donut-progress"
+        mode="determinate"
+        diameter="144"
+        strokeWidth="14"
+        [ngClass]="getProgressStatusOfObjectives('individual') | ColorProgress"
+        [value]="indicators.individual.conclusionPercent"
+      />
+      <span class="chart-donut-value">
+        <div>
+          {{ indicators.individual.conclusionPercent ? (indicators.individual.conclusionPercent / 100 | percent: '1.0-1') : '0%'}}
+        </div>
+      </span>
+    </div>
+    <h3>Objetivos individuais</h3>
+    <div class="dashboard-percent-conclusion-totals">
+      <div class="dashboard-percent-conclusion-total on-time">
+        <div>
+          <span>Dentro do prazo</span>
+        </div>
+        <strong>{{ indicators.individual.onTimeNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total alert">
+        <div>
+          <span>Em alerta</span>
+        </div>
+        <strong>{{ indicators.individual.alertNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total out-time">
+        <div>
+          <span>Fora do prazo</span>
+        </div>
+        <strong>{{ indicators.individual.outTimeNumberOfObjectives }}</strong>
+      </div>
+      <mat-divider />
+      <div class="dashboard-percent-conclusion-total">
+        <div>
+          <span class="total">Total de objetivos</span>
+        </div>
+        <strong>{{ indicators.individual.numberOfObjectives }}</strong>
+      </div>
+    </div>
+  </div>
+
+</div>

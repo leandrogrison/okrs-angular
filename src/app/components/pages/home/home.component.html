@@ -1,1 +1,38 @@
-<p>home works!</p>
+
+<app-page-header />
+
+<div class="filter">
+  <div class="cycles">
+    <mat-form-field>
+      <mat-label>Objetivos do ciclo:</mat-label>
+      <mat-select [(value)]="filter.cycle.id" (valueChange)="getObjectives(this.filter);">
+        <mat-option *ngFor="let cycle of cycles" [value]="cycle.id" >
+          {{cycle.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="dashboard-container">
+
+  <div *ngIf="loadingObjectives, else noObjectives" class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <ng-template #noObjectives>
+
+    <div class="dashboard">
+
+      <app-dashboard-indicators [objectives]="objectives" [filter]="filter" />
+
+    </div>
+
+    <div class="my-okrs">
+      <h2>Meus OKRs</h2>
+    </div>
+
+  </ng-template>
+
+</div>
+
