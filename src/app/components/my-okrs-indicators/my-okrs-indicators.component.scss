@@ -1,0 +1,150 @@
+h2 {
+  font-size: 24px;
+  font-weight: 200;
+  margin: 0 0 24px 0;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+.my-okrs-indicators-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 600px) or ((min-width: 1280px) and (max-width: 1439px)) {
+    flex-wrap: wrap;
+  }
+  .chart-donut {
+    width: 144px;
+    border-radius: 100%;
+    position: relative;
+    transform: translateZ(0);
+    box-shadow: 0 0 0 14px rgba(0,0,0,.12) inset;
+    .chart-donut-value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .chart-donut-progress {
+      &.warn {
+        --mdc-circular-progress-active-indicator-color: #d32f2f;
+      }
+      &.accent {
+        --mdc-circular-progress-active-indicator-color: #ed6c02;
+      }
+      &.success {
+        --mdc-circular-progress-active-indicator-color: #2E7D32;
+      }
+    }
+  }
+  .my-okrs-totals {
+    flex: auto;
+    margin-left: 16px;
+    padding-right: 24px;
+    border-right: 1px solid rgba(0,0,0,.12);
+    @media (max-width: 600px) or ((min-width: 1280px) and (max-width: 1439px)) {
+      border: 0;
+      padding-right: 0;
+    }
+    @media (max-width: 600px) {
+      max-width: 200px;
+      margin: 16px;
+      flex: 1 0 100%;
+    }
+    .my-okrs-total {
+      width: 100%;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      white-space: nowrap;
+      &.on-time {
+        strong {
+          color: #2E7D32;
+        }
+      }
+      &.alert {
+        strong {
+          color: #ed6c02;
+        }
+      }
+      &.out-time {
+        strong {
+          color: #d32f2f;
+        }
+      }
+      .total,
+      strong {
+        font-weight: 500;
+      }
+    }
+  }
+  .my-okrs-krs {
+    flex: auto;
+    padding-left: 24px;
+    margin: 0 -16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @media (max-width: 600px) or ((min-width: 1280px) and (max-width: 1439px)) {
+      margin: 24px -24px;
+      padding: 8px 24px;
+      flex-direction: row;
+      justify-content: flex-start;
+      background: #eee;
+    }
+    .my-okrs-krs-icon {
+      min-width: 80px;
+      min-height: 80px;
+      max-width: 80px;
+      max-height: 80px;
+      position: relative;
+      border: 4px solid rgba(0,0,0,.12);
+      background: #fff;
+      border-radius: 50px;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+      @media (max-width: 600px) or ((min-width: 1280px) and (max-width: 1439px)) {
+        margin: 0 16px 0 0;
+      }
+      .my-okrs-krs-icon-check,
+      .my-okrs-krs-icon-key {
+        position: absolute;
+        top: 35%;
+        left: 15%;
+        color: #0091EA;
+        font-size: 42px;
+        width: auto;
+        height: auto;
+        z-index: 2;
+      }
+      .my-okrs-krs-icon-check {
+        top: 14%;
+        left: 45%;
+        font-size: 32px;
+        color: #00C853;
+        z-index: 1;
+      }
+    }
+    .my-okrs-krs-totals {
+      max-width: 200px;
+      text-align: center;
+      @media (max-width: 600px) or ((min-width: 1280px) and (max-width: 1439px)) {
+        max-width: none;
+        text-align: left;
+      }
+      .my-okrs-krs-totals-completed {
+        margin-top: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -168,8 +168,8 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 100,
-      "numberOfKRs": 1,
+      "conclusionPercent": 75,
+      "numberOfKRs": 2,
       "numberOfKRsCompleted": 1
     },
     {
@@ -680,13 +680,27 @@
       "name": "kr de teste",
       "description": "",
       "owner": {
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      },
+      "type": "percent",
+      "objective": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
+      "progress": 33,
+      "tasks": []
+    },
+    {
+      "id": "0d335511-b380-4b5f-8ed3-5e2eb4d6b19d",
+      "name": "kr para outro usuário",
+      "description": "",
+      "owner": {
         "id": 1,
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
       "type": "percent",
-      "objective": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
-      "progress": 33,
+      "objective": "7484a83f-a4d2-4210-ab42-97d21edb8cc7",
+      "progress": 50,
       "tasks": []
     }
   ],

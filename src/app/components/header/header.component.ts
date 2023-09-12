@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 import { AuthService } from 'src/app/services/auth.service';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent {
   userPhoto = '';
   menuOpened: boolean = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private drawerService: DrawerService) {
     this.userPhoto = this.authService.getUserInfo().photo;
   }
 
@@ -26,6 +27,7 @@ export class HeaderComponent {
   closeMenu() {
     this.menuOpened = false;
     this.verifyMenuOpened.emit(false);
+    this.drawerService.openDrawer();
   }
 
 }
