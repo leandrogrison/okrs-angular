@@ -21,6 +21,8 @@ export class DashboardIndicatorsComponent implements OnInit {
     }
   }
 
+  objectivesOfCycle: Objective[] = [];
+
   indicators = {
     allObjectives: {
       conclusionPercent: 0,
@@ -63,10 +65,19 @@ export class DashboardIndicatorsComponent implements OnInit {
   windowResize = () => {};
 
   ngOnInit(): void {
+    this.filterObjectivesOfCycle();
     this.generateIndicators();
     this.windowResize = this.renderer.listen(window, 'resize', () => {
       this.isSmallScreen = document.body.clientWidth < 768;
     });
+  }
+
+  filterObjectivesOfCycle() {
+    this.objectives.map(objective => {
+      if (objective.cycle.id === this.filter.cycle.id) {
+        this.objectivesOfCycle.push(objective);
+      }
+    })
   }
 
   generateIndicators() {
@@ -76,7 +87,7 @@ export class DashboardIndicatorsComponent implements OnInit {
     let outTimeAllObjectives = 0;
     let alertAllObjectives = 0;
 
-    this.objectives.map(objective => {
+    this.objectivesOfCycle.map(objective => {
 
       conclusionPercentAllObjectives += objective.conclusionPercent ? objective.conclusionPercent : 0;
 
@@ -98,8 +109,8 @@ export class DashboardIndicatorsComponent implements OnInit {
 
     });
 
-    this.indicators.allObjectives.conclusionPercent = conclusionPercentAllObjectives / this.objectives.length;
-    this.indicators.allObjectives.numberOfObjectives = this.objectives.length;
+    this.indicators.allObjectives.conclusionPercent = conclusionPercentAllObjectives / this.objectivesOfCycle.length;
+    this.indicators.allObjectives.numberOfObjectives = this.objectivesOfCycle.length;
     this.indicators.allObjectives.onTimeNumberOfObjectives = onTimeAllObjectives;
     this.indicators.allObjectives.alertNumberOfObjectives = alertAllObjectives;
     this.indicators.allObjectives.outTimeNumberOfObjectives = outTimeAllObjectives;

@@ -23,7 +23,10 @@
       "startDate": "2023-10-01",
       "deadline": "2023-12-31",
       "finished": 0,
-      "associate": null
+      "associate": null,
+      "conclusionPercent": 100,
+      "numberOfKRs": 1,
+      "numberOfKRsCompleted": 1
     },
     {
       "id": "053e3d54-3536-4196-bc2e-3e928718881d",
@@ -388,6 +391,33 @@
       "conclusionPercent": 93,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
+    },
+    {
+      "id": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
+      "name": "Objetivo antigo 1",
+      "description": "",
+      "category": {
+        "id": 0,
+        "name": "Objetivo da empresa"
+      },
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q2",
+        "name": "2° Trimestre 2023"
+      },
+      "createdAt": "2023-09-11T17:28:00.938Z",
+      "startDate": "2023-04-01",
+      "deadline": "2023-06-30",
+      "finished": 0,
+      "conclusionPercent": 33,
+      "numberOfKRs": 1,
+      "numberOfKRsCompleted": 0
     }
   ],
   "krs": [
@@ -630,6 +660,34 @@
       "objective": "c3f0ffd9-4841-47e9-b4a3-367fa6c957e6",
       "progress": 93,
       "tasks": []
+    },
+    {
+      "id": "a336b48a-634f-4c78-9845-5fa4f065ff9a",
+      "name": "kr de teste",
+      "description": "",
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "type": "percent",
+      "objective": "95b383f3-aca3-43dd-b8e3-dc305d462abf",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "77c701bd-74cb-4150-a085-33ee712e75d3",
+      "name": "kr de teste",
+      "description": "",
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "type": "percent",
+      "objective": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
+      "progress": 33,
+      "tasks": []
     }
   ],
   "cycles": [
@@ -640,6 +698,10 @@
     {
       "id": "2023Q4",
       "name": "4° Trimestre 2023"
+    },
+    {
+      "id": "2023Q2",
+      "name": "2° Trimestre 2023"
     }
   ],
   "users": [

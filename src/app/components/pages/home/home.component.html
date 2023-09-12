@@ -5,7 +5,7 @@
   <div class="cycles">
     <mat-form-field>
       <mat-label>Objetivos do ciclo:</mat-label>
-      <mat-select [(value)]="filter.cycle.id" (valueChange)="getObjectives(this.filter);">
+      <mat-select [(value)]="filter.cycle.id" (valueChange)="getObjectives();">
         <mat-option *ngFor="let cycle of cycles" [value]="cycle.id" >
           {{cycle.name}}
         </mat-option>
@@ -16,15 +16,17 @@
 
 <div class="dashboard-container">
 
-  <div *ngIf="loadingObjectives, else noObjectives" class="loading">
+  <div *ngIf="loadingObjectives, else noLoading" class="loading">
     <mat-spinner diameter="40"></mat-spinner>
   </div>
 
-  <ng-template #noObjectives>
+  <ng-template #noLoading>
 
     <div class="dashboard">
 
       <app-dashboard-indicators [objectives]="objectives" [filter]="filter" />
+
+      <app-dashboard-history [objectives]="objectives" [filter]="filter" [cycles]="cycles" />
 
     </div>
 

@@ -15,7 +15,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 import { NgxEchartsModule } from 'ngx-echarts';
-import * as echarts from 'echarts/core';
 
 // ANGULAR MATERIAL
 import { MatIconModule } from '@angular/material/icon';
@@ -72,6 +71,7 @@ import { ObjectiveMapComponent } from './components/objective-map/objective-map.
 import { ObjectiveMapItemComponent } from './components/objective-map-item/objective-map-item.component';
 import { EstrategicMapComponent } from './components/pages/estrategic-map/estrategic-map.component';
 import { DashboardIndicatorsComponent } from './components/dashboard-indicators/dashboard-indicators.component';
+import { DashboardHistoryComponent } from './components/dashboard-history/dashboard-history.component';
 
 registerLocaleData(localePt);
 
@@ -106,7 +106,8 @@ registerLocaleData(localePt);
     ObjectiveMapComponent,
     ObjectiveMapItemComponent,
     EstrategicMapComponent,
-    DashboardIndicatorsComponent
+    DashboardIndicatorsComponent,
+    DashboardHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +142,7 @@ registerLocaleData(localePt);
     NgxMaskPipe,
     DragDropModule,
     MatSliderModule,
-    NgxEchartsModule.forRoot({ echarts }),
+    NgxEchartsModule.forRoot({ echarts: () => import('echarts') }),
     MatCardModule
   ],
   providers: [

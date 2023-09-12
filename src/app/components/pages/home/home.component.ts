@@ -36,12 +36,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCycles();
-    this.getObjectives(this.filter);
+    this.getObjectives();
   }
 
-  async getCycles() {
+  getCycles() {
     this.loadingObjectives = true;
-    await this.cyclesService.getCycles().subscribe({
+    this.cyclesService.getCycles().subscribe({
       next: (cycles) => {
         this.cycles = cycles;
       },
@@ -53,9 +53,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getObjectives(filter?: any) {
+  getObjectives() {
     this.loadingObjectives = true;
-    this.objectivesService.getObjectives(filter).subscribe({
+    this.objectivesService.getObjectives().subscribe({
       next: (objectives) => {
         this.objectives = objectives;
         this.loadingObjectives = false;
@@ -67,6 +67,5 @@ export class HomeComponent implements OnInit {
       }
     })
   }
-
 
 }
