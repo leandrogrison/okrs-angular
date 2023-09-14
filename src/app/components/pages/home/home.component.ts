@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { CyclesService } from 'src/app/services/cycles.service';
 import { ObjectivesService } from 'src/app/services/objectives.service';
@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadingObjectives: boolean = true;
+  updateComponent = Math.random();
 
   constructor(
     private objectivesService: ObjectivesService,
@@ -37,7 +38,8 @@ export class HomeComponent implements OnInit {
     private krsService: KrsService,
     private authService: AuthService,
     private messagesService: MessagesService,
-    private quarterPipe: QuarterPipe
+    private quarterPipe: QuarterPipe,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -86,6 +88,15 @@ export class HomeComponent implements OnInit {
         this.loadingObjectives = false;
         this.messagesService.show('Erro ao buscar KRs! Tente novamente mais tarde.', 'warn');
         console.log(error);
+      }
+    })
+  }
+
+  updateObjectives(objectiveUpdated: Objective) {
+    this.objectives.map((objective, index) => {
+      if (objective.id === objectiveUpdated.id) {
+        this.objectives[index].conclusionPercent = objectiveUpdated.conclusionPercent;
+        this.updateComponent = Math.random();
       }
     })
   }

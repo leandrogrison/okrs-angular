@@ -1,0 +1,99 @@
+
+.my-okrs-objectives {
+  margin-bottom: 24px;
+  .my-okrs-objective-container {
+    display: flex;
+    align-items: center;
+    margin: 0 -24px;
+    border-top: 1px solid rgba(0,0,0,.12);
+    padding: 16px 24px;
+    gap: 8px;
+    box-sizing: border-box;
+    position: relative;
+    .my-okrs-objective-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .objective-category {
+      min-width: 28px;
+      min-height: 28px;
+      max-width: 28px;
+      max-height: 28px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      color: rgba(0, 0, 0, 0.66);
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+    .my-okrs-objective-progress {
+      min-width: 48px;
+      min-height: 48px;
+      max-width: 48px;
+      max-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      border-radius: 48px;
+      font-weight: 500;
+      background: #eee;
+      &.warn {
+        color: #fff;
+        background: #d32f2f;
+      }
+      &.accent {
+        color: #fff;
+        background: #ed6c02;
+      }
+      &.success {
+        color: #fff;
+        background: #2E7D32;
+      }
+    }
+    .my-okrs-objective-name {
+      padding-left: 8px;
+    }
+    .my-okrs-see-krs {
+      @media (max-width: 599px) {
+        display: none;
+      }
+    }
+    .my-okrs-see-krs-mobile {
+      margin: 0 -8px;
+      @media (min-width: 600px) {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.my-okrs-krs {
+  padding-left: 56px;
+  max-width: 512px;
+  box-sizing: border-box;
+  overflow: hidden;
+  @media(max-width: 600px) {
+    padding-left: 0;
+  }
+  &.my-okrs-krs-show {
+    .my-okrs-krs-container {
+      margin-top: 0;
+      max-height: fit-content;
+    }
+  }
+  .my-okrs-krs-container {
+    margin-top: -100%;
+    max-height: 0;
+    transition: .4s;
+    ::ng-deep .krs-list {
+      margin-top: 16px;
+      & > li:first-child {
+        margin-top: 16px;
+      }
+    }
+  }
+}

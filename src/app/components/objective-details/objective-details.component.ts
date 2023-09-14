@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Objective } from 'src/app/Objective';
@@ -10,11 +10,9 @@ import { MessagesService } from 'src/app/services/messages.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
 import { DaysToEndService } from 'src/app/services/days-to-end.service';
 import { KrsService } from 'src/app/services/krs.service';
-import { ObjectivesService } from 'src/app/services/objectives.service';
+
 
 import { CreateKrComponent } from '../create-kr/create-kr.component';
-import { EditKrComponent } from '../edit-kr/edit-kr.component';
-import { DeleteKrComponent } from '../delete-kr/delete-kr.component';
 
 @Component({
   selector: 'app-objective-details',
@@ -30,13 +28,7 @@ export class ObjectiveDetailsComponent implements OnInit {
   descriptionTruncate: boolean = true;
   supporters: User[] = [];
   krs: KR[] = [];
-  oldKrProgress!: number;
-  oldKrTask!: any;
-  oldValued!: number;
   loadingKrs: boolean = true;
-  delayToValued: any = null;
-  isMobile: boolean = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  unblockSlider: boolean[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -44,9 +36,7 @@ export class ObjectiveDetailsComponent implements OnInit {
     private messagesService: MessagesService,
     private progressStatusService: ProgressStatusService,
     private daysToEndService: DaysToEndService,
-    private krsService: KrsService,
-    private objectivesService: ObjectivesService,
-    private changeDetectorRef: ChangeDetectorRef
+    private krsService: KrsService
   ) {}
 
   ngOnInit(): void {
@@ -108,168 +98,12 @@ export class ObjectiveDetailsComponent implements OnInit {
     });
   }
 
-  openEditKr(kr: KR) {
-    this.dialog.open(EditKrComponent, {
-      data: { kr: kr, objective: this.objective },
-      maxWidth: 900,
-      width: 'calc(100% - 32px)',
-      position: { top: '32px' },
-    }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) {
-        if (result.type === 'value') {
-          this.updateOnEdit(result);
-        } else {
-          this.getKrs();
-        }
-      }
-    });
-  }
-
-  async updateOnEdit(kr: KR) {
-    this.getCurrentProgress(kr);
-    kr.progress = (kr.valued ? kr.valued : 0) / (kr.value ? kr.value : 0) * 100;
-    this.krs.map((k, index) => {
-      if (k.id === kr.id) this.krs[index] = kr;
-    })
-    this.updateProgress(kr);
-    await this.getKrs();
-  }
-
-  deleteKr(kr: KR) {
-    this.dialog.open(DeleteKrComponent, {
-      data: {
-        kr: kr,
-        krs: this.krs,
-        objective: this.objective
-      },
-      maxWidth: 420,
-      minWidth: 320,
-      panelClass: 'dialog-alert'
-    }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.getKrs();
-    });
-  }
-
-  getCurrentProgress(kr: KR) {
-    this.oldKrProgress = kr.progress;
-  }
-
-  getCurrentValue(kr: KR) {
-    this.getCurrentProgress(kr);
-    this.oldValued = kr.valued ? kr.valued : 0;
-  }
-
-  restoreProgress(kr: KR, oldKrProgress: number) {
-    this.krs.forEach((k, index) => {
-      if (kr.id === k.id) {
-        this.krs[index].progress = oldKrProgress;
-      }
-    });
-
-    this.objective.conclusionPercent = this.calcConclusionPercentOfObjective();
-  }
-
-  restoreTask(oldTask: any) {
-    this.krs.forEach((kr, indexK) => {
-      kr.tasks.forEach((task, indexT) => {
-        if (task.id === oldTask.id) {
-          this.krs[indexK].tasks[indexT] = oldTask;
-        }
-      })
-    });
-  }
-
-  restoreValue(kr: KR, oldValued: number) {
-    this.krs.forEach((k, index) => {
-      if (kr.id === k.id) {
-        this.krs[index].valued = oldValued;
-      }
-    });
-  }
-
-  calcConclusionPercentOfObjective(): number {
+  calcConclusionPercentOfObjective() {
     const progressValues = this.krs.map(kr => kr.progress > 100 ? 100 : kr.progress);
     const sumPercentOfKRs = progressValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     const conclusionPercentOfObjective = (sumPercentOfKRs / this.krs.length) || 0;
 
-    return conclusionPercentOfObjective;
-  }
-
-  async updateProgress(kr: KR, oldTask?: any) {
-    const oldKrProgress = this.oldKrProgress;
-    const oldValued = this.oldValued;
-    const oldNumberOfKRsCompleted = this.objective.numberOfKRsCompleted;
-
-    this.objective.conclusionPercent = this.calcConclusionPercentOfObjective();
-    this.objective.numberOfKRsCompleted = this.krs.filter(kr => kr.progress >= 100).length;
-
-    let objectiveToSave: Objective = JSON.parse(JSON.stringify(this.objective));
-
-    if (objectiveToSave.children) delete objectiveToSave.children;
-
-    await this.krsService.updateKr(kr).subscribe({
-      next: () => {
-        this.objectivesService.updateObjective(objectiveToSave).subscribe({
-          next: () => {},
-          error: (error) => {
-            if (oldTask) {
-              this.restoreTask(oldTask);
-            }
-            if (kr.type === 'value') {
-              this.restoreValue(kr, oldValued);
-            }
-            this.restoreProgress(kr, oldKrProgress);
-            this.objective.numberOfKRsCompleted = oldNumberOfKRsCompleted;
-            this.messagesService.show('Erro ao salvar progresso do objetivo! Tente novamente mais tarde.', 'warn');
-            console.log(error);
-          }
-        })
-      },
-      error: (error) => {
-        if (oldTask) {
-          this.restoreTask(oldTask);
-        }
-        if (kr.type === 'value') {
-          this.restoreValue(kr, oldValued);
-        }
-        this.restoreProgress(kr, oldKrProgress);
-        this.messagesService.show('Erro ao salvar progresso do KR! Tente novamente mais tarde.', 'warn');
-        console.log(error);
-      }
-    })
-  }
-
-  updateTasks(kr: KR, task: any) {
-    const totalChecked = kr.tasks.filter(task => task.checked);
-
-    const oldKrTask = {
-      id: task.id,
-      name: task.name,
-      checked: !task.checked
-    };
-
-    if (kr.type === 'task') {
-      kr.progress = totalChecked.length / kr.tasks.length * 100;
-    }
-
-    this.updateProgress(kr, oldKrTask);
-  }
-
-  updateValue(kr: KR) {
-    clearTimeout(this.delayToValued);
-
-    this.delayToValued = setTimeout(() => {
-      kr.progress = (kr.valued ? kr.valued : 0) / (kr.value ? kr.value : 0) * 100;
-      this.updateProgress(kr);
-    }, 500);
-
-  }
-
-  blockSlider(i: number) {
-    setTimeout(() => {
-      this.unblockSlider[i] = false;
-      this.changeDetectorRef.detectChanges();
-    }, 400);
+    this.objective.conclusionPercent = conclusionPercentOfObjective;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
 
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
 
@@ -11,7 +11,7 @@ import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
   templateUrl: './dashboard-indicators.component.html',
   styleUrls: ['./dashboard-indicators.component.scss']
 })
-export class DashboardIndicatorsComponent implements OnInit {
+export class DashboardIndicatorsComponent implements OnInit, OnChanges {
 
   @Input() objectives!: Objective[];
   @Input() filter = {
@@ -20,6 +20,7 @@ export class DashboardIndicatorsComponent implements OnInit {
       name: `${this.quarterPipe.transform(new Date())}° Trimestre ${new Date().getFullYear()}`
     }
   }
+  @Input() updateComponent!: any;
 
   objectivesOfCycle: Objective[] = [];
 
@@ -53,6 +54,7 @@ export class DashboardIndicatorsComponent implements OnInit {
       outTimeNumberOfObjectives: 0
     }
   }
+  indicatorsZero = { ...this.indicators }
 
   isSmallScreen = document.body.clientWidth < 768;
 
@@ -65,14 +67,19 @@ export class DashboardIndicatorsComponent implements OnInit {
   windowResize = () => {};
 
   ngOnInit(): void {
-    this.filterObjectivesOfCycle();
-    this.generateIndicators();
     this.windowResize = this.renderer.listen(window, 'resize', () => {
       this.isSmallScreen = document.body.clientWidth < 768;
     });
   }
 
+  ngOnChanges() {
+    this.filterObjectivesOfCycle();
+    this.generateIndicators();
+  }
+
   filterObjectivesOfCycle() {
+    this.objectivesOfCycle = [];
+
     this.objectives.map(objective => {
       if (objective.cycle.id === this.filter.cycle.id) {
         this.objectivesOfCycle.push(objective);
@@ -86,6 +93,8 @@ export class DashboardIndicatorsComponent implements OnInit {
     let onTimeAllObjectives = 0;
     let outTimeAllObjectives = 0;
     let alertAllObjectives = 0;
+
+    this.indicators = JSON.parse(JSON.stringify(this.indicatorsZero));
 
     this.objectivesOfCycle.map(objective => {
 

@@ -104,116 +104,13 @@
         </button>
       </div>
 
-      <ul *ngIf="krs && krs.length > 0" class="krs-list">
-        <li *ngFor="let kr of krs; let i = index">
-          <div [matTooltip]="kr.owner!.name" matTooltipPosition="above">
-            <img
-              *ngIf="kr.owner!.photo; else noPhoto"
-              [src]="kr.owner!.photo"
-              [alt]="kr.owner!.name"
-              class="user-photo user-photo-xs"
-            />
-            <ng-template #noPhoto>
-              <mat-icon class="user-photo user-photo-xs">
-                person
-              </mat-icon>
-            </ng-template>
-          </div>
-          <div class="krs-list-content">
-            <p class="krs-list-name">
-              {{ kr.name }}
-              <mat-icon *ngIf="kr.description" [matTooltip]="kr.description" matTooltipPosition="above">
-                info
-              </mat-icon>
-            </p>
-            <div class="krs-list-actions">
-              <mat-slider
-                class="krs-list-slider"
-                [ngClass]="{
-                  'no-slider-thumb': kr.type === 'task' || kr.type === 'value',
-                  'block-slider': isMobile && (!unblockSlider[i] || unblockSlider[i] === false)
-                }"
-              >
-                <input
-                  matSliderThumb
-                  [(ngModel)]="kr.progress"
-                  (mousedown)="getCurrentProgress(kr)"
-                  (dragStart)="getCurrentProgress(kr)"
-                  (dragEnd)="blockSlider(i)"
-                  (change)="updateProgress(kr)"
-                  [disabled]="kr.type === 'task' || kr.type === 'value'"
-                  min="0"
-                  max="100"
-                >
-                <div *ngIf="isMobile" class="click-to-slider" (click)="unblockSlider[i] = true">
-                  Alterar
-                </div>
-              </mat-slider>
-              <div class="krs-list-actions-progress">
-                {{ kr.progress / 100 | percent: '1.0-1' }}
-              </div>
-
-              <button
-                (click)="openEditKr(kr)"
-                mat-icon-button
-                matTooltip="Editar KR"
-                matTooltipPosition="above"
-                aria-label="Editar KR"
-              >
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button
-                (click)="deleteKr(kr)"
-                mat-icon-button
-                matTooltip="Excluir KR"
-                matTooltipPosition="above"
-                aria-label="Excluir KR"
-              >
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-            <div *ngIf="kr.type === 'value' && kr.value" fxLayout fxLayoutAlign="center center" fxLayoutGap="8px">
-              <mat-form-field fxFlex="50%">
-                <mat-label>Informe um valor</mat-label>
-                <input
-                  [(ngModel)]="kr.valued"
-                  (ngModelChange)="updateValue(kr)"
-                  (focus)="getCurrentValue(kr)"
-                  name="valued"
-                  #valuedField="ngModel"
-                  mask="separator.2"
-                  thousandSeparator="."
-                  decimalMarker=","
-                  matInput
-                >
-                <mat-error *ngIf="valuedField.invalid">
-                  <span *ngIf="valuedField.errors?.['required']">Campo obrigatório</span>
-                </mat-error>
-              </mat-form-field>
-              <div fxFlex="50%">
-                Meta: <strong>{{ kr.value | mask: 'separator.2': {thousandSeparator: '.', decimalMarker: ','} }}</strong>
-                <br>
-                <small>({{ kr.unit }})</small>
-              </div>
-            </div>
-            <div *ngIf="kr.tasks && kr.tasks.length > 0" class="krs-list-tasks">
-              <div class="krs-list-tasks-title">
-                <small>{{kr.tasks.length}} tarefa{{kr.tasks.length > 1 ? 's' : ''}}</small>
-              </div>
-              <div *ngFor="let task of kr.tasks" class="krs-list-tasks-checkbox">
-                <mat-checkbox
-                  [checked]="task.checked"
-                  [(ngModel)]="task.checked"
-                  (mousedown)="getCurrentProgress(kr)"
-                  (ngModelChange)="updateTasks(kr, task)"
-                >
-                  {{ task.name }}
-                </mat-checkbox>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <app-kr-list
+        [krs]="krs"
+        [objective]="objective"
+        [managerActions]="true"
+        (getKRsHandle)="getKrs()"
+        (calcConclusionPercentOfObjectiveHandle)="calcConclusionPercentOfObjective()"
+      />
 
     </div>
   </ng-template>

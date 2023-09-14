@@ -1,0 +1,8 @@
+h3 {
+  font-weight: 500;
+  margin: 24px 0;
+  @media (max-width: 600px) or ((min-width: 1280px) and (max-width: 1439px)) {
+    margin-top: 0;
+  }
+}
+

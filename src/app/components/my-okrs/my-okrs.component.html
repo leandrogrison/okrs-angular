@@ -1,0 +1,9 @@
+<div *ngIf="myObjectives.length > 0">
+  <h3>Objetivos em que você é responsável</h3>
+  <app-my-okrs-objectives [objectives]="myObjectives" [myKrs]="myKrs" (updateObjectivesHandle)="updateObjectives($event)" />
+</div>
+
+<div *ngIf="objectivesWithMyKRs.length > 0">
+  <h3>Outros objetivos em que você é responsável por algum KR</h3>
+  <app-my-okrs-objectives [objectives]="objectivesWithMyKRs" [myKrs]="myKrs" (updateObjectivesHandle)="updateObjectives($event)" />
+</div>

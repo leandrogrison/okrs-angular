@@ -17,8 +17,14 @@
         {{ objective.category | IconCategory }}
       </mat-icon>
       <div class="objective-status">{{objective.finished ? 'Finalizado' : 'Em aberto'}}</div>
-      <div class="objective-owner" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px" [matTooltip]="objective.owner!.name"
-      matTooltipPosition="above">
+      <div
+        fxLayout
+        fxLayoutAlign="start center"
+        fxLayoutGap="4px"
+        [matTooltip]="objective.owner!.name"
+        matTooltipPosition="above"
+        class="objective-owner"
+      >
         <img
           *ngIf="objective.owner!.photo; else noPhoto"
           [src]="objective.owner!.photo"

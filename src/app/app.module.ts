@@ -73,6 +73,9 @@ import { EstrategicMapComponent } from './components/pages/estrategic-map/estrat
 import { DashboardIndicatorsComponent } from './components/dashboard-indicators/dashboard-indicators.component';
 import { DashboardHistoryComponent } from './components/dashboard-history/dashboard-history.component';
 import { MyOkrsIndicatorsComponent } from './components/my-okrs-indicators/my-okrs-indicators.component';
+import { MyOkrsComponent } from './components/my-okrs/my-okrs.component';
+import { MyOkrsObjectivesComponent } from './components/my-okrs-objectives/my-okrs-objectives.component';
+import { KrListComponent } from './components/kr-list/kr-list.component';
 
 registerLocaleData(localePt);
 
@@ -109,7 +112,10 @@ registerLocaleData(localePt);
     EstrategicMapComponent,
     DashboardIndicatorsComponent,
     DashboardHistoryComponent,
-    MyOkrsIndicatorsComponent
+    MyOkrsIndicatorsComponent,
+    MyOkrsComponent,
+    MyOkrsObjectivesComponent,
+    KrListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
 
@@ -10,7 +10,7 @@ import { Cycle } from 'src/app/Cycle';
   templateUrl: './dashboard-history.component.html',
   styleUrls: ['./dashboard-history.component.scss']
 })
-export class DashboardHistoryComponent implements OnInit {
+export class DashboardHistoryComponent implements OnChanges {
 
   @Input() objectives!: Objective[];
   @Input() cycles!: Cycle[];
@@ -20,6 +20,7 @@ export class DashboardHistoryComponent implements OnInit {
       name: `${this.quarterPipe.transform(new Date())}° Trimestre ${new Date().getFullYear()}`
     }
   }
+  @Input() updateComponent!: any;
 
   history: any = {
     grid: { left: '36px', right: '8px', bottom: '90px' },
@@ -60,11 +61,12 @@ export class DashboardHistoryComponent implements OnInit {
     private quarterPipe: QuarterPipe
   ) {}
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.generateDataToChart();
   }
 
   generateDataToChart() {
+    this.history.dataset.source = [];
     this.history.dataset.dimensions = ['cycle', 'Todos os objetivos', 'Empresa', 'Grupo', 'Individual'];
 
     this.cycles.map(cycle => {
@@ -83,6 +85,9 @@ export class DashboardHistoryComponent implements OnInit {
         this.history.series.backgroundStyle
       }
     })
+
+    // FORCE UPDATE
+    this.history = Object.assign({}, this.history);
   }
 
   getobjectivesPerCycle(cycle: Cycle, type: string): number {

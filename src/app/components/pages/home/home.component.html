@@ -24,15 +24,17 @@
 
     <div class="dashboard">
 
-      <app-dashboard-indicators [objectives]="objectives" [filter]="filter" />
+      <app-dashboard-indicators [objectives]="objectives" [filter]="filter" [updateComponent]="updateComponent" />
 
-      <app-dashboard-history [objectives]="objectives" [filter]="filter" [cycles]="cycles" />
+      <app-dashboard-history [objectives]="objectives" [filter]="filter" [cycles]="cycles" [updateComponent]="updateComponent" />
 
     </div>
 
     <div class="my-okrs">
 
-      <app-my-okrs-indicators [objectives]="objectives" [filter]="filter" [myKrs]="myKrs" />
+      <app-my-okrs-indicators [objectives]="objectives" [filter]="filter" [myKrs]="myKrs" [updateComponent]="updateComponent" />
+
+      <app-my-okrs [objectives]="objectives" [filter]="filter" [myKrs]="myKrs" (updateObjectivesHandle)="updateObjectives($event)" />
 
     </div>
 

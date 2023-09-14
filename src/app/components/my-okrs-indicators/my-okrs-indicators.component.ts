@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
@@ -13,7 +13,7 @@ import { KR } from 'src/app/KR';
   templateUrl: './my-okrs-indicators.component.html',
   styleUrls: ['./my-okrs-indicators.component.scss']
 })
-export class MyOkrsIndicatorsComponent implements OnInit {
+export class MyOkrsIndicatorsComponent implements OnChanges {
 
   @Input() objectives: Objective[] = [];
   @Input() myKrs: KR[] = [];
@@ -23,6 +23,7 @@ export class MyOkrsIndicatorsComponent implements OnInit {
       name: `${this.quarterPipe.transform(new Date())}° Trimestre ${new Date().getFullYear()}`
     }
   }
+  @Input() updateComponent!: any;
 
   indicators = {
     conclusionPercent: 0,
@@ -40,7 +41,7 @@ export class MyOkrsIndicatorsComponent implements OnInit {
     private progressStatusService: ProgressStatusService
   ) {}
 
-  ngOnInit(): void {
+  ngOnChanges() {
     this.generateIndicatorsOfObjectives();
     this.generateIndicatorsOfKrs();
   }
@@ -68,6 +69,10 @@ export class MyOkrsIndicatorsComponent implements OnInit {
 
   generateIndicatorsOfObjectives() {
     let totalConclusionPercent = 0;
+    this.indicators.numberOfObjectives = 0;
+    this.indicators.onTimeNumberOfObjectives = 0;
+    this.indicators.outTimeNumberOfObjectives = 0;
+    this.indicators.alertNumberOfObjectives = 0;
 
     this.objectives.map(objective => {
       if (

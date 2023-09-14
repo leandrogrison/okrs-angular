@@ -1,0 +1,52 @@
+<div class="my-okrs-objectives">
+  <div *ngFor="let objective of objectives; let i = index" class="my-okrs-objective">
+    <div class="my-okrs-objective-container">
+      <div [ngClass]="getProgressStatus(objective) | ColorProgress" class="my-okrs-objective-progress">
+        {{ objective.conclusionPercent ? (objective.conclusionPercent / 100 | percent: '1.0-1') : '0%' }}
+      </div>
+      <div class="my-okrs-objective-content">
+        <mat-icon [matTooltip]="objective.category!.name" matTooltipPosition="above" class="objective-category">
+          {{ objective.category | IconCategory }}
+        </mat-icon>
+        <div class="my-okrs-objective-name">
+          {{ objective.name }}<br>
+          <small *ngIf="krsOfObjective(objective).length > 0; else noKrs">
+            Você tem {{ krsOfObjective(objective).length }} KR{{krsOfObjective(objective).length > 1 ? 's' : ''}}
+          </small>
+          <ng-template #noKrs>
+            <small>Nenhum KR atribuído a você</small>
+          </ng-template>
+        </div>
+      </div>
+      <button
+        (click)="objectiveShowKRs[i] = !objectiveShowKRs[i]"
+        *ngIf="krsOfObjective(objective).length > 0"
+        mat-flat-button
+        color="primary"
+        class="my-okrs-see-krs"
+      >
+        Ver KRs
+      </button>
+      <button
+        (click)="objectiveShowKRs[i] = !objectiveShowKRs[i]"
+        *ngIf="krsOfObjective(objective).length > 0"
+        mat-icon-button
+        aria-label="Ver KRs"
+        type="button"
+        class="my-okrs-see-krs-mobile"
+      >
+        <mat-icon>{{ objectiveShowKRs[i] ? 'expand_less' : 'expand_more'}}</mat-icon>
+      </button>
+    </div>
+    <div [ngClass]="{'my-okrs-krs-show' : objectiveShowKRs[i]}" class="my-okrs-krs">
+      <div class="my-okrs-krs-container">
+        <app-kr-list
+          [krs]="krsOfObjective(objective)"
+          [objective]="objective"
+          [managerActions]="false"
+          (calcConclusionPercentOfObjectiveHandle)="calcConclusionPercentOfObjective($event)"
+        />
+      </div>
+    </div>
+  </div>
+</div>

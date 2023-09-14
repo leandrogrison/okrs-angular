@@ -56,7 +56,7 @@
       "finished": 0,
       "numberOfKRs": 3,
       "numberOfKRsCompleted": 1,
-      "conclusionPercent": 85.33333333333333
+      "conclusionPercent": 86.66666666666667
     },
     {
       "id": "de617d3a-f94c-4eb1-b905-146239b222ce",
@@ -112,7 +112,9 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "numberOfKRs": 3
+      "numberOfKRs": 3,
+      "conclusionPercent": 83.33333333333333,
+      "numberOfKRsCompleted": 2
     },
     {
       "id": "3be02eb5-384d-49ba-8117-082c701976dd",
@@ -168,7 +170,7 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 75,
+      "conclusionPercent": 100,
       "numberOfKRs": 2,
       "numberOfKRsCompleted": 1
     },
@@ -280,9 +282,9 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "741df46d-5cc0-4316-b940-4f3f042988eb",
-      "conclusionPercent": 93,
+      "conclusionPercent": 100,
       "numberOfKRs": 1,
-      "numberOfKRsCompleted": 0
+      "numberOfKRsCompleted": 1
     },
     {
       "id": "c5d1dce2-fbf7-4c16-bd10-d1261b9f1e0e",
@@ -308,9 +310,9 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "73197e76-4cef-494a-a9ed-61aaa6dbf0ff",
-      "conclusionPercent": 100,
+      "conclusionPercent": 25,
       "numberOfKRs": 1,
-      "numberOfKRsCompleted": 1
+      "numberOfKRsCompleted": 0
     },
     {
       "id": "70f4cdb5-22ab-4a8d-92de-9e5f4e371f32",
@@ -360,9 +362,9 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 80,
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 0
+      "conclusionPercent": 85.73333333333333,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 2
     },
     {
       "id": "866a291e-3a45-445b-beea-33f156f327a3",
@@ -487,10 +489,10 @@
       },
       "type": "value",
       "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 18,
+      "progress": 50,
       "tasks": [],
       "value": 500,
-      "valued": 90,
+      "valued": 250,
       "unit": "R$"
     },
     {
@@ -504,7 +506,7 @@
       },
       "type": "percent",
       "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 77,
+      "progress": 81,
       "tasks": []
     },
     {
@@ -554,9 +556,9 @@
       "name": "teste",
       "description": "",
       "owner": {
-        "id": 1,
-        "name": "Maurício Ribeiro Andrade",
-        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+        "id": 2,
+        "name": "Fernanda Mendonça",
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
       "type": "percent",
       "objective": "00186fe4-9fe1-467c-9a75-cfd70c2b93fc",
@@ -588,7 +590,7 @@
       },
       "type": "percent",
       "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "progress": 80,
+      "progress": 100,
       "tasks": []
     },
     {
@@ -630,7 +632,7 @@
       },
       "type": "percent",
       "objective": "c5d1dce2-fbf7-4c16-bd10-d1261b9f1e0e",
-      "progress": 100,
+      "progress": 25,
       "tasks": []
     },
     {
@@ -658,7 +660,7 @@
       },
       "type": "percent",
       "objective": "c3f0ffd9-4841-47e9-b4a3-367fa6c957e6",
-      "progress": 93,
+      "progress": 100,
       "tasks": []
     },
     {
@@ -700,8 +702,50 @@
       },
       "type": "percent",
       "objective": "7484a83f-a4d2-4210-ab42-97d21edb8cc7",
-      "progress": 50,
+      "progress": 100,
       "tasks": []
+    },
+    {
+      "id": "d292472c-3f35-4676-a3df-a04ee3cd0b72",
+      "name": "Mais um kr",
+      "description": "",
+      "owner": {
+        "id": 0,
+        "name": "Luiz Albuquerque",
+        "photo": null
+      },
+      "type": "value",
+      "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
+      "progress": 57.199999999999996,
+      "tasks": [],
+      "value": 5000,
+      "unit": "R$",
+      "valued": 2860
+    },
+    {
+      "id": "9626cfa2-cf92-4778-9e50-df15a55de9fc",
+      "name": "Outro KR",
+      "description": "",
+      "owner": {
+        "id": 1,
+        "name": "Maurício Ribeiro Andrade",
+        "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      },
+      "type": "percent",
+      "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
+      "progress": 100,
+      "tasks": [
+        {
+          "id": "cad78ec8-7431-4f39-a205-2c1e1c347682",
+          "name": "Tarefa 1",
+          "checked": true
+        },
+        {
+          "id": "b15313eb-77b2-49a7-9e9a-8f558c1749de",
+          "name": "Tarefa 2",
+          "checked": false
+        }
+      ]
     }
   ],
   "cycles": [
