@@ -76,6 +76,7 @@ import { MyOkrsIndicatorsComponent } from './components/my-okrs-indicators/my-ok
 import { MyOkrsComponent } from './components/my-okrs/my-okrs.component';
 import { MyOkrsObjectivesComponent } from './components/my-okrs-objectives/my-okrs-objectives.component';
 import { KrListComponent } from './components/kr-list/kr-list.component';
+import { UsersComponent } from './components/pages/users/users.component';
 
 registerLocaleData(localePt);
 
@@ -115,7 +116,8 @@ registerLocaleData(localePt);
     MyOkrsIndicatorsComponent,
     MyOkrsComponent,
     MyOkrsObjectivesComponent,
-    KrListComponent
+    KrListComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

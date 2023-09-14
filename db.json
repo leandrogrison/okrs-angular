@@ -766,17 +766,23 @@
     {
       "id": 0,
       "name": "Luiz Albuquerque",
-      "photo": null
+      "photo": null,
+      "email": "luiz.albuquerque@okrs.com.br",
+      "position": "Gerente"
     },
     {
       "id": 1,
       "name": "Maurício Ribeiro Andrade",
-      "photo": "https://randomuser.me/api/portraits/men/89.jpg"
+      "photo": "https://randomuser.me/api/portraits/men/89.jpg",
+      "email": "mauricio.ribeiro@okrs.com.br",
+      "position": "Supervisor nível I"
     },
     {
       "id": 2,
       "name": "Fernanda Mendonça",
-      "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+      "photo": "https://randomuser.me/api/portraits/women/62.jpg",
+      "email": "fernanda.mendonca@okrs.com.br",
+      "position": "Supervisor nível II"
     }
   ]
 }

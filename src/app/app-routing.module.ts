@@ -1,3 +1,4 @@
+import { UsersComponent } from './components/pages/users/users.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagerComponent } from './components/pages/manager/manager.component';
@@ -27,6 +28,14 @@ const routes: Routes = [
     data:
     {
       title: 'Mapa estratégico'
+    }
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    data:
+    {
+      title: 'Usuários'
     }
   },
   {
