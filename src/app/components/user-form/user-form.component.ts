@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import 'hammerjs';
@@ -15,7 +15,9 @@ import { MessagesService } from 'src/app/services/messages.service';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit {
+
+  @Input() userToEdit!:User;
 
   @Output() onSubmit = new EventEmitter<User>()
   @ViewChild('buttonSubmitHidden') buttonSubmitHidden!: ElementRef<HTMLElement>;
@@ -37,6 +39,12 @@ export class UserFormComponent {
     public dialog: MatDialog,
     private messagesService: MessagesService
   ) {}
+
+  ngOnInit(): void {
+    if (this.userToEdit) {
+      this.user = { ...this.userToEdit };
+    }
+  }
 
   onFileChange(event: any): void {
     this.changeImageEvent = event;

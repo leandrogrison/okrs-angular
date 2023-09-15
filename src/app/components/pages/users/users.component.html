@@ -64,7 +64,13 @@
       </div>
       <mat-divider />
       <mat-card-actions align="end">
-        <button mat-icon-button matTooltip="Editar usuário" matTooltipPosition="above" aria-label="Editar usuário">
+        <button
+          (click)="openEditUser(user)"
+          mat-icon-button
+          matTooltip="Editar usuário"
+          matTooltipPosition="above"
+          aria-label="Editar usuário"
+        >
           <mat-icon>edit</mat-icon>
         </button>
         <span

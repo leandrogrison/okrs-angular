@@ -34,4 +34,10 @@ export class UsersService {
     return this.http.post<User>(this.apiUrl, user);
   }
 
+  updateUser(user: User): Observable<User> {
+    const url = this.apiUrl + '/' + user.id;
+
+    return this.http.put<User>(url, user);
+  }
+
 }

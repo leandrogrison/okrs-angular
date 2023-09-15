@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { CreateUserComponent } from '../../create-user/create-user.component';
+import { EditUserComponent } from '../../edit-user/edit-user.component';
 
 import { User } from 'src/app/User';
 
@@ -57,6 +58,17 @@ export class UsersComponent implements OnInit {
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
       if (result && result.id) this.getUsers();
+    });
+  }
+
+  openEditUser(user: User) {
+    this.dialog.open(EditUserComponent, {
+      data: { user: user },
+      maxWidth: 900,
+      width: 'calc(100% - 32px)',
+      position: { top: '32px' },
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.getUsers();
     });
   }
 
