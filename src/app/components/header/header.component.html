@@ -22,7 +22,10 @@
   <span fxFlex></span>
 
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu do usuário" class="menu-user">
-    <img [src]="userPhoto" class="user-photo user-photo-sm">
+    <img *ngIf="userPhoto, else noPhoto" [src]="userPhoto" class="user-photo user-photo-sm">
+    <ng-template #noPhoto>
+      <mat-icon class="user-photo user-photo-sm">person</mat-icon>
+    </ng-template>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item>

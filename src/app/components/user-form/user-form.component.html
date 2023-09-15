@@ -1,0 +1,107 @@
+<form #formUser="ngForm" (ngSubmit)="saveUser()">
+
+  <div class="form-content">
+    <div class="form-user-photo">
+
+      <div *ngIf="!showCrop">
+        <img *ngIf="user.photo, else noPhoto" [src]="user.photo" class="form-user-photo-preview" />
+        <ng-template #noPhoto>
+          <mat-icon class="user-photo form-user-photo-preview">person</mat-icon>
+        </ng-template>
+        <div class="form-user-photo-actions">
+          <button (click)="fileInput.click()" mat-button mat-flat-button color="primary" type="button">
+            <mat-icon>upload</mat-icon>
+            <span>Carregar foto</span>
+          </button>
+          <button
+            *ngIf="user.photo"
+            (click)="deletePhoto()"
+            mat-mini-fab
+            color="warn"
+            type="button"
+            aria-label="Excluir foto"
+            matTooltip="Excluir foto"
+            matTooltipPosition="above"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <input hidden type="file" #fileInput (change)="onFileChange($event)" />
+        </div>
+      </div>
+
+      <div [ngClass]="{'show-crop': showCrop}" class="form-user-crop-options">
+        <image-cropper
+          [imageChangedEvent]="changeImageEvent"
+          [maintainAspectRatio]="true"
+          [roundCropper]="true"
+          [aspectRatio]="4 / 4"
+          [resizeToWidth]="180"
+          [imageQuality]="60"
+          output="base64"
+          format="webp"
+          (imageCropped)="cropImage($event)"
+          (imageLoaded)="imageLoad()"
+          (loadImageFailed)="imageFailed()">
+        </image-cropper>
+        <button (click)="confirmPhoto()" mat-icon-button color="primary" type="button">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button (click)="cancelPhoto()" mat-icon-button type="button">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+    </div>
+    <div class="form-fields">
+      <mat-form-field fxFlexFill>
+        <mat-label>Nome completo</mat-label>
+        <input
+          [(ngModel)]="user.name"
+          name="name"
+          #nameField="ngModel"
+          matInput
+          required
+          cdkFocusInitial
+        >
+        <mat-error *ngIf="nameField.invalid">
+          <span *ngIf="nameField.errors?.['required']">Campo obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlexFill>
+        <mat-label>E-mail</mat-label>
+        <input
+          [(ngModel)]="user.email"
+          name="email"
+          #emailField="ngModel"
+          matInput
+          required
+          type="email"
+          email
+        >
+        <mat-error *ngIf="emailField.invalid">
+          <span *ngIf="emailField.errors?.['email'] && !emailField.errors?.['required']">Informe um e-mail válido</span>
+          <span *ngIf="emailField.errors?.['required']">Campo obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field fxFlexFill>
+        <mat-label>Cargo</mat-label>
+        <input
+          [(ngModel)]="user.position"
+          name="position"
+          #positionField="ngModel"
+          matInput
+          required
+        >
+        <mat-error *ngIf="positionField.invalid">
+          <span *ngIf="positionField.errors?.['required']">Campo obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+  </div>
+
+  <input #buttonSubmitHidden fxHide type="submit">
+
+</form>

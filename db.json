@@ -9,7 +9,7 @@
         "name": "Objetivo da empresa"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -37,13 +37,13 @@
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
       "supporters": [
-        0,
-        1
+        "0",
+        "1"
       ],
       "visibility": "public",
       "cycle": {
@@ -67,7 +67,7 @@
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 0,
+        "id": "0",
         "name": "Luiz Albuquerque",
         "photo": null
       },
@@ -94,13 +94,13 @@
         "name": "Objetivo individual"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
       "supporters": [
-        2,
-        0
+        "2",
+        "0"
       ],
       "visibility": "public",
       "cycle": {
@@ -125,13 +125,13 @@
         "name": "Objetivo da empresa"
       },
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
       "supporters": [
-        0,
-        2
+        "0",
+        "2"
       ],
       "visibility": "public",
       "cycle": {
@@ -155,7 +155,7 @@
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -183,7 +183,7 @@
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -211,12 +211,12 @@
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
       "supporters": [
-        2
+        "2"
       ],
       "visibility": "public",
       "cycle": {
@@ -241,7 +241,7 @@
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 0,
+        "id": "0",
         "name": "Luiz Albuquerque",
         "photo": null
       },
@@ -267,7 +267,7 @@
         "name": "Objetivo do grupo"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -295,7 +295,7 @@
         "name": "Objetivo individual"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -323,7 +323,7 @@
         "name": "Objetivo da empresa"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -348,11 +348,13 @@
         "name": "Objetivo da empresa"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
-      "supporters": [],
+      "supporters": [
+        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6"
+      ],
       "visibility": "public",
       "cycle": {
         "id": "2023Q3",
@@ -375,11 +377,16 @@
         "name": "Objetivo da empresa"
       },
       "owner": {
-        "id": 2,
-        "name": "Fernanda Mendonça",
-        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+        "id": "83907706-b92c-4697-aa51-3f29b1a6106f",
+        "name": "Cíntia Oliveira Rodrigues",
+        "photo": "data:image/webp;base64,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",
+        "position": "Engenheiro",
+        "email": "cinta.oliveira@okrs.com.br"
       },
-      "supporters": [],
+      "supporters": [
+        "83907706-b92c-4697-aa51-3f29b1a6106f",
+        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6"
+      ],
       "visibility": "public",
       "cycle": {
         "id": "2023Q3",
@@ -403,7 +410,7 @@
         "name": "Objetivo da empresa"
       },
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -428,7 +435,7 @@
       "name": "Kr teste alterado",
       "description": "descrição 2",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -458,7 +465,7 @@
       "name": "teste 2",
       "description": "",
       "owner": {
-        "id": 0,
+        "id": "0",
         "name": "Luiz Albuquerque",
         "photo": null
       },
@@ -483,7 +490,7 @@
       "name": "mais um kr de teste e que deve ser grande para testar a bagaça",
       "description": "",
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -500,7 +507,7 @@
       "name": "Kr 1",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -514,7 +521,7 @@
       "name": "Kr 2",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -528,7 +535,7 @@
       "name": "kr 3",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -542,7 +549,7 @@
       "name": "kr 1",
       "description": "",
       "owner": {
-        "id": 0,
+        "id": "0",
         "name": "Luiz Albuquerque",
         "photo": null
       },
@@ -556,7 +563,7 @@
       "name": "teste",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -570,9 +577,11 @@
       "name": "asdfsafsdsdf",
       "description": "",
       "owner": {
-        "id": 2,
-        "name": "Fernanda Mendonça",
-        "photo": "https://randomuser.me/api/portraits/women/62.jpg"
+        "id": "83907706-b92c-4697-aa51-3f29b1a6106f",
+        "name": "Cíntia Oliveira Rodrigues",
+        "photo": "data:image/webp;base64,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",
+        "position": "Engenheiro",
+        "email": "cinta.oliveira@okrs.com.br"
       },
       "type": "percent",
       "objective": "866a291e-3a45-445b-beea-33f156f327a3",
@@ -584,7 +593,7 @@
       "name": "aaaaa",
       "description": "",
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -598,7 +607,7 @@
       "name": "Kr de teste",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -612,7 +621,7 @@
       "name": "kr de teste",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -626,7 +635,7 @@
       "name": "kr de teste",
       "description": "",
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -640,7 +649,7 @@
       "name": "kr de teste",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -654,7 +663,7 @@
       "name": "kr de teste",
       "description": "",
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -668,7 +677,7 @@
       "name": "kr de teste",
       "description": "",
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -682,7 +691,7 @@
       "name": "kr de teste",
       "description": "",
       "owner": {
-        "id": 2,
+        "id": "2",
         "name": "Fernanda Mendonça",
         "photo": "https://randomuser.me/api/portraits/women/62.jpg"
       },
@@ -696,7 +705,7 @@
       "name": "kr para outro usuário",
       "description": "",
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -710,7 +719,7 @@
       "name": "Mais um kr",
       "description": "",
       "owner": {
-        "id": 0,
+        "id": "0",
         "name": "Luiz Albuquerque",
         "photo": null
       },
@@ -727,7 +736,7 @@
       "name": "Outro KR",
       "description": "",
       "owner": {
-        "id": 1,
+        "id": "1",
         "name": "Maurício Ribeiro Andrade",
         "photo": "https://randomuser.me/api/portraits/men/89.jpg"
       },
@@ -764,25 +773,39 @@
   ],
   "users": [
     {
-      "id": 0,
+      "id": "0",
       "name": "Luiz Albuquerque",
       "photo": null,
       "email": "luiz.albuquerque@okrs.com.br",
       "position": "Gerente"
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Maurício Ribeiro Andrade",
       "photo": "https://randomuser.me/api/portraits/men/89.jpg",
       "email": "mauricio.ribeiro@okrs.com.br",
       "position": "Supervisor nível I"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Fernanda Mendonça",
       "photo": "https://randomuser.me/api/portraits/women/62.jpg",
       "email": "fernanda.mendonca@okrs.com.br",
       "position": "Supervisor nível II"
+    },
+    {
+      "id": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "name": "Henrique Nogueira",
+      "photo": "",
+      "position": "Supervisor nível I",
+      "email": "henrique.nogueira@okrs.com.br"
+    },
+    {
+      "id": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "name": "Cíntia Oliveira Rodrigues",
+      "photo": "data:image/webp;base64,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",
+      "position": "Engenheiro",
+      "email": "cinta.oliveira@okrs.com.br"
     }
   ]
 }

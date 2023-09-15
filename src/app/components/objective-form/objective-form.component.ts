@@ -31,7 +31,7 @@ export class ObjectiveFormComponent implements OnInit {
   @ViewChild(UserSingleSelectComponent) userSingleSelect!: UserSingleSelectComponent;
 
   categories: Category[] = []
-  ownerMe: User = { id: -1, name: '', photo: '' }
+  ownerMe: User = { id: '', name: '', photo: '' }
   loading: boolean =  false
 
   objective: Objective = {

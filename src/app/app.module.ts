@@ -16,6 +16,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 import { NgxEchartsModule } from 'ngx-echarts';
 
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 // ANGULAR MATERIAL
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -77,6 +79,9 @@ import { MyOkrsComponent } from './components/my-okrs/my-okrs.component';
 import { MyOkrsObjectivesComponent } from './components/my-okrs-objectives/my-okrs-objectives.component';
 import { KrListComponent } from './components/kr-list/kr-list.component';
 import { UsersComponent } from './components/pages/users/users.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { DeletePhotoComponent } from './components/delete-photo/delete-photo.component';
 
 registerLocaleData(localePt);
 
@@ -117,7 +122,10 @@ registerLocaleData(localePt);
     MyOkrsComponent,
     MyOkrsObjectivesComponent,
     KrListComponent,
-    UsersComponent
+    UsersComponent,
+    CreateUserComponent,
+    UserFormComponent,
+    DeletePhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -153,7 +161,8 @@ registerLocaleData(localePt);
     DragDropModule,
     MatSliderModule,
     NgxEchartsModule.forRoot({ echarts: () => import('echarts') }),
-    MatCardModule
+    MatCardModule,
+    ImageCropperModule
   ],
   providers: [
     {

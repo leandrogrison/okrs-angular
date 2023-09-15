@@ -12,7 +12,7 @@ export class HeaderComponent {
 
   @Output() verifyMenuOpened = new EventEmitter();
 
-  userPhoto = '';
+  userPhoto:any = undefined;
   menuOpened: boolean = false;
 
   constructor(private authService: AuthService, private drawerService: DrawerService) {

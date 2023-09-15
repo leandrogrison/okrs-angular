@@ -25,7 +25,7 @@ export class AuthService {
   getUserInfo(): User {
     // Retorna informações do usuário simuladas (pode ser um objeto com mais informações)
     return {
-      id: 1,
+      id: "1",
       name: "Maurício Ribeiro Andrade",
       photo: "https://randomuser.me/api/portraits/men/89.jpg"
     };

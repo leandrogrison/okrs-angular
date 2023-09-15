@@ -10,21 +10,28 @@ import { environment } from 'src/environments/environment.development';
 })
 export class UsersService {
   private baseApiUrl = environment.baseApiUrl
-  private apiUrl = `${this.baseApiUrl}users?_limit=100`
+  private apiUrl = `${this.baseApiUrl}users`
 
   constructor(private http: HttpClient) { }
 
   getUsers(name?: string): Observable<User[]> {
+    const limit = '?_limit=1000';
+    const order = '&_sort=name';
     const filter = name ? `&name_like=${name}` : ''
-    return this.http.get<User[]>(this.apiUrl + filter);
+    return this.http.get<User[]>(this.apiUrl + limit + order + filter);
   }
 
   getUsersById(ids?: any[]): Observable<User[]> {
+    const limit = '?_limit=1000';
     let filter = '';
     ids?.map((id) => {
       filter += `&id=${id}`
     })
-    return this.http.get<User[]>(this.apiUrl + filter);
+    return this.http.get<User[]>(this.apiUrl + limit + filter);
+  }
+
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(this.apiUrl, user);
   }
 
 }

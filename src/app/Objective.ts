@@ -7,7 +7,7 @@ export interface Objective {
     name: string
   } | null,
   owner: {
-    id: number,
+    id: string,
     name: string,
     photo: string
   } | null,

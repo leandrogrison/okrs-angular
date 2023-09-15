@@ -3,7 +3,7 @@ export interface KR {
   name: string,
   description?: string,
   owner: {
-    id: number,
+    id: string,
     name: string,
     photo: string
   } | null,

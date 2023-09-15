@@ -28,7 +28,7 @@ export class KrFormComponent implements OnInit {
   @ViewChild('buttonSubmitHidden') buttonSubmitHidden!: ElementRef<HTMLElement>;
   @ViewChild(UserSingleSelectComponent) userSingleSelect!: UserSingleSelectComponent;
 
-  ownerMe: User = { id: -1, name: '', photo: '' }
+  ownerMe: User = { id: '', name: '', photo: '' }
   updateList = Math.random()
 
   kr: KR = {
