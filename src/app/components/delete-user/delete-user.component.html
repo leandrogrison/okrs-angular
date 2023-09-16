@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Excluir usuário?</h2>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="primary">
+    Não
+  </button>
+  <button
+    (click)="deleteUser()"
+    [disabled]="loading"
+    mat-button
+    mat-flat-button
+    color="warn"
+  >
+    <mat-icon *ngIf="loading; else noLoading">
+      <mat-spinner diameter="18" class="loading-disabled"></mat-spinner>
+    </mat-icon>
+    <ng-template #noLoading>
+      <mat-icon>check</mat-icon>
+    </ng-template>
+    <span>{{ loading ? 'Excluindo...' : 'Sim'}}</span>
+  </button>
+</mat-dialog-actions>

@@ -3,5 +3,6 @@ export interface User {
   name: string,
   photo?: any,
   email?: string,
-  position?: string
+  position?: string,
+  deleted?: number
 }

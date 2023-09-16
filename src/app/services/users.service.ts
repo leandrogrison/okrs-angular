@@ -17,8 +17,9 @@ export class UsersService {
   getUsers(name?: string): Observable<User[]> {
     const limit = '?_limit=1000';
     const order = '&_sort=name';
+    const excludeDeleted = `&deleted_ne=1`;
     const filter = name ? `&name_like=${name}` : ''
-    return this.http.get<User[]>(this.apiUrl + limit + order + filter);
+    return this.http.get<User[]>(this.apiUrl + limit + order + filter + excludeDeleted);
   }
 
   getUsersById(ids?: any[]): Observable<User[]> {
@@ -35,6 +36,13 @@ export class UsersService {
   }
 
   updateUser(user: User): Observable<User> {
+    const url = this.apiUrl + '/' + user.id;
+
+    return this.http.put<User>(url, user);
+  }
+
+  deleteUser(user: User): Observable<User> {
+    user.deleted = 1;
     const url = this.apiUrl + '/' + user.id;
 
     return this.http.put<User>(url, user);

@@ -83,6 +83,7 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { DeletePhotoComponent } from './components/delete-photo/delete-photo.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 
 registerLocaleData(localePt);
 
@@ -127,7 +128,8 @@ registerLocaleData(localePt);
     CreateUserComponent,
     UserFormComponent,
     DeletePhotoComponent,
-    EditUserComponent
+    EditUserComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,

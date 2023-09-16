@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { CreateUserComponent } from '../../create-user/create-user.component';
 import { EditUserComponent } from '../../edit-user/edit-user.component';
+import { DeleteUserComponent } from '../../delete-user/delete-user.component';
 
 import { User } from 'src/app/User';
 
@@ -67,6 +68,17 @@ export class UsersComponent implements OnInit {
       maxWidth: 900,
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
+    }).afterClosed().subscribe(result => {
+      if (result && result.hasOwnProperty('id')) this.getUsers();
+    });
+  }
+
+  deleteUser(user: User) {
+    this.dialog.open(DeleteUserComponent, {
+      data: { user: user },
+      maxWidth: 420,
+      minWidth: 320,
+      panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) this.getUsers();
     });

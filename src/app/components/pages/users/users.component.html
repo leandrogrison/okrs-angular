@@ -78,6 +78,7 @@
           [matTooltip]="myUser.id === user.id ? 'Você não pode excluir seu usuário, peça para outro usuário fazer a exclusão.' : ''"
         >
           <button
+            (click)="deleteUser(user)"
             mat-icon-button
             matTooltipPosition="above"
             matTooltip="Excluir usuário"

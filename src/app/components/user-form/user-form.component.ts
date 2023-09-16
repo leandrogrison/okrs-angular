@@ -28,7 +28,8 @@ export class UserFormComponent implements OnInit {
     name: '',
     photo: '',
     position: '',
-    email: ''
+    email: '',
+    deleted: 0
   }
 
   showCrop: boolean = false;
