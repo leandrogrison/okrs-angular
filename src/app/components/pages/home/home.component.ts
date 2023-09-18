@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
   }
 
   getMyKrs() {
-    const myUser = this.authService.getUserInfo();
+    const myUser = this.authService.loggedUser$;
 
     this.krsService.getKrsByUser(myUser).subscribe({
       next: (krs) => {
@@ -89,7 +89,8 @@ export class HomeComponent implements OnInit {
         this.messagesService.show('Erro ao buscar KRs! Tente novamente mais tarde.', 'warn');
         console.log(error);
       }
-    })
+    });
+
   }
 
   updateObjectives(objectiveUpdated: Objective) {

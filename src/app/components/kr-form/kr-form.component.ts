@@ -50,7 +50,7 @@ export class KrFormComponent implements OnInit {
     public dialog: MatDialog,
     private authService: AuthService
   ) {
-    this.ownerMe = this.authService.getUserInfo();
+    this.ownerMe = this.authService.loggedUser$;
   }
 
   ngOnInit(): void {

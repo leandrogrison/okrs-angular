@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
 
 import { Objective } from 'src/app/Objective';
+import { User } from 'src/app/User';
 
 import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
 import { KR } from 'src/app/KR';
@@ -25,6 +26,8 @@ export class MyOkrsIndicatorsComponent implements OnChanges {
   }
   @Input() updateComponent!: any;
 
+  ownerMe: User = { id: '', name: '', photo: '' }
+
   indicators = {
     conclusionPercent: 0,
     onTimeNumberOfObjectives: 0,
@@ -39,7 +42,9 @@ export class MyOkrsIndicatorsComponent implements OnChanges {
     private quarterPipe: QuarterPipe,
     private authService: AuthService,
     private progressStatusService: ProgressStatusService
-  ) {}
+  ) {
+    this.ownerMe = this.authService.loggedUser$;
+  }
 
   ngOnChanges() {
     this.generateIndicatorsOfObjectives();
@@ -77,7 +82,7 @@ export class MyOkrsIndicatorsComponent implements OnChanges {
     this.objectives.map(objective => {
       if (
         objective.cycle.id === this.filter.cycle.id &&
-        objective.owner!.id === this.authService.getUserInfo().id
+        objective.owner!.id === this.ownerMe.id
       ) {
         totalConclusionPercent += objective.conclusionPercent ? objective.conclusionPercent : 0;
         this.indicators.numberOfObjectives++;

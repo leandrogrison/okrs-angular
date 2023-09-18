@@ -4,6 +4,7 @@ import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
 
 import { KR } from 'src/app/KR';
 import { Objective } from 'src/app/Objective';
+import { User } from 'src/app/User';
 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -25,21 +26,24 @@ export class MyOkrsComponent implements OnInit {
   @Output() updateObjectivesHandle = new EventEmitter();
 
   myObjectives: Objective[] = [];
+  ownerMe: User = { id: '', name: '' }
   objectivesWithMyKRs: Objective[] = [];
 
   constructor(
     private quarterPipe: QuarterPipe,
     private authService: AuthService
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.ownerMe = this.authService.loggedUser$;
     this.getMyObjectives();
     this.getObjectivesWithMyKRs();
   }
 
   getMyObjectives() {
     this.myObjectives = this.objectives.filter(objective =>
-      objective.owner!.id === this.authService.getUserInfo().id &&
+      objective.owner!.id === this.ownerMe.id &&
       objective.cycle.id === this.filter.cycle.id
     );
   }

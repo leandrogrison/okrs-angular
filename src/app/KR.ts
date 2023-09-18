@@ -2,11 +2,7 @@ export interface KR {
   id?: string,
   name: string,
   description?: string,
-  owner: {
-    id: string,
-    name: string,
-    photo: string
-  } | null,
+  owner: any | null,
   type: string,
   value?: number,
   unit?: string,

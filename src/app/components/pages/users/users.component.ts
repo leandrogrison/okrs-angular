@@ -33,7 +33,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-    this.myUser = this.authService.getUserInfo();
+    this.myUser = this.authService.loggedUser$;
   }
 
   getUsers(keyword?: string) {

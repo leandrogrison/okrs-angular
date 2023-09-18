@@ -6,11 +6,7 @@ export interface Objective {
     id: number,
     name: string
   } | null,
-  owner: {
-    id: string,
-    name: string,
-    photo: string
-  } | null,
+  owner: any | null,
   supporters?: any[],
   visibility: string,
   cycle: {

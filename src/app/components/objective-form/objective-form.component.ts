@@ -57,7 +57,7 @@ export class ObjectiveFormComponent implements OnInit {
     private categoriesService: CategoriesService,
     private authService: AuthService
   ) {
-    this.ownerMe = this.authService.getUserInfo();
+    this.ownerMe = this.authService.loggedUser$;
   }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewContainerRef, OnInit, Renderer2 } from '@angular/core';
 
 import { DrawerService } from './services/drawer.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,14 @@ export class AppComponent implements OnInit {
   isDrawerOpen = false;
   isMenuOpen = false;
   isSmallScreen = document.body.clientWidth < 1300;
+  logged = false;
 
   @ViewChild('drawerContent', {read: ViewContainerRef}) drawerContent!: ViewContainerRef;
 
   constructor(
     private drawerService: DrawerService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private authService: AuthService
   ) {
     this.drawerService.openDrawer$.subscribe((result) => {
       this.drawerContent.remove();
@@ -32,7 +35,8 @@ export class AppComponent implements OnInit {
 
   windowResize = () => {};
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.authService.getUserInfo().subscribe(result => this.logged = true);
     this.windowResize = this.renderer.listen(window, 'resize', () => {
       this.isSmallScreen = document.body.clientWidth < 1300;
     });

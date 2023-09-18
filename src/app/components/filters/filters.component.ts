@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 import { Cycle } from 'src/app/Cycle';
+import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-filters',
@@ -16,8 +17,11 @@ export class FiltersComponent {
   @Output() handleGetObjectives = new EventEmitter();
 
   openedFilters: boolean = false;
+  ownerMe: User = { id: '', name: '', photo: '' }
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    this.ownerMe = this.authService.loggedUser$;
+  }
 
   filterObjectives() {
     this.handleGetObjectives.emit();
@@ -37,7 +41,7 @@ export class FiltersComponent {
 
   filterOwner(owner: boolean) {
     if (owner) {
-      this.filter.owner = this.authService.getUserInfo().id;
+      this.filter.owner = this.ownerMe.id;
     } else {
       this.filter.owner = null;
     }
@@ -47,7 +51,7 @@ export class FiltersComponent {
 
   filterSupporter(supporter: boolean) {
     if (supporter) {
-      this.filter.supporter = this.authService.getUserInfo().id;
+      this.filter.supporter = this.ownerMe.id;
     } else {
       this.filter.supporter = null;
     }
