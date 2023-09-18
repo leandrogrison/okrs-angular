@@ -2,6 +2,7 @@ import { Component, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ObjectivesService } from 'src/app/services/objectives.service';
+import { KrsService } from 'src/app/services/krs.service';
 import { MessagesService } from 'src/app/services/messages.service';
 
 import { Objective } from './../../Objective';
@@ -22,14 +23,35 @@ export class DeleteObjectiveComponent {
   constructor(
     private objectivesService: ObjectivesService,
     private messagesService: MessagesService,
+    private krsService: KrsService,
     private dialogRef: MatDialogRef<DeleteObjectiveComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.objective = data.objective;
   }
 
+  deleteKrsOfObjective(objective: Objective) {
+    this.krsService.getKrs(objective).subscribe({
+      next: (krs) => {
+        krs.map(kr => this.krsService.deleteKr(kr).subscribe({
+          next: () => {},
+          error: (error) => {
+            this.messagesService.show('Erro ao excluir KRs do objetivo!', 'warn');
+            console.log(error);
+          }
+        }));
+      },
+      error: (error) => {
+        this.messagesService.show('Erro ao excluir KRs do objetivo!', 'warn');
+        console.log(error);
+      }
+    });
+  }
+
   deleteObjective(objective: Objective) {
     this.loading = true;
+
+    this.deleteKrsOfObjective(objective);
 
     this.objectivesService.deleteObjective(objective).subscribe({
       next: () => {

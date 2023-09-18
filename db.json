@@ -366,32 +366,6 @@
       "conclusionPercent": 33,
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
-    },
-    {
-      "id": "73704003-d8a1-4154-b394-56ac6c91e8ce",
-      "name": "Objetivo com usuário somente com id",
-      "description": "",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
-      "supporters": [
-        "fb9c0c61-c4b3-44e9-a699-b38d97edcabe",
-        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6"
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-09-18T13:02:24.702Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "conclusionPercent": 50,
-      "numberOfKRs": 2,
-      "numberOfKRsCompleted": 1
     }
   ],
   "krs": [
@@ -638,26 +612,6 @@
           "checked": false
         }
       ]
-    },
-    {
-      "id": "4fc9af21-a4b8-47b4-90ec-178560f50f47",
-      "name": "sfsdfsdfdsfsdfsdffsa",
-      "description": "",
-      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
-      "type": "percent",
-      "objective": "73704003-d8a1-4154-b394-56ac6c91e8ce",
-      "progress": 100,
-      "tasks": []
-    },
-    {
-      "id": "8c387959-7d22-43a6-932c-4d0af0f24881",
-      "name": "kr de teste com id no owner",
-      "description": "",
-      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
-      "type": "percent",
-      "objective": "73704003-d8a1-4154-b394-56ac6c91e8ce",
-      "progress": 0,
-      "tasks": []
     }
   ],
   "cycles": [
