@@ -43,7 +43,7 @@ export class MyOkrsComponent implements OnInit {
 
   getMyObjectives() {
     this.myObjectives = this.objectives.filter(objective =>
-      objective.owner!.id === this.ownerMe.id &&
+      objective.owner === this.ownerMe.id &&
       objective.cycle.id === this.filter.cycle.id
     );
   }

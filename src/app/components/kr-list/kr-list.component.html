@@ -1,10 +1,10 @@
 <ul *ngIf="krs && krs.length > 0" class="krs-list">
   <li *ngFor="let kr of krs; let i = index">
-    <div [matTooltip]="kr.owner!.name" matTooltipPosition="above">
+    <div [matTooltip]="owners[i] ? owners[i].name : ''" matTooltipPosition="above">
       <img
-        *ngIf="kr.owner!.photo; else noPhoto"
-        [src]="kr.owner!.photo"
-        [alt]="kr.owner!.name"
+        *ngIf="owners[i] && owners[i].photo; else noPhoto"
+        [src]="owners[i].photo"
+        [alt]="owners[i].name"
         class="user-photo user-photo-xs"
       />
       <ng-template #noPhoto>

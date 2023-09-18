@@ -11,11 +11,11 @@
             {{ objective.category | IconCategory }}
           </mat-icon>
           <div class="objective-status">{{objective.finished ? 'Finalizado' : 'Em aberto'}}</div>
-          <div class="objective-owner" [matTooltip]="objective.owner!.name" matTooltipPosition="above" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
+          <div class="objective-owner" [matTooltip]="owner ? owner!.name : ''" matTooltipPosition="above" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
             <img
-              *ngIf="objective.owner!.photo; else noPhoto"
-              [src]="objective.owner!.photo"
-              [alt]="objective.owner!.name"
+              *ngIf="owner && owner!.photo; else noPhoto"
+              [src]="owner!.photo"
+              [alt]="owner!.name"
               class="user-photo user-photo-xs"
             />
             <ng-template #noPhoto>
@@ -72,7 +72,7 @@
       <div class="objective-actions">
         <button
           (mousedown)="clickedOnly($event)"
-          (mouseup)="openDetails(objective, $event)"
+          (mouseup)="openDetails(objective, owner, $event)"
           mat-mini-fab
           aria-label="Mais detalhes"
           color="primary"
@@ -115,6 +115,7 @@
   <app-objective-map-item
     [objective]="objective"
     [objectivesInBackground]="objectivesInBackground"
+    [owners]="owners"
     (updateObjectives)="updateObjectives.emit($event)"
     *ngFor="let objective of objective.children; trackBy: trackByObjective"
     class="objective-map-item"

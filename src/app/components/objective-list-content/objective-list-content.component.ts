@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DaysToEndService } from 'src/app/services/days-to-end.service';
@@ -10,21 +10,24 @@ import { DeleteObjectiveComponent } from '../delete-objective/delete-objective.c
 import { ObjectiveDetailsComponent } from '../objective-details/objective-details.component';
 
 import { Objective } from 'src/app/Objective';
+import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-objective-list-content',
   templateUrl: './objective-list-content.component.html',
   styleUrls: ['./objective-list-content.component.scss']
 })
-export class ObjectiveListContentComponent implements OnInit {
+export class ObjectiveListContentComponent implements OnInit, OnChanges {
 
   @Input() objective!: Objective;
+  @Input() owners!: User[];
   @Input() objectivesInBackground!: Objective[];
   @Output() updateObjectives = new EventEmitter();
 
   expandedItem: boolean = true;
+  owner!: User;
 
-  ngOnInit(): void {
+  ngOnInit() {
     const expanded = this.objective.id ? localStorage.getItem(this.objective.id) : '';
 
     if (expanded === 'false') {
@@ -32,6 +35,10 @@ export class ObjectiveListContentComponent implements OnInit {
     } else {
       this.expandedItem = true;
     }
+  }
+
+  ngOnChanges() {
+    this.owner = this.owners.filter(owner => owner.id === this.objective.owner)[0];
   }
 
   constructor(
@@ -84,8 +91,8 @@ export class ObjectiveListContentComponent implements OnInit {
     });
   }
 
-  openDetails(objective: Objective) {
-    const data = { objective: objective };
+  openDetails(objective: Objective, owner: User) {
+    const data = { objective: objective, owner: owner };
     this.drawerService.openDrawer(ObjectiveDetailsComponent, data);
   }
 

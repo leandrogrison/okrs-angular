@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Objective } from 'src/app/Objective';
+import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-objective-list',
@@ -10,6 +11,7 @@ import { Objective } from 'src/app/Objective';
 export class ObjectiveListComponent implements OnInit {
 
   @Input() objectives!: Objective[];
+  @Input() owners!: User[];
   @Input() objectivesInBackground!: Objective[];
   @Output() updateObjectives = new EventEmitter();
 

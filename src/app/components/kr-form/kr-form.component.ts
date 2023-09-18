@@ -70,7 +70,7 @@ export class KrFormComponent implements OnInit {
   }
 
   updateOwnerHandler(owner: any) {
-    this.kr.owner = owner;
+    this.kr.owner = owner && owner.id ? owner.id : undefined;
   }
 
   setOwnerMe(event: any) {

@@ -21,24 +21,24 @@
         fxLayout
         fxLayoutAlign="start center"
         fxLayoutGap="4px"
-        [matTooltip]="objective.owner!.name"
+        [matTooltip]="owner ? owner!.name : ''"
         matTooltipPosition="above"
         class="objective-owner"
       >
         <img
-          *ngIf="objective.owner!.photo; else noPhoto"
-          [src]="objective.owner!.photo"
-          [alt]="objective.owner!.name"
+          *ngIf="owner && owner!.photo; else noPhoto"
+          [src]="owner!.photo"
+          [alt]="owner!.name"
           class="objective-owner-image"
         />
         <ng-template #noPhoto>
           <mat-icon class="objective-owner-image">person</mat-icon>
         </ng-template>
-        <span fxHide.lt-sm>{{ objective.owner!.name }}</span>
+        <span fxHide.lt-sm>{{ owner ? owner!.name : '' }}</span>
       </div>
     </div>
     <div fxLayout fxLayoutAlign="start center" fxLayoutGap="8px">
-      <button (click)="openDetails(objective)" mat-stroked-button color="primary">
+      <button (click)="openDetails(objective, owner)" mat-stroked-button color="primary">
         MAIS DETALHES
       </button>
       <button
@@ -95,6 +95,7 @@
 <div *ngIf="objective.children && expandedItem">
   <app-objective-list
     [objectives]="objective.children"
+    [owners]="owners"
     [objectivesInBackground]="objectivesInBackground"
     (updateObjectives)="updateObjectives.emit($event)"
     class="objectives-children"

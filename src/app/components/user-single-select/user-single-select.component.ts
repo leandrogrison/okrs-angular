@@ -10,7 +10,7 @@ import { User } from 'src/app/User';
 })
 export class UserSingleSelectComponent implements OnInit {
 
-  @Input() user!: User | null;
+  @Input() user!: string | null;
   @Input() label!: string;
   @Input() required!: boolean;
   @Output() updateOwner = new EventEmitter();
@@ -24,15 +24,21 @@ export class UserSingleSelectComponent implements OnInit {
 
   ngOnInit() {
     if (this.user) {
-      this.userAutoComplete = this.user;
-      this.usersService.getUsers(this.user.name).subscribe((data) => {
+      this.getUserOnInit();
+    } else {
+      this.getUsers();
+    }
+  }
+
+  getUserOnInit() {
+    this.usersService.getUsersById([this.user]).subscribe((result) => {
+      this.userAutoComplete = result[0];
+      this.usersService.getUsers(this.userAutoComplete.name).subscribe((data) => {
         data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
         this.users = data;
         this.loading = false;
       })
-    } else {
-      this.getUsers();
-    }
+    })
   }
 
   autoCompleteUser() {

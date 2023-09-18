@@ -25,6 +25,7 @@ export class ObjectiveDetailsComponent implements OnInit {
   @Output() updateObjectives = new EventEmitter();
 
   objective!: Objective;
+  owner!: User;
   descriptionTruncate: boolean = true;
   supporters: User[] = [];
   krs: KR[] = [];
@@ -41,6 +42,7 @@ export class ObjectiveDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.objective = this.data.objective;
+    this.owner = this.data.owner;
 
     this.getKrs();
 

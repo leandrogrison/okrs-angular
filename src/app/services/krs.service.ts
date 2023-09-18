@@ -34,7 +34,7 @@ export class KrsService {
 
   getKrsByUser(user: User): Observable<KR[]> {
     const limit = '?_limit=1000';
-    const idUser = `&owner.id=${user.id}`;
+    const idUser = `&owner=${user.id}`;
     const url = this.apiUrl + limit + idUser;
 
     return this.http.get<KR[]>(url);

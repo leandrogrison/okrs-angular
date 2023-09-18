@@ -74,6 +74,7 @@
         <app-objective-list
           *ngIf="objectives.length > 0"
           [objectives]="objectives"
+          [owners]="owners"
           [objectivesInBackground]="objectivesInBackground"
           (updateObjectives)="updateObjectivesInBackground($event)"
           class="objectives-list"

@@ -82,7 +82,7 @@ export class MyOkrsIndicatorsComponent implements OnChanges {
     this.objectives.map(objective => {
       if (
         objective.cycle.id === this.filter.cycle.id &&
-        objective.owner!.id === this.ownerMe.id
+        objective.owner === this.ownerMe.id
       ) {
         totalConclusionPercent += objective.conclusionPercent ? objective.conclusionPercent : 0;
         this.indicators.numberOfObjectives++;

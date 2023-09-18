@@ -5,9 +5,11 @@ import { CreateObjectiveComponent } from '../../create-objective/create-objectiv
 import { CyclesService } from 'src/app/services/cycles.service';
 import { ObjectivesService } from 'src/app/services/objectives.service';
 import { MessagesService } from 'src/app/services/messages.service';
+import { UsersService } from 'src/app/services/users.service';
 
 import { Objective } from 'src/app/Objective';
 import { Cycle } from 'src/app/Cycle';
+import { User } from 'src/app/User';
 
 import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
 
@@ -21,6 +23,7 @@ export class EstrategicMapComponent implements OnInit {
   objectives: Objective[] = [];
   objectivesInBackground: Objective[] = [];
   cycles: Cycle[] = [];
+  owners: User[] = [];
   filter = {
     cycle: {
       id: `${new Date().getFullYear()}Q${this.quarterPipe.transform(new Date())}`,
@@ -35,7 +38,8 @@ export class EstrategicMapComponent implements OnInit {
     private objectivesService: ObjectivesService,
     private cyclesService: CyclesService,
     private messagesService: MessagesService,
-    private quarterPipe: QuarterPipe
+    private quarterPipe: QuarterPipe,
+    private usersService: UsersService
   ) {}
 
   ngOnInit(): void {
@@ -99,6 +103,7 @@ export class EstrategicMapComponent implements OnInit {
       next: (objectives) => {
         this.objectives = objectives;
         this.mountAssociates();
+        this.getOwners(objectives);
         this.loadingObjectives = false;
         if (updateInBackground) this.removeObjectiveInBackground(updateInBackground);
       },
@@ -137,6 +142,20 @@ export class EstrategicMapComponent implements OnInit {
       this.objectives = this.removeObjectivesChindren(objectivesOrigin);
     });
 
+  }
+
+  getOwners(objectives: Objective[]) {
+    const ownersInObjectives = objectives.map(objective => objective.owner);
+    this.usersService.getUsersById(ownersInObjectives).subscribe({
+      next: (owners) => {
+        this.owners = owners;
+      },
+      error: (error) => {
+        this.loadingObjectives = false;
+        this.messagesService.show('Erro ao buscar Responsáveis do objetivo!', 'warn');
+        console.log(error);
+      }
+    })
   }
 
 }

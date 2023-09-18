@@ -52,6 +52,7 @@
       #mapFirstLevel
       [objective]="objective"
       [objectivesInBackground]="objectivesInBackground"
+      [owners]="owners"
       (updateObjectives)="handleUpdateObjectives($event)"
       *ngFor="let objective of objectives; trackBy: trackByObjective"
       class="map-first-level"

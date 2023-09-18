@@ -25,6 +25,7 @@
   <app-objective-map
     *ngIf="objectives.length > 0, else noObjectives"
     [objectives]="objectives"
+    [owners]="owners"
     [objectivesInBackground]="objectivesInBackground"
     (updateObjectives)="updateObjectivesInBackground($event)"
     (getObjectives)="getObjectives($event)"

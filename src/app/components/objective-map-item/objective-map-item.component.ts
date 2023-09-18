@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Objective } from 'src/app/Objective';
+import { User } from 'src/app/User';
 
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
 import { ExpandAllService } from 'src/app/services/expand-all.service';
@@ -16,16 +17,18 @@ import { DeleteObjectiveComponent } from '../delete-objective/delete-objective.c
   templateUrl: './objective-map-item.component.html',
   styleUrls: ['./objective-map-item.component.scss']
 })
-export class ObjectiveMapItemComponent implements OnInit {
+export class ObjectiveMapItemComponent implements OnInit, OnChanges {
 
   @Input() objective!: Objective;
   @Input() objectivesInBackground!: Objective[];
+  @Input() owners!: User[];
   @Output() updateObjectives = new EventEmitter();
 
   positionMouseX: number = 0;
   positionMouseY: number = 0;
 
   expandedItem: boolean = true;
+  owner!: User;
 
   constructor(
     public dialog: MatDialog,
@@ -46,6 +49,10 @@ export class ObjectiveMapItemComponent implements OnInit {
     } else {
       this.expandedItem = true;
     }
+  }
+
+  ngOnChanges() {
+    this.owner = this.owners.filter(owner => owner.id === this.objective.owner)[0];
   }
 
   trackByObjective(index: number, item: Objective): any {
@@ -80,11 +87,11 @@ export class ObjectiveMapItemComponent implements OnInit {
     }
   }
 
-  openDetails(objective: Objective, event: any) {
+  openDetails(objective: Objective, onwer: User, event: any) {
 
     if (!(event.x === this.positionMouseX && event.y === this.positionMouseY)) return;
 
-    const data = { objective: objective };
+    const data = { objective: objective, owner: onwer };
     this.drawerService.openDrawer(ObjectiveDetailsComponent, data);
   }
 

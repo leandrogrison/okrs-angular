@@ -2,8 +2,8 @@
   <mat-label>{{ label }}</mat-label>
   <span *ngIf="user && userAutoComplete" matPrefix>
     <img
-      *ngIf="user.photo; else noPhoto"
-      [src]="user.photo"
+      *ngIf="userAutoComplete.photo; else noPhoto"
+      [src]="userAutoComplete.photo"
       class="user-photo user-photo-sm"
       style="margin: 0 10px 0 16px"
     >

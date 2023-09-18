@@ -52,7 +52,7 @@
     />
     <div>
       <mat-checkbox
-        [checked]="kr.owner && kr.owner.id === ownerMe.id"
+        [checked]="kr.owner && kr.owner === ownerMe.id"
         (change)="setOwnerMe($event)"
         name="ownerMe"
         #ownerMeField

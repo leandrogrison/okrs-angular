@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, HostListener, Renderer2 } from '@angular/core';
 
 import { Objective } from 'src/app/Objective';
+import { User } from 'src/app/User';
 
 import { ExpandAllService } from 'src/app/services/expand-all.service';
 
@@ -15,6 +16,7 @@ export class ObjectiveMapComponent implements OnInit {
 
   @Input() objectives!: Objective[];
   @Input() objectivesInBackground!: Objective[];
+  @Input() owners!: User[];
   @Output() updateObjectives = new EventEmitter();
 
   @ViewChild('mapContainer') map!: ElementRef;

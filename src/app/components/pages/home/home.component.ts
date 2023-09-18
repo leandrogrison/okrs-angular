@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CyclesService } from 'src/app/services/cycles.service';
 import { ObjectivesService } from 'src/app/services/objectives.service';
@@ -38,8 +38,7 @@ export class HomeComponent implements OnInit {
     private krsService: KrsService,
     private authService: AuthService,
     private messagesService: MessagesService,
-    private quarterPipe: QuarterPipe,
-    private changeDetectorRef: ChangeDetectorRef
+    private quarterPipe: QuarterPipe
   ) {}
 
   ngOnInit(): void {

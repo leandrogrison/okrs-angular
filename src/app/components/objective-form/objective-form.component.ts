@@ -100,7 +100,7 @@ export class ObjectiveFormComponent implements OnInit {
   }
 
   updateOwnerHandler(owner: any) {
-    this.objective.owner = owner;
+    this.objective.owner = owner && owner.id ? owner.id : undefined;
   }
 
   updateSupportersHandler(supporters: any) {

@@ -25,7 +25,7 @@ export class ObjectivesService {
       })
     }
 
-    result += filter.owner ? `&owner.id=${filter.owner}` : '';
+    result += filter.owner ? `&owner=${filter.owner}` : '';
 
     result += filter.cycle ? `&cycle.id=${filter.cycle.id}` : '';
 

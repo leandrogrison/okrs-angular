@@ -6,6 +6,7 @@
   <mat-divider class="objective-line"></mat-divider>
   <app-objective-list-content
     [objective]="objective"
+    [owners]="owners"
     [objectivesInBackground]="objectivesInBackground"
     (updateObjectives)="handleUpdateObjectives($event)"
   />

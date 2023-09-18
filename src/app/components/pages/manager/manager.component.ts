@@ -6,9 +6,11 @@ import { CyclesService } from 'src/app/services/cycles.service';
 import { ObjectivesService } from 'src/app/services/objectives.service';
 import { MessagesService } from 'src/app/services/messages.service';
 import { ProgressStatusService } from 'src/app/services/progress-status.service';
+import { UsersService } from 'src/app/services/users.service';
 
 import { Objective } from 'src/app/Objective';
 import { Cycle } from 'src/app/Cycle';
+import { User } from 'src/app/User';
 
 import { QuarterPipe } from 'src/app/pipes/quarter.pipe';
 
@@ -23,6 +25,7 @@ export class ManagerComponent implements OnInit {
   objectivesInBackground: Objective[] = [];
   objectivesLength: number = 0;
   cycles: Cycle[] = [];
+  owners: User[] = [];
   keyword: string = '';
   filter = {
     search: '',
@@ -49,6 +52,7 @@ export class ManagerComponent implements OnInit {
     private cyclesService: CyclesService,
     private messagesService: MessagesService,
     private progressStatusService: ProgressStatusService,
+    private usersService: UsersService,
     private quarterPipe: QuarterPipe
   ) {}
 
@@ -117,6 +121,7 @@ export class ManagerComponent implements OnInit {
         this.filterStatusAfterResponse();
         this.objectivesLength = this.objectives.length;
         this.mountAssociates();
+        this.getOwners(objectives);
         this.loadingObjectives = false;
         if (updateInBackground) this.removeObjectiveInBackground(updateInBackground);
       },
@@ -203,5 +208,19 @@ export class ManagerComponent implements OnInit {
       this.objectives = this.removeObjectivesChindren(objectivesOrigin);
     });
 
+  }
+
+  getOwners(objectives: Objective[]) {
+    const ownersInObjectives = objectives.map(objective => objective.owner);
+    this.usersService.getUsersById(ownersInObjectives).subscribe({
+      next: (owners) => {
+        this.owners = owners;
+      },
+      error: (error) => {
+        this.loadingObjectives = false;
+        this.messagesService.show('Erro ao buscar Responsáveis do objetivo!', 'warn');
+        console.log(error);
+      }
+    })
   }
 }
