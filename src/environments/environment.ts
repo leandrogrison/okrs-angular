@@ -1,3 +1,3 @@
 export const environment = {
-  baseApiUrl: 'https://okrs-angular-api.vercel.app/'
+  baseApiUrl: 'https://okrs-grison.onrender.com/'
 };
