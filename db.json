@@ -1,118 +1,20 @@
 {
   "objectives": [
     {
-      "id": "95b383f3-aca3-43dd-b8e3-dc305d462abf",
-      "name": "Ciclo 4",
-      "description": "",
-      "category": {
-        "id": 0,
-        "name": "Objetivo da empresa"
-      },
-      "owner": "1",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q4",
-        "name": "4° Trimestre 2023"
-      },
-      "createdAt": "2023-08-07T15:12:44.810Z",
-      "startDate": "2023-10-01",
-      "deadline": "2023-12-31",
-      "finished": 0,
-      "associate": null,
-      "conclusionPercent": 100,
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 1
-    },
-    {
-      "id": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "name": "Objetivo 1",
-      "description": "Descrição supimpa que pode ser longa para estar a quebra de texto nos detalhes do objetivo.",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "2",
-      "supporters": [
-        "0",
-        "1"
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-08T12:59:21.191Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "numberOfKRs": 3,
-      "numberOfKRsCompleted": 1,
-      "conclusionPercent": 83
-    },
-    {
-      "id": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "name": "Objetivo 1 - 1",
-      "description": "foi",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "0",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-15T14:59:54.536Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 0
-    },
-    {
-      "id": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "name": "Objetivo 1 - 1 - 1",
-      "description": "Aqui também tem uma descrição grande para testar a descrição grande nos detalhes do objetivo.",
-      "category": {
-        "id": 2,
-        "name": "Objetivo individual"
-      },
-      "owner": "1",
-      "supporters": [
-        "2",
-        "0"
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-15T15:16:40.638Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "numberOfKRs": 3,
-      "conclusionPercent": 83.33333333333333,
-      "numberOfKRsCompleted": 2
-    },
-    {
       "id": "3be02eb5-384d-49ba-8117-082c701976dd",
-      "name": "Objetivo 2",
+      "name": "Aumentar receita e participação de mercado",
       "description": "",
       "category": {
         "id": 0,
         "name": "Objetivo da empresa"
       },
-      "owner": "2",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
       "supporters": [
         "2",
         "0",
-        "1"
+        "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+        "83907706-b92c-4697-aa51-3f29b1a6106f",
+        "fb9c0c61-c4b3-44e9-a699-b38d97edcabe"
       ],
       "visibility": "public",
       "cycle": {
@@ -123,184 +25,19 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 100,
-      "numberOfKRs": 1,
+      "conclusionPercent": 89,
+      "numberOfKRs": 3,
       "numberOfKRsCompleted": 1
-    },
-    {
-      "id": "7484a83f-a4d2-4210-ab42-97d21edb8cc7",
-      "name": "Objetivo 1 - 2",
-      "description": "",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "2",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-22T19:20:29.834Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 100,
-      "numberOfKRs": 2,
-      "numberOfKRsCompleted": 1
-    },
-    {
-      "id": "741df46d-5cc0-4316-b940-4f3f042988eb",
-      "name": "Objetivo 1 - 3",
-      "description": "",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "2",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-22T21:04:25.043Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 100,
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 1
-    },
-    {
-      "id": "00186fe4-9fe1-467c-9a75-cfd70c2b93fc",
-      "name": "Objetivo 1 - 4",
-      "description": "",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "1",
-      "supporters": [
-        "2"
-      ],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-23T13:28:01.736Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "conclusionPercent": 66,
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 0
-    },
-    {
-      "id": "73197e76-4cef-494a-a9ed-61aaa6dbf0ff",
-      "name": "Objetivo 1 - 3 - 1",
-      "description": "bbb",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "0",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-24T12:06:23.200Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "741df46d-5cc0-4316-b940-4f3f042988eb",
-      "conclusionPercent": 0
-    },
-    {
-      "id": "c3f0ffd9-4841-47e9-b4a3-367fa6c957e6",
-      "name": "Objetivo 1 - 3 - 2",
-      "description": "aaa",
-      "category": {
-        "id": 1,
-        "name": "Objetivo do grupo"
-      },
-      "owner": "1",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-24T12:06:55.349Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "741df46d-5cc0-4316-b940-4f3f042988eb",
-      "conclusionPercent": 100,
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 1
-    },
-    {
-      "id": "c5d1dce2-fbf7-4c16-bd10-d1261b9f1e0e",
-      "name": "Objetivo 1 - 3 - 1 - 1",
-      "description": "",
-      "category": {
-        "id": 2,
-        "name": "Objetivo individual"
-      },
-      "owner": "1",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q3",
-        "name": "3° Trimestre 2023"
-      },
-      "createdAt": "2023-08-24T13:27:58.081Z",
-      "startDate": "2023-07-01",
-      "deadline": "2023-09-30",
-      "finished": 0,
-      "associate": "73197e76-4cef-494a-a9ed-61aaa6dbf0ff",
-      "conclusionPercent": 100,
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 1
-    },
-    {
-      "id": "70f4cdb5-22ab-4a8d-92de-9e5f4e371f32",
-      "name": "Ciclo 4 - 1",
-      "description": "",
-      "category": {
-        "id": 0,
-        "name": "Objetivo da empresa"
-      },
-      "owner": "1",
-      "supporters": [],
-      "visibility": "public",
-      "cycle": {
-        "id": "2023Q4",
-        "name": "4° Trimestre 2023"
-      },
-      "createdAt": "2023-08-25T13:38:30.349Z",
-      "startDate": "2023-10-01",
-      "deadline": "2023-12-31",
-      "finished": 0,
-      "associate": "95b383f3-aca3-43dd-b8e3-dc305d462abf"
     },
     {
       "id": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "name": "Objetivo 3",
-      "description": "a",
+      "name": "Melhorar a satisfação do cliente",
+      "description": "Realizar ações, focadas principalmente no atendimento ao cliente, para melhorar nossos índices de satisfação e engajamento dos clientes.",
       "category": {
         "id": 0,
         "name": "Objetivo da empresa"
       },
-      "owner": "1",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
       "supporters": [
         "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
         "f629da88-da89-4caf-a719-9f06ff469d9d"
@@ -314,13 +51,13 @@
       "startDate": "2023-07-01",
       "deadline": "2023-09-30",
       "finished": 0,
-      "conclusionPercent": 85.73333333333335,
+      "conclusionPercent": 84,
       "numberOfKRs": 3,
-      "numberOfKRsCompleted": 2
+      "numberOfKRsCompleted": 1
     },
     {
       "id": "866a291e-3a45-445b-beea-33f156f327a3",
-      "name": "Objetivo 3 testando, com bastante texto para testar a responsividade do nome do objetivo em diversas telas",
+      "name": "Desenvolver e lançar um novo produto",
       "description": "",
       "category": {
         "id": 0,
@@ -328,7 +65,8 @@
       },
       "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
       "supporters": [
-        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6"
+        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+        "1"
       ],
       "visibility": "public",
       "cycle": {
@@ -340,20 +78,23 @@
       "deadline": "2023-09-30",
       "finished": 0,
       "associate": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "conclusionPercent": 93,
-      "numberOfKRs": 1,
-      "numberOfKRsCompleted": 0
+      "conclusionPercent": 84.95,
+      "numberOfKRs": 4,
+      "numberOfKRsCompleted": 2
     },
     {
       "id": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
-      "name": "Objetivo antigo 1",
+      "name": "Aumentar a receita de vendas em 20% no trimestre",
       "description": "",
       "category": {
         "id": 0,
         "name": "Objetivo da empresa"
       },
       "owner": "1",
-      "supporters": [],
+      "supporters": [
+        "83907706-b92c-4697-aa51-3f29b1a6106f",
+        "55c61fc6-b0ed-47e0-acf0-41528b9db7ee"
+      ],
       "visibility": "public",
       "cycle": {
         "id": "2023Q2",
@@ -363,135 +104,411 @@
       "startDate": "2023-04-01",
       "deadline": "2023-06-30",
       "finished": 0,
-      "conclusionPercent": 33,
+      "conclusionPercent": 80.83333333333333,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 1
+    },
+    {
+      "id": "899e6c57-8458-495c-b110-f2f612148788",
+      "name": "Desenvolver o novo site da empresa",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "2",
+      "supporters": [
+        "fb9c0c61-c4b3-44e9-a699-b38d97edcabe",
+        "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+        "83907706-b92c-4697-aa51-3f29b1a6106f"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q2",
+        "name": "2° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T15:11:40.333Z",
+      "startDate": "2023-04-01",
+      "deadline": "2023-06-30",
+      "finished": 0,
+      "associate": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
+      "conclusionPercent": 100,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 3
+    },
+    {
+      "id": "5cf3474e-a9b6-4dd1-ad28-ff7276377faa",
+      "name": "Elaborar campanhas para os clientes da base sobre os novos produtos.",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "supporters": [
+        "83907706-b92c-4697-aa51-3f29b1a6106f",
+        "55c61fc6-b0ed-47e0-acf0-41528b9db7ee"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q2",
+        "name": "2° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T15:17:27.025Z",
+      "startDate": "2023-04-01",
+      "deadline": "2023-06-30",
+      "finished": 0,
+      "associate": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
+      "conclusionPercent": 87.5,
+      "numberOfKRs": 2,
+      "numberOfKRsCompleted": 1
+    },
+    {
+      "id": "543ffefa-75eb-42d1-9081-5a15af4c364a",
+      "name": "Melhorar a eficiência operacional da equipe de engenharia.",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "1",
+      "supporters": [
+        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+        "2"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T15:49:07.868Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "389bb977-019f-483b-b760-bcf1493f8f83",
+      "conclusionPercent": 72.22222222222221,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 0
+    },
+    {
+      "id": "ec3e257f-278d-4737-8835-3b981e24b98f",
+      "name": "Estudar métricas de sucesso para a equipe de engenharia",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T15:54:02.448Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "543ffefa-75eb-42d1-9081-5a15af4c364a",
+      "conclusionPercent": 89,
+      "numberOfKRs": 2,
+      "numberOfKRsCompleted": 1
+    },
+    {
+      "id": "94447fdd-1a20-4b4d-a9e0-b72d94ed2a47",
+      "name": "Estudar metodologias de aumento de performance dos colaboradores",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": "2",
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T15:54:56.132Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "543ffefa-75eb-42d1-9081-5a15af4c364a",
+      "conclusionPercent": 100,
+      "numberOfKRs": 1,
+      "numberOfKRsCompleted": 1
+    },
+    {
+      "id": "d729141b-42cd-4011-b990-e9e0e60f5290",
+      "name": "Expandir para novos mercados internacionais",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "1",
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T16:04:38.955Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "conclusionPercent": 51.11111111111111,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 0,
+      "associate": "3be02eb5-384d-49ba-8117-082c701976dd"
+    },
+    {
+      "id": "5c1f2349-09bd-4fd6-bef6-a64aacee22d3",
+      "name": "Qualificar mercado local",
+      "description": "Ações para expandir nossa participação no mercado local.",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "supporters": [
+        "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+        "0"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T17:40:39.278Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "3be02eb5-384d-49ba-8117-082c701976dd",
+      "conclusionPercent": 100,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 3
+    },
+    {
+      "id": "c20cd398-03ab-404a-ba7a-27cf093ce810",
+      "name": "Lançar um produto específico para clientes locais",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "1",
+      "supporters": [
+        "fb9c0c61-c4b3-44e9-a699-b38d97edcabe",
+        "2"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T17:56:36.446Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "5c1f2349-09bd-4fd6-bef6-a64aacee22d3",
+      "conclusionPercent": 80.25,
+      "numberOfKRs": 4,
+      "numberOfKRsCompleted": 2
+    },
+    {
+      "id": "ea0e607c-6385-4390-8789-9cbd3d87b168",
+      "name": "Criar uma nova versão do nosso design system utilizando o novo produto como base.",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": "2",
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T18:01:57.806Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "c20cd398-03ab-404a-ba7a-27cf093ce810",
+      "conclusionPercent": 100,
+      "numberOfKRs": 2,
+      "numberOfKRsCompleted": 2
+    },
+    {
+      "id": "b1c32498-0682-4515-88c6-9d8242c2adde",
+      "name": "Aumentar a eficiência do desenvolvimento de software.",
+      "description": "",
+      "category": {
+        "id": 0,
+        "name": "Objetivo da empresa"
+      },
+      "owner": "1",
+      "supporters": [
+        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+        "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+        "2"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T18:11:09.141Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "conclusionPercent": 100,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 3
+    },
+    {
+      "id": "4e92dd8b-13a2-4885-a731-0eac62b22a96",
+      "name": "Aumentar o tempo de atividade dos serviços de TI",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "1",
+      "supporters": [
+        "0",
+        "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+        "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T19:57:47.240Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "b1c32498-0682-4515-88c6-9d8242c2adde",
+      "conclusionPercent": 76.66666666666667,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 1
+    },
+    {
+      "id": "4bb9ae7b-6a5b-4aa8-a8a7-cb49173a3ade",
+      "name": "Melhorar a segurança de dados da empresa",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "supporters": [
+        "2",
+        "0"
+      ],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T20:01:16.322Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "b1c32498-0682-4515-88c6-9d8242c2adde",
+      "conclusionPercent": 77.55555555555556,
+      "numberOfKRs": 3,
+      "numberOfKRsCompleted": 1
+    },
+    {
+      "id": "1e39cffb-a80e-4615-8e1e-e38f93d72409",
+      "name": "Estabelecer procedimentos de segurança com base nas novas requisições dos clientes.",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T20:08:02.495Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "associate": "4bb9ae7b-6a5b-4aa8-a8a7-cb49173a3ade",
+      "conclusionPercent": 100,
+      "numberOfKRs": 2,
+      "numberOfKRsCompleted": 2
+    },
+    {
+      "id": "797c5760-f925-4e1f-8b0a-28442897acd9",
+      "name": "Estudos para implantação de um sistema de monitoramento de bugs.",
+      "description": "",
+      "category": {
+        "id": 1,
+        "name": "Objetivo do grupo"
+      },
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q3",
+        "name": "3° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T20:10:26.711Z",
+      "startDate": "2023-07-01",
+      "deadline": "2023-09-30",
+      "finished": 0,
+      "conclusionPercent": 80,
+      "associate": "543ffefa-75eb-42d1-9081-5a15af4c364a",
       "numberOfKRs": 1,
       "numberOfKRsCompleted": 0
+    },
+    {
+      "id": "d25f1cb5-5d14-463d-a7fa-6e1e305b2206",
+      "name": "Entender quais as dores dos clientes para elaborar quais pontos devem ser melhorados em nosso site.",
+      "description": "",
+      "category": {
+        "id": 2,
+        "name": "Objetivo individual"
+      },
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "supporters": [],
+      "visibility": "public",
+      "cycle": {
+        "id": "2023Q2",
+        "name": "2° Trimestre 2023"
+      },
+      "createdAt": "2023-09-21T20:18:06.898Z",
+      "startDate": "2023-04-01",
+      "deadline": "2023-06-30",
+      "finished": 0,
+      "associate": "899e6c57-8458-495c-b110-f2f612148788",
+      "conclusionPercent": 90,
+      "numberOfKRs": 2,
+      "numberOfKRsCompleted": 1
     }
   ],
   "krs": [
     {
-      "id": "8ebe6bf7-d423-497e-aeaa-774db22978b3",
-      "name": "Kr teste alterado",
-      "description": "descrição 2",
-      "owner": "2",
-      "type": "percent",
-      "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 100,
-      "tasks": [
-        {
-          "id": "8e43edbe-aa81-4060-b40a-7cfec5b43a94",
-          "name": "Eita 1",
-          "checked": true
-        },
-        {
-          "id": "8ab97329-7a96-4b48-bad8-d8a1f268d742",
-          "name": "Eita 2",
-          "checked": true
-        },
-        {
-          "id": "2bcec9fb-37eb-40f1-99de-085ab4bb42b2",
-          "name": "Eita 3",
-          "checked": false
-        }
-      ]
-    },
-    {
-      "id": "0cb90c1c-3d63-475d-a32c-2b75df41f30c",
-      "name": "teste 2",
-      "description": "",
-      "owner": "0",
-      "type": "task",
-      "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 100,
-      "tasks": [
-        {
-          "id": "36157f2d-0d7f-49cf-ac59-5c07036b2285",
-          "name": "Tarefa 1",
-          "checked": true
-        },
-        {
-          "id": "8221421f-cb60-4a87-92b8-1e4562b577ad",
-          "name": "Tarefs 2",
-          "checked": true
-        }
-      ]
-    },
-    {
-      "id": "f4fd85ab-5522-4c4c-ac50-96e603f52518",
-      "name": "mais um kr de teste e que deve ser grande para testar a bagaça",
-      "description": "",
-      "owner": "1",
-      "type": "value",
-      "objective": "bc6f1b65-7949-4cd7-b7fc-a9becaf58dfc",
-      "progress": 50,
-      "tasks": [],
-      "value": 500,
-      "valued": 250,
-      "unit": "R$"
-    },
-    {
-      "id": "08802f13-2f82-4d95-8b41-e95fa748239e",
-      "name": "Kr 1",
-      "description": "",
-      "owner": "2",
-      "type": "percent",
-      "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 70,
-      "tasks": []
-    },
-    {
-      "id": "a0b22ea3-696d-4384-bab9-449a7961863f",
-      "name": "Kr 2",
-      "description": "",
-      "owner": "2",
-      "type": "percent",
-      "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 100,
-      "tasks": []
-    },
-    {
-      "id": "0b981522-21a8-4c27-92c2-af18c87ef831",
-      "name": "kr 3",
-      "description": "",
-      "owner": "2",
-      "type": "percent",
-      "objective": "053e3d54-3536-4196-bc2e-3e928718881d",
-      "progress": 79,
-      "tasks": []
-    },
-    {
-      "id": "ea271e1c-9126-4ba9-9ff9-7b025a399f00",
-      "name": "kr 1",
-      "description": "",
-      "owner": "0",
-      "type": "percent",
-      "objective": "de617d3a-f94c-4eb1-b905-146239b222ce",
-      "progress": 31,
-      "tasks": []
-    },
-    {
-      "id": "65700957-193d-4187-88dc-d6aee1a339cd",
-      "name": "teste",
-      "description": "",
-      "owner": "2",
-      "type": "percent",
-      "objective": "00186fe4-9fe1-467c-9a75-cfd70c2b93fc",
-      "progress": 66,
-      "tasks": []
-    },
-    {
       "id": "aa88fd3f-97c1-4921-a08b-07c1c2db5f23",
-      "name": "asdfsafsdsdf",
-      "description": "",
-      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "name": "Concluir a fase de pesquisa",
+      "description": "Pesquisa já tinha começado no trimestre anterior, agora é necessário finaliza-la.",
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
       "type": "percent",
       "objective": "866a291e-3a45-445b-beea-33f156f327a3",
-      "progress": 93,
+      "progress": 100,
       "tasks": []
     },
     {
       "id": "7e2039d0-9439-4154-ab84-96a1ff3eee66",
-      "name": "aaaaa",
+      "name": "Aumentar a classificação de satisfação do cliente de 4.0 para 4.5",
       "description": "",
       "owner": "1",
       "type": "percent",
@@ -501,7 +518,7 @@
     },
     {
       "id": "e838db02-3733-4f84-9c08-ec543560ff89",
-      "name": "Kr de teste",
+      "name": "Elaborar pesquisas para detectar novos mercados",
       "description": "",
       "owner": "2",
       "type": "percent",
@@ -510,118 +527,613 @@
       "tasks": []
     },
     {
-      "id": "f3a58e0f-51fa-4f3e-878b-775d6eb5f4eb",
-      "name": "kr de teste",
-      "description": "",
-      "owner": "2",
-      "type": "percent",
-      "objective": "741df46d-5cc0-4316-b940-4f3f042988eb",
-      "progress": 100,
-      "tasks": []
-    },
-    {
-      "id": "b657bc7b-fabb-48ef-aa1e-8853e97e624f",
-      "name": "kr de teste",
-      "description": "",
-      "owner": "1",
-      "type": "percent",
-      "objective": "c5d1dce2-fbf7-4c16-bd10-d1261b9f1e0e",
-      "progress": 100,
-      "tasks": []
-    },
-    {
-      "id": "bf21acff-37e2-4d1c-abf9-fc028191fe19",
-      "name": "kr de teste",
-      "description": "",
-      "owner": "2",
-      "type": "percent",
-      "objective": "7484a83f-a4d2-4210-ab42-97d21edb8cc7",
-      "progress": 100,
-      "tasks": []
-    },
-    {
-      "id": "e6d178b1-1d7f-4478-b843-d232fa84afd8",
-      "name": "kr de teste",
-      "description": "",
-      "owner": "1",
-      "type": "percent",
-      "objective": "c3f0ffd9-4841-47e9-b4a3-367fa6c957e6",
-      "progress": 100,
-      "tasks": []
-    },
-    {
-      "id": "a336b48a-634f-4c78-9845-5fa4f065ff9a",
-      "name": "kr de teste",
-      "description": "",
-      "owner": "1",
-      "type": "percent",
-      "objective": "95b383f3-aca3-43dd-b8e3-dc305d462abf",
-      "progress": 100,
-      "tasks": []
-    },
-    {
       "id": "77c701bd-74cb-4150-a085-33ee712e75d3",
-      "name": "kr de teste",
+      "name": "Aumentar o tráfego do site em 30% até o final do trimestre",
       "description": "",
-      "owner": "2",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
       "type": "percent",
       "objective": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
-      "progress": 33,
-      "tasks": []
-    },
-    {
-      "id": "0d335511-b380-4b5f-8ed3-5e2eb4d6b19d",
-      "name": "kr para outro usuário",
-      "description": "",
-      "owner": "1",
-      "type": "percent",
-      "objective": "7484a83f-a4d2-4210-ab42-97d21edb8cc7",
       "progress": 100,
       "tasks": []
     },
     {
       "id": "d292472c-3f35-4676-a3df-a04ee3cd0b72",
-      "name": "Mais um kr",
+      "name": "Realizar pelo menos 10 entrevistas com clientes para identificar melhorias e sugestões.",
       "description": "",
       "owner": "0",
       "type": "value",
       "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "progress": 57.199999999999996,
+      "progress": 80,
       "tasks": [],
-      "value": 5000,
-      "unit": "R$",
-      "valued": 2860
+      "value": 10,
+      "unit": "Entrevistas",
+      "valued": 8
     },
     {
       "id": "9626cfa2-cf92-4778-9e50-df15a55de9fc",
-      "name": "Outro KR",
+      "name": "Reduzir o tempo médio de resposta do suporte ao cliente de 24 horas para 12 horas.",
       "description": "",
-      "owner": "1",
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
       "type": "percent",
       "objective": "389bb977-019f-483b-b760-bcf1493f8f83",
-      "progress": 100,
+      "progress": 72,
       "tasks": [
         {
           "id": "cad78ec8-7431-4f39-a205-2c1e1c347682",
-          "name": "Tarefa 1",
+          "name": "Criar planilha para contabilizar o tempo de resposta do suporte",
           "checked": true
         },
         {
           "id": "b15313eb-77b2-49a7-9e9a-8f558c1749de",
-          "name": "Tarefa 2",
+          "name": "Criar processo de atualização da planilha.",
+          "checked": true
+        },
+        {
+          "id": "8ff40e2b-9349-4e50-a7dc-49a0fd197fd8",
+          "name": "Mensurar o tempo médio do suporte ao final do trimestre",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "2124b943-6b17-49c6-8c71-6079f0e9247f",
+      "name": "Aumentar a taxa de conversão de visitantes para clientes em 15% até o final do trimestre.",
+      "description": "",
+      "owner": "1",
+      "type": "percent",
+      "objective": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
+      "progress": 60,
+      "tasks": []
+    },
+    {
+      "id": "b3470a45-caff-438d-86eb-007d425e4fb3",
+      "name": "Lançar uma campanha de marketing direcionada que resulte em pelo menos 10.000 novos leads qualificados.",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "value",
+      "objective": "64aac3f1-20a4-47b6-b00b-990604f5c6fa",
+      "progress": 82.5,
+      "tasks": [],
+      "value": 10000,
+      "unit": "Leads",
+      "valued": 8250
+    },
+    {
+      "id": "ef18d185-c565-428a-9b94-932d63d34122",
+      "name": "Fazer pesquisa junto aos clientes chave para entender quais pontos devem ser destacados no site",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "percent",
+      "objective": "899e6c57-8458-495c-b110-f2f612148788",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "6c494d13-9752-4eab-a5b9-b2f77c9974b1",
+      "name": "Elaborar designs com base na pesquisa feita junto aos clientes chave.",
+      "description": "",
+      "owner": "fb9c0c61-c4b3-44e9-a699-b38d97edcabe",
+      "type": "percent",
+      "objective": "899e6c57-8458-495c-b110-f2f612148788",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "3c5650c9-ae2b-4206-b033-71e4137a8975",
+      "name": "Elaborar materiais para serem passados para a agência que irá desenvolver o novo site.",
+      "description": "",
+      "owner": "2",
+      "type": "task",
+      "objective": "899e6c57-8458-495c-b110-f2f612148788",
+      "progress": 100,
+      "tasks": [
+        {
+          "id": "1562ece6-8926-4e97-89c2-8f59fb348455",
+          "name": "Selecionar imagens e screenshots principais das telas do sistema",
+          "checked": true
+        },
+        {
+          "id": "2010164e-49d9-464c-ae91-80d8bcbc0dc2",
+          "name": "Criar documentação com a descrição das alterações a serem feitas",
+          "checked": true
+        },
+        {
+          "id": "ff8c1448-5417-4071-818c-d2a50d398423",
+          "name": "Criar apresentação de todos os materiais selecionados para ser passado para a agência",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "a9891abe-a290-48ae-b86f-f79700f2a40c",
+      "name": "Criar materiais de divulgação para nossos principais canais",
+      "description": "",
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "type": "task",
+      "objective": "5cf3474e-a9b6-4dd1-ad28-ff7276377faa",
+      "progress": 75,
+      "tasks": [
+        {
+          "id": "46d0bb26-71d9-4eb0-927c-d9055e19cbd7",
+          "name": "Materiais de divulgação para Instagram",
+          "checked": true
+        },
+        {
+          "id": "5898d508-556c-4f43-8acc-13944ffafd8e",
+          "name": "Materiais de divulgação para Linkedin",
+          "checked": true
+        },
+        {
+          "id": "03ec195e-093e-4859-9ae3-5133649b5616",
+          "name": "Materiais de divulgação para Youtube",
+          "checked": true
+        },
+        {
+          "id": "832ef9f7-7072-4db7-82d4-cf4ed4cbcf89",
+          "name": "Materiais de divulgação para Facebook",
           "checked": false
         }
       ]
+    },
+    {
+      "id": "d0a720a1-62a2-4cb0-bd99-251f4aa5d021",
+      "name": "Qualificar os leads recebidos pelas campanhas",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "percent",
+      "objective": "5cf3474e-a9b6-4dd1-ad28-ff7276377faa",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "c7e03b6d-1ccd-478b-80e0-c3d6fcba75c9",
+      "name": "Desenvolver o produto até o final do trimestre.",
+      "description": "",
+      "owner": "1",
+      "type": "task",
+      "objective": "866a291e-3a45-445b-beea-33f156f327a3",
+      "progress": 100,
+      "tasks": [
+        {
+          "id": "8a9958b0-23e7-4e16-ada9-261d384f8c50",
+          "name": "Elaboração de documentação técnica do produto.",
+          "checked": true
+        },
+        {
+          "id": "82da1c3d-41bb-4534-9763-1f73a7453c11",
+          "name": "Criação de protótipos para validação junto aos stakeholdes.",
+          "checked": true
+        },
+        {
+          "id": "6620f7e8-5fb4-4921-8ec5-70c42167e0ae",
+          "name": "Estruturação e codificação do produto.",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "ec8fa33b-ae4e-4fcb-81a3-7a7651aaecdd",
+      "name": "Realizar testes beta bem-sucedidos com pelo menos 100 usuários antes do lançamento.",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "value",
+      "objective": "866a291e-3a45-445b-beea-33f156f327a3",
+      "progress": 67,
+      "tasks": [],
+      "value": 100,
+      "unit": "testes",
+      "valued": 67
+    },
+    {
+      "id": "bca157ee-6a89-4c9b-9834-33c2928d36a8",
+      "name": "Atingir pelo menos 1.000 pré-cadastros do produto antes do lançamento oficial.",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "value",
+      "objective": "866a291e-3a45-445b-beea-33f156f327a3",
+      "progress": 72.8,
+      "tasks": [],
+      "value": 1000,
+      "unit": "cadastros",
+      "valued": 728
+    },
+    {
+      "id": "099a6435-2f38-4e12-9342-eedee111a958",
+      "name": "Reduzir os bugs em ambiente de produção em 10%",
+      "description": "",
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "type": "percent",
+      "objective": "543ffefa-75eb-42d1-9081-5a15af4c364a",
+      "progress": 80,
+      "tasks": []
+    },
+    {
+      "id": "bf89c006-16bf-4a31-b528-756e3aa6fdb5",
+      "name": "Aumentar a produtividade da equipe em 15%",
+      "description": "",
+      "owner": "2",
+      "type": "percent",
+      "objective": "543ffefa-75eb-42d1-9081-5a15af4c364a",
+      "progress": 70,
+      "tasks": []
+    },
+    {
+      "id": "0b5cb836-f4d4-461b-9a27-9c4493b42819",
+      "name": " Implementar métricas de sucesso de ao menos 3 produtos",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "value",
+      "objective": "543ffefa-75eb-42d1-9081-5a15af4c364a",
+      "progress": 66.66666666666666,
+      "tasks": [],
+      "value": 3,
+      "unit": "produtos metrificados",
+      "valued": 2
+    },
+    {
+      "id": "52596edd-9ec0-4097-9a3e-2073b0b088e6",
+      "name": "Reestruturar grade de produtos para se adequar ao perfil dos clientes dos novos mercados.",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "percent",
+      "objective": "3be02eb5-384d-49ba-8117-082c701976dd",
+      "progress": 79,
+      "tasks": []
+    },
+    {
+      "id": "47e92e58-eb07-4e94-8dd3-a55f5620d916",
+      "name": "Lançar campanhas focadas nos novos clientes",
+      "description": "",
+      "owner": "fb9c0c61-c4b3-44e9-a699-b38d97edcabe",
+      "type": "percent",
+      "objective": "3be02eb5-384d-49ba-8117-082c701976dd",
+      "progress": 88,
+      "tasks": [
+        {
+          "id": "1f0b7f59-61b2-4f82-a9ba-64abfdcb4395",
+          "name": "Elaborar materiais para serem passados para a agência",
+          "checked": true
+        },
+        {
+          "id": "59dbcd9d-7a24-4880-9519-b27f2d077eda",
+          "name": "Validar materiais",
+          "checked": true
+        },
+        {
+          "id": "ec414a9b-b074-455b-84d5-9f4fd3365343",
+          "name": "Apresentar materiais para a agência e acompanhar o desenvolvimento da campanha",
+          "checked": true
+        },
+        {
+          "id": "42e7a508-e1d0-4b48-ab2b-8bb2adcf2359",
+          "name": "Validação final dos materiais para cada canal de comunicação da empresa",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "8bb83a44-a604-4dd0-9267-aaa313ace887",
+      "name": "Pesquisar e identificar os três principais mercados-alvo até o final do trimestre.",
+      "description": "",
+      "owner": "1",
+      "type": "value",
+      "objective": "d729141b-42cd-4011-b990-e9e0e60f5290",
+      "progress": 33.33333333333333,
+      "tasks": [],
+      "value": 3,
+      "unit": "mercados-alvo",
+      "valued": 1
+    },
+    {
+      "id": "a3a63e0c-1a7d-496a-8c47-d2bf217f0552",
+      "name": "Estabelecer parcerias com distribuidores locais em pelo menos dois desses mercados.",
+      "description": "",
+      "owner": "1",
+      "type": "percent",
+      "objective": "d729141b-42cd-4011-b990-e9e0e60f5290",
+      "progress": 70,
+      "tasks": []
+    },
+    {
+      "id": "6c9a9080-3217-41ab-9f90-49672b8d122c",
+      "name": "Lançar uma campanha de marketing adaptada a cada mercado-alvo e aumentar as vendas nesses mercados em 6% até o final do trimestre.",
+      "description": "",
+      "owner": "1",
+      "type": "percent",
+      "objective": "d729141b-42cd-4011-b990-e9e0e60f5290",
+      "progress": 50,
+      "tasks": []
+    },
+    {
+      "id": "7cfce562-8e47-4d0a-b929-f1cd42a12ff9",
+      "name": "Elaborar campanhas promocionais para clientes da nossa base sobre os novos produtos",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "percent",
+      "objective": "5c1f2349-09bd-4fd6-bef6-a64aacee22d3",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "68687c34-90a1-492b-a310-5e202667151c",
+      "name": "Promover ao menos 3 workshops de demonstração dos novos produtos",
+      "description": "",
+      "owner": "0",
+      "type": "value",
+      "objective": "5c1f2349-09bd-4fd6-bef6-a64aacee22d3",
+      "progress": 100,
+      "tasks": [],
+      "value": 3,
+      "unit": "workshops",
+      "valued": 3
+    },
+    {
+      "id": "19ab98e9-1fd9-44bc-b574-36582f465def",
+      "name": "Anunciar para os clientes locais do projeto piloto do novo produto",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "percent",
+      "objective": "5c1f2349-09bd-4fd6-bef6-a64aacee22d3",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "370177ad-727a-4af6-8949-36d0f86ef823",
+      "name": "Elaborar seções de Design Thinking para validar a ideia do novo produto",
+      "description": "",
+      "owner": "1",
+      "type": "percent",
+      "objective": "c20cd398-03ab-404a-ba7a-27cf093ce810",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "18df35d4-2155-4f0b-8946-0c7303124888",
+      "name": "Prototipar as principais telas do novo produto e validar com stakeholders",
+      "description": "",
+      "owner": "2",
+      "type": "percent",
+      "objective": "c20cd398-03ab-404a-ba7a-27cf093ce810",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "12af27fa-647c-43cb-9b6d-67fa009315ae",
+      "name": "Documentar o projeto para enviar para engenharia",
+      "description": "",
+      "owner": "fb9c0c61-c4b3-44e9-a699-b38d97edcabe",
+      "type": "percent",
+      "objective": "c20cd398-03ab-404a-ba7a-27cf093ce810",
+      "progress": 79,
+      "tasks": []
+    },
+    {
+      "id": "f5d27079-aba9-4fd5-a969-e70da47b1a60",
+      "name": "Acompanhar e validar o produto entregue pela engenharia.",
+      "description": "",
+      "owner": "1",
+      "type": "percent",
+      "objective": "c20cd398-03ab-404a-ba7a-27cf093ce810",
+      "progress": 42,
+      "tasks": []
+    },
+    {
+      "id": "561ebdda-c932-43f5-8e70-b1eaacfac6a0",
+      "name": "Fazer comparativo do novo Material Design com o anterior para ver quais implementações fazer no novo design system.",
+      "description": "",
+      "owner": "2",
+      "type": "percent",
+      "objective": "ea0e607c-6385-4390-8789-9cbd3d87b168",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "54b0d457-7e5d-44fc-bd32-623b314b3fc1",
+      "name": "Prototipar os principais componentes e validar com os PMs",
+      "description": "",
+      "owner": "2",
+      "type": "percent",
+      "objective": "ea0e607c-6385-4390-8789-9cbd3d87b168",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "bb241336-593f-4347-be91-6ccdeb6473da",
+      "name": "Fazer curso: Alta performance para sua equipe",
+      "description": "",
+      "owner": "2",
+      "type": "percent",
+      "objective": "94447fdd-1a20-4b4d-a9e0-b72d94ed2a47",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "7474a77d-d6ef-4db9-b1d5-aff57c0934b7",
+      "name": "Fazer curso: Como medir o desempenho de sua equipe",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "percent",
+      "objective": "ec3e257f-278d-4737-8835-3b981e24b98f",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "2d84650f-3553-4807-9543-5802195f5317",
+      "name": "Elaborar um processo, com base nos aprendizados do curso, para medir as métricas de sucesso",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "percent",
+      "objective": "ec3e257f-278d-4737-8835-3b981e24b98f",
+      "progress": 78,
+      "tasks": []
+    },
+    {
+      "id": "50753d7a-ea61-4041-b39b-a63f740e1572",
+      "name": "Reduzir o tempo médio de lançamento de novos recursos de software pela metade.",
+      "description": "",
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "type": "percent",
+      "objective": "b1c32498-0682-4515-88c6-9d8242c2adde",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "ef351583-d1ee-49dd-aada-c6d324295fe7",
+      "name": "Implementar práticas de integração contínua e entrega contínua (CI/CD) em nossos projetos.",
+      "description": "",
+      "owner": "1",
+      "type": "percent",
+      "objective": "b1c32498-0682-4515-88c6-9d8242c2adde",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "65428431-8eea-40fe-95b9-87c85f178e60",
+      "name": "Realizar revisões de código regulares para melhorar a qualidade do código e reduzir os erros críticos de produção em 10% no trimestre.",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "percent",
+      "objective": "b1c32498-0682-4515-88c6-9d8242c2adde",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "bf464632-a71f-4409-aeb6-aefc1d6ea104",
+      "name": "Reduzir o tempo de inatividade não planejado dos sistemas de TI para menos de 2% do tempo total de operação.",
+      "description": "",
+      "owner": "0",
+      "type": "percent",
+      "objective": "4e92dd8b-13a2-4885-a731-0eac62b22a96",
+      "progress": 50,
+      "tasks": []
+    },
+    {
+      "id": "2cbe0b5e-36d0-4fb9-8b91-320b9c543f4f",
+      "name": "Implementar um sistema de monitoramento proativo que identifique problemas antes que afetem os usuários, reduzindo o tempo de inatividade em 10%.",
+      "description": "",
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "type": "percent",
+      "objective": "4e92dd8b-13a2-4885-a731-0eac62b22a96",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "3ee1d247-91fc-42c6-a7c2-482d49c3d308",
+      "name": "Realizar ao menos 5 testes de recuperação de desastres.",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "value",
+      "objective": "4e92dd8b-13a2-4885-a731-0eac62b22a96",
+      "progress": 80,
+      "tasks": [],
+      "value": 5,
+      "unit": "testes",
+      "valued": 4
+    },
+    {
+      "id": "b60d7b93-178a-4317-a788-87b9107dcab4",
+      "name": "Realizar uma auditoria de segurança de rede e corrigir todas as vulnerabilidades críticas identificadas.",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "percent",
+      "objective": "4bb9ae7b-6a5b-4aa8-a8a7-cb49173a3ade",
+      "progress": 66,
+      "tasks": []
+    },
+    {
+      "id": "70edb4d6-3bf7-4796-9385-5e07e6a6214c",
+      "name": "Implementar autenticação de dois fatores (2FA) nos 3 novos produtos.",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "task",
+      "objective": "4bb9ae7b-6a5b-4aa8-a8a7-cb49173a3ade",
+      "progress": 66.66666666666666,
+      "tasks": [
+        {
+          "id": "b416f188-3357-4dad-be6f-52929b182653",
+          "name": "Autenticação 2FA para o produto: FolhaCerta",
+          "checked": true
+        },
+        {
+          "id": "76bb69ba-2567-456b-83b7-dfb7fc0b0dcf",
+          "name": "Autenticação 2FA para o produto: EstoqueZero",
+          "checked": true
+        },
+        {
+          "id": "91c90bda-cdc3-486c-8c09-a2372890da13",
+          "name": "Autenticação 2FA para o produto: BenefícioTotal",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "547676d1-4ab9-4d43-b72b-435d44e646cd",
+      "name": "Realizar ao menos 5 treinamentos de conscientização sobre segurança com os colaboradores.",
+      "description": "",
+      "owner": "2",
+      "type": "value",
+      "objective": "4bb9ae7b-6a5b-4aa8-a8a7-cb49173a3ade",
+      "progress": 100,
+      "tasks": [],
+      "value": 5,
+      "unit": "treinamentos",
+      "valued": 5
+    },
+    {
+      "id": "94b44358-d346-405e-85df-c4c9cc61022a",
+      "name": "Realização de curso e testes com ferramentas da área.",
+      "description": "",
+      "owner": "d70b3caa-9eb3-40bc-ad7b-b55fe9ec7bb6",
+      "type": "percent",
+      "objective": "797c5760-f925-4e1f-8b0a-28442897acd9",
+      "progress": 80,
+      "tasks": []
+    },
+    {
+      "id": "8008c3dc-fb6e-4862-aba4-689b83fdcb78",
+      "name": "Levantamento dos requisitos de segurança com os clientes.",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "percent",
+      "objective": "1e39cffb-a80e-4615-8e1e-e38f93d72409",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "c8274c38-fea4-416a-b4fc-02cb038e1a07",
+      "name": "Criar um plano de implantação destes novos requisitos",
+      "description": "",
+      "owner": "55c61fc6-b0ed-47e0-acf0-41528b9db7ee",
+      "type": "percent",
+      "objective": "1e39cffb-a80e-4615-8e1e-e38f93d72409",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "6265e73a-835d-4828-8388-8f48bb140f65",
+      "name": "Efetuar pesquisas junto aos clientes",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "percent",
+      "objective": "d25f1cb5-5d14-463d-a7fa-6e1e305b2206",
+      "progress": 100,
+      "tasks": []
+    },
+    {
+      "id": "f17b2933-c973-4049-a351-732322179f9b",
+      "name": "Analisar os resultados das pesquisas e propor uma plano de ação",
+      "description": "",
+      "owner": "83907706-b92c-4697-aa51-3f29b1a6106f",
+      "type": "percent",
+      "objective": "d25f1cb5-5d14-463d-a7fa-6e1e305b2206",
+      "progress": 80,
+      "tasks": []
     }
   ],
   "cycles": [
     {
       "id": "2023Q3",
       "name": "3° Trimestre 2023"
-    },
-    {
-      "id": "2023Q4",
-      "name": "4° Trimestre 2023"
     },
     {
       "id": "2023Q2",
