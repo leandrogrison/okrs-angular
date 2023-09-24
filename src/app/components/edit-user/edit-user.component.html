@@ -8,7 +8,7 @@
   <app-user-form [userToEdit]="user" (onSubmit)="editUserHandler($event)" />
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
+<mat-dialog-actions *ngIf="user.id !== 'admin'; else isAdmin" align="end">
   <button mat-button mat-dialog-close color="primary">
     Cancelar
   </button>
@@ -28,3 +28,14 @@
     <span>{{ loading ? 'Salvando usuário...' : 'Salvar usuário'}}</span>
   </button>
 </mat-dialog-actions>
+
+<ng-template #isAdmin>
+  <mat-dialog-actions align="end">
+    <div class="message-admin">
+      O Usuário admin não pode ser editado.
+    </div>
+    <button mat-button mat-dialog-close color="primary">
+      Fechar
+    </button>
+  </mat-dialog-actions>
+</ng-template>

@@ -7,6 +7,7 @@ import { UserFormComponent } from '../user-form/user-form.component';
 
 import { UsersService } from 'src/app/services/users.service';
 import { MessagesService } from 'src/app/services/messages.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -25,6 +26,7 @@ export class EditUserComponent {
     private usersService: UsersService,
     private messagesService: MessagesService,
     private dialogRef: MatDialogRef<EditUserComponent>,
+    private authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.user = data.user;
@@ -37,6 +39,7 @@ export class EditUserComponent {
       next: () => {
         this.loading = false;
         this.messagesService.show('Usuário salvo com sucesso!', 'success');
+        this.verifyIsMyUser(user);
         this.closeModal(user);
       },
       error: (error) => {
@@ -45,6 +48,12 @@ export class EditUserComponent {
         console.log(error);
       }
     })
+  }
+
+  verifyIsMyUser(user: User) {
+    if (user.id === this.authService.loggedUser$.id) {
+      localStorage.setItem('loggedUser', btoa(JSON.stringify(user)));
+    }
   }
 
   saveUser() {

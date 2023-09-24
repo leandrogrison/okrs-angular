@@ -92,7 +92,7 @@ export class UserFormComponent implements OnInit {
   }
 
   saveUser() {
-    if (this.formUser.invalid) return;
+    if (this.formUser.invalid || this.user.id === 'admin') return;
 
     this.user.name = this.user.name.replace(/^./, this.user.name[0].toUpperCase());
 

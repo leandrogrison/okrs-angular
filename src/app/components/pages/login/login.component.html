@@ -1,0 +1,120 @@
+<div class="login-container">
+  <div class="login-illustration">
+    <img src="/assets/login-illustration.svg" />
+  </div>
+  <div class="login-wrapper">
+    <div class="login-content">
+      <div class="login-box">
+
+        <div class="login-logo">
+          <mat-icon>crisis_alert</mat-icon>
+          OKRs
+        </div>
+
+        <div class="login-form">
+
+          <div *ngIf="!serverActived &&!serverError.length" class="login-server-verify">
+            <mat-spinner diameter="64" />
+            Aguarde ativação da API, isto pode levar alguns minutos.
+          </div>
+
+          <div *ngIf="serverError.length" class="login-server-error">
+            <mat-icon>error</mat-icon>
+            {{ serverError }}
+          </div>
+
+          <form
+            #formLogin="ngForm"
+            (ngSubmit)="login()"
+            fxLayout="column wrap"
+            fxLayoutAlign="start start"
+            fxLayoutGap="24px"
+          >
+
+            <mat-form-field fxFlexFill>
+              <mat-label>E-mail</mat-label>
+              <input
+                [(ngModel)]="username"
+                name="email"
+                #emailField="ngModel"
+                matInput
+                required
+                type="email"
+                email
+                placeholder="Informe o email: admin@okrs.com.br"
+                [disabled]="!serverActived"
+              >
+              <mat-error *ngIf="emailField.invalid">
+                <span *ngIf="emailField.errors?.['email'] && !emailField.errors?.['required']">
+                  Informe um e-mail válido
+                </span>
+                <span *ngIf="emailField.errors?.['required']">Campo obrigatório</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlexFill>
+              <mat-label>Senha</mat-label>
+              <input
+                [(ngModel)]="password"
+                name="password"
+                #passwordField="ngModel"
+                matInput
+                required
+                type="password"
+                placeholder="Informe a senha: okrs123"
+                minlength="6"
+                [disabled]="!serverActived"
+              >
+              <mat-error *ngIf="passwordField.invalid">
+                <span *ngIf="passwordField.errors?.['minlength'] && !passwordField.errors?.['required']">
+                  A senha precisa ter no mínimo 6 caracteres
+                </span>
+                <span *ngIf="passwordField.errors?.['required']">Campo obrigatório</span>
+              </mat-error>
+            </mat-form-field>
+
+            <button
+              mat-flat-button
+              color="primary"
+              type="submit"
+              class="login-button-submit"
+              [disabled]="!serverActived || isLoading"
+            >
+              <span *ngIf="!isLoading; else loading" class="login-button-text">Entrar</span>
+              <ng-template #loading>
+                <span class="login-button-text">
+                  <mat-spinner diameter="22" /> Entrando...
+                </span>
+              </ng-template>
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+
+      <div class="login-footer">
+        Sistema destinado para estudos de frontend de Leandro Grison.
+        <div class="login-footer-links">
+          <a
+            href="https://github.com/leandrogrison/okrs-angular"
+            target="_blank"
+            mat-icon-button
+            aria-label="Este projeto no GitHub"
+          >
+            <img src="/assets/github_icon.svg">
+          </a>
+          <a
+            href="https://www.linkedin.com/in/leandro-grison/"
+            target="_blank"
+            mat-icon-button
+            aria-label="Meu perfil no Linkedin"
+          >
+            <img src="/assets/linkedin_icon.svg">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

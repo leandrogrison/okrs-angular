@@ -8,7 +8,7 @@
         <ng-template #noPhoto>
           <mat-icon class="user-photo form-user-photo-preview">person</mat-icon>
         </ng-template>
-        <div class="form-user-photo-actions">
+        <div *ngIf="user.id !== 'admin'" class="form-user-photo-actions">
           <button (click)="fileInput.click()" mat-button mat-flat-button color="primary" type="button">
             <mat-icon>upload</mat-icon>
             <span>Carregar foto</span>
@@ -37,6 +37,7 @@
           [aspectRatio]="4 / 4"
           [resizeToWidth]="180"
           [imageQuality]="60"
+          [disabled]="user.id === 'admin'"
           output="base64"
           format="webp"
           (imageCropped)="cropImage($event)"
@@ -57,6 +58,7 @@
         <mat-label>Nome completo</mat-label>
         <input
           [(ngModel)]="user.name"
+          [disabled]="user.id === 'admin'"
           name="name"
           #nameField="ngModel"
           matInput
@@ -72,6 +74,7 @@
         <mat-label>E-mail</mat-label>
         <input
           [(ngModel)]="user.email"
+          [disabled]="user.id === 'admin'"
           name="email"
           #emailField="ngModel"
           matInput
@@ -89,6 +92,7 @@
         <mat-label>Cargo</mat-label>
         <input
           [(ngModel)]="user.position"
+          [disabled]="user.id === 'admin'"
           name="position"
           #positionField="ngModel"
           matInput

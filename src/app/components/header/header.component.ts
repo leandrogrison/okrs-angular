@@ -55,9 +55,13 @@ export class HeaderComponent implements OnInit {
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) {
         this.updateUser(result);
-        this.authService.getUserInfo();
+        this.authService.getUserInfo(result.id);
       }
     });
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

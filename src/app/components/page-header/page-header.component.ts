@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss']
 })
-export class PageHeaderComponent {
+export class PageHeaderComponent implements OnInit {
 
   titlePage: string = '';
 
@@ -14,12 +14,13 @@ export class PageHeaderComponent {
   @Input() buttonText!: string;
   @Output() buttonAction = new EventEmitter();
 
-  constructor(router: Router) {
-    router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.titlePage = router.config.filter(r => r.path === router.url.substring(1))[0].data!['title'];
-      }
-    });
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    const rootLogged = this.router.config.filter(route => route.path === '')[0].children!;
+    const currentRoute = rootLogged.filter(route => route.path === this.router.url.substring(1))[0];
+
+    this.titlePage = currentRoute.data!['title'];
   }
 
 }

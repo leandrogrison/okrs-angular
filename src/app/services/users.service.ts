@@ -18,8 +18,9 @@ export class UsersService {
     const limit = '?_limit=1000';
     const order = '&_sort=name';
     const excludeDeleted = `&deleted_ne=1`;
+    const excludeAdmin = `&id_ne=admin`;
     const filter = name ? `&name_like=${name}` : ''
-    return this.http.get<User[]>(this.apiUrl + limit + order + filter + excludeDeleted);
+    return this.http.get<User[]>(this.apiUrl + limit + order + filter + excludeDeleted + excludeAdmin);
   }
 
   getUsersById(ids?: any[]): Observable<User[]> {

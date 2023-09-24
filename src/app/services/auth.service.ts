@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { User } from '../User';
 
@@ -10,30 +11,39 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedIn: boolean = false;
   private baseApiUrl = environment.baseApiUrl
   private apiUrl = `${this.baseApiUrl}users`
 
   public loggedUser$:User = { id: '', name: '' };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  login(username: string, password: string): boolean {
-    // Simulação do processo de login, pode ser personalizado conforme necessário
-    if (username === 'user' && password === 'password') {
-      this.isLoggedIn = true;
-      return true;
-    }
-    return false;
+  login(username: string, password: string): Observable<any> {
+    const data = `?email=${username}&password=${password}`;
+    const loggedUser = this.http.get<User[]>(this.apiUrl + data);
+
+    loggedUser.subscribe({
+      next: (result) => {
+        this.loggedUser$ = result[0];
+        localStorage.setItem('tokenUser', btoa(JSON.stringify("TokenQueSeriaGeradoPelaAPI")));
+        localStorage.setItem('loggedUser', btoa(JSON.stringify(this.loggedUser$)));
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+
+    return loggedUser;
   }
 
   logout(): void {
-    // Simulação do processo de logout
-    this.isLoggedIn = false;
+    localStorage.removeItem('tokenUser');
+    this.loggedUser$ = { id: '', name: '' };
+    this.router.navigate(['/login']);
   }
 
-  getUserInfo():Observable<User[]> {
-    const idUser = '?id=1'
+  getUserInfo(id: string):Observable<User[]> {
+    const idUser = '?id=' + id;
     const loggedUser = this.http.get<User[]>(this.apiUrl + idUser);
 
     loggedUser.subscribe(result => this.loggedUser$ = result[0]);
@@ -41,8 +51,15 @@ export class AuthService {
     return loggedUser;
   }
 
-  isLoggedInUser(): boolean {
-    return this.isLoggedIn;
+  get logged(): boolean {
+    const isLogged = localStorage.getItem('tokenUser');
+    const userLogged = localStorage.getItem('loggedUser');
+
+    if (isLogged && userLogged) {
+      this.loggedUser$ = JSON.parse(atob(userLogged));
+    }
+
+    return isLogged ? true : false;
   }
 
 }

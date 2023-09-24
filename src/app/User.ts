@@ -4,5 +4,6 @@ export interface User {
   photo?: any,
   email?: string,
   position?: string,
-  deleted?: number
+  deleted?: number,
+  password?: string
 }
