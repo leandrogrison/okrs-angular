@@ -62,4 +62,14 @@ export class AuthService {
     return isLogged ? true : false;
   }
 
+  get getTokenUser(): string {
+    const tokenLogged = localStorage.getItem('tokenUser');
+
+    if (tokenLogged) {
+      return JSON.parse(atob(tokenLogged));
+    }
+
+    return ''
+  }
+
 }

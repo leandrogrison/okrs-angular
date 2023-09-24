@@ -1,6 +1,6 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
@@ -86,6 +86,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { MainComponent } from './components/main/main.component';
+
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 registerLocaleData(localePt);
 
@@ -173,6 +175,11 @@ registerLocaleData(localePt);
     ImageCropperModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline', subscriptSizing: 'dynamic' }
