@@ -59,11 +59,11 @@
         <input
           [(ngModel)]="user.name"
           [disabled]="user.id === 'admin'"
+          id="userName"
           name="name"
           #nameField="ngModel"
           matInput
           required
-          cdkFocusInitial
         >
         <mat-error *ngIf="nameField.invalid">
           <span *ngIf="nameField.errors?.['required']">Campo obrigatório</span>

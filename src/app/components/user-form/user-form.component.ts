@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import 'hammerjs';
@@ -16,7 +16,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, AfterViewInit {
 
   @Input() userToEdit!:User;
 
@@ -41,6 +41,7 @@ export class UserFormComponent implements OnInit {
   showCrop: boolean = false;
   oldPhoto: any = '';
   changeImageEvent: any = '';
+  isMobile: boolean = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   constructor(
     public dialog: MatDialog,
@@ -50,11 +51,19 @@ export class UserFormComponent implements OnInit {
     this.loggedUser = this.authService.loggedUser$;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (this.userToEdit) {
       this.user = { ...this.userToEdit };
     }
     this.user.password = '';
+  }
+
+  ngAfterViewInit() {
+    if (!this.isMobile) {
+      setTimeout(() => {
+        document.getElementById('userName')?.focus();
+      }, 200);
+    }
   }
 
   onFileChange(event: any): void {

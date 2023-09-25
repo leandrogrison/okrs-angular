@@ -28,8 +28,9 @@ export class KrFormComponent implements OnInit {
   @ViewChild('buttonSubmitHidden') buttonSubmitHidden!: ElementRef<HTMLElement>;
   @ViewChild(UserSingleSelectComponent) userSingleSelect!: UserSingleSelectComponent;
 
-  ownerMe: User = { id: '', name: '', photo: '' }
-  updateList = Math.random()
+  ownerMe: User = { id: '', name: '', photo: '' };
+  updateList = Math.random();
+  isMobile: boolean = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   kr: KR = {
     id: uuidv4(),
@@ -66,6 +67,14 @@ export class KrFormComponent implements OnInit {
     } else {
       this.kr.owner = this.objective.owner;
       this.kr.objective = this.objective.id!;
+    }
+  }
+
+  ngAfterViewInit() {
+    if (!this.isMobile) {
+      setTimeout(() => {
+        document.getElementById('krName')?.focus();
+      }, 200);
     }
   }
 

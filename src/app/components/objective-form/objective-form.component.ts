@@ -33,6 +33,7 @@ export class ObjectiveFormComponent implements OnInit {
   categories: Category[] = []
   ownerMe: User = { id: '', name: '', photo: '' }
   loading: boolean =  false
+  isMobile: boolean = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   objective: Objective = {
     id: uuidv4(),
@@ -53,6 +54,7 @@ export class ObjectiveFormComponent implements OnInit {
     associate: null
   }
 
+
   constructor(
     private categoriesService: CategoriesService,
     private authService: AuthService
@@ -72,6 +74,11 @@ export class ObjectiveFormComponent implements OnInit {
 
   ngAfterViewInit() {
     this.setDates();
+    if (!this.isMobile) {
+      setTimeout(() => {
+        document.getElementById('objectiveName')?.focus();
+      }, 200);
+    }
   }
 
   setDates() {
