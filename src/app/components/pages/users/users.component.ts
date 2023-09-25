@@ -55,6 +55,7 @@ export class UsersComponent implements OnInit {
     this.dialog.open(CreateUserComponent, {
       maxWidth: 900,
       width: 'calc(100% - 32px)',
+      enterAnimationDuration: '0',
       panelClass: 'dialog-container-component',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
@@ -67,6 +68,7 @@ export class UsersComponent implements OnInit {
       data: { user: user },
       maxWidth: 900,
       width: 'calc(100% - 32px)',
+      enterAnimationDuration: '0',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) this.getUsers();
@@ -78,6 +80,7 @@ export class UsersComponent implements OnInit {
       data: { user: user },
       maxWidth: 420,
       minWidth: 320,
+      enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) this.getUsers();

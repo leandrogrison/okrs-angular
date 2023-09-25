@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(EditUserComponent, {
       data: { user: user },
       maxWidth: 900,
+      enterAnimationDuration: '0',
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {

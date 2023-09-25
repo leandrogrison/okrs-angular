@@ -72,6 +72,7 @@ export class ObjectiveListContentComponent implements OnInit, OnChanges {
     this.dialog.open(EditObjectiveComponent, {
       data: { objective: objective },
       maxWidth: 900,
+      enterAnimationDuration: '0',
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
@@ -85,6 +86,7 @@ export class ObjectiveListContentComponent implements OnInit, OnChanges {
       data: { objective: objective },
       maxWidth: 420,
       minWidth: 320,
+      enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) this.updateObjectives.emit(result);

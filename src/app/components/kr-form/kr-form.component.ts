@@ -96,6 +96,7 @@ export class KrFormComponent implements OnInit {
     this.dialog.open(DeleteTaskComponent, {
       data: { task: task },
       maxWidth: 420,
+      enterAnimationDuration: '0',
       minWidth: 320,
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {

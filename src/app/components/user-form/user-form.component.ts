@@ -92,6 +92,7 @@ export class UserFormComponent implements OnInit, AfterViewInit {
       data: { photo: this.user.photo },
       maxWidth: 420,
       minWidth: 320,
+      enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
       if (result) {

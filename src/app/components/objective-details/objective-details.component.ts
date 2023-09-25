@@ -93,6 +93,7 @@ export class ObjectiveDetailsComponent implements OnInit {
         krs: this.krs
       },
       maxWidth: 900,
+      enterAnimationDuration: '0',
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {

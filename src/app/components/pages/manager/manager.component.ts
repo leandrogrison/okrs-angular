@@ -64,6 +64,7 @@ export class ManagerComponent implements OnInit {
   openCreateObjective() {
     this.dialog.open(CreateObjectiveComponent, {
       maxWidth: 900,
+      enterAnimationDuration: '0',
       width: 'calc(100% - 32px)',
       panelClass: 'dialog-container-component',
       position: { top: '32px' },

@@ -66,6 +66,7 @@ export class KrListComponent implements OnInit {
     this.dialog.open(EditKrComponent, {
       data: { kr: kr, objective: this.objective },
       maxWidth: 900,
+      enterAnimationDuration: '0',
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
@@ -98,6 +99,7 @@ export class KrListComponent implements OnInit {
       },
       maxWidth: 420,
       minWidth: 320,
+      enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
       if (result && result.hasOwnProperty('id')) this.getKRsHandle.emit();
