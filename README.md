@@ -5,7 +5,9 @@ Este é um projeto pessoal que tem como finalidade aperfeiçoar meus conheciment
 O projeto escolhido para estudo foi em criar um aplicativo/sistema web baseado na metologia de OKRs, onde o usuário poderá criar, gerenciar e analisar os objetivos e KRs de sua empresa.
 
 Veja uma demonstração neste endereço: https://okrs-angular.vercel.app/
+
 **Usuário:** admin@okrs.com.br
+
 **Senha:** okrs123
 
 **_Importante:_** 
