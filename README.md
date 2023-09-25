@@ -4,6 +4,14 @@ Este é um projeto pessoal que tem como finalidade aperfeiçoar meus conheciment
 
 O projeto escolhido para estudo foi em criar um aplicativo/sistema web baseado na metologia de OKRs, onde o usuário poderá criar, gerenciar e analisar os objetivos e KRs de sua empresa.
 
+Veja uma demonstração neste endereço: https://okrs-angular.vercel.app/
+**Usuário:** admin@okrs.com.br
+**Senha:** okrs123
+
+**_Importante:_** 
+- O Acesso a API se dá por meio de um JSON hospedado em https://render.com/, que por estar num plano gratuíto, a API fica bloqueada por inatividade. Ao acessar pela primeira vez a url acima, aguarde ativação da API, que pode levar alguns minutos.
+- Durante um período de uso, aproximadamente 15 minutos, todas os dados salvos/alterados estarão disponíveis, após este período, os dados cadastrados voltam ao seu estado original.
+
 ## Como executar este projeto
 
 Baixe o projeto para seu ambiente local e instale as dependências:
