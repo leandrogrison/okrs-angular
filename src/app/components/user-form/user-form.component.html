@@ -1,4 +1,4 @@
-<form #formUser="ngForm" (ngSubmit)="saveUser()">
+<form #formUser="ngForm" (ngSubmit)="saveUser()" appMustMatch [mustMatch]="['password', 'confirmPassword']">
 
   <div class="form-content">
     <div class="form-user-photo">
@@ -102,6 +102,83 @@
           <span *ngIf="positionField.errors?.['required']">Campo obrigatório</span>
         </mat-error>
       </mat-form-field>
+
+      <div *ngIf="loggedUser.id === user.id || loggedUser.id === 'admin' || !userToEdit" fxLayout="column" fxLayoutGap="24px">
+
+        <mat-divider />
+
+        <div *ngIf="userToEdit" fxLayout fxLayoutAlign="start start" fxLayoutGap="16px" fxFlexFill>
+          <mat-form-field fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <mat-label>Senha atual</mat-label>
+            <input
+              [(ngModel)]="currentPassword"
+              [disabled]="user.id === 'admin'"
+              name="currentPassword"
+              #currentPasswordField="ngModel"
+              [minlength]="user.password!.length > 0 ? 6 : 0"
+              matInput
+              [required]="user.password!.length > 0"
+              type="password"
+            >
+            <mat-error *ngIf="currentPasswordField.invalid">
+              <span *ngIf="currentPasswordField.errors?.['minlength']">
+                A senha precisa ter no mínimo 6 caracteres
+              </span>
+              <span *ngIf="currentPasswordField.errors?.['required']">Campo obrigatório</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout fxLayoutAlign="start start" fxLayoutGap="16px" fxFlexFill>
+          <mat-form-field fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <mat-label>{{ userToEdit ? 'Nova senha' : 'Senha' }}</mat-label>
+            <input
+              [(ngModel)]="user.password"
+              [disabled]="user.id === 'admin'"
+              name="password"
+              #passwordField="ngModel"
+              minlength="6"
+              matInput
+              [required]="!userToEdit"
+              type="password"
+            >
+            <mat-error *ngIf="passwordField.invalid">
+              <span *ngIf="passwordField.errors?.['minlength']">
+                A senha precisa ter no mínimo 6 caracteres
+              </span>
+              <span *ngIf="passwordField.errors?.['required']">Campo obrigatório</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout fxLayoutAlign="start start" fxLayoutGap="16px" fxFlexFill>
+          <mat-form-field fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <mat-label>Confirmar senha</mat-label>
+            <input
+              [(ngModel)]="confirmPassword"
+              [disabled]="user.id === 'admin'"
+              name="confirmPassword"
+              #confirmPasswordField="ngModel"
+              minlength="6"
+              appForbiddenName="user.password"
+              matInput
+              [required]="!userToEdit"
+              type="password"
+            >
+            <mat-error *ngIf="confirmPasswordField.invalid">
+              <span *ngIf="confirmPasswordField.errors?.['required']">
+                Campo obrigatório
+              </span>
+              <span *ngIf="confirmPasswordField.errors?.['minlength']">
+                A senha precisa ter no mínimo 6 caracteres
+              </span>
+              <span *ngIf="confirmPasswordField.errors?.['mustMatch']">
+                As senhas não coincidem
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
 
     </div>
   </div>

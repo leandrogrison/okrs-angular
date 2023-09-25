@@ -88,6 +88,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { MainComponent } from './components/main/main.component';
 
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { MustMatchDirective } from './validators/must-match.directive';
 
 registerLocaleData(localePt);
 
@@ -135,7 +136,8 @@ registerLocaleData(localePt);
     EditUserComponent,
     DeleteUserComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    MustMatchDirective
   ],
   imports: [
     BrowserModule,

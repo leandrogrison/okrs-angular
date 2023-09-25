@@ -9,6 +9,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { User } from 'src/app/User';
 import { DeletePhotoComponent } from '../delete-photo/delete-photo.component';
 import { MessagesService } from 'src/app/services/messages.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-form',
@@ -29,8 +30,13 @@ export class UserFormComponent implements OnInit {
     photo: '',
     position: '',
     email: '',
+    password: '',
     deleted: 0
   }
+
+  confirmPassword: string = '';
+  currentPassword: string = '';
+  loggedUser!: User;
 
   showCrop: boolean = false;
   oldPhoto: any = '';
@@ -38,13 +44,17 @@ export class UserFormComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private messagesService: MessagesService
-  ) {}
+    private messagesService: MessagesService,
+    private authService: AuthService
+  ) {
+    this.loggedUser = this.authService.loggedUser$;
+  }
 
   ngOnInit(): void {
     if (this.userToEdit) {
       this.user = { ...this.userToEdit };
     }
+    this.user.password = '';
   }
 
   onFileChange(event: any): void {
@@ -95,6 +105,17 @@ export class UserFormComponent implements OnInit {
     if (this.formUser.invalid || this.user.id === 'admin') return;
 
     this.user.name = this.user.name.replace(/^./, this.user.name[0].toUpperCase());
+
+    if (this.userToEdit) {
+      if (this.user.password === '') {
+        this.user.password = this.userToEdit.password;
+      } else {
+        if (this.currentPassword !== this.userToEdit.password) {
+          this.messagesService.show('Senha atual inválida!', 'warn');
+          return;
+        }
+      }
+    }
 
     this.onSubmit.emit(this.user);
   }
