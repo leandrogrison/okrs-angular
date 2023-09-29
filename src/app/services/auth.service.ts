@@ -52,14 +52,18 @@ export class AuthService {
   }
 
   get logged(): boolean {
-    const isLogged = localStorage.getItem('tokenUser');
-    const userLogged = localStorage.getItem('loggedUser');
+    const tokenInLocalStorage = localStorage.getItem('tokenUser');
+    const userLoggedInLocalStorage = localStorage.getItem('loggedUser');
+    const withToken = tokenInLocalStorage && tokenInLocalStorage.length > 0;
 
-    if (isLogged && userLogged) {
-      this.loggedUser$ = JSON.parse(atob(userLogged));
+    if (withToken && userLoggedInLocalStorage) {
+      if (atob(userLoggedInLocalStorage) !== typeof undefined) {
+        this.loggedUser$ = JSON.parse(atob(userLoggedInLocalStorage));
+        return true;
+      }
     }
 
-    return isLogged ? true : false;
+    return false;
   }
 
   get getTokenUser(): string {
