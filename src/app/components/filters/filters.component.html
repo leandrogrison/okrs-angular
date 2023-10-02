@@ -1,7 +1,7 @@
 <mat-form-field>
   <mat-label>Objetivos do ciclo:</mat-label>
-  <mat-select [(value)]="filter.cycle.id" (valueChange)="filterObjectives()">
-    <mat-option *ngFor="let cycle of cycles" [value]="cycle.id" >
+  <mat-select [(value)]="filter.cycle" (valueChange)="filterObjectives()">
+    <mat-option *ngFor="let cycle of cycles" [value]="cycle" >
       {{cycle.name}}
     </mat-option>
   </mat-select>

@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCycles();
-    this.getObjectives();
   }
 
   getCycles() {
@@ -51,6 +50,8 @@ export class HomeComponent implements OnInit {
     this.cyclesService.getCycles().subscribe({
       next: (cycles) => {
         this.cycles = cycles;
+        this.filter.cycle = cycles[0];
+        this.getObjectives();
       },
       error: (error) => {
         this.loadingObjectives = false;

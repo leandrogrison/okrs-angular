@@ -58,7 +58,6 @@ export class ManagerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCycles();
-    this.getObjectives(this.filter);
   }
 
   openCreateObjective() {
@@ -86,24 +85,13 @@ export class ManagerComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  addQuarterToday() {
-    const date = new Date();
-    const quarterToday = `${date.getFullYear()}Q${this.quarterPipe.transform(date)}`
-
-    if (!this.cycles.some(cycle => cycle.id === quarterToday)) {
-      this.cycles.unshift({
-        id: quarterToday,
-        name: `${this.quarterPipe.transform(date)}° Trimestre ${date.getFullYear()}`
-      })
-    }
-  }
-
   async getCycles() {
     this.loadingObjectives = true;
     await this.cyclesService.getCycles().subscribe({
       next: (cycles) => {
         this.cycles = cycles;
-        this.addQuarterToday();
+        this.filter.cycle = cycles[0];
+        this.getObjectives(this.filter);
       },
       error: (error) => {
         this.loadingObjectives = false;
