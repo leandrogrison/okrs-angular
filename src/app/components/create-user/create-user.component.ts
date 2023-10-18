@@ -29,7 +29,7 @@ export class CreateUserComponent {
   async createUserHandler(user: User) {
     this.loading = true;
 
-    await this.usersService.createUser(user).subscribe({
+    this.usersService.createUser(user).subscribe({
       next: () => {
         this.loading = false;
         this.messagesService.show('Usuário criado com sucesso!', 'success');

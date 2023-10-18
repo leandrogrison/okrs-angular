@@ -154,6 +154,10 @@
   .objective-map-item {
     position: relative;
     .objective-connections {
+      &:before {
+        right: 50%;
+        left: -16px;
+      }
       &:after {
         right: -16px;
         left: 50%;
@@ -166,12 +170,6 @@
             display: none;
           }
         }
-      }
-    }
-    .objective-connections {
-      &:before {
-        right: 50%;
-        left: -16px;
       }
     }
     &:first-child {

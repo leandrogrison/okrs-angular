@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { KrFormComponent } from '../kr-form/kr-form.component';
@@ -14,7 +14,7 @@ import { KrsService } from 'src/app/services/krs.service';
   templateUrl: './edit-kr.component.html',
   styleUrls: ['./edit-kr.component.scss']
 })
-export class EditKrComponent implements OnInit {
+export class EditKrComponent {
 
   @ViewChild(KrFormComponent) KrForm!: KrFormComponent;
 
@@ -33,14 +33,10 @@ export class EditKrComponent implements OnInit {
     this.objective = data.objective;
   }
 
-  ngOnInit(): void {
-
-  }
-
   async editKrHandler(kr: KR) {
     this.loading = true;
 
-    await this.krsService.updateKr(kr).subscribe({
+    this.krsService.updateKr(kr).subscribe({
       next: () => {
         this.loading = false;
         this.messagesService.show('KR salvo com sucesso!', 'success');

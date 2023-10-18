@@ -4,7 +4,7 @@
     <div class="form-user-photo">
 
       <div *ngIf="!showCrop">
-        <img *ngIf="user.photo, else noPhoto" [src]="user.photo" class="form-user-photo-preview" />
+        <img *ngIf="user.photo, else noPhoto" [src]="user.photo" class="form-user-photo-preview" alt="Foto do usuário" />
         <ng-template #noPhoto>
           <mat-icon class="user-photo form-user-photo-preview">person</mat-icon>
         </ng-template>

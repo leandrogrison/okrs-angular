@@ -16,12 +16,6 @@
 .dashboard-percent-conclusion-title {
   flex: 1;
 }
-.dashboard-percent-conclusion-totals {
-  @media (max-width: 600px) {
-    width: 200px;
-    margin: auto;
-  }
-}
 .dashboard-percent-conclusion-title {
   text-align: center;
   @media (min-width: 601px) {
@@ -41,6 +35,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  @media (max-width: 600px) {
+    width: 200px;
+    margin: auto;
+  }
   .dashboard-percent-conclusion-total {
     display: flex;
     align-items: center;

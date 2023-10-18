@@ -54,7 +54,7 @@
   <div *ngIf="users.length > 0 && !loading" class="users">
     <mat-card *ngFor="let user of users" class="user">
       <div class="user-header">
-        <img *ngIf="user.photo, else noPhoto" [src]="user.photo" class="user-photo">
+        <img *ngIf="user.photo, else noPhoto" [src]="user.photo" class="user-photo" [alt]="'Foto de ' + user.name">
         <ng-template #noPhoto>
           <mat-icon class="user-photo">person</mat-icon>
         </ng-template>

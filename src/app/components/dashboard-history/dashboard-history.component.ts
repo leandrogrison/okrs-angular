@@ -69,7 +69,7 @@ export class DashboardHistoryComponent implements OnChanges {
     this.history.dataset.source = [];
     this.history.dataset.dimensions = ['cycle', 'Todos os objetivos', 'Empresa', 'Grupo', 'Individual'];
 
-    this.cycles.map(cycle => {
+    this.cycles.forEach(cycle => {
       let cycleData = {
         cycle: cycle.id === this.filter.cycle.id ? `${cycle.name}\n(CICLO SELECIONADO)` : cycle.name,
         'Todos os objetivos': this.getobjectivesPerCycle(cycle, 'all'),
@@ -82,7 +82,6 @@ export class DashboardHistoryComponent implements OnChanges {
 
       if (cycle.id === this.filter.cycle.id) {
         this.history.series.showBackground = true
-        this.history.series.backgroundStyle
       }
     })
 
@@ -104,7 +103,7 @@ export class DashboardHistoryComponent implements OnChanges {
       objetivesOfCycle = this.objectives.filter(objective => objective.cycle.id === cycle.id && objective.category!.id === 2);
     }
 
-    objetivesOfCycle.map(objective => {
+    objetivesOfCycle.forEach(objective => {
       conclusionPercent += objective.conclusionPercent ? objective.conclusionPercent : 0;
     });
 

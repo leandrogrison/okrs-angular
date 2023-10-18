@@ -54,9 +54,9 @@ export class MyOkrsComponent implements OnInit {
       !this.myObjectives.some(({id: myObjective}) =>
       myObjective === objective));
 
-    objectivesDiff.map(objective => {
+    objectivesDiff.forEach(objective => {
       if (objective.cycle.id === this.filter.cycle.id) {
-        this.myKrs.map(kr => {
+        this.myKrs.forEach(kr => {
           if (kr.objective ===  objective.id ) {
             this.objectivesWithMyKRs.push(objective);
           }

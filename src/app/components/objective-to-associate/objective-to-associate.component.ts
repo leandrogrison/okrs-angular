@@ -19,7 +19,7 @@ export class ObjectiveToAssociateComponent implements OnInit {
   @Input() objectiveIdEdit!: string;
   @Output() updateAssociate = new EventEmitter();
 
-  loading: Boolean = true
+  loading: boolean = true
   associateAutoComplete: any = ''
   delayToSearch: any = null
   categoriesToAssociate: number[] = []
@@ -79,10 +79,10 @@ export class ObjectiveToAssociateComponent implements OnInit {
   insertObjectivesInCategories(objectives: Objective[]) {
     this.objectivesInCategories = [];
 
-    this.categoriesToAssociate.map((category) => {
+    this.categoriesToAssociate.forEach((category) => {
       let createCategory = true;
 
-      objectives.map((objective) => {
+      objectives.forEach((objective) => {
         if (createCategory) {
           this.objectivesInCategories.push({
             name: this.getCategoryById(category),

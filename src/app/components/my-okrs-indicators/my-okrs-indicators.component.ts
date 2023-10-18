@@ -59,8 +59,8 @@ export class MyOkrsIndicatorsComponent implements OnChanges {
     let numberOfKRs = 0;
     let numberOfKRsCompleted = 0;
 
-    this.myKrs.map(kr => {
-      this.objectives.map(objective => {
+    this.myKrs.forEach(kr => {
+      this.objectives.forEach(objective => {
         if (kr.objective === objective.id && objective.cycle.id === this.filter.cycle.id) {
           numberOfKRs++;
           if (kr.progress >= 100) numberOfKRsCompleted++;
@@ -79,7 +79,7 @@ export class MyOkrsIndicatorsComponent implements OnChanges {
     this.indicators.outTimeNumberOfObjectives = 0;
     this.indicators.alertNumberOfObjectives = 0;
 
-    this.objectives.map(objective => {
+    this.objectives.forEach(objective => {
       if (
         objective.cycle.id === this.filter.cycle.id &&
         objective.owner === this.ownerMe.id
@@ -113,10 +113,10 @@ export class MyOkrsIndicatorsComponent implements OnChanges {
   getMonths(): number {
     const quarter = this.filter.cycle.id.substring(5);
 
-    if      (quarter === '1') return 0;
+    if (quarter === '1') return 0;
     else if (quarter === '2') return 3;
     else if (quarter === '3') return 6;
-    else                      return 9;
+    else return 9;
   }
 
   getProgressStatusOfObjectives() {

@@ -68,7 +68,7 @@ export class ManagerComponent implements OnInit {
       panelClass: 'dialog-container-component',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.id) this.updateObjectivesInBackground(result);
+      if (result?.id) this.updateObjectivesInBackground(result);
     });
   }
 
@@ -87,7 +87,7 @@ export class ManagerComponent implements OnInit {
 
   async getCycles() {
     this.loadingObjectives = true;
-    await this.cyclesService.getCycles().subscribe({
+    this.cyclesService.getCycles().subscribe({
       next: (cycles) => {
         this.cycles = cycles;
         this.filter.cycle = cycles[0];
@@ -161,7 +161,7 @@ export class ManagerComponent implements OnInit {
   }
 
   insertObjectiveInPosition = (objs: Objective[], objective: Objective) => {
-    objs.map((obj) => {
+    objs.forEach((obj) => {
       if (obj.id === (objective.associate)) {
         if (!obj.children) {
           obj.children = []
@@ -192,7 +192,7 @@ export class ManagerComponent implements OnInit {
 
     const objectivesOrigin = this.objectives;
 
-    objectivesOrigin.map(objective => {
+    objectivesOrigin.forEach(objective => {
       this.objectives = this.insertObjectiveInPosition(objectivesOrigin, objective);
       this.objectives = this.removeObjectivesChindren(objectivesOrigin);
     });

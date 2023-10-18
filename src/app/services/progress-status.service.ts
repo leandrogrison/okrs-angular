@@ -7,8 +7,6 @@ import { Objective } from 'src/app/Objective';
 })
 export class ProgressStatusService {
 
-  constructor() { }
-
   diffDates(firstDate: string, lastDate: string | null): number {
     const today: any = new Date(firstDate);
     const deadlineToDate: any = lastDate ? new Date(lastDate) : new Date();

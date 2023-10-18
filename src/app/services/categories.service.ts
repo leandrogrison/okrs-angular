@@ -7,8 +7,6 @@ import { Category } from 'src/app/Category';
 })
 export class CategoriesService {
 
-constructor() { }
-
   setCategories() {
     const categories: Category[] = [
       { id: 0, name: 'Objetivo da empresa' },

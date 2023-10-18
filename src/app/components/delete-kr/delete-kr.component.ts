@@ -1,4 +1,4 @@
-import { Component, Input, Inject, OnInit } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { KrsService } from 'src/app/services/krs.service';
@@ -13,7 +13,7 @@ import { Objective } from 'src/app/Objective';
   templateUrl: './delete-kr.component.html',
   styleUrls: ['./delete-kr.component.scss']
 })
-export class DeleteKrComponent implements OnInit {
+export class DeleteKrComponent {
 
   @Input() kr!: KR;
   @Input() krs!: KR[];
@@ -31,9 +31,6 @@ export class DeleteKrComponent implements OnInit {
     this.kr = data.kr;
     this.krs = data.krs;
     this.objective = data.objective;
-  }
-
-  ngOnInit(): void {
   }
 
   updateObjective() {

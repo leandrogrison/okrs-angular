@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   loadingObjectives: boolean = true;
   updateComponent = Math.random();
 
@@ -94,7 +95,7 @@ export class HomeComponent implements OnInit {
   }
 
   updateObjectives(objectiveUpdated: Objective) {
-    this.objectives.map((objective, index) => {
+    this.objectives.forEach((objective, index) => {
       if (objective.id === objectiveUpdated.id) {
         this.objectives[index].conclusionPercent = objectiveUpdated.conclusionPercent;
         this.updateComponent = Math.random();

@@ -38,6 +38,7 @@
             *ngIf="supporter.photo, else noPhoto"
             [src]="supporter.photo"
             class="user-photo user-photo-md"
+            [alt]="supporter.name"
           />
           <ng-template #noPhoto>
             <mat-icon class="user-photo user-photo-md">

@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class DaysToEndService {
 
-  constructor() { }
-
   daysToEnd(deadline: string): number {
     const today: any = new Date();
     const deadlineToDate: any = new Date(deadline);

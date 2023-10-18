@@ -80,7 +80,7 @@ export class DashboardIndicatorsComponent implements OnInit, OnChanges {
   filterObjectivesOfCycle() {
     this.objectivesOfCycle = [];
 
-    this.objectives.map(objective => {
+    this.objectives.forEach(objective => {
       if (objective.cycle.id === this.filter.cycle.id) {
         this.objectivesOfCycle.push(objective);
       }
@@ -96,7 +96,7 @@ export class DashboardIndicatorsComponent implements OnInit, OnChanges {
 
     this.indicators = JSON.parse(JSON.stringify(this.indicatorsZero));
 
-    this.objectivesOfCycle.map(objective => {
+    this.objectivesOfCycle.forEach(objective => {
 
       conclusionPercentAllObjectives += objective.conclusionPercent ? objective.conclusionPercent : 0;
 
@@ -147,10 +147,10 @@ export class DashboardIndicatorsComponent implements OnInit, OnChanges {
   getMonths(): number {
     const quarter = this.filter.cycle.id.substring(5);
 
-    if      (quarter === '1') return 0;
+    if (quarter === '1') return 0;
     else if (quarter === '2') return 3;
     else if (quarter === '3') return 6;
-    else                      return 9;
+    else return 9;
   }
 
   getProgressStatusOfObjectives(type: string): string {

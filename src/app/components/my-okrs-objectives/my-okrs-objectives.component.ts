@@ -27,7 +27,7 @@ export class MyOkrsObjectivesComponent implements OnInit {
   }
 
   setInitialShowKRs() {
-    this.objectives.map(objective => {
+    this.objectives.forEach(objective => {
       this.objectiveShowKRs.push(false);
     });
   }
@@ -35,7 +35,7 @@ export class MyOkrsObjectivesComponent implements OnInit {
   krsOfObjective(objective: Objective): KR[] {
     let krs:KR[] = [];
 
-    this.myKrs.map(kr => {
+    this.myKrs.forEach(kr => {
       if (kr.objective ===  objective.id) krs.push(kr);
     })
 

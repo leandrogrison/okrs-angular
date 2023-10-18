@@ -76,7 +76,7 @@ export class ObjectiveListContentComponent implements OnInit, OnChanges {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit(result);
+      if (result?.id) this.updateObjectives.emit(result);
     });
   }
 
@@ -89,7 +89,7 @@ export class ObjectiveListContentComponent implements OnInit, OnChanges {
       enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.updateObjectives.emit(result);
+      if (result?.id) this.updateObjectives.emit(result);
     });
   }
 

@@ -16,7 +16,7 @@ export class UserSingleSelectComponent implements OnInit {
   @Output() updateOwner = new EventEmitter();
 
   users: User[] = [];
-  loading: Boolean = true;
+  loading: boolean = true;
   userAutoComplete: any = '';
   delayToSearch: any = null;
 
@@ -34,11 +34,20 @@ export class UserSingleSelectComponent implements OnInit {
     this.usersService.getUsersById([this.user]).subscribe((result) => {
       this.userAutoComplete = result[0];
       this.usersService.getUsers(this.userAutoComplete.name).subscribe((data) => {
-        data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        this.users = data;
+        this.users = this.sortUsers(data);
         this.loading = false;
       })
     })
+  }
+
+  sortUsers(users: User[]) {
+    users.sort((a,b) => {
+      if (a.name > b.name) return 1;
+      if (b.name > a.name) return -1;
+      return 0;
+    });
+
+    return users;
   }
 
   autoCompleteUser() {
@@ -59,8 +68,7 @@ export class UserSingleSelectComponent implements OnInit {
       this.delayToSearch = setTimeout(() => {
         this.loading = true;
         this.usersService.getUsers(value).subscribe((data) => {
-          data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-          this.users = data;
+          this.users = this.sortUsers(data);
           this.loading = false;
         })
         this.updateOwner.emit(value);

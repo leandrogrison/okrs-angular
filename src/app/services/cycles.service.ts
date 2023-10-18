@@ -16,7 +16,7 @@ export class CyclesService {
 
   getCycles(filter?: Cycle): Observable<Cycle[]> {
     const order = '?_sort=id&_order=desc';
-    const stringToFilter = filter ? '&id=' + filter : '';
+    const stringToFilter = filter ? '&id=' + filter.id : '';
 
     return this.http.get<Cycle[]>(this.apiUrl + order + stringToFilter);
   }

@@ -34,7 +34,7 @@ export class EditObjectiveComponent {
   }
 
   async createCycle(cycle: Cycle) {
-    await this.cyclesService.createCycle(cycle).subscribe({
+    this.cyclesService.createCycle(cycle).subscribe({
       error: (error) => {
         this.loading = false;
         this.messagesService.show('Erro ao criar cyclo deste objetivo! Tente novamente mais tarde.', 'warn');
@@ -44,7 +44,7 @@ export class EditObjectiveComponent {
   }
 
   async verifyCycles(objective: Objective) {
-    await this.cyclesService.getCycles().subscribe({
+    this.cyclesService.getCycles().subscribe({
       next: (cycles: Cycle[]) => {
         if (!cycles.some(cycle => cycle.id === objective.cycle.id)) {
          this.createCycle(objective.cycle);
@@ -63,7 +63,7 @@ export class EditObjectiveComponent {
 
     await this.verifyCycles(objective);
 
-    await this.objectivesService.updateObjective(objective).subscribe({
+    this.objectivesService.updateObjective(objective).subscribe({
       next: () => {
         this.loading = false;
         this.messagesService.show('Objetivo salvo com sucesso!', 'success');

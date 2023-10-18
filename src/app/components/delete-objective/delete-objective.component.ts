@@ -33,7 +33,7 @@ export class DeleteObjectiveComponent {
   deleteKrsOfObjective(objective: Objective) {
     this.krsService.getKrs(objective).subscribe({
       next: (krs) => {
-        krs.map(kr => this.krsService.deleteKr(kr).subscribe({
+        krs.forEach(kr => this.krsService.deleteKr(kr).subscribe({
           next: () => {},
           error: (error) => {
             this.messagesService.show('Erro ao excluir KRs do objetivo!', 'warn');

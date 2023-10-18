@@ -7,9 +7,9 @@
   }
 }
 
-
 .expand-filters {
   display: flex;
+  margin: -12px 0 12px 0 !important;
   .mat-icon:nth-child(even) {
     order: 3;
     margin: 0 0 0 8px;
@@ -21,10 +21,6 @@
 
 .expand-divider {
   margin-bottom: 24px;
-}
-
-.expand-filters {
-  margin: -12px 0 12px 0 !important;
 }
 
 .more-filters {

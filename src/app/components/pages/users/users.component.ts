@@ -59,7 +59,7 @@ export class UsersComponent implements OnInit {
       panelClass: 'dialog-container-component',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.id) this.getUsers();
+      if (result?.id) this.getUsers();
     });
   }
 
@@ -71,7 +71,7 @@ export class UsersComponent implements OnInit {
       enterAnimationDuration: '0',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.getUsers();
+      if (result?.id) this.getUsers();
     });
   }
 
@@ -83,7 +83,7 @@ export class UsersComponent implements OnInit {
       enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.getUsers();
+      if (result?.id) this.getUsers();
     });
   }
 

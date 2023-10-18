@@ -79,7 +79,7 @@ export class KrFormComponent implements OnInit {
   }
 
   updateOwnerHandler(owner: any) {
-    this.kr.owner = owner && owner.id ? owner.id : undefined;
+    this.kr.owner = owner?.id ? owner.id : undefined;
   }
 
   setOwnerMe(event: any) {
@@ -100,7 +100,7 @@ export class KrFormComponent implements OnInit {
       minWidth: 320,
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.deleteTask(task)
+      if (result?.id) this.deleteTask(task)
     });
   }
 
@@ -138,7 +138,7 @@ export class KrFormComponent implements OnInit {
 
     if (this.kr.type === 'value' && !this.krToEdit) this.kr.valued = 0;
 
-    this.kr.tasks.map(task => {
+    this.kr.tasks.forEach(task => {
       if (task.name.trim().length === 0) this.deleteTask(task);
     })
 

@@ -51,7 +51,7 @@ export class KrListComponent implements OnInit {
     const ownersInKrs = this.krs.map(kr => kr.owner);
     this.usersService.getUsersById(ownersInKrs).subscribe({
       next: (owners) => {
-        this.krs.map(kr => {
+        this.krs.forEach(kr => {
           this.owners.push(owners.filter(owner => owner.id === kr.owner)[0]);
         });
       },
@@ -70,7 +70,7 @@ export class KrListComponent implements OnInit {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) {
+      if (result?.id) {
         if (result.type === 'value') {
           this.updateOnEdit(result);
         } else {
@@ -83,11 +83,11 @@ export class KrListComponent implements OnInit {
   async updateOnEdit(kr: KR) {
     this.getCurrentProgress(kr);
     kr.progress = (kr.valued ? kr.valued : 0) / (kr.value ? kr.value : 0) * 100;
-    this.krs.map((k, index) => {
+    this.krs.forEach((k, index) => {
       if (k.id === kr.id) this.krs[index] = kr;
     })
     this.updateProgress(kr);
-    await this.getKRsHandle.emit();
+    this.getKRsHandle.emit();
   }
 
   deleteKr(kr: KR) {
@@ -102,7 +102,7 @@ export class KrListComponent implements OnInit {
       enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.getKRsHandle.emit();
+      if (result?.id) this.getKRsHandle.emit();
     });
   }
 
@@ -162,7 +162,7 @@ export class KrListComponent implements OnInit {
 
     if (objectiveToSave.children) delete objectiveToSave.children;
 
-    await this.krsService.updateKr(kr).subscribe({
+    this.krsService.updateKr(kr).subscribe({
       next: () => {
         this.objectivesService.updateObjective(objectiveToSave).subscribe({
           next: () => {},

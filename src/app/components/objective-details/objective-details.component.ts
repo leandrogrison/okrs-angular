@@ -97,7 +97,7 @@ export class ObjectiveDetailsComponent implements OnInit {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result && result.hasOwnProperty('id')) this.getKrs();
+      if (result?.id) this.getKrs();
     });
   }
 

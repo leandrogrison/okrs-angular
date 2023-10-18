@@ -20,7 +20,7 @@ export class UserMultipleSelectComponent implements OnInit {
 
   usersToSelect: User[] = []
   usersSelected: User[] = []
-  loading: Boolean = true
+  loading: boolean = true
   userAutoComplete: string = ''
   delayToSearch: any = null
 
@@ -45,9 +45,19 @@ export class UserMultipleSelectComponent implements OnInit {
 
   getUsersOnInit() {
     this.usersService.getUsersById(this.users).subscribe((data) => {
-      this.usersSelected = data.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+      this.usersSelected = this.sortUsers(data);
       this.getUsers();
     })
+  }
+
+  sortUsers(users: User[]) {
+    users.sort((a,b) => {
+      if (a.name > b.name) return 1;
+      if (b.name > a.name) return -1;
+      return 0;
+    });
+
+    return users;
   }
 
   getUsers(value?: any) {
@@ -67,8 +77,8 @@ export class UserMultipleSelectComponent implements OnInit {
   }
 
   sortAndFilterUsers(users: User[]): User[] {
-    users.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-    return users.filter(
+    let usersSorted: User[] = this.sortUsers(users);
+    return usersSorted.filter(
       item => this.usersSelected?.every(
         user => user.id !== item.id
       )
@@ -81,13 +91,13 @@ export class UserMultipleSelectComponent implements OnInit {
   }
 
   removeUser(user: User): void {
-    const index = this.usersSelected!.indexOf(user);
+    const index = this.usersSelected.indexOf(user);
 
     if (index >= 0) {
-      this.usersSelected!.splice(index, 1);
+      this.usersSelected.splice(index, 1);
       this.usersToSelect.unshift(user);
-      this.usersToSelect.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-      this.announcer.announce(`Removido ${user}`);
+      this.usersToSelect = this.sortUsers(this.usersToSelect);
+      this.announcer.announce(`Removido ${user.name}`);
       this.updateSupporters.emit(this.usersSelected);
     }
   }

@@ -1,4 +1,4 @@
-import { Component, ViewChild, Inject, OnInit } from '@angular/core';
+import { Component, ViewChild, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ObjectiveFormComponent } from '../objective-form/objective-form.component';
@@ -15,7 +15,7 @@ import { CyclesService } from 'src/app/services/cycles.service';
   templateUrl: './create-objective.component.html',
   styleUrls: ['./create-objective.component.scss']
 })
-export class CreateObjectiveComponent implements OnInit {
+export class CreateObjectiveComponent {
 
   @ViewChild(ObjectiveFormComponent) objectiveForm!: ObjectiveFormComponent;
 
@@ -29,11 +29,8 @@ export class CreateObjectiveComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit(): void {
-  }
-
   async createCycle(cycle: Cycle) {
-    await this.cyclesService.createCycle(cycle).subscribe({
+    this.cyclesService.createCycle(cycle).subscribe({
       error: (error) => {
         this.loading = false;
         this.messagesService.show('Erro ao criar cyclo deste objetivo! Tente novamente mais tarde.', 'warn');
@@ -43,7 +40,7 @@ export class CreateObjectiveComponent implements OnInit {
   }
 
   async verifyCycles(objective: Objective) {
-    await this.cyclesService.getCycles().subscribe({
+    this.cyclesService.getCycles().subscribe({
       next: (cycles: Cycle[]) => {
         if (!cycles.some(cycle => cycle.id === objective.cycle.id)) {
          this.createCycle(objective.cycle);
@@ -62,7 +59,7 @@ export class CreateObjectiveComponent implements OnInit {
 
     await this.verifyCycles(objective);
 
-    await this.objectivesService.createObjective(objective).subscribe({
+    this.objectivesService.createObjective(objective).subscribe({
       next: () => {
         this.loading = false;
         this.messagesService.show('Objetivo criado com sucesso!', 'success');

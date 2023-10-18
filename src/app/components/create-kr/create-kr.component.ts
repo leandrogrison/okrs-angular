@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { KrFormComponent } from '../kr-form/kr-form.component';
@@ -15,7 +15,7 @@ import { ObjectivesService } from 'src/app/services/objectives.service';
   templateUrl: './create-kr.component.html',
   styleUrls: ['./create-kr.component.scss']
 })
-export class CreateKrComponent implements OnInit {
+export class CreateKrComponent {
 
   @ViewChild(KrFormComponent) KrForm!: KrFormComponent;
 
@@ -33,9 +33,6 @@ export class CreateKrComponent implements OnInit {
   ) {
     this.objective = data.objective;
     this.krs = data.krs;
-  }
-
-  ngOnInit(): void {
   }
 
   createKR() {
@@ -66,7 +63,7 @@ export class CreateKrComponent implements OnInit {
 
     if (objectiveToSave.children) delete objectiveToSave.children;
 
-    await this.krsService.createKr(kr).subscribe({
+    this.krsService.createKr(kr).subscribe({
       next: () => {
         this.objectivesService.updateObjective(objectiveToSave).subscribe({
           next: () => {

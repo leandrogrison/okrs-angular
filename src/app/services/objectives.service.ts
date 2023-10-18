@@ -19,7 +19,7 @@ export class ObjectivesService {
 
     result = filter.search ? `&q=${filter.search}` : '';
 
-    if (filter.category && filter.category.length) {
+    if (filter.category?.length) {
       filter.category.map((category: any) => {
         result += `&category.id=${category}`;
       })

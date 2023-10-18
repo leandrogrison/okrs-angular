@@ -35,7 +35,7 @@ export class EditUserComponent {
   async editUserHandler(user: User) {
     this.loading = true;
 
-    await this.usersService.updateUser(user).subscribe({
+    this.usersService.updateUser(user).subscribe({
       next: () => {
         this.loading = false;
         this.messagesService.show('Usuário salvo com sucesso!', 'success');

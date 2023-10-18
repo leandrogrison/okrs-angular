@@ -10,7 +10,7 @@ export class ExpandAllService {
 
   expandAll$ = this.expandAllSubject.asObservable();
 
-  expandAll(expand: Boolean) {
+  expandAll(expand: boolean) {
     this.expandAllSubject.next(expand);
   }
 }
