@@ -96,7 +96,8 @@ export class DeleteObjectiveComponent {
   }
 
   closeModal(objective?: Objective) {
-    this.dialogRef.close(objective);
+    const reloadPage = false;
+    this.dialogRef.close({ objective, reloadPage });
   }
 
 }

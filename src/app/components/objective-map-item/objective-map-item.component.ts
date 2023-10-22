@@ -121,7 +121,7 @@ export class ObjectiveMapItemComponent implements OnInit, OnChanges {
       enterAnimationDuration: '0',
       panelClass: 'dialog-alert'
     }).afterClosed().subscribe(result => {
-      if (result?.id) this.updateObjectives.emit(result);
+      if (result?.objective) this.updateObjectives.emit(result);
     });
   }
 
