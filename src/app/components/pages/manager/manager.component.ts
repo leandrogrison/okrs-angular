@@ -68,8 +68,16 @@ export class ManagerComponent implements OnInit {
       panelClass: 'dialog-container-component',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result?.id) this.updateObjectivesInBackground(result);
+      if (result?.objective) this.updateObjectives(result);
     });
+  }
+
+  updateObjectives(result: any) {
+    if (result.reloadPage) {
+      this.getCycles();
+    } else {
+      this.updateObjectivesInBackground(result.objective);
+    }
   }
 
   updateObjectivesInBackground(objective: Objective) {
