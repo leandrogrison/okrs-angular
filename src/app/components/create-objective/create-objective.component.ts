@@ -9,6 +9,7 @@ import { Cycle } from 'src/app/Cycle';
 
 import { ObjectivesService } from 'src/app/services/objectives.service';
 import { CyclesService } from 'src/app/services/cycles.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-create-objective',
@@ -20,6 +21,7 @@ export class CreateObjectiveComponent {
   @ViewChild(ObjectiveFormComponent) objectiveForm!: ObjectiveFormComponent;
 
   loading: boolean = false;
+  reloadPage: boolean = false;
 
   constructor(
     private objectivesService: ObjectivesService,
@@ -29,8 +31,12 @@ export class CreateObjectiveComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  async createCycle(cycle: Cycle) {
-    this.cyclesService.createCycle(cycle).subscribe({
+  async createCycle(objective: Objective) {
+    return this.cyclesService.createCycle(objective.cycle).subscribe({
+      next: () => {
+        this.reloadPage = true;
+        this.closeModal(objective);
+      },
       error: (error) => {
         this.loading = false;
         this.messagesService.show('Erro ao criar cyclo deste objetivo! Tente novamente mais tarde.', 'warn');
@@ -40,10 +46,12 @@ export class CreateObjectiveComponent {
   }
 
   async verifyCycles(objective: Objective) {
-    this.cyclesService.getCycles().subscribe({
+    return this.cyclesService.getCycles().subscribe({
       next: (cycles: Cycle[]) => {
         if (!cycles.some(cycle => cycle.id === objective.cycle.id)) {
-         this.createCycle(objective.cycle);
+          this.createCycle(objective);
+        } else {
+          this.closeModal(objective);
         }
       },
       error: (error) => {
@@ -57,13 +65,14 @@ export class CreateObjectiveComponent {
   async createObjectiveHandler(objective: Objective) {
     this.loading = true;
 
-    await this.verifyCycles(objective);
-
-    this.objectivesService.createObjective(objective).subscribe({
+    this.objectivesService.createObjective(objective).pipe(
+      switchMap(objective => {
+        return this.verifyCycles(objective);
+      })
+    ).subscribe({
       next: () => {
         this.loading = false;
         this.messagesService.show('Objetivo criado com sucesso!', 'success');
-        this.closeModal(objective);
       },
       error: (error) => {
         this.loading = false;
@@ -78,6 +87,7 @@ export class CreateObjectiveComponent {
   }
 
   closeModal(objective?: Objective) {
-    this.dialogRef.close(objective);
+    const reloadPage = this.reloadPage;
+    this.dialogRef.close({ objective, reloadPage });
   }
 }

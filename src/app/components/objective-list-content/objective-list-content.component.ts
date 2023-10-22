@@ -76,7 +76,7 @@ export class ObjectiveListContentComponent implements OnInit, OnChanges {
       width: 'calc(100% - 32px)',
       position: { top: '32px' },
     }).afterClosed().subscribe(result => {
-      if (result?.id) this.updateObjectives.emit(result);
+      if (result?.objective) this.updateObjectives.emit(result);
     });
   }
 
